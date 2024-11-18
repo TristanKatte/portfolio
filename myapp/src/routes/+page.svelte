@@ -26,6 +26,10 @@
         --heading-small: #008080;
     }
 
+    @font-face {
+        
+    }
+
 
     
     * {
