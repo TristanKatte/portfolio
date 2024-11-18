@@ -1,6 +1,19 @@
 <main>
+    <section>
+        <h1>Over mij</h1>
 
-
+        <p>
+            Ik ben Tristan Katte en ik woon in Montfoort. Ik ben 24 jaar oud en ben in 2022 afgestudeerd als webdesigner aan het Grafisch Lyceum Utrecht.
+        </p>
+        <h2>Skills</h2>
+        <ul>
+            <li>Web Design</li>
+            <li>UI/UX Design</li>
+            <li>HTML/CSS/JavaScript</li>
+        </ul>
+        <h2>Contact</h2>
+        <p>Email: tristan@example.com</p>
+    </section>
 </main>
 
 
@@ -13,6 +26,8 @@
         --heading-small: #008080;
     }
 
+
+    
     * {
         margin: 0;
         padding: 0;
@@ -24,8 +39,29 @@
         height: 100vh;
         display: flex;
         justify-content: center;
+        align-items: center;
+        margin: auto;
         background-color: var(--main-bg-color);
-
+        overflow: hidden;
     }
+
+    section {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    color: var(--txt-color);
+    }
+
+    h1, h2 {
+    color: var(--heading-small);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
 
 </style>
