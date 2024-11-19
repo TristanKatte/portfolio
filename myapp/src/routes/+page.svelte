@@ -1,28 +1,18 @@
 <script>
-  import Header from './components/Header.svelte'
-  import Footer from './components/Footer.svelte'
-  import Home from './components/Home.svelte'
-  import About from './components/About.svelte'
-  import Contact from './components/Contact.svelte'
+  import Header from './components/Header.svelte';
+  import Footer from './components/Footer.svelte';
+  import Home from './components/Home.svelte';
+  import About from './components/About.svelte';
+  import Contact from './components/Contact.svelte';
 
 </script>
 
-<main>
-    <section>
-        <h1>Over mij</h1>
 
-        <p>
-            Ik ben Tristan Katte en ik woon in Montfoort. Ik ben 26 jaar oud en doe de studie Frontend Design & Development aan de Hogeschool van Amsterdam.
-        </p>
-        <h2>Skills</h2>
-        <ul>
-            <li>Web Design</li>
-            <li>Svelte/Sveltekit</li>
-            <li>HTML/CSS/JavaScript</li>
-        </ul>
-        <h2>Contact</h2>
-        <p>Email: tristan@example.com</p>
-    </section>
+<Header />
+<main>
+        
+
+
 </main>
 
 
@@ -30,7 +20,7 @@
 <style>
     :root {
         /* colors */
-        --main-bg-color: #4b4f58;
+        --main-bg-color: #393c44;
         --btn-color: #00adb5;
         --txt-color: #c2c2c2;
         --heading-color: #008080;
