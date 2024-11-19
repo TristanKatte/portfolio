@@ -1,4 +1,5 @@
 <main>
+
     <section>
         <h1>Over mij</h1>
 
@@ -10,6 +11,7 @@
             <li>Web Design</li>
             <li>Svelte/Sveltekit</li>
             <li>HTML/CSS/JavaScript</li>
+            <li>Nodejs/Express</li>
         </ul>
         <h2>Contact</h2>
         <p>Email: tristan@example.com</p>
