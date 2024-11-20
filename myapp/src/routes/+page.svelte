@@ -8,9 +8,9 @@
 </script>
 
 
-<Header />
+
 <main>
-        
+  <Header />     
 
 
 </main>
