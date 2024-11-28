@@ -26,7 +26,7 @@
     nav ul {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
         list-style-type: none;
         font-family: "Inconsolata", sans-serif;
         text-decoration: none;
@@ -34,6 +34,8 @@
 
     nav img {
         scale: 0.75;
+        display: flex;
+        justify-content: center;
     }
 
     nav a {
