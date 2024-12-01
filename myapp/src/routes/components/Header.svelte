@@ -7,7 +7,7 @@
 
 <header>
     <nav class="effect">
-       <img src="./logo_groen.png" alt=personal logo van mij>
+       <img src="./images/logo_groen.png" alt="personal logo van mij">
         <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>

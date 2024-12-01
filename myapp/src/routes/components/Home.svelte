@@ -1,5 +1,5 @@
 <script>
-    // Add any necessary scripts here
+    
 </script>
 
 <section>
