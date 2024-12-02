@@ -3,7 +3,7 @@
 </script>
 
 <section>
-    <h2>Welcome to My Portfolio</h2>
+    <h2>Hi! I'm Tristan Katte</h2>
     <p>This is where I showcase my work and projects.</p>
 </section>
 

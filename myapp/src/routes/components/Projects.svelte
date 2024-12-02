@@ -4,7 +4,6 @@
         { title: "B-rain website", description: "Ontwerp en maak een interactieve website voor een opdrachtgever" },
         { title: "Informaat website", description: "Ontwerp en maak een responsive website voor een startup." },
         { title: "Visitekaartje", description: "Redesign je visitekaartje op basis van een bestaande API." },
-        // Add more projects as needed
     ];
 </script>
 
