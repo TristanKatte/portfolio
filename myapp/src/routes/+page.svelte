@@ -12,7 +12,6 @@
 <Header /> 
 <main>
   <Home />     
-  <About />
 <Projects />
 
 <Contact />

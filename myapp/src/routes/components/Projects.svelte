@@ -18,5 +18,7 @@
 </section>
 
 <style>
-    /* Add your styles here */
+    h2, h3 {
+        color: var(--heading-color);
+    }
 </style>
