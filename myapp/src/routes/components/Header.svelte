@@ -1,10 +1,3 @@
-<script>
-    
-    
-
-   
-</script>
-
 <header>
     <nav class="effect">
        <img src="./images/logo_groen.png" alt="personal logo van mij">
