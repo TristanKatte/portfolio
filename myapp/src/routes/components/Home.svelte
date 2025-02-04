@@ -1,17 +1,19 @@
 <script>
     import About from'./About.svelte';
+    import Photo from '$lib/assets/profielfoto-zw.jpg'
 </script>
 
 <main>
 
 <article class="about-me">
+  <section class="text">
+    <h2>About me</h2>
+    <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.</p>
+  </section>
     <section class="about">
-        <img src="./images/profielfoto-zw.jpg" class="pic" alt="Foto van mij" />
-      <section class="text">
-        <h2>About me</h2>
-        <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.</p>
-      </section>
+        <img class="pic" alt="Foto van mij" src={Photo} />
     </section>
+
 </article>
 
 
@@ -20,16 +22,17 @@
 
 <style>
 
-    main {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
+  main {
+    width: 100%;
+    height: 100%;
     }
-    img {
+    
+  img {
     scale: 0.75;
-    height: auto;
+    height: 500px;
     width: 500px;
     border-radius: 12px;
+    border: 3px solid var(--heading-color)
 }
    
 .about-me {

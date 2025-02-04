@@ -1,6 +1,10 @@
+<script>
+    import Logo from '$lib/assets/logo_groen.png'
+</script>
+
 <header>
     <nav class="effect">
-       <img src="./images/logo_groen.png" alt="personal logo van mij">
+       <img alt="personal logo van mij" src={Logo}>
         <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
@@ -11,9 +15,20 @@
 </header>
 
 <style>
-    
     header {
         background-color: var(--main-bg-color);
+        display: flex;
+        justify-content: center;
+    }
+
+    nav {
+        display: flex;
+        align-items: baseline; 
+    }
+
+    nav img {
+        height: 185px; /* Set a fixed height for the image */
+        margin-right: 35rem; /* Add some space between the image and links */
     }
 
     nav ul {
@@ -23,12 +38,6 @@
         list-style-type: none;
         font-family: "Inconsolata", sans-serif;
         text-decoration: none;
-    }
-
-    nav img {
-        scale: 0.75;
-        display: flex;
-        justify-content: center;
     }
 
     nav a {
@@ -49,66 +58,67 @@
     nav a:hover,
     nav a:focus {
         outline: none;
-}
+    }
 
     .effect a {
         margin: 0 10px;
         padding: 10px 20px;
-}
+    }
 
-/*weergeeft een blauwe streep*/
-.effect a::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--btn-color);
-  content: "";
-  transition: top 0.3s;
-}
+    /*weergeeft een blauwe streep*/
+    .effect a::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--btn-color);
+        content: "";
+        transition: top 0.3s;
+    }
 
-/*geeft een border links en onder de link als eroverheen gescrolld is*/
-.effect a::after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 2px;
-  height: 2px;
-  background: var(--btn-color);
-  content: "";
-  transition: height 0.3s;
-}
+    /*geeft een border links en onder de link als eroverheen gescrolld is*/
+    .effect a::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2px;
+        height: 2px;
+        background: var(--btn-color);
+        content: "";
+        transition: height 0.3s;
+    }
 
-.effect a:hover::before {
-  top: 100%;
-  opacity: 1;
-}
+    .effect a:hover::before {
+        top: 100%;
+        opacity: 1;
+    }
 
-.effect a:hover::after {
-  height: 100%;
-}
+    .effect a:hover::after {
+        height: 100%;
+    }
 
-li {
-  letter-spacing: 1px;
-}
+    li {
+        letter-spacing: 1px;
+    }
 
-/*tekst wordt groter wanneer er gescrolld wordt*/
-li:hover {
-  color: var(--txt-color);
-  background: transparent;
-  cursor: pointer;
-  font-size: 1em;
-}
+    /*tekst wordt groter wanneer er gescrolld wordt*/
+    li:hover {
+        color: var(--txt-color);
+        background: transparent;
+        cursor: pointer;
+        font-size: 1em;
+    }
 
-/*geeft het laatste list item geen border*/
-li:last-child {
-  border: none;
-}
+    /*geeft het laatste list item geen border*/
+    li:last-child {
+        border: none;
+    }
 
-ul li {
-  margin: 1em;
-  text-align: left;
-  text-transform: capitalize;
-}
+    ul li {
+        margin: 1em;
+        text-align: left;
+        text-transform: capitalize;
+    }
 </style>
+

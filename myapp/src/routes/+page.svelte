@@ -5,17 +5,12 @@
   import About from './components/About.svelte';
   import Contact from './components/Contact.svelte';
   import Projects from './components/Projects.svelte';
+  import { fade } from 'svelte/transition';
 
 </script>
 
-
-<Header /> 
+<Header />
 <main>
-  <Home />     
-<Projects />
-
-<Contact />
+<Home />
 </main>
 <Footer />
-
-
