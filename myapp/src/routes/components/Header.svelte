@@ -33,7 +33,7 @@
     }
 
     nav img {
-        scale: 0.65;
+        scale: 0.70;
         display: flex;
         justify-content: center;
     }
