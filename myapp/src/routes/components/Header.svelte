@@ -28,7 +28,7 @@
 
     nav img {
         height: 185px; /* Set a fixed height for the image */
-        margin-right: 10rem; /* Add some space between the image and links */
+        margin-right: 12rem; /* Add some space between the image and links */
         margin-top: 1em;
     }
 

@@ -6,7 +6,7 @@
 	import 'open-props/normalize'
 	import 'open-props/buttons'
 
-    let { children, data } = $props()
+    
 </script>
 
 <div class="layout">
@@ -31,7 +31,8 @@
     }
 
     main {
-        padding-block: var(--size-9);
+        padding-block: var(--size-0);
+        background-image: var(--gradient-16);
     }
 
     @media (min-width: 1440px) {

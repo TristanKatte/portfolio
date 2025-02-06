@@ -50,7 +50,7 @@
     height: 100%;
     width: 100%;
     padding: 90px 90px;
-    background: var(--main-bg-color);
+    
 }
 
 .pic {
@@ -62,11 +62,11 @@
 .about {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .text {
-    max-width: 600px;
+    max-width: 500px;
     margin-left: 10px;
     font-family: Inconsolata, sans-serif;
     word-wrap: break-word;
