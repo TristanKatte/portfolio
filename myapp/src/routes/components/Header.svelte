@@ -23,12 +23,13 @@
 
     nav {
         display: flex;
-        align-items: baseline; 
+        align-items: flex-end; 
     }
 
     nav img {
         height: 185px; /* Set a fixed height for the image */
-        margin-right: 35rem; /* Add some space between the image and links */
+        margin-right: 10rem; /* Add some space between the image and links */
+        margin-top: 1em;
     }
 
     nav ul {

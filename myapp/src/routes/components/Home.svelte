@@ -1,5 +1,5 @@
 <script>
-    import About from'./About.svelte';
+    import About from './About.svelte';
     import Photo from '$lib/assets/profielfoto-zw.jpg'
 </script>
 
@@ -8,13 +8,23 @@
 <article class="about-me">
   <section class="text">
     <h2>About me</h2>
-    <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.</p>
+    <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.
+       I am currently in my 2nd and last year at the study Frontend Design & Development at the Amsterdam University of Applied Sciences.
+    </p>
+    <p>Right now, I'm learning about Svelte and how you can build good component libraries and jow you can add awesome animations with GSAP. 
+       Besides that, I've learned about the fundamentals of HTML/CSS/Javascript and their best practices for accesibility and progressive enhancement.
+    </p>
   </section>
     <section class="about">
         <img class="pic" alt="Foto van mij" src={Photo} />
     </section>
 
+
 </article>
+
+<section>
+  <About />
+</section>
 
 
 </main>
@@ -28,21 +38,19 @@
     }
     
   img {
-    scale: 0.75;
-    height: 500px;
-    width: 500px;
+    scale: 1;
     border-radius: 12px;
     border: 3px solid var(--heading-color)
 }
    
-.about-me {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  padding: 90px 0;
-  background: var(--main-bg-color);
+  .about-me {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 90px 90px;
+    background: var(--main-bg-color);
 }
 
 .pic {
@@ -60,12 +68,16 @@
 .text {
     max-width: 600px;
     margin-left: 10px;
+    font-family: Inconsolata, sans-serif;
+    word-wrap: break-word;
+    line-height: 1.6;
 }
 
 .text h2 {
   color: var(--heading-color);
   font-weight: 600;
   margin-bottom: 10px;
+  font-family: "Nunito", sans-serif;
 }
 
 
