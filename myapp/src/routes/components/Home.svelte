@@ -1,8 +1,10 @@
 <script>
     import About from './About.svelte';
+    import Header from './Header.svelte'
     import Photo from '$lib/assets/profielfoto-zw.jpg'
 </script>
 
+<Header />
 <main>
 
 <article class="about-me">
@@ -11,6 +13,7 @@
     <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.
        I am currently in my 2nd and last year at the study Frontend Design & Development at the Amsterdam University of Applied Sciences.
     </p>
+    <br>
     <p>Right now, I'm learning about Svelte and how you can build good component libraries and jow you can add awesome animations with GSAP. 
        Besides that, I've learned about the fundamentals of HTML/CSS/Javascript and their best practices for accesibility and progressive enhancement.
     </p>
@@ -19,12 +22,14 @@
         <img class="pic" alt="Foto van mij" src={Photo} />
     </section>
 
+    <section>
+      <About />
+    </section>
+
 
 </article>
 
-<section>
-  <About />
-</section>
+
 
 
 </main>
@@ -40,7 +45,7 @@
   img {
     scale: 1;
     border-radius: 12px;
-    border: 3px solid var(--heading-color)
+    border: 4px solid var(--heading-color)
 }
    
   .about-me {
@@ -56,7 +61,7 @@
 .pic {
   height: auto;
   width: 400px;
-  border-radius: 12px;
+  border-radius: 18px;
 }
 
 .about {
@@ -67,7 +72,7 @@
 
 .text {
     max-width: 500px;
-    margin-left: 10px;
+    margin-right: 50px;
     font-family: Inconsolata, sans-serif;
     word-wrap: break-word;
     line-height: 1.6;
@@ -87,5 +92,7 @@
   line-height: 25px;
   letter-spacing: 1px;
 }
+
+
 
 </style>

@@ -5,9 +5,6 @@
     <li>Svelte/Sveltekit</li>
     <li>HTML/CSS/JavaScript</li>
 </ul>
-
-<h2>Contact</h2>
-<p>Email: tristankatte@hotmail.com</p>
 </section>
 
 <style>

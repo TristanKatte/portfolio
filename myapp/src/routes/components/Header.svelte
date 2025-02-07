@@ -16,7 +16,6 @@
 
 <style>
     header {
-        background-color: var(--main-bg-color);
         display: flex;
         justify-content: center;
     }

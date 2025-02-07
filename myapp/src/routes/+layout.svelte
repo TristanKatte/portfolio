@@ -10,7 +10,7 @@
 </script>
 
 <div class="layout">
-    <Header />
+    
     <main>
 
         <slot />
@@ -32,7 +32,7 @@
 
     main {
         padding-block: var(--size-0);
-        background-image: var(--gradient-16);
+        background-image: var(--gradient-8);
     }
 
     @media (min-width: 1440px) {
