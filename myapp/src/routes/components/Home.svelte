@@ -22,12 +22,9 @@
         <img class="pic" alt="Foto van mij" src={Photo} />
     </section>
 
-    <section>
-      <About />
-    </section>
+    <About />
+  </article>
 
-
-</article>
 
 
 
@@ -40,6 +37,10 @@
   main {
     width: 100%;
     height: 100%;
+    }
+    article {
+      display: flex;
+      flex-flow: row wrap;
     }
     
   img {

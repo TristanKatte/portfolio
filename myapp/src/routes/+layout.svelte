@@ -28,11 +28,12 @@
         grid-template-rows: auto 1fr auto;
         margin-inline: auto;
         padding-inline: var(--size-7);
+        background-image: var(--gradient-16);
     }
 
     main {
         padding-block: var(--size-0);
-        background-image: var(--gradient-8);
+        
     }
 
     @media (min-width: 1440px) {
