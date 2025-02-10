@@ -1,15 +1,11 @@
-<section class="column-card">
+<!-- <section class="column-card">
 <h2>Skills</h2>
-<ul>
-    <li>Web Design</li>
-    <li>Svelte/Sveltekit</li>
-    <li>HTML/CSS/JavaScript</li>
-</ul>
-</section>
+
+</section> -->
 
 <style>
     /* Add your styles here */
-    ul {
+    /* ul {
         list-style-type: '🔥';
     }
 
@@ -21,5 +17,5 @@
 
     .column-card:hover {
     box-shadow: var(--shadow-3);
-  }
+  } */
 </style>

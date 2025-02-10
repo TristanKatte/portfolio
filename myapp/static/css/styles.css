@@ -7,6 +7,11 @@
 
     /* headings */
     --heading-large: 4.5em;
+
+    /* additional styles for skillset card */
+    --progress-bg-color: #e0e0e0;
+    --progress-fill-color: var(--btn-color);
+
     --heading-medium: 2.5em;
     --heading-small: 1.5em;
     --body-txt:1em;

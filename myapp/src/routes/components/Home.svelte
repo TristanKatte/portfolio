@@ -25,6 +25,33 @@
     <About />
   </article>
 
+    <article class="skillset">
+      <div class="card">
+        <h2>My Skillset</h2>
+        <ul>
+          <li>
+            Web Design
+            <div class="progress-bar">
+              <div class="progress" style="width: 80%;"></div>
+            </div>
+          </li>
+          <li>
+            Svelte/Sveltekit
+            <div class="progress-bar">
+              <div class="progress" style="width: 70%;"></div>
+            </div>
+          </li>
+          <li>
+            HTML/CSS/JavaScript
+            <div class="progress-bar">
+              <div class="progress" style="width: 90%;"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </article>
+
+
 
 
 
@@ -33,20 +60,47 @@
 
 
 <style>
+  .card {
+    background-color: var(--main-bg-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    height: 20px;
+    margin: 10px 0;
+  }
+
+  .progress {
+    background-color: var(--btn-color);
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.5s ease;
+  }
+
 
   main {
     width: 100%;
     height: 100%;
     }
-    article {
-      display: flex;
-      flex-flow: row wrap;
+  
+  article {
+    display: flex;
+    flex-flow: row wrap;
     }
     
   img {
     scale: 1;
     border-radius: 12px;
     border: 4px solid var(--heading-color)
+}
+
+ul {
+  list-style-type: none;
 }
    
   .about-me {
@@ -94,6 +148,12 @@
   letter-spacing: 1px;
 }
 
-
-
+.skillset {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 90px 90px;
+}
 </style>
