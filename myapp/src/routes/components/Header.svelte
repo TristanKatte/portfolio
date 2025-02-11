@@ -4,7 +4,7 @@
 
 <header>
     <img alt="personal logo van mij" src={Logo}>
-    <nav>
+    <nav class="effect">
         
         <ul>
         <li><a href="/">Home</a></li>
@@ -24,10 +24,6 @@
     nav {
         display: flex;
         align-items: center; 
-        border-radius: 50px 0 50px 0;
-        border: 1px solid white;
-        width: 100%;
-        height: 70px;
     }
  img {
         height: 185px; /* Set a fixed height for the image */
@@ -47,19 +43,84 @@
     nav a {
         position: relative;
         display: inline-block; 
-        width: 180px;
+        margin: 15px;
         outline: none;
         color: #fff;
         text-decoration: none;
         text-transform: uppercase;
-        text-align: center;
         letter-spacing: 1px;
         font-weight: 400;
         text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
         font-size: 0.95em;
-        padding: 1em;
-        border-radius: 50px 0 50px 0;
-        border: 1px solid white;
+        padding: 0.1em;
+       
+    }
+
+
+    nav a:hover,
+    nav a:focus {
+        outline: none;
+    }
+
+    .effect a {
+        margin: 0 10px;
+        padding: 10px 20px;
+    }
+
+   
+    .effect a::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--btn-color);
+        content: "";
+        transition: top 0.3s;
+    }
+
+   
+    .effect a::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2px;
+        height: 2px;
+        background: var(--btn-color);
+        content: "";
+        transition: height 0.3s;
+    }
+
+    .effect a:hover::before {
+        top: 100%;
+        opacity: 1;
+    }
+
+    .effect a:hover::after {
+        height: 100%;
+    }
+
+    li {
+        letter-spacing: 1px;
+    }
+
+  
+    li:hover {
+        color: var(--txt-color);
+        background: transparent;
+        cursor: pointer;
+        font-size: 1em;
+    }
+
+    
+    li:last-child {
+        border: none;
+    }
+
+    ul li {
+        margin: 1em;
+        text-align: left;
+        text-transform: capitalize;
     }
 </style>
 
