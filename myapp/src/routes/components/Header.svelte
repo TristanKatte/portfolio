@@ -27,7 +27,7 @@
         border-radius: 50px 0 50px 0;
         border: 1px solid white;
         width: 100%;
-        height: 80px;
+        height: 70px;
     }
  img {
         height: 185px; /* Set a fixed height for the image */
@@ -47,7 +47,6 @@
     nav a {
         position: relative;
         display: inline-block; 
-        margin: 15px;
         width: 180px;
         outline: none;
         color: #fff;
