@@ -4,7 +4,7 @@
 
 <header>
     <nav class="effect">
-       <img alt="personal logo van mij" src={Logo}>
+        <a href="/"><img alt="personal logo van mij" src={Logo}></a>
         <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
@@ -27,7 +27,7 @@
 
     nav img {
         height: 185px; /* Set a fixed height for the image */
-        margin-right: 12rem; /* Add some space between the image and links */
+        margin-right: 30rem; /* Add some space between the image and links */
         margin-top: 1em;
     }
 
@@ -37,6 +37,10 @@
         justify-content: center;
         list-style-type: none;
         font-family: "Inconsolata", sans-serif;
+        text-decoration: none;
+    }
+
+    nav a:first-child {
         text-decoration: none;
     }
 

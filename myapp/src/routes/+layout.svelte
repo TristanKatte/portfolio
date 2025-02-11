@@ -28,7 +28,7 @@
         grid-template-rows: auto 1fr auto;
         margin-inline: auto;
         padding-inline: var(--size-7);
-        background-image: var(--gradient-16);
+        background-image: var(--gradient-23);
     }
 
     main {
