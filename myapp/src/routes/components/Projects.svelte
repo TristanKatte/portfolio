@@ -16,9 +16,16 @@
         </div>
     {/each}
 </section>
+<button>lol</button>
 
 <style>
     h2, h3 {
         color: var(--heading-color);
+    }
+
+    button {
+        width: 215px;
+        height: 50px;
+        border-radius: 50px 0 50px 0;
     }
 </style>

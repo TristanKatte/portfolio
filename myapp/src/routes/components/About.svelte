@@ -54,7 +54,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    color: teal;
+    color: white;
     font-size: 25px;
     font-style: normal;
     font-weight: 700;
