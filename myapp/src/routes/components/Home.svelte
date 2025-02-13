@@ -14,10 +14,6 @@
     <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.
        I am currently in my 2nd and last year at the study Frontend Design & Development at the Amsterdam University of Applied Sciences.
     </p>
-    <br>
-    <p>Right now, I'm learning about Svelte and how you can build good component libraries and jow you can add awesome animations with GSAP. 
-       Besides that, I've learned about the fundamentals of HTML/CSS/Javascript and their best practices for accesibility and progressive enhancement.
-    </p>
   </section>
     <section class="about">
         <img class="pic" alt="Foto van mij" src={Photo} />
@@ -28,10 +24,6 @@
  
   <article>
     <About />
-  </article>
-
-  <article>
-    <Projects />
   </article>
 </main>
 
@@ -53,6 +45,17 @@
     border: 4px solid var(--heading-color)
 }
 
+  article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 90px 90px;
+    font-family: 'Orbitron Variable', sans-serif;
+  }
+
+
   .about-me {
     display: flex;
     justify-content: center;
@@ -60,7 +63,9 @@
     height: 100%;
     width: 100%;
     padding: 90px 90px;
-}
+    
+  }
+  
 
 .pic {
   height: auto;
@@ -75,18 +80,19 @@
 }
 
 .text {
-    max-width: 500px;
+    max-width: 800px;
     margin-right: 50px;
-    font-family: Inconsolata, sans-serif;
+    font-family: "Nunito", sans-serif;
     word-wrap: break-word;
     line-height: 1.6;
+    letter-spacing: .5em;
 }
 
 .text h2 {
   color: var(--heading-color);
   font-weight: 600;
   margin-bottom: 10px;
-  font-family: "Azonix", sans-serif;
+  font-family: "Nunito", sans-serif;
 }
 
 

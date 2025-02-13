@@ -3,7 +3,7 @@
     <div class="skills">
       <svg xmlns="http://www.w3.org/2000/svg" width="744" height="423" viewBox="0 0 744 423" fill="none">
         <path d="M2 126.5V86H258V0M366.5 422.5V0M741.5 133V86H481.5V0" stroke="url(#paint0_linear_2101_768)" stroke-width="4"></path>
-        <defs><linearGradient id="paint0_linear_2101_768" x1="371.963" y1="12" x2="359.62" y2="389.388" gradientUnits="userSpaceOnUse">
+        <defs><linearGradient id="paint0_linear_2101_768" x1="371.963" y1="12" x2="359.62" y2="989.388" gradientUnits="userSpaceOnUse">
         <stop stop-color="#292929"></stop><stop offset="1" stop-color="white" stop-opacity="0"></stop>
       </linearGradient></defs></svg>
     </div>
@@ -39,7 +39,7 @@
   <div class="skills-design">
     <button class="skill">UI & UX DESIGN</button>
     <button class="skill">WIREFRAME</button>
-    <button class="skill">INDESIGN</button>
+    <button class="skill">Optimizing</button>
   </div>
 </div>
   </section>
@@ -59,18 +59,19 @@
     font-style: normal;
     font-weight: 700;
     text-align: center;
-    z-index: 10
+    z-index: 10;
   }
-    .skillset {
+  
+  .skillset {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     position: relative;
-    margin-bottom: 150px;
+    margin-bottom: 1.5em;
     }
 
-    .skill {
+  .skill {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -91,24 +92,27 @@
 
     .skills-frontend, .skills-graphic {
     display: flex;
-    align-items: flex-start;
-    align-content: flex-start;
+    align-items: center; /* Center buttons vertically */
+    justify-content: center; /* Center buttons horizontally */
     gap: 20px 15px;
     flex-shrink: 0;
     flex-wrap: wrap;
+    margin-top: -14em;
     }
 
     .skills-other {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    align-items: center; /* Center buttons horizontally */
     margin-top: 5em;
     }
 
     .skills-additional, .skills-design {
       display: flex;
       flex-direction: row;
-      gap: 20px
+      gap: 20px;
+      justify-content: center; /* Center buttons horizontally */
     }
 
     .all-skills {
@@ -116,7 +120,7 @@
     grid-gap: 100px;
     gap: 100px;
     grid-template-columns: 1fr 1fr;
-    margin-top: -200px;
-    
+    justify-content: center;
+    max-width: 75%;
     }
 </style>

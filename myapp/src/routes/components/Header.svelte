@@ -1,12 +1,14 @@
 <script>
     import Logo from '$lib/assets/logo_groen.png'
+
+    let current = $state('foo');
 </script>
 
 <header>
     <img alt="personal logo van mij" src={Logo}>
     <nav class="effect">
         <ul>
-            <li><a href="/">Home</a></li>
+            <li><a class:active={current === 'foo'} href="/" onclick={() => (current = 'foo')}>Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/projects">Projects</a></li>
             <li><a href="/contact">Contact</a></li>
@@ -15,6 +17,7 @@
 </header>
 
 <style>
+    
     header {
         display: flex;
         justify-content: center;
@@ -24,7 +27,8 @@
         display: flex;
         align-items: center; 
     }
- img {
+    
+    img {
         height: 185px; /* Set a fixed height for the image */
         margin-right: 30rem; /* Add some space between the image and links */
         margin-top: 1em;
