@@ -17,6 +17,12 @@
     --body-txt:1em;
 }
 
+
+@font-face {
+    font-family: "Azonix", sans-serif;
+    src: url(/myapp/static/fonts/Azonix.otf);
+    }
+
 @font-face {
     font-family: "Nunito", sans-serif;
     src: url(/myapp/static/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf);

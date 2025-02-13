@@ -60,7 +60,6 @@
     height: 100%;
     width: 100%;
     padding: 90px 90px;
-    
 }
 
 .pic {
@@ -87,7 +86,7 @@
   color: var(--heading-color);
   font-weight: 600;
   margin-bottom: 10px;
-  font-family: "Nunito", sans-serif;
+  font-family: "Azonix", sans-serif;
 }
 
 
