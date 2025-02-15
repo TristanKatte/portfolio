@@ -20,7 +20,7 @@
 
 @font-face {
     font-family: "Azonix", sans-serif;
-    src: url(/myapp/static/fonts/Azonix.otf);
+    src: url(/myapp/static/fonts/Azonix.otf) format('opentype');
     }
 
 @font-face {
