@@ -20,7 +20,9 @@
 
 @font-face {
     font-family: "Azonix", sans-serif;
-    src: url(/myapp/static/fonts/Azonix.otf) format('opentype');
+    src: url('https://fonts.cdnfonts.com/css/azonix');
+    font-weight: normal;
+    font-style: normal;
     }
 
 @font-face {
@@ -37,4 +39,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Azonix", sans-serif;
 }

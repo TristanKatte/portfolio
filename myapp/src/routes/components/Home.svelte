@@ -29,6 +29,7 @@
 
 
 <style>
+
   main {
     width: 100%;
     height: 100%;
@@ -92,7 +93,7 @@
   color: var(--heading-color);
   font-weight: 600;
   margin-bottom: 10px;
-  font-family: "Nunito", sans-serif;
+  font-family: 'Azonix', sans-serif;
 }
 
 
