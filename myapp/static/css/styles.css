@@ -20,19 +20,17 @@
 
 @font-face {
     font-family: "Azonix", sans-serif;
-    src: url('https://fonts.cdnfonts.com/css/azonix');
-    font-weight: normal;
-    font-style: normal;
+    src: url('/myapp/static/fonts/azonix.ttf');
     }
 
 @font-face {
     font-family: "Nunito", sans-serif;
-    src: url(/myapp/static/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf);
+    src: url('/myapp/static/fonts/NunitoSans-VariableFont_YTLC\,opsz\,wdth\,wght.ttf');
     }
     
     @font-face {
     font-family: "Inconsolata", sans-serif;
-    src: url(/myapp/static/fonts/Inconsolata[wdth\,wght].ttf);
+    src: url('/myapp/static/fonts/Inconsolata[wdth\,wght].ttf');
     }
 
 * {
@@ -41,6 +39,4 @@
     box-sizing: border-box;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: "Azonix", sans-serif;
-}
+
