@@ -1,1 +1,1 @@
-<h2>My Journey</h2>
+<h2>MY Journey</h2>

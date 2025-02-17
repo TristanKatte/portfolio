@@ -91,9 +91,9 @@
 
 .text h2 {
   color: var(--heading-color);
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 10px;
-  font-family: 'Azonix', sans-serif;
+  font-family: "Azonix";
 }
 
 
