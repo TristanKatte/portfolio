@@ -31,7 +31,7 @@
         display: grid;
         margin-inline: auto;
         padding-inline: var(--size-7);
-        background-image: var(--gradient-23);
+        background-image: var(--gradient-8);
     }
 
     main {
