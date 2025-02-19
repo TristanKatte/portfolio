@@ -1,11 +1,10 @@
 <script>
     import About from './About.svelte';
-    import Header from './Header.svelte'
     import Projects from './Projects.svelte'
     import Photo from '$lib/assets/profielfoto-zw.jpg'
 </script>
 
-<Header />
+
 <main>
 
 <article class="about-me">

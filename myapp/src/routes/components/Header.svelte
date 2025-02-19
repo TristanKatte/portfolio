@@ -21,6 +21,7 @@
     header {
         display: flex;
         justify-content: center;
+        background-color: transparent;
     }
 
     nav {
@@ -39,7 +40,7 @@
         flex-direction: row;
         justify-content: center;
         list-style-type: none;
-        font-family: "Inconsolata", sans-serif;
+        font-family: 'Orbitron Variable', sans-serif;
         text-decoration: none;
     }
 
