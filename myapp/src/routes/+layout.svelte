@@ -2,6 +2,7 @@
     import Footer from './components/Footer.svelte'
     import Header from './components/Header.svelte'
     import Transition from './transition.svelte'
+    import { onNavigate } from '$app/navigation';
 
     import 'open-props/style'
     import 'open-props/normalize'
@@ -25,8 +26,7 @@
 <div class="layout">
     <Header />
     <main>
-       
-            <slot />
+       <slot />
         
     </main>
     <Footer />

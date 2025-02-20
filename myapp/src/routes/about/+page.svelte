@@ -34,7 +34,7 @@
       <div class="timeline-item">
         <div class="timeline-marker"></div>
         <div class="timeline-content">
-          <h3>DTP at the Grafisch Lyceum Utrecht</h3>
+          <h3>Allround DTP at the Grafisch Lyceum Utrecht</h3>
           <p>Laid the foundation for my skills with Adobe Creative Cloud</p>
         </div>
       </div>
@@ -69,11 +69,14 @@
     height: 100%;
   }
 
+  
+
   article {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    height: 100%;
     padding: 90px 90px;
     font-family: 'Orbitron Variable', sans-serif;
   }

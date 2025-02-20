@@ -1,6 +1,5 @@
 <script>
     import About from './About.svelte';
-    import Projects from './Projects.svelte'
     import Photo from '$lib/assets/profielfoto-zw.jpg'
 </script>
 
