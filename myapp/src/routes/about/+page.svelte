@@ -56,7 +56,7 @@
         <div class="timeline-marker"></div>
         <div class="timeline-content">
           <h3>Current Study</h3>
-          <p>Currently pursuing advanced studies in web development and design.</p>
+          <p>Currently pursuing advanced studies in frontend development and design.</p>
         </div>
       </div>
     </div>
