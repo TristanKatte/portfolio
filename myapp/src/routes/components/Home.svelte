@@ -34,10 +34,6 @@
     height: 100%;
     }
   
-  article {
-    display: flex;
-    flex-flow: row wrap;
-    }
     
   img {
     scale: 1;

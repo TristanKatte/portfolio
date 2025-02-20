@@ -23,7 +23,11 @@
 </div>
 
 <style>
-
+@property --intro-radial {
+  syntax: "<percentage>";
+  initial-value: 0%;
+  inherits: false;
+}
 
 .layout {
         height: 100%;
@@ -33,6 +37,9 @@
         padding-inline: var(--size-7);
         background-image: var(--gradient-8);
     }
+
+
+
 
     main {
         padding-block: var(--size-0);
