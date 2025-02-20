@@ -9,25 +9,30 @@
 
     import '@fontsource/alata';
     import '@fontsource-variable/orbitron';
+
+    onNavigate((navigation) => {
+	if (!document.startViewTransition) return;
+
+	return new Promise((resolve) => {
+		document.startViewTransition(async () => {
+			resolve();
+			await navigation.complete;
+		});
+	});
+});
 </script>
 
 <div class="layout">
     <Header />
     <main>
-        <Transition>
+       
             <slot />
-        </Transition>
+        
     </main>
     <Footer />
 </div>
 
 <style>
-@property --intro-radial {
-  syntax: "<percentage>";
-  initial-value: 0%;
-  inherits: false;
-}
-
 .layout {
     height: 100%;
     max-width: 100%;
