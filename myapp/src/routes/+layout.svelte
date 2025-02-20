@@ -12,22 +12,21 @@
     import '@fontsource-variable/orbitron';
 
     onNavigate((navigation) => {
-	if (!document.startViewTransition) return;
+        if (!document.startViewTransition) return;
 
-	return new Promise((resolve) => {
-		document.startViewTransition(async () => {
-			resolve();
-			await navigation.complete;
-		});
-	});
-});
+        return new Promise((resolve) => {
+            document.startViewTransition(async () => {
+                resolve();
+                await navigation.complete;
+            });
+        });
+    });
 </script>
 
 <div class="layout">
     <Header />
     <main>
        <slot />
-        
     </main>
     <Footer />
 </div>
@@ -36,7 +35,8 @@
 .layout {
     height: 100%;
     max-width: 100%;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     margin-inline: auto;
     padding-inline: var(--size-7);
     background-image: var(--gradient-8);
@@ -44,11 +44,37 @@
 
 main {
     padding-block: var(--size-0);
+    flex: 1;
 }
 
 @media (min-width: 1440px) {
     .layout {
         padding-inline: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .layout {
+        padding-inline: var(--size-4);
+        flex-direction: column;
+        align-items: center;
+    }
+
+    main {
+        width: 100%;
+        padding-block: var(--size-2);
+    }
+}
+
+@media (max-width: 480px) {
+    .layout {
+        padding-inline: var(--size-2);
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    main {
+        padding-block: var(--size-1);
     }
 }
 </style>

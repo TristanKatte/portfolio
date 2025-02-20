@@ -1,14 +1,21 @@
 <script>
-    import Logo from '$lib/assets/logo_groen.png'
+    import Logo from '$lib/assets/logo_groen.png';
 
-    let current = $state('foo');
+    let isMenuOpen = $state(false);
+
+    function toggleMenu() {
+        isMenuOpen = !isMenuOpen;
+    }
 </script>
 
 <header>
     <img alt="personal logo van mij" src={Logo}>
-    <nav class="effect">
+    <nav class="effect" class:open={isMenuOpen}>
+        <button class="hamburger" onclick={toggleMenu} aria-label="Menu">
+            <span class="hamburger-icon">&#9776;</span>
+        </button>
         <ul>
-            <li><a class:active={current === 'foo'} href="/" onclick={() => (current = 'foo')}>Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/projects">Projects</a></li>
             <li><a href="/contact">Contact</a></li>
@@ -17,114 +24,93 @@
 </header>
 
 <style>
-    
     header {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
         background-color: transparent;
+        position: relative;
+    }
+
+    img {
+        height: 185px;
+        margin-right: auto;
     }
 
     nav {
         display: flex;
-        align-items: center; 
-    }
-    
-    img {
-        height: 185px; /* Set a fixed height for the image */
-        margin-right: 30rem; /* Add some space between the image and links */
-        margin-top: 1em;
+        align-items: center;
     }
 
     nav ul {
         display: flex;
         flex-direction: row;
-        justify-content: center;
         list-style-type: none;
+        margin: 0;
+        padding: 0;
         font-family: 'Orbitron Variable', sans-serif;
-        text-decoration: none;
     }
 
     nav a {
         position: relative;
-        display: inline-block; 
-        margin: 15px;
-        outline: none;
+        display: inline-block;
+        margin: 0 15px;
+        padding: 10px 0;
         color: #fff;
         text-decoration: none;
         text-transform: uppercase;
         letter-spacing: 1px;
         font-weight: 400;
-        text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
         font-size: 0.95em;
-        padding: 0.1em;
-       
+        transition: color 0.3s ease;
     }
 
-
-    nav a:hover,
-    nav a:focus {
-        outline: none;
-    }
-
-    .effect a {
-        margin: 0 10px;
-        padding: 10px 20px;
-    }
-
-   
-    .effect a::before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background: var(--btn-color);
-        content: "";
-        transition: top 0.3s;
-    }
-
-   
-    .effect a::after {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 2px;
-        height: 2px;
-        background: var(--btn-color);
-        content: "";
-        transition: height 0.3s;
-    }
-
-    .effect a:hover::before {
-        top: 100%;
-        opacity: 1;
-    }
-
-    .effect a:hover::after {
-        height: 100%;
-    }
-
-    li {
-        letter-spacing: 1px;
-    }
-
-  
-    li:hover {
-        color: var(--txt-color);
-        background: transparent;
-        cursor: pointer;
-        font-size: 1em;
-    }
-
-    
-    li:last-child {
+    .hamburger {
+        display: none;
+        background: none;
         border: none;
+        cursor: pointer;
+        padding: 10px;
+        z-index: 1000;
     }
 
-    ul li {
-        margin: 1em;
-        text-align: left;
-        text-transform: capitalize;
+    .hamburger-icon {
+        font-size: 2rem;
+        color: white;
     }
+
+    @media screen and (max-width: 768px) {
+        img {
+            height: 120px;
+        }
+
+        .hamburger {
+            display: block;
+        }
+
+        nav ul {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            display: none;
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 1rem;
+            width: 200px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.open ul {
+            display: flex;
+        }
+
+        nav a {
+            margin: 10px 0;
+            padding: 10px;
+            display: block;
+        }
+    }
+
+
 </style>
-
