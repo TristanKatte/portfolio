@@ -92,8 +92,8 @@
 
     .skills-frontend, .skills-graphic {
     display: flex;
-    align-items: center; /* Center buttons vertically */
-    justify-content: center; /* Center buttons horizontally */
+    align-items: center; 
+    justify-content: center; 
     gap: 20px 15px;
     flex-shrink: 0;
     flex-wrap: wrap;
@@ -104,7 +104,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-    align-items: center; /* Center buttons horizontally */
+    align-items: center; 
     margin-top: 5em;
     }
 
@@ -112,7 +112,7 @@
       display: flex;
       flex-direction: row;
       gap: 20px;
-      justify-content: center; /* Center buttons horizontally */
+      justify-content: center; 
     }
 
     .all-skills {
@@ -122,5 +122,28 @@
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     max-width: 75%;
+    }
+
+    @media (max-width:480px) {
+      .all-skills {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+      }
+
+      .skillset {
+        width: 100%;
+      }
+
+      .skills-frontend {
+        justify-content: flex-start;
+        flex-flow: column;
+      }
+
+      .skills-graphic {
+        justify-content: flex-end;
+        flex-flow: column ;
+      }
     }
 </style>

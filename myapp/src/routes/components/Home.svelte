@@ -98,7 +98,6 @@
 }
  
 @media (max-width: 480px) {
-
     main {
       display: flex;
       flex-direction: column;
@@ -107,16 +106,32 @@
     }
     .about-me {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 100%;
         height: 100%;
+        padding: 20px;
+    }
+
+    .text {
+        margin-bottom: 30px;
+        margin-right: 0;
+        text-align: center;
+    }
+
+    .about {
+      display: flex;
+      justify-content: center;
+      width: 100%;
     }
 
     .pic {
       height: auto;
-      width: 400px;
+      width: 100%;
+      max-width: 300px;
       border-radius: 18px;
     }
 }
+
 </style>
