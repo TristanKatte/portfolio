@@ -136,6 +136,11 @@
         width: 100%;
       }
 
+      .skill {
+        width: 100%;
+        font-size: .8em;
+      }
+
       .skills-frontend {
         justify-content: flex-start;
         flex-flow: column;
@@ -143,7 +148,12 @@
 
       .skills-graphic {
         justify-content: flex-end;
-        flex-flow: column ;
+        flex-flow: column;
+      }
+
+      .skills-other {
+        flex-flow: column;
+        justify-content: center;
       }
     }
 </style>
