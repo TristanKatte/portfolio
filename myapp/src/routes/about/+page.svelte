@@ -1,5 +1,3 @@
-
-
 <script>
   import { onMount } from 'svelte';
   
@@ -25,7 +23,6 @@
     });
   });
 </script>
-
 
 <main>
   <article class="journey">
@@ -68,8 +65,6 @@
     width: 100%;
     height: 100%;
   }
-
-  
 
   article {
     display: flex;
@@ -158,5 +153,32 @@
     font-size: 16px;
     line-height: 1.6;
     letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 480px) {
+    .timeline-item {
+      width: 100%;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .timeline-item:nth-child(odd),
+    .timeline-item:nth-child(even) {
+      left: 0;
+    }
+
+    .timeline-marker {
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .timeline-content h3 {
+      font-size: 1.2em;
+    }
+
+    .timeline-content p {
+      font-size: 0.9em;
+      line-height: 1.4;
+    }
   }
 </style>
