@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   import { onMount } from 'svelte';
   
   onMount(async () => {
@@ -22,7 +22,7 @@
       });
     });
   });
-</script>
+</script> -->
 
 <main>
   <article class="journey">
