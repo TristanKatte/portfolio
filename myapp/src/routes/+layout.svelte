@@ -27,6 +27,7 @@
     <Header />
     <main>
        <slot />
+       <Transition />
     </main>
     <Footer />
 </div>
