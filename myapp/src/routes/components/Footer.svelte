@@ -20,6 +20,11 @@
                 <SocialIcons alt="" network="instagram" fgColor="#eeeeee" bgColor="#111111" width="60" height="60" />         
             </a>
         </li>
+        <li>
+            <a href="https://codepen.io/tristan-katte" target="_blank">
+                <SocialIcons alt="" network="codepen" fgColor="#eeeeee" bgColor="#111111" width="60" height="60" />         
+            </a>
+        </li>
     </ul>
     <p>Copyright © 2025 by <strong>Tristan Katte</strong></p>
 </footer>
