@@ -13,12 +13,75 @@
 <section>
     <h2>My Projects</h2>
     <div class="projects-grid">
-        {#each projects as project}
-            <div class="project-card">
+        <article class="right project-card">
+            <section>
+            <a href="https://sprint-12-proof-of-concept-p6cy.onrender.com/" target="_blank">
+                <div>
+                    <h3>Fresk.Digital</h3>
+                    <strong>NodeJS, EJS, Express</strong>
+                </div>
+                <img class="bright" src="./fresk-digital.png" alt="">
+            </a>
+        </article>
+        
+        <article class="left project-card">
+            <a href="https://i-love-web-amber.vercel.app/" target="_blank">
+                <img class="align-top" src="./digital-garden.png" alt="">
+                <div>
+                    <h3>Digital garden</h3>
+                    <strong>Sveltekit, Markdown</strong>
+                </div>
+            </a>
+        </article>
+        
+        <article class="left project-card">
+            <a href="https://your-tribe-for-life-profile-card-liart.vercel.app/" target="_blank">
+                <img src="./visitekaartje.png" alt="">
+                <div>
+                    <h3>Visitekaartje</h3>
+                    <strong>NodeJS, EJS, Express</strong>
+                </div>
+            </a>
+        </article>
+        
+        <article class="right project-card">
+            <a href="https://tristankatte.github.io/Brain-website/" target="_blank">
+                <div>
+                    <h3>B-rain</h3>
+                    <strong>HTML, CSS, JS</strong>
+                </div>
+                <img class="align-top" src="./b-rain.png" alt="">
+            </a>
+        </article>
+        
+        <article class="right project-card">
+            <a href="https://redpers.agency.fdnd.nl/" target="_blank">
+                <div>
+                    <h3>Redpers</h3>
+                    <strong>Sveltekit, WPAPI</strong>
+                </div>
+                <img src="./redpers.png" alt="">
+            </a>
+        </article>
+
+        <article class="left project-card">
+            <a href="https://tristankatte.github.io/Informaat-opdracht/" target="_blank">
+                <img src="./informaat.png" alt="">
+                <div>
+                    <h3>Informaat</h3>
+                    <strong>HTML, CSS</strong>
+                </div>
+            </a>
+        </article>
+
+        <!-- {#each projects as project}
+            <div class="project-card" id="{project.title.toLowerCase().replace(/\s+/g, '-')}">
+
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
             </div>
-        {/each}
+        {/each} -->
+        
     </div>
 </section>
 </article>
@@ -34,6 +97,7 @@
         font-size: 2rem;
         margin-bottom: 2rem;
     }
+    
 
     article {
         width: 100%;
@@ -67,10 +131,7 @@
         margin-bottom: 1rem;
     }
 
-    .project-card p {
-        color: var(--txt-color);
-        line-height: 1.6;
-    }
+
 
     @media (max-width: 768px) {
         h2 {
@@ -97,8 +158,5 @@
             font-size: 1.3rem;
         }
 
-        .project-card p {
-            font-size: 0.9rem;
-        }
     }
 </style>
