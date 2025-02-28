@@ -1,49 +1,51 @@
 <script>
-  // Any necessary script can be added here
+    import SocialIcons from '@rodneylab/svelte-social-icons';
 </script>
 
-<footer class="footer">
-  <div class="footer-content">
-    <p>&copy; 2025 Tristan Katte. All rights reserved.</p>
-    <nav>
-      <ul>
-        <li><a href="/about">About</a></li>
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
+<footer class="footer" aria-labelledby="footer-label">
+    <ul>
+        <li>
+            <a href="https://github.com/TristanKatte" target="_blank">
+                <SocialIcons alt="" network="github" fgColor="#eeeeee" bgColor="#111111" width="60" height="60" />
+            </a>
+            
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/in/tristan-katte-600b53148/" target="_blank">
+                <SocialIcons alt="" network="linkedin" fgColor="#eeeeee" bgColor="#111111" width="60" height="60" />
+            </a>
+        </li>
+        <li>
+            <a href="https://www.instagram.com/tristankatte98" target="_blank">
+                <SocialIcons alt="" network="instagram" fgColor="#eeeeee" bgColor="#111111" width="60" height="60" />         
+            </a>
+        </li>
+    </ul>
+    <p>Copyright © 2025 by <strong>Tristan Katte</strong></p>
 </footer>
 
 <style>
-  .footer {
-    background-color: var(--main-bg-color);
-    color: var(--txt-color);
-    padding: 20px;
-    text-align: center;
-  }
 
-  .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
 
-  .footer nav ul {
-    list-style: none;
-    padding: 0;
-  }
+ ul {
+        gap: 1rem;
+        display: flex;
+        justify-self: center;
+        list-style-type: none;
+    }
+    li a {
+        color: var(--btn-color);
+        transition: 0.2s ease;
+    } 
+    
+    li a:hover {
+        box-shadow: 0 0 15px 5px var(--btn-color);
+    }
 
-  .footer nav ul li {
-    display: inline;
-    margin: 0 15px;
-  }
-
-  .footer nav ul li a {
-    color: var(--btn-color);
-    text-decoration: none;
-  }
-
-  .footer nav ul li a:hover {
-    text-decoration: underline;
-  }
+    
+p {
+        color: var(--txt-color);
+        padding: 0.5rem 0 5rem 0;
+        text-align: center;
+    }
 </style>
