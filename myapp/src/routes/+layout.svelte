@@ -29,9 +29,9 @@
        <slot />
        <Transition />
     </main>
-    <Footer />
+    
 </div>
-
+<Footer />
 <style>
 .layout {
     height: 100%;
