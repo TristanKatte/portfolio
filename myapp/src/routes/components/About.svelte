@@ -1,8 +1,8 @@
 <section class="skillset">
   <button class="strength">My skills</button>
     <div class="skills">
-      <svg xmlns="http://www.w3.org/2000/svg" width="744" height="423" viewBox="0 0 744 423" fill="none">
-        <path d="M2 126.5V86H258V0M366.5 422.5V0M741.5 133V86H481.5V0" stroke="url(#paint0_linear_2101_768)" stroke-width="4"></path>
+      <svg class="svg-line-class" xmlns="http://www.w3.org/2000/svg" width="744" height="423" viewBox="0 0 744 423" fill="none">
+        <path d="M2 126.5V86H258V0M366.5 422.5V-100M741.5 133V86H481.5V0" stroke="url(#paint0_linear_2101_768)" stroke-width="4"></path>
         <defs><linearGradient id="paint0_linear_2101_768" x1="371.963" y1="12" x2="359.62" y2="989.388" gradientUnits="userSpaceOnUse">
         <stop stop-color="#292929"></stop><stop offset="1" stop-color="white" stop-opacity="0"></stop>
       </linearGradient></defs></svg>
@@ -24,7 +24,7 @@
     <button class="skill">ILLUSTRATOR</button>
     <button class="skill">INDESIGN</button>
     <button class="skill">FIGMA</button>
-    <button class="skill">ADOBE XD</button>
+    <button class="skill">PREMIERE PRO</button>
     <button class="skill">AFTER EFFECTS</button>
   </div>
 
@@ -38,7 +38,7 @@
   </div>
   <div class="skills-design">
     <button class="skill">UI & UX DESIGN</button>
-    <button class="skill">WIREFRAME</button>
+    <button class="skill">WIREFRAMING</button>
     <button class="skill">Optimizing</button>
   </div>
 </div>
@@ -125,11 +125,17 @@
     }
 
     @media (max-width:480px) {
+
+      .svg-line-class { 
+        height: 120%; 
+        top: -10%; 
+    }
       .all-skills {
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: center;
+        margin-top: 8em;
       }
 
       .skillset {
@@ -148,12 +154,12 @@
 
       .skills-graphic {
         justify-content: flex-end;
-        flex-flow: column;
+        flex-flow: column-reverse;
       }
 
       .skills-other {
         flex-flow: column;
-        justify-content: center;
+        justify-content: flex-start;
       }
     }
 </style>

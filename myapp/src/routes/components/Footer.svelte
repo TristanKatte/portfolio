@@ -8,7 +8,6 @@
             <a href="https://github.com/TristanKatte" target="_blank">
                 <SocialIcons alt="" network="github" fgColor="#eeeeee" bgColor="#111111" width="60" height="60" />
             </a>
-            
         </li>
         <li>
             <a href="https://www.linkedin.com/in/tristan-katte-600b53148/" target="_blank">
@@ -21,8 +20,13 @@
             </a>
         </li>
         <li>
+            <a href="https://www.facebook.com/tristan.katte" target="_blank">
+                <SocialIcons alt="" network="facebook" fgColor="#eeeeee" bgColor="#111111" width="60" height="60" />         
+            </a>
+        </li>
+        <li>
             <a href="https://codepen.io/tristan-katte" target="_blank">
-                <SocialIcons alt="" network="codepen" fgColor="#eeeeee" bgColor="#111111" width="60" height="60" />         
+                <SocialIcons alt="" network="codepen"  fgColor="#eeeeee" bgColor="#111111" width="60" height="60" />         
             </a>
         </li>
     </ul>
@@ -31,8 +35,11 @@
 
 <style>
 
-
- ul {
+    footer {
+        background-color: transparent;
+    }
+    
+    ul {
         gap: 1rem;
         display: flex;
         justify-self: center;
@@ -41,16 +48,18 @@
     li a {
         color: var(--btn-color);
         transition: 0.2s ease;
+        border-radius: 100%;
     } 
     
     li a:hover {
         box-shadow: 0 0 15px 5px var(--btn-color);
     }
 
-    
-p {
+    p {
         color: var(--txt-color);
         padding: 0.5rem 0 5rem 0;
         text-align: center;
     }
+
+    
 </style>

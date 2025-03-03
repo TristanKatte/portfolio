@@ -13,65 +13,66 @@
 <section>
     <h2>My Projects</h2>
     <div class="projects-grid">
-        <article class="right project-card">
+        <article class="project-card">
             <section>
-            <a href="https://sprint-12-proof-of-concept-p6cy.onrender.com/" target="_blank">
                 <div>
-                    <h3>Fresk.Digital</h3>
-                    <strong>NodeJS, EJS, Express</strong>
+                    <h3>Fresk.Digital</h3>    
                 </div>
+            <a href="https://sprint-12-proof-of-concept-p6cy.onrender.com/" target="_blank">
                 <img class="bright" src="./fresk-digital.png" alt="">
             </a>
+            <strong>NodeJS, EJS, Express</strong>
         </article>
         
-        <article class="left project-card">
+        <article class="project-card">
+            <div>
+                <h3>Digital garden</h3>
+            </div>
             <a href="https://i-love-web-amber.vercel.app/" target="_blank">
                 <img class="align-top" src="./digital-garden.png" alt="">
-                <div>
-                    <h3>Digital garden</h3>
-                    <strong>Sveltekit, Markdown</strong>
-                </div>
             </a>
+            <strong>Sveltekit, Markdown</strong>
         </article>
         
         <article class="left project-card">
+            <h3>Visitekaartje</h3>
             <a href="https://your-tribe-for-life-profile-card-liart.vercel.app/" target="_blank">
                 <img src="./visitekaartje.png" alt="">
-                <div>
-                    <h3>Visitekaartje</h3>
-                    <strong>NodeJS, EJS, Express</strong>
-                </div>
             </a>
+            <div>     
+                <strong>NodeJS, EJS, Express</strong>
+            </div>
         </article>
         
         <article class="right project-card">
+            <div>
+                <h3>B-rain</h3>
+            </div>
             <a href="https://tristankatte.github.io/Brain-website/" target="_blank">
-                <div>
-                    <h3>B-rain</h3>
-                    <strong>HTML, CSS, JS</strong>
-                </div>
                 <img class="align-top" src="./b-rain.png" alt="">
             </a>
+            <strong>HTML, CSS, JS</strong>
         </article>
         
         <article class="right project-card">
+            <div>
+                <h3>Redpers</h3>
+            </div>
             <a href="https://redpers.agency.fdnd.nl/" target="_blank">
-                <div>
-                    <h3>Redpers</h3>
-                    <strong>Sveltekit, WPAPI</strong>
-                </div>
                 <img src="./redpers.png" alt="">
             </a>
+            <strong>Sveltekit, WPAPI</strong>
         </article>
 
         <article class="left project-card">
+            <h3>Informaat</h3>
             <a href="https://tristankatte.github.io/Informaat-opdracht/" target="_blank">
                 <img src="./informaat.png" alt="">
-                <div>
-                    <h3>Informaat</h3>
-                    <strong>HTML, CSS</strong>
-                </div>
+
             </a>
+            <div> 
+                <strong>HTML, CSS</strong>
+            </div>
         </article>
 
         <!-- {#each projects as project}
@@ -103,6 +104,10 @@
         width: 100%;
         padding: 2rem 1rem;
         font-family: 'Orbitron Variable', sans-serif;
+    }
+
+    div {
+        color: var(--txt-color);
     }
 
     .projects-grid {

@@ -29,9 +29,9 @@
        <slot />
        <Transition />
     </main>
-    
+    <Footer />
 </div>
-<Footer />
+
 <style>
 .layout {
     height: 100%;
@@ -40,7 +40,8 @@
     flex-direction: column;
     margin-inline: auto;
     padding-inline: var(--size-7);
-    background-image: var(--gradient-8);
+    background-image: var(--gradient-16);
+    background-size: cover;
 }
 
 main {

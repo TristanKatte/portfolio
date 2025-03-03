@@ -15,15 +15,17 @@
             <span class="hamburger-icon">&#9776;</span>
         </button>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/projects">Projects</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><a class="link-70" href="/">Home</a></li>
+            <li><a class="link-70" href="/about">About Me</a></li>
+            <li><a class="link-70" href="/projects">Projects</a></li>
+            <li><a class="link-70" href="/contact">Contact</a></li>
         </ul>
     </nav>
 </header>
 
 <style>
+
+
     header {
         display: flex;
         justify-content: space-between;
@@ -50,6 +52,49 @@
         margin: 0;
         padding: 0;
         font-family: 'Orbitron Variable', sans-serif;
+    }
+
+    .link-70 {
+        color: #ffffff;
+        font-size: 20px;
+        text-decoration: none;
+        padding: 10px 20px;
+        margin: 0 5px;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    .link-70::before,
+    .link-70::after {
+        content: "";
+        position: absolute;
+        display: block;
+        border: 0px solid transparent;
+        width: 0%;
+        height: 0%;
+        transition: all 0.5s ease;
+    }
+
+    .link-70::after {
+        top: 0;
+        left: 0;
+        border-top: 2px solid transparent;
+        border-left: 2px solid transparent;
+    }
+
+    .link-70::before {
+        right: 0;
+        bottom: 0;
+        border-bottom: 2px solid transparent;
+        border-right: 2px solid transparent;
+    }
+
+    .link-70:hover::before,
+    .link-70:hover::after {
+        width: 100%;
+        height: 100%;
+        border-color: var(--btn-color);
     }
 
     nav a {
