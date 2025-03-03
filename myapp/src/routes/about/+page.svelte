@@ -132,26 +132,30 @@
 	font-size: 18px;
 	color: var(--txt-color);
 	margin:6px 0 15px;
+  font-family: "Azonix";
 }
 
 .timeline-content{
-    background-color: #2f363e;
+  background-color: #2f363e;
 	padding: 30px;
 	border-radius: 5px;
 }
 
 .timeline-content h3{
-    font-size: 20px;
+  font-size: 20px;
 	color: #ffffff;
 	margin:0 0 10px;
 	text-transform: capitalize;
 	font-weight: 500;
+  font-family: "Azonix";
 }
 .timeline-content p{
-    color: #c8c8c8;
+  color: #c8c8c8;
 	font-size: 16px;
 	font-weight: 300;
 	line-height: 22px;
+  font-family: 'Orbitron Variable', sans-serif;
+  letter-spacing: 3px;
 }
 
 /* responsive */
