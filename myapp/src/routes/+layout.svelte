@@ -40,9 +40,10 @@
     flex-direction: column;
     margin-inline: auto;
     padding-inline: var(--size-7);
-    background-image: var(--gradient-16);
+    background-image: linear-gradient(147deg, #000000 0%, #434343 74%);
     background-size: cover;
 }
+
 
 main {
     padding-block: var(--size-0);
