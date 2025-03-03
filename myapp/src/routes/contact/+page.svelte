@@ -3,7 +3,7 @@
 </script>
 
 <main>
-  <h1>Contact me</h1>
+  <h2>Contact me</h2>
   <ContactForm />
 </main>
 
@@ -13,7 +13,7 @@
     text-align: center;
   }
 
-  h1 {
+  h2 {
     margin-bottom: 20px;
     color: var(--heading-color);
     font-family: "Azonix";

@@ -37,6 +37,7 @@
 
   label {
     margin: 10px 0 5px;
+    color: var(--txt-color);
   }
 
   input, textarea {
