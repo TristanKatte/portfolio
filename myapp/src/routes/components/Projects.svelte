@@ -1,12 +1,6 @@
 <script>
-    let projects = [
-        { title: "Fresk.digital", description: "Ontwerp en maak een data driven online concept voor een opdrachtgever" },
-        { title: "B-rain website", description: "Ontwerp en maak een interactieve website voor een opdrachtgever" },
-        { title: "Informaat website", description: "Ontwerp en maak een responsive website voor een startup." },
-        { title: "Visitekaartje", description: "Redesign je visitekaartje op basis van een bestaande API." },
-        { title: "Redpers", description: "Een nieuwswebsite waaraan ik heb meegewerkt" },
-        { title: "Digital Garden", description: "Een blog waarin ik schrijf wat ik per sprint heb geleerd en over gastsprekers bij mijn opleiding" }
-    ];
+
+
 </script>
 
 <article>
@@ -34,7 +28,7 @@
             <strong>Sveltekit, Markdown</strong>
         </article>
         
-        <article class="left project-card">
+        <article class="project-card">
             <h3>Visitekaartje</h3>
             <a href="https://your-tribe-for-life-profile-card-liart.vercel.app/" target="_blank">
                 <img src="./visitekaartje.png" alt="">
@@ -44,7 +38,7 @@
             </div>
         </article>
         
-        <article class="right project-card">
+        <article class="project-card">
             <div>
                 <h3>B-rain</h3>
             </div>
@@ -54,7 +48,7 @@
             <strong>HTML, CSS, JS</strong>
         </article>
         
-        <article class="right project-card">
+        <article class=" project-card">
             <div>
                 <h3>Redpers</h3>
             </div>
@@ -64,30 +58,35 @@
             <strong>Sveltekit, WPAPI</strong>
         </article>
 
-        <article class="left project-card">
+        <article class="project-card">
             <h3>Informaat</h3>
             <a href="https://tristankatte.github.io/Informaat-opdracht/" target="_blank">
                 <img src="./informaat.png" alt="">
-
             </a>
             <div> 
                 <strong>HTML, CSS</strong>
             </div>
         </article>
-
-        <!-- {#each projects as project}
-            <div class="project-card" id="{project.title.toLowerCase().replace(/\s+/g, '-')}">
-
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-            </div>
-        {/each} -->
         
     </div>
 </section>
 </article>
 
+<article class="other-works scroll-container">
+</article>
+
 <style>
+    .scroll-container {
+        position: relative;
+        height: 100vh; /* Full viewport height */
+        overflow: hidden;
+    }
+
+    img {
+        width: 100%; /* Full width */
+        display: block; /* Remove inline spacing */
+    }
+
     h2, h3 {
         color: var(--heading-color);
         font-family: "Azonix";
@@ -99,7 +98,6 @@
         margin-bottom: 2rem;
     }
     
-
     article {
         width: 100%;
         padding: 2rem 1rem;
@@ -126,7 +124,7 @@
         flex: 1 1 300px;
         max-width: 400px;
     }
-
+    
     .project-card:hover {
         transform: translateY(-5px);
     }
@@ -135,8 +133,6 @@
         font-size: 1.5rem;
         margin-bottom: 1rem;
     }
-
-
 
     @media (max-width: 768px) {
         h2 {
@@ -162,6 +158,5 @@
         .project-card h3 {
             font-size: 1.3rem;
         }
-
     }
 </style>

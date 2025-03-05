@@ -81,6 +81,7 @@
 	background-color: transparent;
 	min-height: 100vh;
 	padding: 100px 15px;
+  z-index: 0;
 }
 
   .timeline-items{

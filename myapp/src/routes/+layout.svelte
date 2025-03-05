@@ -40,10 +40,10 @@
     flex-direction: column;
     margin-inline: auto;
     padding-inline: var(--size-7);
-    background-image: linear-gradient(147deg, #434343 0%, #000000 74%);
-
-    background-size: cover;
+    background-color: #000000;
+    background-image: linear-gradient(147deg, #434343 0%,  #000000 74%);
 }
+
 
 
 main {
@@ -81,4 +81,4 @@ main {
         padding-block: var(--size-1);
     }
 }
-</style>
+    </style>

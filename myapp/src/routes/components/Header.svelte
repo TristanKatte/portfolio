@@ -10,7 +10,10 @@
 
 <header>
     <img alt="personal logo van mij" src={Logo}>
+
     <nav class="effect" class:open={isMenuOpen}>
+       
+
         <button class="hamburger" onclick={toggleMenu} aria-label="Menu">
             <span class="hamburger-icon">&#9776;</span>
         </button>
@@ -21,11 +24,10 @@
             <li><a class="link-70" href="/contact">Contact</a></li>
         </ul>
     </nav>
+
 </header>
 
 <style>
-
-
     header {
         display: flex;
         justify-content: space-between;
@@ -125,6 +127,9 @@
         color: white;
     }
 
+   
+
+
     @media screen and (max-width: 768px) {
         img {
             height: 120px;
@@ -142,7 +147,7 @@
             flex-direction: column;
             background-color: rgba(0, 0, 0, 0.9);
             padding: 1rem;
-            width: 200px;
+            width: 250px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
@@ -157,5 +162,36 @@
         }
     }
 
+    @media screen and (max-width: 480px) {
 
+        nav {
+            z-index: 1;
+        }
+
+        nav ul {
+            width: 250px;
+            justify-items: center;
+        }
+
+        nav ul li a {
+            cursor: pointer;
+        }
+        
+        .hamburger {
+            display: block;
+        }
+
+        img {
+            display: none;
+        }
+
+        nav ul li {
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+        font-family: 'Orbitron Variable', sans-serif;
+        cursor: pointer;
+    }
+
+    }
 </style>

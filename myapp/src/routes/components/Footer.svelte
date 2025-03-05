@@ -42,8 +42,9 @@
     ul {
         gap: 1rem;
         display: flex;
-        justify-self: center;
+        justify-content: center; /* Center the icons horizontally */
         list-style-type: none;
+
     }
     li a {
         color: var(--btn-color);
@@ -59,6 +60,19 @@
         color: var(--txt-color);
         padding: 0.5rem 0 5rem 0;
         text-align: center;
+    }
+
+    @media screen and (max-width: 480px) {
+        footer {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        ul {
+            display: flex;
+            justify-content: flex-start;
+        }
     }
 
     
