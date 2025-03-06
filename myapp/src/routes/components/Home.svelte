@@ -8,7 +8,7 @@
 
 <article class="about-me">
   <section class="text">
-    <h2>A little bit about me</h2>
+    <h2>A little about me</h2>
     <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.
        I am currently in my 2nd and last year at the study Frontend Design & Development at the Amsterdam University of Applied Sciences.
     </p>
@@ -31,15 +31,14 @@
   main {
     width: 100%;
     height: 100%;
-    }
+      }
   
-    
   img {
     scale: 1;
     border-radius: 12px;
     border: 16px solid var(--heading-color);
     border-style: ridge;
-}
+    }
 
   article {
     display: flex;
@@ -48,12 +47,13 @@
     height: 100%;
     width: 100%;
     padding: 90px 90px;
-    font-family: 'Orbitron Variable', sans-serif;
-  }
+    font-family: 'alata', sans-serif;
+    }
 
   .button {
     position: relative;
     padding: 15px 45px;
+    width: 50%;
     background: transparent;
     border-radius: 0 50px 0 50px;
     border: 2px solid #00c2cb;
@@ -103,7 +103,7 @@
 .text {
     max-width: 800px;
     margin-right: 50px;
-    font-family: "Nunito", sans-serif;
+    font-family: 'alata', sans-serif;
     word-wrap: break-word;
     line-height: 1.6;
     letter-spacing: .5em;
@@ -121,11 +121,11 @@
   color: var(--txt-color);
   font-size: 18px;
   line-height: 25px;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   margin-bottom: 1.5em;
 }
  
-@media (min-width: 30em) {
+@media (max-width: 30em) {
     main {
       display: flex;
       flex-direction: column;
@@ -148,6 +148,10 @@
         margin-bottom: 30px;
         margin-right: 0;
         text-align: left;
+    }
+
+    .text p {
+      font-family: 'alata', sans-serif;
     }
 
     .text h2 {
@@ -214,7 +218,7 @@
     height: 100%;
     width: 100%;
     padding: 90px 90px;
-    font-family: 'Orbitron Variable', sans-serif;
+    font-family: 'alata', sans-serif;
   }
 
   .button {

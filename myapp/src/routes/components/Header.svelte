@@ -50,6 +50,7 @@
         list-style-type: none;
         margin: 0;
         padding: 0;
+        font-family: 'Orbitron Variable', sans-serif;
     }
 
     .link-70 {
@@ -123,20 +124,21 @@
         color: white;
     }
 
-    @media (min-width: 30em) {
+    @media screen and (max-width: 30em) {
+
         nav {
             z-index: 1;
         }
 
         nav ul {
-            width: 100%; /* Ensure full width */
+            width: 250px;
             justify-items: center;
         }
 
         nav ul li a {
             cursor: pointer;
         }
-        
+
         .hamburger {
             display: block;
         }
@@ -146,13 +148,56 @@
         }
 
         nav ul li {
-            display: flex;
+        display: flex;
+        flex-direction: column;
+        list-style-type: none;
+        font-family: 'Orbitron Variable', sans-serif;
+        cursor: pointer;
+        }
+
+    }
+
+    @media screen and (max-width: 48em) {
+        nav {
+            z-index: 1;
+        }
+        
+        img {
+            height: 120px;
+            margin-right: 22em;
+        }
+
+        .hamburger {
+            display: block;
+        }
+
+        nav ul {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            display: none;
             flex-direction: column;
-            list-style-type: none;
-            font-family: 'Orbitron Variable', sans-serif;
-            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 1rem;
+            width: 250px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.open ul {
+            display: flex;
+        }
+
+        nav a {
+            margin: 10px 0;
+            padding: 10px;
+            display: block;
         }
     }
+
+    
+
+
+    /* 
 
     @media (min-width: 48em) {
         img {
@@ -173,13 +218,13 @@
             flex-direction: column;
             background-color: rgba(0, 0, 0, 0.9);
             padding: 1rem;
-            width: 100%; /* Ensure full width */
+            width: 100%; 
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         nav.open ul {
             display: flex;
-            flex-direction: column; /* Ensure items stack vertically */
+            flex-direction: column; 
         }
 
 
@@ -205,10 +250,10 @@
             list-style-type: none;
             margin: 0;
             padding: 0;
-            width: 100%; /* Set to full screen width */
+            width: 100%; 
         }
         .hamburger {
             display: none;
         }
-    }
+    } */
 </style>
