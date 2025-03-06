@@ -12,8 +12,6 @@
     <img alt="personal logo van mij" src={Logo}>
 
     <nav class="effect" class:open={isMenuOpen}>
-       
-
         <button class="hamburger" onclick={toggleMenu} aria-label="Menu">
             <span class="hamburger-icon">&#9776;</span>
         </button>
@@ -24,7 +22,6 @@
             <li><a class="link-70" href="/contact">Contact</a></li>
         </ul>
     </nav>
-
 </header>
 
 <style>
@@ -53,7 +50,6 @@
         list-style-type: none;
         margin: 0;
         padding: 0;
-        font-family: 'Orbitron Variable', sans-serif;
     }
 
     .link-70 {
@@ -127,49 +123,13 @@
         color: white;
     }
 
-   
-
-
-    @media screen and (max-width: 768px) {
-        img {
-            height: 120px;
-        }
-
-        .hamburger {
-            display: block;
-        }
-
-        nav ul {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            display: none;
-            flex-direction: column;
-            background-color: rgba(0, 0, 0, 0.9);
-            padding: 1rem;
-            width: 250px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        nav.open ul {
-            display: flex;
-        }
-
-        nav a {
-            margin: 10px 0;
-            padding: 10px;
-            display: block;
-        }
-    }
-
-    @media screen and (max-width: 480px) {
-
+    @media (min-width: 30em) {
         nav {
             z-index: 1;
         }
 
         nav ul {
-            width: 250px;
+            width: 100%; /* Ensure full width */
             justify-items: center;
         }
 
@@ -186,12 +146,69 @@
         }
 
         nav ul li {
-        display: flex;
-        flex-direction: column;
-        list-style-type: none;
-        font-family: 'Orbitron Variable', sans-serif;
-        cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            list-style-type: none;
+            font-family: 'Orbitron Variable', sans-serif;
+            cursor: pointer;
+        }
     }
 
+    @media (min-width: 48em) {
+        img {
+            height: 120px;
+            display: block;
+            margin-right: 22em;
+        }
+
+        .hamburger {
+            display: block;
+        }
+
+        nav ul {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            display: none;
+            flex-direction: column;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 1rem;
+            width: 100%; /* Ensure full width */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.open ul {
+            display: flex;
+            flex-direction: column; /* Ensure items stack vertically */
+        }
+
+
+        nav a {
+            margin: 10px 0;
+            padding: 10px;
+            display: block;
+        }
+    }
+
+    @media (min-width: 62em) {
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: transparent;
+            position: relative;
+        }
+        nav ul {
+            display: flex;
+            flex-direction: row;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 100%; /* Set to full screen width */
+        }
+        .hamburger {
+            display: none;
+        }
     }
 </style>

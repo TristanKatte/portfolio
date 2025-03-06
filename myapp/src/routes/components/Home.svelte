@@ -12,14 +12,13 @@
     <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.
        I am currently in my 2nd and last year at the study Frontend Design & Development at the Amsterdam University of Applied Sciences.
     </p>
-    <a class="button" href="/about">More about me</a>
+    
   </section>
     <section class="about">
         <img class="pic" alt="Foto van mij" src={Photo} />
     </section>
-
-   
   </article>
+  <a class="button" href="/about">More about me</a>
  
   <article>
     <About />
@@ -126,7 +125,7 @@
   margin-bottom: 1.5em;
 }
  
-@media (max-width: 480px) {
+@media (min-width: 30em) {
     main {
       display: flex;
       flex-direction: column;
@@ -169,17 +168,67 @@
     }
 
     .button {
+      position: relative;
+      width: 60%;
+      padding: 15px 30px;
+      margin: auto;
+      background: transparent;
+      border-radius: 0 50px 0 50px;
+      border: 2px solid var(--btn-color);
+      outline: 2px solid var(--btn-color);
+      outline-offset: -2px;
+      font-size: 1rem;
+      font-family: 'Orbitron Variable', sans-serif;
+      color: #00c2cb;
+      font-weight: 300;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: outline-offset 200ms ease;
+  }
+
+  .button:hover {
+  color: #e0ffff;
+  background-color: var(--heading-color);
+  outline-offset: 4px;
+  }
+  
+  .button:active{
+  transform: scale(0.95);
+  }
+}
+
+@media (max-width: 48em) {
+
+  img {
+    scale: 1;
+    border-radius: 12px;
+    border: 16px solid var(--heading-color);
+    border-style: ridge;
+}
+
+  article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 90px 90px;
+    font-family: 'Orbitron Variable', sans-serif;
+  }
+
+  .button {
     position: relative;
-    padding: 15px 30px;
+    padding: 15px 45px;
     background: transparent;
     border-radius: 0 50px 0 50px;
     border: 2px solid #00c2cb;
     outline: 2px solid #00c2cb;
     outline-offset: -2px;
-    font-size: .75rem;
+    font-size: .95rem;
     font-family: 'Orbitron Variable', sans-serif;
     color: #00c2cb;
-    font-weight: 300;
+    font-weight: 500;
     text-decoration: none;
     cursor: pointer;
     transition: outline-offset 200ms ease;
@@ -194,6 +243,54 @@
   .button:active{
   transform: scale(0.95);
   }
+
+  .about-me {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 90px 90px;
+    
+  }
+  
+.pic {
+  height: auto;
+  width: 400px;
+  border-radius: 18px;
+}
+
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.text {
+    max-width: 800px;
+    margin-right: 50px;
+    font-family: "Nunito", sans-serif;
+    word-wrap: break-word;
+    line-height: 1.6;
+    letter-spacing: .5em;
+}
+
+.text h2 {
+  color: var(--heading-color);
+  font-weight: 400;
+  margin-bottom: 10px;
+  font-family: "Azonix";
+}
+
+
+.text p {
+  color: var(--txt-color);
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 1px;
+  margin-bottom: 1.5em;
+}
+
 }
 
 </style>

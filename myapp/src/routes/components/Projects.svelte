@@ -62,6 +62,17 @@
                 <strong>HTML, CSS</strong>
             </div>
         </article>
+
+                <article class="project-card">
+           
+            <a href="https://tristankatte.github.io/Informaat-opdracht/" target="_blank">
+                <h3>Squad Page</h3>
+                <img src="./informaat.png" alt="">
+            </a>
+            <div> 
+                <strong>HTML, CSS</strong>
+            </div>
+        </article>
         
     </div>
 </section>
