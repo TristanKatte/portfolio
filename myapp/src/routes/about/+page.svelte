@@ -27,6 +27,12 @@
 
 
 <main>
+  <!-- <article>
+    <h2>My journey</h2>
+    <p>I am a frontend developer That likes to create cool, accessible and stunning web experiences for clients and their users.</p>
+
+  </article> -->
+  
   <section class="timeline-section">
     <div class="timeline-items">
       <div class="timeline-item">
@@ -34,7 +40,7 @@
         <div class="timeline-date">2016</div>
         <div class="timeline-content">
           <h3>DTP at the Grafisch Lyceum Utrecht</h3>
-          <p>Developed a strong foundation in design principles and software skills, particularly with Adobe Creative Cloud. </p>
+          <p>Developed a strong foundation in design principles and software skills, particularly with Adobe Creative Cloud. Here, the interest of coding began with a subject in my study. </p>
         </div>
       </div>
       <div class="timeline-item">
@@ -42,7 +48,7 @@
         <div class="timeline-date">2018</div>
         <div class="timeline-content">
           <h3>Continuation as Webdesigner at the Grafisch Lyceum Utrecht</h3>
-          <p>Graduated with a specialization in web development, focusing on user experience and responsive design. </p>
+          <p>Graduated with a specialization in web design, focusing on user experience and responsive design. </p>
         </div>
       </div>
       <div class="timeline-item">
@@ -50,7 +56,7 @@
         <div class="timeline-date">2022</div>
         <div class="timeline-content">
           <h3>Communication & Multimedia Design</h3>
-          <p>Explored various multimedia concepts, enhancing my understanding of digital storytelling and interactive design.</p>
+          <p>A study I briefly attended where I explored various multimedia concepts, enhancing my understanding of digital storytelling and interactive design.</p>
         </div>
       </div>
       <div class="timeline-item">

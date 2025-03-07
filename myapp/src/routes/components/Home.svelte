@@ -12,13 +12,15 @@
     <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.
        I am currently in my 2nd and last year at the study Frontend Design & Development at the Amsterdam University of Applied Sciences.
     </p>
-    
+    <a class="button" href="/about">More about me</a>
   </section>
+  
     <section class="about">
         <img class="pic" alt="Foto van mij" src={Photo} />
     </section>
   </article>
-  <a class="button" href="/about">More about me</a>
+  
+ 
  
   <article>
     <About />
@@ -173,7 +175,7 @@
 
     .button {
       position: relative;
-      width: 60%;
+      width: 40%;
       padding: 15px 30px;
       margin: auto;
       background: transparent;
