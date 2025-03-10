@@ -1,13 +1,37 @@
 <script>
     import About from './About.svelte';
     import Photo from '$lib/assets/profielfoto-zw.jpg'
+    import { onMount } from 'svelte';
+  
+  onMount(async () => {
+    const { default: gsap } = await import('gsap');
+    const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+    
+    gsap.registerPlugin(ScrollTrigger);
+    
+    gsap.utils.toArray('.about-me').forEach((item, index) => {
+
+      gsap.from(item, {
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        delay: index * 0.2
+      });
+    });
+  });
 </script>
 
 
 <main>
 
 <article class="about-me">
-  <section class="text">
+  <section class="text ">
     <h2>A little about me</h2>
     <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.
        I am currently in my 2nd and last year at the study Frontend Design & Development at the Amsterdam University of Applied Sciences.

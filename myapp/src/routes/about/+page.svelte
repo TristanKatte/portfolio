@@ -27,11 +27,33 @@
 
 
 <main>
-  <!-- <article>
-    <h2>My journey</h2>
-    <p>I am a frontend developer That likes to create cool, accessible and stunning web experiences for clients and their users.</p>
-
-  </article> -->
+  <article class="timeline-section">
+    <section class="journey">
+      <h2>My journey</h2>
+      <p>I am a frontend developer That likes to create cool, accessible and stunning web experiences for clients and their users.</p>
+      
+      <p>I've always been drawn to technology, and after exploring different creative fields
+        I found my passion in coding. I started with Html and CSS in a study back in 2016 and from 2018 to 2022,
+        I dived into learning Wordpress.
+      </p>
+      <p>
+        I specialize in HTML, CSS, and JavaScript, with experience in React, Vue.js, Nextjs and Sveltekit. 
+        I'm also familiar with version control (Git) and building responsive designs that work on all screen sizes.
+      </p>
+      <p>
+        I believe in writing clean, maintainable code and focusing on delivering a seamless user experience. 
+        I'm passionate about staying up-to-date with the latest web technologies and always looking for ways to improve the sites I build.
+      </p>
+      <p>
+        As I continue growing as a developer, I’m excited to take on more complex projects and learn new technologies. 
+        My goal is to help create web applications that make a positive impact and are accessible to everyone.
+      </p>
+      <p>
+        Outside of coding, you’ll find me hiking in the mountains, experimenting with graphic design, or exploring the latest tech trends.
+      </p>
+      
+  </section>
+  </article>
   
   <section class="timeline-section">
     <div class="timeline-items">
@@ -84,55 +106,56 @@
 
 <style>
   .timeline-section{
-	background-color: transparent;
-	min-height: 100vh;
-	padding: 100px 15px;
-  z-index: 0;
+	  background-color: transparent;
+	  min-height: 100vh;
+	  padding: 100px 15px;
+    z-index: 0;
 }
 
   .timeline-items{
-	max-width: 1000px;
-	margin:auto;
-	display: flex;
-	flex-wrap: wrap;
-	position: relative;
+	  max-width: 1000px;
+	  margin:auto;
+	  display: flex;
+	  flex-wrap: wrap;
+	  position: relative;
 }
 
 .timeline-items::before{
-	content: '';
-	position: absolute;
-	width: 2px;
-	height: 100%;
-	background-color: #2f363e;
-	left: calc(50% - 1px);
+	  content: '';
+	  position: absolute;
+	  width: 2px;
+	  height: 100%;
+	  background-color: #2f363e;
+	  left: calc(50% - 1px);
 }
 
 .timeline-item{
-	margin-bottom: 40px;
-	width: 100%;
-	position: relative;
+	  margin-bottom: 40px;
+	  width: 100%;
+	  position: relative;
 }
 
 .timeline-item:last-child{
-	margin-bottom: 0;
+	  margin-bottom: 0;
 }
 
 .timeline-item:nth-child(odd){
     padding-right: calc(50% + 30px);
-	text-align: right;
+	  text-align: right;
 }
 
 .timeline-item:nth-child(even){
     padding-left: calc(50% + 30px);
 }
+
 .timeline-dot{
-	height: 16px;
-	width: 16px;
-	background-color: var(--btn-color);
-	position: absolute;
-	left: calc(50% - 8px);
-	border-radius: 50%;
-	top:10px;
+	  height: 16px;
+	  width: 16px;
+	  background-color: var(--btn-color);
+	  position: absolute;
+	  left: calc(50% - 8px);
+	  border-radius: 50%;
+	  top:10px;
 }
 
 .timeline-date{
@@ -163,6 +186,28 @@
 	line-height: 22px;
   font-family: 'Orbitron Variable', sans-serif;
   letter-spacing: 3px;
+}
+
+article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 90px 90px;
+    font-family: 'alata', sans-serif;
+    letter-spacing: 2px;
+}
+
+.journey h2 {
+  color: var(--heading-color);
+  font-family: "Azonix";
+  letter-spacing: .2em;
+}
+
+.journey p {
+  color: var(--txt-color);
+  margin-bottom: .8em;
 }
 
 /* responsive */

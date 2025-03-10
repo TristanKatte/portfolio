@@ -1,3 +1,30 @@
+<script>
+    import { onMount } from 'svelte';
+  
+  onMount(async () => {
+    const { default: gsap } = await import('gsap');
+    const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+    
+    gsap.registerPlugin(ScrollTrigger);
+    
+    gsap.utils.toArray('.skillset').forEach((item, index) => {
+
+      gsap.from(item, {
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none reverse'
+        },
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        delay: index * 0.8
+      });
+    });
+  });
+</script>
+
 <section class="skillset">
   <button class="strength">My skills</button>
     <div class="skills">
@@ -17,6 +44,9 @@
     <button class="skill">SVELTE</button>
     <button class="skill">SVELTEKIT</button>
     <button class="skill">NEXTJS</button>
+    <button class="skill">GSAP</button>
+    <button class="skill">VueJS</button>
+    <button class="skill">React</button>
   </div>
 
   <div class="skills-graphic">
@@ -24,8 +54,7 @@
     <button class="skill">ILLUSTRATOR</button>
     <button class="skill">INDESIGN</button>
     <button class="skill">FIGMA</button>
-    <button class="skill">PREMIERE PRO</button>
-    <button class="skill">AFTER EFFECTS</button>
+    <button class="skill">SKETCHNOTING</button>
   </div>
 
 
