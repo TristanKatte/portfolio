@@ -53,6 +53,10 @@
         font-family: 'Orbitron Variable', sans-serif;
     }
 
+    nav ul li a:focus-visible {
+        outline: 3px solid var(--btn-color);
+    }
+
     .link-70 {
         color: #ffffff;
         font-size: 20px;

@@ -4,6 +4,7 @@
     import Transition from './transition.svelte'
     import { onNavigate } from '$app/navigation';
 
+
     import 'open-props/style'
     import 'open-props/normalize'
     import 'open-props/buttons'
@@ -22,6 +23,8 @@
         });
     });
 </script>
+
+
 
 <div class="layout">
     <Header />
