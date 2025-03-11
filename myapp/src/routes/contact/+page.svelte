@@ -2,6 +2,10 @@
   import ContactForm from './ContactForm.svelte';
 </script>
 
+<svelte:head>
+  <title>Contact</title>
+</svelte:head>
+
 <main>
   <h2>Contact me</h2>
   <ContactForm />

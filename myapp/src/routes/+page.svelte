@@ -7,7 +7,9 @@
   import { fade } from 'svelte/transition';
 
 </script>
-
+<svelte:head>
+  <title>Home</title>
+</svelte:head>
 
 <main>
 <Home />

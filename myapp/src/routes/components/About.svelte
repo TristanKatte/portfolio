@@ -153,7 +153,7 @@
     max-width: 75%;
     }
 
-    @media (max-width:480px) {
+    @media (min-width:30em) {
 
       .svg-line-class { 
         height: 120%; 
@@ -169,6 +169,11 @@
 
       .skillset {
         width: 100%;
+      }
+
+      .all-skills {
+        width: 100%;
+        flex-flow: row;
       }
 
       .skill {
@@ -190,5 +195,47 @@
         flex-flow: column;
         justify-content: flex-start;
       }
+    }
+
+    @media (min-width: 48em) {
+      .svg-line-class { 
+        height: 120%; 
+        top: -10%; 
+    }
+      .all-skills {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        margin-top: 8em;
+      }
+
+
+      .skillset {
+        width: 100%;
+      }
+
+      .skill {
+        width: 100%;
+        font-size: .8em;
+      }
+
+      .skills-frontend {
+        display: flex;
+        justify-content: flex-start;
+        flex-flow: column;
+      }
+
+      .skills-graphic {
+        justify-content: flex-end;
+        flex-flow: column-reverse;
+      }
+
+      .skills-other {
+        flex-flow: column;
+        justify-content: flex-start;
+      }
+
+
     }
 </style>

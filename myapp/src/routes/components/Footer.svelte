@@ -5,27 +5,27 @@
 <footer class="footer" aria-labelledby="footer-label">
     <ul>
         <li>
-            <a href="https://github.com/TristanKatte" target="_blank">
+            <a href="https://github.com/TristanKatte" target="_blank" aria-label="Github">
                 <SocialIcons alt="" network="github" fgColor="#eeeeee" bgColor="#111111" width="60" height="60" />
             </a>
         </li>
         <li>
-            <a href="https://www.linkedin.com/in/tristan-katte-600b53148/" target="_blank">
+            <a href="https://www.linkedin.com/in/tristan-katte-600b53148/" target="_blank" aria-label="LinkedIn">
                 <SocialIcons alt="" network="linkedin" fgColor="#eeeeee" bgColor="#111111" width="60" height="60" />
             </a>
         </li>
         <li>
-            <a href="https://www.instagram.com/tristankatte98" target="_blank">
+            <a href="https://www.instagram.com/tristankatte98" target="_blank" aria-label="Instagram">
                 <SocialIcons alt="" network="instagram" fgColor="#eeeeee" bgColor="#111111" width="60" height="60" />         
             </a>
         </li>
         <li>
-            <a href="https://www.facebook.com/tristan.katte" target="_blank">
+            <a href="https://www.facebook.com/tristan.katte" target="_blank" aria-label="Facebook">
                 <SocialIcons alt="" network="facebook" fgColor="#eeeeee" bgColor="#111111" width="60" height="60" />         
             </a>
         </li>
         <li>
-            <a href="https://codepen.io/tristan-katte" target="_blank">
+            <a href="https://codepen.io/tristan-katte" target="_blank" aria-label="Codepen">
                 <SocialIcons alt="" network="codepen"  fgColor="#eeeeee" bgColor="#111111" width="60" height="60" />         
             </a>
         </li>

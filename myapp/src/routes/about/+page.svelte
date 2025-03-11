@@ -25,6 +25,10 @@
   });
 </script>
 
+<svelte:head>
+  <title>About me</title>
+</svelte:head>
+
 
 <main>
   <article class="timeline-section">

@@ -36,7 +36,7 @@
     <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.
        I am currently in my 2nd and last year at the study Frontend Design & Development at the Amsterdam University of Applied Sciences.
     </p>
-    <a class="button" href="/about">More about me</a>
+    <a class="button" href="/about" aria-label="More about me">More about me</a>
   </section>
   
     <section class="about">
@@ -92,17 +92,17 @@
     text-decoration: none;
     cursor: pointer;
     transition: outline-offset 200ms ease;
-  }
+    }
 
   .button:hover {
-  color: #e0ffff;
-  background-color: var(--heading-color);
-  outline-offset: 4px;
-  }
+    color: #e0ffff;
+    background-color: var(--heading-color);
+    outline-offset: 4px;
+    }
   
   .button:active{
-  transform: scale(0.95);
-  }
+    transform: scale(0.95);
+    }
 
   .about-me {
     display: flex;
@@ -110,70 +110,85 @@
     align-items: center;
     height: 100%;
     width: 100%;
-    padding: 90px 90px;
-    
-  }
+    padding: 90px 90px; 
+    }
   
-.pic {
-  height: auto;
-  width: 400px;
-  border-radius: 18px;
-}
+  .pic {
+    height: auto;
+    width: 400px;
+    border-radius: 18px;
+    }
 
-.about {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
+  .about {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    }
 
-.text {
+  .text {
     max-width: 800px;
     margin-right: 50px;
     font-family: 'alata', sans-serif;
     word-wrap: break-word;
     line-height: 1.6;
     letter-spacing: .5em;
-}
+    }
 
-.text h2 {
-  color: var(--heading-color);
-  font-weight: 400;
-  margin-bottom: 10px;
-  font-family: "Azonix";
-}
+  .text h2 {
+    color: var(--heading-color);
+    font-weight: 400;
+    margin-bottom: 10px;
+    font-family: "Azonix";
+    }
 
 
-.text p {
-  color: var(--txt-color);
-  font-size: 18px;
-  line-height: 25px;
-  letter-spacing: 2px;
-  margin-bottom: 1.5em;
-}
+  .text p {
+    color: var(--txt-color);
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 2px;
+    margin-bottom: 1.5em;
+    }
  
-@media (max-width: 30em) {
+@media (min-width: 30em) {
     main {
       display: flex;
       flex-direction: column;
       justify-content: center;
       flex-wrap: wrap;
     }
+
+    img {
+      scale: 0.95;
+      border-radius: 12px;
+      border: 16px solid var(--heading-color);
+      border-style: ridge;
+    }
+
+    article {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      padding: 90px 90px;
+      font-family: 'alata', sans-serif;
+    }
     
     .about-me {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        padding: 20px;
-
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
     }
 
     .text {
-        margin-bottom: 30px;
-        margin-right: 0;
-        text-align: left;
+      margin-bottom: 30px;
+      margin-right: 0;
+      text-align: left;
     }
 
     .text p {
@@ -199,7 +214,7 @@
 
     .button {
       position: relative;
-      width: 40%;
+      width: 100%;
       padding: 15px 30px;
       margin: auto;
       background: transparent;
@@ -215,20 +230,20 @@
       text-align: center;
       cursor: pointer;
       transition: outline-offset 200ms ease;
-  }
+    }
 
-  .button:hover {
-  color: #e0ffff;
-  background-color: var(--heading-color);
-  outline-offset: 4px;
-  }
+    .button:hover {
+      color: #e0ffff;
+      background-color: var(--heading-color);
+      outline-offset: 4px;
+    }
   
-  .button:active{
-  transform: scale(0.95);
-  }
+    .button:active{
+      transform: scale(0.95);
+    }
 }
 
-@media (max-width: 48em) {
+@media (min-width: 48em) {
 
   img {
     scale: 1;
@@ -243,7 +258,7 @@
     align-items: center;
     height: 100%;
     width: 100%;
-    padding: 90px 90px;
+    /* padding: 90px 90px; */
     font-family: 'alata', sans-serif;
   }
 
@@ -320,6 +335,14 @@
   letter-spacing: 1px;
   margin-bottom: 1.5em;
 }
+
+}
+
+@media (min-width: 62em) {
+  
+}
+
+@media (min-width: 75em) {
 
 }
 

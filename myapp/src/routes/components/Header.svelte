@@ -16,10 +16,10 @@
             <span class="hamburger-icon">&#9776;</span>
         </button>
         <ul>
-            <li><a class="link-70" href="/">Home</a></li>
-            <li><a class="link-70" href="/about">About Me</a></li>
-            <li><a class="link-70" href="/projects">Projects</a></li>
-            <li><a class="link-70" href="/contact">Contact</a></li>
+            <li><a class="link-70" href="/" aria-label="Home">Home</a></li>
+            <li><a class="link-70" href="/about" aria-label="About Me">About Me</a></li>
+            <li><a class="link-70" href="/projects" aria-label="Projects">Projects</a></li>
+            <li><a class="link-70" href="/contact" aria-label="Contact">Contact</a></li>
         </ul>
     </nav>
 </header>
