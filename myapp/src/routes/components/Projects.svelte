@@ -1,5 +1,6 @@
 <script>
 
+
 </script>
 
 <article>
@@ -171,6 +172,7 @@
     </section> -->
 
     
+    
 </article>
 
 <style>
@@ -191,10 +193,6 @@
         width: 100%;
         padding: 2rem 1rem;
         font-family: 'Orbitron Variable', sans-serif;
-    }
-
-    picture {
-        color: var(--txt-color);
     }
 
     .projects-grid {
@@ -230,36 +228,7 @@
 	display: inline-block;
 }
 
-/* Main CSS */
-.grid-wrapper > picture {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-.grid-wrapper > picture > img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	border-radius: 5px;
-}
 
-.grid-wrapper {
-	display: grid;
-	grid-gap: 10px;
-	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	grid-auto-rows: 200px;
-	grid-auto-flow: dense;
-}
-.grid-wrapper .wide {
-	grid-column: span 2;
-}
-.grid-wrapper .tall {
-	grid-row: span 2;
-}
-.grid-wrapper .big {
-	grid-column: span 2;
-	grid-row: span 2;
-}
 
 
     @media (max-width: 768px) {
