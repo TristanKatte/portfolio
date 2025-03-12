@@ -40,7 +40,7 @@
   </section>
   
     <section class="about">
-        <enhanced:img class="pic" alt="Foto van mij" src="$lib/assets/profielfoto-zw.jpg" />
+        <enhanced:img class="pic img" alt="Foto van mij" src="$lib/assets/profielfoto-zw.jpg" />
     </section>
   </article>
   
@@ -59,7 +59,7 @@
     height: 100%;
       }
   
-  img {
+  .img {
     scale: 1;
     border-radius: 12px;
     border: 16px solid var(--heading-color);
@@ -158,7 +158,7 @@
       flex-wrap: wrap;
     }
 
-    img {
+    .img {
       scale: 0.95;
       border-radius: 12px;
       border: 16px solid var(--heading-color);
@@ -245,7 +245,7 @@
 
 @media (min-width: 48em) {
 
-  img {
+  .img {
     scale: 1;
     border-radius: 12px;
     border: 16px solid var(--heading-color);
