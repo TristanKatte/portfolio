@@ -91,10 +91,10 @@
             <img src="./images/texture_leaf.jpg" alt="">
         </picture>
         <picture class="wide">
-            <img src="./images/renaissance_1.jpg" alt="" />
+            <img src="./images/willekeurig_1.JPG" alt="" />
         </picture>
         <picture>
-            <img src="./images/portret_max.jpg" alt="" />
+            <img src="./images/portret_max.JPG" alt="" />
         </picture>
         <picture class="tall">
             <img src="./images/texture_gold.jpg" alt="" />
@@ -136,7 +136,7 @@
             <img src="./images/esthetiek_1.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <img src="./images/bloemen_2.jpg" alt="" />
+            <img src="./images/bloemen_2.JPG" alt="" />
         </picture>
         <picture>
             <img src="./images/fingerprint.jpg" alt="" />
@@ -145,28 +145,28 @@
             <img src="./images/kunst_3.jpg" alt="" />
         </picture>
         <picture class="big">
-            <img src="./images/vogelpers_2.jpg" alt="" />
+            <img src="./images/esthetiek_3.jpg" alt="" />
         </picture>
         <picture>
-            <img src="./images/vogelpers_2.jpg" alt="" />
+            <img src="./images/kikvors_2.jpg" alt="" />
         </picture>
         <picture>
-            <img src="./images/vogelpers_2.jpg" alt="" />
+            <img src="./images/kunst_2.jpg" alt="" />
         </picture>
         <picture class="big">
-            <img src="./images/vogelpers_2.jpg" alt="" />
+            <img src="./images/texture_brick.jpg" alt="" />
         </picture>
         <picture class="tall">
-            <img src="./images/vogelpers_2.jpg" alt="" />
+            <img src="./images/perspectief_2.jpg" alt="" />
         </picture>
         <picture>
-            <img src="./images/vogelpers_2.jpg" alt="" />
+            <img src="./images/spiegel_2.jpg" alt="" />
         </picture>
         <picture>
-            <img src="./images/vogelpers_2.jpg" alt="" />
+            <img src="./images/perspectief_3.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <img src="./images/vogelpers_2.jpg" alt="" />
+            <img src="./images/spiegel_3.jpg" alt="" />
         </picture>
     </section>
 
