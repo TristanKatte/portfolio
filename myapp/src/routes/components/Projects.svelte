@@ -11,7 +11,7 @@
 
             <a href="https://sprint-12-proof-of-concept-p6cy.onrender.com/" target="_blank">
                     <h3>Fresk.Digital</h3>    
-                <enhanced:img class="bright" src="$lib/assets/fresk-digital.png" alt="">
+                <img class="bright" src="./images/fresk-digital.png" alt="">
             </a>
             <strong>NodeJS, EJS, Express</strong>
         </article>
@@ -20,7 +20,7 @@
 
             <a href="https://i-love-web-amber.vercel.app/" target="_blank">
                     <h3>Digital garden</h3>
-                <enhanced:img class="align-top" src="$lib/assets/digital-garden.png" alt="">
+                <img class="align-top" src="./images/digital-garden.png" alt="">
             </a>
             <strong>Sveltekit, Markdown</strong>
         </article>
@@ -29,7 +29,7 @@
             
             <a href="https://your-tribe-for-life-profile-card-liart.vercel.app/" target="_blank">
                 <h3>Visitekaartje</h3>
-                <enhanced:img src="$lib/assets/visitekaartje.png" alt="">
+                <img src="./images/visitekaartje.png" alt="">
             </a>
             <div>     
                 <strong>NodeJS, EJS, Express</strong>
@@ -39,7 +39,7 @@
         <article class="project-card">        
             <a href="https://tristankatte.github.io/Brain-website/" target="_blank">
                 <h3>B-rain</h3>
-                <enhanced:img class="align-top" src="$lib/assets/b-rain.png" alt="">
+                <img class="align-top" src="./images/b-rain.png" alt="">
             </a>
             <strong>HTML, CSS, JS</strong>
         </article>
@@ -47,7 +47,7 @@
         <article class=" project-card">
             <a href="https://redpers.agency.fdnd.nl/" target="_blank">
                 <h3>Redpers</h3>
-                <enhanced:img src="$lib/assets/redpers.png" alt="">
+                <img src="./images/redpers.png" alt="">
             </a>
             <strong>Sveltekit, WPAPI</strong>
         </article>
@@ -56,7 +56,7 @@
            
             <a href="https://tristankatte.github.io/Informaat-opdracht/" target="_blank">
                 <h3>Informaat</h3>
-                <enhanced:img src="$lib/assets/informaat.png" alt="">
+                <img src="./images/informaat.png" alt="">
             </a>
             <div> 
                 <strong>HTML, CSS</strong>
@@ -67,7 +67,7 @@
            
             <a href="https://tristankatte.github.io/Informaat-opdracht/" target="_blank">
                 <h3>Squad Page</h3>
-                <enhanced:img src="$lib/assets/informaat.png" alt="">
+                <img src="./images/informaat.png" alt="">
             </a>
             <div> 
                 <strong>HTML, CSS</strong>
@@ -82,91 +82,91 @@
     <h3>Some other work I made</h3>
     <section class="grid-wrapper">
         <picture>
-            <enhanced:img src="$lib/assets/spiegel_1.jpg" alt="" />
+            <img src="./images/spiegel_1.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img src="$lib/assets/vogelpers_2.jpg" alt="" />
+            <img src="./images/vogelpers_2.jpg" alt="" />
         </picture>
         <picture class="tall">
-            <enhanced:img src="$lib/assets/texture_leaf.jpg" alt="">
+            <img src="./images/texture_leaf.jpg" alt="">
         </picture>
         <picture class="wide">
-            <enhanced:img src="$lib/assets/renaissance_1.jpg" alt="" />
+            <img src="./images/renaissance_1.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img src="$lib/assets/portret_max.jpg" alt="" />
+            <img src="./images/portret_max.jpg" alt="" />
         </picture>
         <picture class="tall">
-            <enhanced:img src="$lib/assets/texture_gold.jpg" alt="" />
+            <img src="./images/texture_gold.jpg" alt="" />
         </picture>
         <picture class="big">
-            <enhanced:img src="$lib/assets/hdr_2.jpg" alt="" />
+            <img src="./images/hdr_2.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img src="$lib/assets/kikvors_3.jpg" alt="" />
+            <img src="./images/kikvors_3.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <enhanced:img src="$lib/assets/hdr_haventje.jpg" alt="" />
+            <img src="./images/hdr_haventje.jpg" alt="" />
         </picture>
         <picture class="big">
-            <enhanced:img src="$lib/assets/hdr_3.jpg" alt="" />
+            <img src="./images/hdr_3.jpg" alt="" />
         </picture>
         <picture class="tall">
-            <enhanced:img src="$lib/assets/kikvors_1.jpg" alt="" />
+            <img src="./images/kikvors_1.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img src="$lib/assets/vogelpers_2.jpg" alt="" />
+            <img src="./images/lp_hoes_1.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img src="$lib/assets/vogelpers_2.jpg" alt="" />
+            <img src="./images/penrose.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img src="$lib/assets/vogelpers_2.jpg" alt="" />
+            <img src="./images/perspectief_1.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img src="$lib/assets/vogelpers_2.jpg" alt="" />
+            <img src="./images/lp_hoes_2.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <enhanced:img src="$lib/assets/vogelpers_2.jpg" alt="" />
+            <img src="./images/planeet.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img src="$lib/assets/vogelpers_2.jpg" alt="" />
+            <img src="./images/kunst_1.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img src="$lib/assets/vogelpers_2.jpg" alt="" />
+            <img src="./images/esthetiek_1.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <enhanced:img src="$lib/assets/vogelpers_2.jpg" alt="" />
+            <img src="./images/bloemen_2.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img src="$lib/assets/vogelpers_2.jpg" alt="" />
+            <img src="./images/fingerprint.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <enhanced:img src="$lib/assets/vogelpers_2.jpg" alt="" />
+            <img src="./images/kunst_3.jpg" alt="" />
         </picture>
         <picture class="big">
-            <enhanced:img src="" alt="" />
+            <img src="./images/vogelpers_2.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img src="" alt="" />
+            <img src="./images/vogelpers_2.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img src="" alt="" />
+            <img src="./images/vogelpers_2.jpg" alt="" />
         </picture>
         <picture class="big">
-            <enhanced:img src="" alt="" />
+            <img src="./images/vogelpers_2.jpg" alt="" />
         </picture>
         <picture class="tall">
-            <enhanced:img src="" alt="" />
+            <img src="./images/vogelpers_2.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img src="" alt="" />
+            <img src="./images/vogelpers_2.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img src="" alt="" />
+            <img src="./images/vogelpers_2.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <enhanced:img src="" alt="" />
+            <img src="./images/vogelpers_2.jpg" alt="" />
         </picture>
     </section>
 
