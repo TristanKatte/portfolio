@@ -40,7 +40,7 @@
   </section>
   
     <section class="about">
-        <img class="pic" alt="Foto van mij" src={Photo} />
+        <enhanced:img class="pic" alt="Foto van mij" src="$lib/assets/profielfoto-zw.jpg" />
     </section>
   </article>
   
