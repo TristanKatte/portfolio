@@ -11,7 +11,7 @@
 
             <a href="https://sprint-12-proof-of-concept-p6cy.onrender.com/" target="_blank">
                     <h3>Fresk.Digital</h3>    
-                <img class="bright" src="./images/fresk-digital.png" alt="">
+                <enhanced:img class="bright" src="/static/images/fresk-digital.png" alt="" />
             </a>
             <strong>NodeJS, EJS, Express</strong>
         </article>
@@ -20,7 +20,7 @@
 
             <a href="https://i-love-web-amber.vercel.app/" target="_blank">
                     <h3>Digital garden</h3>
-                <img class="align-top" src="./images/digital-garden.png" alt="">
+                <enhanced:img class="align-top" src="/static/images/digital-garden.png" alt="" />
             </a>
             <strong>Sveltekit, Markdown</strong>
         </article>
@@ -29,7 +29,7 @@
             
             <a href="https://your-tribe-for-life-profile-card-liart.vercel.app/" target="_blank">
                 <h3>Visitekaartje</h3>
-                <img src="./images/visitekaartje.png" alt="">
+                <enhanced:img src="/static/images/visitekaartje.png" alt="">
             </a>
             <div>     
                 <strong>NodeJS, EJS, Express</strong>
@@ -39,7 +39,7 @@
         <article class="project-card">        
             <a href="https://tristankatte.github.io/Brain-website/" target="_blank">
                 <h3>B-rain</h3>
-                <img class="align-top" src="./images/b-rain.png" alt="">
+                <enhanced:img class="align-top" src="/static/images/b-rain.png" alt="" />
             </a>
             <strong>HTML, CSS, JS</strong>
         </article>
@@ -47,7 +47,7 @@
         <article class=" project-card">
             <a href="https://redpers.agency.fdnd.nl/" target="_blank">
                 <h3>Redpers</h3>
-                <img src="./images/redpers.png" alt="">
+                <enhanced:img src="/static/images/redpers.png" alt="" />
             </a>
             <strong>Sveltekit, WPAPI</strong>
         </article>
@@ -56,7 +56,7 @@
            
             <a href="https://tristankatte.github.io/Informaat-opdracht/" target="_blank">
                 <h3>Informaat</h3>
-                <img src="./images/informaat.png" alt="">
+                <enhanced:img src="/static/images/informaat.png" alt="" />
             </a>
             <div> 
                 <strong>HTML, CSS</strong>
@@ -67,7 +67,7 @@
            
             <a href="https://tristankatte.github.io/Informaat-opdracht/" target="_blank">
                 <h3>Squad Page</h3>
-                <img src="./images/informaat.png" alt="">
+                <enhanced:img src="/static//images/informaat.png" alt="" />
             </a>
             <div> 
                 <strong>HTML, CSS</strong>
@@ -80,95 +80,95 @@
 
 <article class="other-works">
     <h3>Some other work I made</h3>
-    <section class="grid-wrapper">
+    <!-- <section class="grid-wrapper">
         <picture>
-            <img src="./images/spiegel_1.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/spiegel_1.jpg" alt="" />
         </picture>
         <picture>
-            <img src="./images/vogelpers_2.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/vogelpers_2.jpg" alt="" />
         </picture>
         <picture class="tall">
-            <img src="./images/texture_leaf.jpg" alt="">
+            <enhanced:img class="img" src="/static/images/texture_leaf.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <img src="./images/willekeurig_1.JPG" alt="" />
+            <enhanced:img class="img" src="/static/images/lp_hoes_3.jpg" alt="" />
         </picture>
         <picture>
-            <img src="./images/portret_max.JPG" alt="" />
+            <enhanced:img class="img" src="/static/images/vogelpers_4.jpg" alt="" />
         </picture>
         <picture class="tall">
-            <img src="./images/texture_gold.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/texture_gold.jpg" alt="" />
         </picture>
         <picture class="big">
-            <img src="./images/hdr_2.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/hdr_2.jpg" alt="" />
         </picture>
         <picture>
-            <img src="./images/kikvors_3.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/kikvors_3.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <img src="./images/hdr_haventje.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/hdr_haventje.jpg" alt="" />
         </picture>
         <picture class="big">
-            <img src="./images/hdr_3.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/hdr_3.jpg" alt="" />
         </picture>
         <picture class="tall">
-            <img src="./images/kikvors_1.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/kikvors_1.jpg" alt="" />
         </picture>
         <picture>
-            <img src="./images/lp_hoes_1.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/lp_hoes_1.jpg" alt="" />
         </picture>
         <picture>
-            <img src="./images/penrose.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/penrose.jpg" alt="" />
         </picture>
         <picture>
-            <img src="./images/perspectief_1.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/perspectief_1.jpg" alt="" />
         </picture>
         <picture>
-            <img src="./images/lp_hoes_2.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/lp_hoes_2.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <img src="./images/planeet.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/planeet.jpg" alt="" />
         </picture>
         <picture>
-            <img src="./images/kunst_1.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/kunst_1.jpg" alt="" />
         </picture>
         <picture>
-            <img src="./images/esthetiek_1.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/esthetiek_1.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <img src="./images/bloemen_2.JPG" alt="" />
+            <enhanced:img class="img" src="/static/images/web_banner.jpg" alt="" />
         </picture>
         <picture>
-            <img src="./images/fingerprint.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/fingerprint.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <img src="./images/kunst_3.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/kunst_3.jpg" alt="" />
         </picture>
         <picture class="big">
-            <img src="./images/esthetiek_3.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/esthetiek_3.jpg" alt="" />
         </picture>
         <picture>
-            <img src="./images/kikvors_2.jpg" alt="" />
+            <enhanced:img class="img" src="/static/images/kikvors_2.jpg" alt="" />
         </picture>
         <picture>
-            <img src="./images/kunst_2.jpg" alt="" />
+            <enhanced:img src="/static/images/kunst_2.jpg" alt="" />
         </picture>
         <picture class="big">
-            <img src="./images/texture_brick.jpg" alt="" />
+            <enhanced:img src="/static/images/texture_brick.jpg" alt="" />
         </picture>
         <picture class="tall">
-            <img src="./images/perspectief_2.jpg" alt="" />
+            <enhanced:img  src="/static/images/perspectief_2.jpg" alt="" />
         </picture>
         <picture>
-            <img src="./images/spiegel_2.jpg" alt="" />
+            <enhanced:img src="/static/images/spiegel_2.jpg" alt="" />
         </picture>
         <picture>
-            <img src="./images/perspectief_3.jpg" alt="" />
+            <enhanced:img src="/static/images/perspectief_3.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <img src="./images/spiegel_3.jpg" alt="" />
+            <enhanced:img src="/static/images/spiegel_3.jpg" alt="" />
         </picture>
-    </section>
+    </section> -->
 
     
 </article>
