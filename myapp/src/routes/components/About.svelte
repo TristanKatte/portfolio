@@ -153,7 +153,7 @@
     max-width: 75%;
     }
 
-    @media (min-width:30em) {
+    @media (max-width:30em) {
 
       .svg-line-class { 
         height: 120%; 
@@ -177,7 +177,7 @@
       }
 
       .skill {
-        width: 100%;
+        width: 10%;
         font-size: .8em;
       }
 
@@ -204,7 +204,7 @@
     }
       .all-skills {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: nowrap;
         justify-content: center;
         margin-top: 8em;
@@ -216,14 +216,21 @@
       }
 
       .skill {
-        width: 100%;
+        width: 100px;
         font-size: .8em;
       }
 
       .skills-frontend {
         display: flex;
-        justify-content: flex-start;
-        flex-flow: column;
+        align-content: flex-start;
+        align-items: flex-start;
+        gap: 20px 15px;
+      }
+
+      .skills-design {
+        display: flex;
+        align-content: flex-end;
+        align-items: flex-end;
       }
 
       .skills-graphic {

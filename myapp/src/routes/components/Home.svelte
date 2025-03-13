@@ -1,6 +1,5 @@
 <script>
   import About from './About.svelte';
-  import Photo from '$lib/assets/profielfoto-zw.jpg'
   import { onMount } from 'svelte';
 
 onMount(async () => {
@@ -32,20 +31,20 @@ onMount(async () => {
 
 <article class="home">
 <section class="home-content">
-  <h1>Hi, I'm Tristan</h1>
-  <h2>Frontend developer</h2>
+  <h2>About me</h2>
   <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.
      I am currently in my 2nd and last year at the study Frontend Design & Development at the Amsterdam University of Applied Sciences.
   </p>
-  <div class="btn-box">
     <a class="button"  href="/about" aria-label="More about me">More about me</a>
-    
-  </div>
+</section>
+<section>
+  <figure>
+    <enhanced:img class="pic img" alt="Foto van mij" src="$lib/assets/profielfoto-zw.jpg" />
+  </figure>
 </section>
 
-  <!-- <section class="about">
-      <img class="pic img" alt="Foto van mij" src="{Photo}" />
-  </section> -->
+
+
 </article>
 
 
@@ -63,6 +62,13 @@ main  {
     height: 100%;
   }
 
+
+figure {
+    border-radius: 20px;
+    width: 100%;
+    margin: auto;
+  }
+
 .home {
     display: flex;
     align-items: center;
@@ -74,7 +80,7 @@ main  {
   }
 
 .home-content {
-    max-width: 500px;
+    max-width: 600px;
     margin-right: 50px;
     font-family: 'alata', sans-serif;
     word-wrap: break-word;
@@ -82,14 +88,8 @@ main  {
     letter-spacing: .5em;
   }
 
-.home-content h1 {
-  color: var(--heading-color);
-  font-family: "Azonix";
-  font-weight: 700;
-  }
-
 .home-content h2 {
-  color: blue;
+  color: var(--btn-color);
   font-weight: 400;
   margin-bottom: 10px;
   font-family: "Azonix";
@@ -101,17 +101,6 @@ main  {
   line-height: 25px;
   letter-spacing: 2px;
   margin-bottom: 1.5em;
-  }
-
- .home-content .btn-box {
-  display: flex;
-  justify-content: space-evenly;
-  width:350px;
-  height: 50px;
-  }
-
-  .btn-box a {
-    margin-right: 2em;
   }
 
 .button {
@@ -143,7 +132,7 @@ main  {
   transform: scale(0.95);
   }
 
-@media (min-width: 30em) {
+@media (max-width: 30em) {
   main {
     display: flex;
     flex-direction: column;
@@ -190,12 +179,6 @@ main  {
 
   .home-content h2 {
     font-size: 24px;
-  }
-
-  .about {
-    display: flex;
-    justify-content: center;
-    width: 100%;
   }
 
   .pic {
@@ -249,15 +232,15 @@ article {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 100vh;
   width: 100%;
-  /* padding: 90px 90px; */
   font-family: 'alata', sans-serif;
 }
 
 .button {
   position: relative;
   padding: 15px 45px;
+  width: 100%;
   background: transparent;
   border-radius: 0 50px 0 50px;
   border: 2px solid #00c2cb;
@@ -298,11 +281,6 @@ width: 400px;
 border-radius: 18px;
 }
 
-.about {
-display: flex;
-align-items: center;
-justify-content: space-evenly;
-}
 
 .home-content {
   max-width: 800px;

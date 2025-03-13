@@ -1,5 +1,9 @@
 <script>
   import { onMount } from 'svelte';
+  import gsap from 'gsap';
+
+  let text = 'Hello World!';
+  let splitTextInstance;
   
   onMount(async () => {
     const { default: gsap } = await import('gsap');
@@ -33,7 +37,7 @@
 <main>
   <article class="timeline-section">
     <section class="journey">
-      <h2>My journey</h2>
+      <h2>About my journey</h2>
       <p>I am a frontend developer That likes to create cool, accessible and stunning web experiences for clients and their users.</p>
       
       <p>I've always been drawn to technology, and after exploring different creative fields
@@ -138,7 +142,7 @@
   .button:active{
     transform: scale(0.95);
     }
-    
+
   .timeline-section{
 	  background-color: transparent;
 	  min-height: 100vh;
