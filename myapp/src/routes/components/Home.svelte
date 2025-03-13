@@ -36,11 +36,11 @@
     <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.
        I am currently in my 2nd and last year at the study Frontend Design & Development at the Amsterdam University of Applied Sciences.
     </p>
-    <a class="button" href="/about" aria-label="More about me">More about me</a>
+    
   </section>
   
     <section class="about">
-        <enhanced:img class="pic" alt="Foto van mij" src="$lib/assets/profielfoto-zw.jpg"></enhanced:img>
+        <enhanced:img class="pic img" alt="Foto van mij" src="$lib/assets/profielfoto-zw.jpg">
     </section>
   </article>
   
@@ -56,13 +56,6 @@
     width: 100%;
     height: 100%;
       }
-  
-  img {
-    scale: 1;
-    border-radius: 12px;
-    border: 16px solid var(--heading-color);
-    border-style: ridge;
-    }
 
   article {
     display: flex;
@@ -70,7 +63,7 @@
     align-items: flex-start;
     flex-direction: row;
     height: 100%;
-    width: 100%;
+    width: 50%;
     padding: 90px 90px;
     font-family: 'alata', sans-serif;
     }
@@ -78,50 +71,25 @@
     .about-me {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
     height: 100%;
     width: 100%;
     padding: 90px 90px; 
     }
 
-  .button {
-    position: relative;
-    padding: 15px 45px;
-    width: 50%;
-    background: transparent;
-    border-radius: 0 50px 0 50px;
-    border: 2px solid #00c2cb;
-    outline: 2px solid #00c2cb;
-    outline-offset: -2px;
-    font-size: .95rem;
-    font-family: 'Orbitron Variable', sans-serif;
-    color: #00c2cb;
-    font-weight: 500;
-    text-decoration: none;
-    cursor: pointer;
-    transition: outline-offset 200ms ease;
-    }
-
-  .button:hover {
-    color: #e0ffff;
-    background-color: var(--heading-color);
-    outline-offset: 4px;
-    }
   
-  .button:active{
-    transform: scale(0.95);
-    }
 
   .about {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 45%;
-    flex-basis: 50%;
     }
 
   .text {
-    width: 45%;
+    max-width: 650px;
     margin-right: 50px;
     font-family: 'alata', sans-serif;
     word-wrap: break-word;
@@ -153,7 +121,7 @@
       flex-wrap: wrap;
     }
 
-    img {
+    .img {
       scale: 0.95;
       border-radius: 12px;
       border: 16px solid var(--heading-color);
@@ -206,42 +174,11 @@
       max-width: 300px;
       border-radius: 18px;
     }
-
-    .button {
-      position: relative;
-      display: block;
-      width: 50%;
-      padding: 15px 30px;
-      margin: auto;
-      background: transparent;
-      border-radius: 0 50px 0 50px;
-      border: 2px solid var(--btn-color);
-      outline: 2px solid var(--btn-color);
-      outline-offset: -2px;
-      font-size: .6rem;
-      font-family: 'Orbitron Variable', sans-serif;
-      color: #00c2cb;
-      font-weight: 200;
-      text-decoration: none;
-      text-align: center;
-      cursor: pointer;
-      transition: outline-offset 200ms ease;
-    }
-
-    .button:hover {
-      color: #e0ffff;
-      background-color: var(--heading-color);
-      outline-offset: 4px;
-    }
-  
-    .button:active{
-      transform: scale(0.95);
-    }
 }
 
 @media (min-width: 48em) {
 
-  img {
+  .img {
     scale: 1;
     border-radius: 12px;
     border: 16px solid var(--heading-color);
@@ -256,33 +193,6 @@
     width: 100%;
     /* padding: 90px 90px; */
     font-family: 'alata', sans-serif;
-  }
-
-  .button {
-    position: relative;
-    padding: 15px 45px;
-    background: transparent;
-    border-radius: 0 50px 0 50px;
-    border: 2px solid #00c2cb;
-    outline: 2px solid #00c2cb;
-    outline-offset: -2px;
-    font-size: .95rem;
-    font-family: 'Orbitron Variable', sans-serif;
-    color: #00c2cb;
-    font-weight: 500;
-    text-decoration: none;
-    cursor: pointer;
-    transition: outline-offset 200ms ease;
-  }
-
-  .button:hover {
-  color: #e0ffff;
-  background-color: var(--heading-color);
-  outline-offset: 4px;
-  }
-  
-  .button:active{
-  transform: scale(0.95);
   }
 
   .about-me {

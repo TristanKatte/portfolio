@@ -128,7 +128,7 @@
         color: white;
     }
 
-    @media screen and (max-width: 30em) {
+    @media screen and (min-width: 30em) {
 
         nav {
             z-index: 1;

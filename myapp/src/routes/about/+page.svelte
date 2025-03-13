@@ -55,6 +55,7 @@
       <p>
         Outside of coding, you’ll find me hiking in the mountains, experimenting with graphic design, or exploring the latest tech trends.
       </p>
+      <a class="button" href="/about" aria-label="More about me">My Resume</a>
       
   </section>
   </article>
@@ -109,6 +110,34 @@
 </main>
 
 <style>
+
+.button {
+    position: relative;
+    padding: 15px 45px;
+    width: 50%;
+    background: transparent;
+    border-radius: 0 50px 0 50px;
+    border: 2px solid #00c2cb;
+    outline: 2px solid #00c2cb;
+    outline-offset: -2px;
+    font-size: .95rem;
+    font-family: 'Orbitron Variable', sans-serif;
+    color: #00c2cb;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: outline-offset 200ms ease;
+    }
+
+  .button:hover {
+    color: #e0ffff;
+    background-color: var(--heading-color);
+    outline-offset: 4px;
+    }
+  
+  .button:active{
+    transform: scale(0.95);
+    }
   .timeline-section{
 	  background-color: transparent;
 	  min-height: 100vh;
