@@ -36,22 +36,32 @@
   }
 
   label {
+    display: flex;
     margin: 10px 0 5px;
     color: var(--txt-color);
+    font-family: 'alata', sans-serif;
+    letter-spacing: 3px;
+    justify-content: flex-start;
   }
 
   input, textarea {
     padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
+    margin-bottom: 1em;
     border-radius: 4px;
     color: var(--txt-color);
   }
 
+  input, textarea:focus-visible{
+    outline: 3px solid var(--btn-color);
+  }
+
+
+
   button {
+    margin-top: 2em;
     padding: 10px;
-    background-color: #00adb5;
-    color: var(--txt-color);
+    background-color: var(--btn-color);
+    color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;

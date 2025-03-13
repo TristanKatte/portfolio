@@ -138,6 +138,7 @@
   .button:active{
     transform: scale(0.95);
     }
+    
   .timeline-section{
 	  background-color: transparent;
 	  min-height: 100vh;

@@ -9,7 +9,7 @@ onMount(async () => {
   
   gsap.registerPlugin(ScrollTrigger);
   
-  gsap.utils.toArray('.about-me').forEach((item, index) => {
+  gsap.utils.toArray('.home').forEach((item, index) => {
 
     gsap.from(item, {
       scrollTrigger: {
@@ -30,18 +30,22 @@ onMount(async () => {
 
 <main>
 
-<article class="about-me">
-<section class="text ">
-  <h2>A little about me</h2>
+<article class="home">
+<section class="home-content">
+  <h1>Hi, I'm Tristan</h1>
+  <h2>Frontend developer</h2>
   <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.
      I am currently in my 2nd and last year at the study Frontend Design & Development at the Amsterdam University of Applied Sciences.
   </p>
-  <a class="button" href="/about" aria-label="More about me">More about me</a>
+  <div class="btn-box">
+    <a class="button"  href="/about" aria-label="More about me">More about me</a>
+    
+  </div>
 </section>
 
-  <section class="about">
-      <enhanced:img class="pic img" alt="Foto van mij" src="$lib/assets/profielfoto-zw.jpg" />
-  </section>
+  <!-- <section class="about">
+      <img class="pic img" alt="Foto van mij" src="{Photo}" />
+  </section> -->
 </article>
 
 
@@ -54,26 +58,60 @@ onMount(async () => {
 
 <style>
 
-main {
-  width: 100%;
-  height: 100%;
-    }
-
-.img {
-  scale: 1;
-  border-radius: 12px;
-  border: 16px solid var(--heading-color);
-  border-style: ridge;
+main  {
+    width: 100%;
+    height: 100%;
   }
 
-article {
+.home {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    font-family: 'alata', sans-serif;
+    padding: 0 10%;
+    background-size: cover;
+    background-position: center;
+  }
+
+.home-content {
+    max-width: 500px;
+    margin-right: 50px;
+    font-family: 'alata', sans-serif;
+    word-wrap: break-word;
+    line-height: 1.6;
+    letter-spacing: .5em;
+  }
+
+.home-content h1 {
+  color: var(--heading-color);
+  font-family: "Azonix";
+  font-weight: 700;
+  }
+
+.home-content h2 {
+  color: blue;
+  font-weight: 400;
+  margin-bottom: 10px;
+  font-family: "Azonix";
+  }
+
+.home-content p {
+  color: var(--txt-color);
+  font-size: 16px;
+  line-height: 25px;
+  letter-spacing: 2px;
+  margin-bottom: 1.5em;
+  }
+
+ .home-content .btn-box {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  padding: 90px 90px;
-  font-family: 'alata', sans-serif;
+  justify-content: space-evenly;
+  width:350px;
+  height: 50px;
+  }
+
+  .btn-box a {
+    margin-right: 2em;
   }
 
 .button {
@@ -90,6 +128,7 @@ article {
   color: #00c2cb;
   font-weight: 500;
   text-decoration: none;
+  text-align: center;
   cursor: pointer;
   transition: outline-offset 200ms ease;
   }
@@ -102,52 +141,6 @@ article {
 
 .button:active{
   transform: scale(0.95);
-  }
-
-.about-me {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  padding: 90px 90px; 
-  }
-
-.pic {
-  height: auto;
-  width: 400px;
-  border-radius: 18px;
-  }
-
-.about {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  }
-
-.text {
-  max-width: 800px;
-  margin-right: 50px;
-  font-family: 'alata', sans-serif;
-  word-wrap: break-word;
-  line-height: 1.6;
-  letter-spacing: .5em;
-  }
-
-.text h2 {
-  color: var(--heading-color);
-  font-weight: 400;
-  margin-bottom: 10px;
-  font-family: "Azonix";
-  }
-
-
-.text p {
-  color: var(--txt-color);
-  font-size: 18px;
-  line-height: 25px;
-  letter-spacing: 2px;
-  margin-bottom: 1.5em;
   }
 
 @media (min-width: 30em) {
@@ -175,7 +168,7 @@ article {
     font-family: 'alata', sans-serif;
   }
   
-  .about-me {
+  .home {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -185,17 +178,17 @@ article {
     padding: 20px;
   }
 
-  .text {
+  .home-content {
     margin-bottom: 30px;
     margin-right: 0;
     text-align: left;
   }
 
-  .text p {
+  .home-content p {
     font-family: 'alata', sans-serif;
   }
 
-  .text h2 {
+  .home-content h2 {
     font-size: 24px;
   }
 
@@ -289,7 +282,7 @@ outline-offset: 4px;
 transform: scale(0.95);
 }
 
-.about-me {
+.home {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -311,7 +304,7 @@ align-items: center;
 justify-content: space-evenly;
 }
 
-.text {
+.home-content {
   max-width: 800px;
   margin-right: 50px;
   font-family: "Nunito", sans-serif;
@@ -320,7 +313,7 @@ justify-content: space-evenly;
   letter-spacing: .5em;
 }
 
-.text h2 {
+.home-content h2 {
 color: var(--heading-color);
 font-weight: 400;
 margin-bottom: 10px;
@@ -328,7 +321,7 @@ font-family: "Azonix";
 }
 
 
-.text p {
+.home-content p {
 color: var(--txt-color);
 font-size: 18px;
 line-height: 25px;
