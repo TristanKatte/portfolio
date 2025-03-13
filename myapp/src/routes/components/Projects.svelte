@@ -81,95 +81,95 @@
 
 <article class="other-works">
     <h3>Some other work I made</h3>
-    <!-- <section class="grid-wrapper">
+    <section class="grid-wrapper">
         <picture>
-            <enhanced:img class="img" src="/static/images/spiegel_1.jpg" alt="" />
+            <img class="img" src="/images/spiegel_1.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img class="img" src="/static/images/vogelpers_2.jpg" alt="" />
+            <img class="img" src="/images/vogelpers_2.jpg" alt="" />
         </picture>
         <picture class="tall">
-            <enhanced:img class="img" src="/static/images/texture_leaf.jpg" alt="" />
+            <img class="img" src="/images/texture_leaf.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <enhanced:img class="img" src="/static/images/lp_hoes_3.jpg" alt="" />
+            <img class="img" src="/images/lp_hoes_3.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img class="img" src="/static/images/vogelpers_4.jpg" alt="" />
+            <img class="img" src="/images/vogelpers_4.jpg" alt="" />
         </picture>
         <picture class="tall">
-            <enhanced:img class="img" src="/static/images/texture_gold.jpg" alt="" />
+            <img class="img" src="/images/texture_gold.jpg" alt="" />
         </picture>
         <picture class="big">
-            <enhanced:img class="img" src="/static/images/hdr_2.jpg" alt="" />
+            <img class="img" src="/images/hdr_2.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img class="img" src="/static/images/kikvors_3.jpg" alt="" />
+            <img class="img" src="/images/kikvors_3.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <enhanced:img class="img" src="/static/images/hdr_haventje.jpg" alt="" />
+            <img class="img" src="/images/hdr_haventje.jpg" alt="" />
         </picture>
         <picture class="big">
-            <enhanced:img class="img" src="/static/images/hdr_3.jpg" alt="" />
+            <img class="img" src="/images/hdr_3.jpg" alt="" />
         </picture>
         <picture class="tall">
-            <enhanced:img class="img" src="/static/images/kikvors_1.jpg" alt="" />
+            <img class="img" src="/images/kikvors_1.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img class="img" src="/static/images/lp_hoes_1.jpg" alt="" />
+            <img class="img" src="/images/lp_hoes_1.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img class="img" src="/static/images/penrose.jpg" alt="" />
+            <img class="img" src="/images/penrose.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img class="img" src="/static/images/perspectief_1.jpg" alt="" />
+            <img class="img" src="/images/perspectief_1.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img class="img" src="/static/images/lp_hoes_2.jpg" alt="" />
+            <img class="img" src="/images/lp_hoes_2.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <enhanced:img class="img" src="/static/images/planeet.jpg" alt="" />
+            <img class="img" src="/images/planeet.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img class="img" src="/static/images/kunst_1.jpg" alt="" />
+            <img class="img" src="/images/kunst_1.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img class="img" src="/static/images/esthetiek_1.jpg" alt="" />
+            <img class="img" src="/images/esthetiek_1.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <enhanced:img class="img" src="/static/images/web_banner.jpg" alt="" />
+            <img class="img" src="/images/web_banner.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img class="img" src="/static/images/fingerprint.jpg" alt="" />
+            <img class="img" src="/images/fingerprint.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <enhanced:img class="img" src="/static/images/kunst_3.jpg" alt="" />
+            <img class="img" src="/images/kunst_3.jpg" alt="" />
         </picture>
         <picture class="big">
-            <enhanced:img class="img" src="/static/images/esthetiek_3.jpg" alt="" />
+            <img class="img" src="/images/esthetiek_3.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img class="img" src="/static/images/kikvors_2.jpg" alt="" />
+            <img class="img" src="/images/kikvors_2.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img src="/static/images/kunst_2.jpg" alt="" />
+            <img src="/images/kunst_2.jpg" alt="" />
         </picture>
         <picture class="big">
-            <enhanced:img src="/static/images/texture_brick.jpg" alt="" />
+            <img src="/images/texture_brick.jpg" alt="" />
         </picture>
         <picture class="tall">
-            <enhanced:img  src="/static/images/perspectief_2.jpg" alt="" />
+            <img  src="/images/perspectief_2.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img src="/static/images/spiegel_2.jpg" alt="" />
+            <img src="/images/spiegel_2.jpg" alt="" />
         </picture>
         <picture>
-            <enhanced:img src="/static/images/perspectief_3.jpg" alt="" />
+            <img src="/images/perspectief_3.jpg" alt="" />
         </picture>
         <picture class="wide">
-            <enhanced:img src="/static/images/spiegel_3.jpg" alt="" />
+            <img src="/images/spiegel_3.jpg" alt="" />
         </picture>
-    </section> -->
+    </section>
 
     
     
@@ -228,6 +228,35 @@
 	display: inline-block;
 }
 
+.grid-wrapper > picture {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.grid-wrapper > picture > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 5px;
+}
+
+.grid-wrapper {
+	display: grid;
+	grid-gap: 10px;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	grid-auto-rows: 200px;
+	grid-auto-flow: dense;
+}
+.grid-wrapper .wide {
+	grid-column: span 2;
+}
+.grid-wrapper .tall {
+	grid-row: span 2;
+}
+.grid-wrapper .big {
+	grid-column: span 2;
+	grid-row: span 2;
+}
 
 
 

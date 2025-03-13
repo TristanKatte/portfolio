@@ -31,7 +31,7 @@
 <main>
 
 <article class="about-me">
-  <section class="text ">
+  <section class="text">
     <h2>A little about me</h2>
     <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.
        I am currently in my 2nd and last year at the study Frontend Design & Development at the Amsterdam University of Applied Sciences.
@@ -40,12 +40,10 @@
   </section>
   
     <section class="about">
-        <enhanced:img class="pic img" alt="Foto van mij" src="$lib/assets/profielfoto-zw.jpg" />
+        <enhanced:img class="pic" alt="Foto van mij" src="$lib/assets/profielfoto-zw.jpg"></enhanced:img>
     </section>
   </article>
   
- 
- 
   <article>
     <About />
   </article>
@@ -59,7 +57,7 @@
     height: 100%;
       }
   
-  .img {
+  img {
     scale: 1;
     border-radius: 12px;
     border: 16px solid var(--heading-color);
@@ -69,11 +67,21 @@
   article {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    flex-direction: row;
     height: 100%;
     width: 100%;
     padding: 90px 90px;
     font-family: 'alata', sans-serif;
+    }
+
+    .about-me {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    width: 100%;
+    padding: 90px 90px; 
     }
 
   .button {
@@ -104,29 +112,16 @@
     transform: scale(0.95);
     }
 
-  .about-me {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    padding: 90px 90px; 
-    }
-  
-  .pic {
-    height: auto;
-    width: 400px;
-    border-radius: 18px;
-    }
-
   .about {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
+    width: 45%;
+    flex-basis: 50%;
     }
 
   .text {
-    max-width: 800px;
+    width: 45%;
     margin-right: 50px;
     font-family: 'alata', sans-serif;
     word-wrap: break-word;
@@ -158,7 +153,7 @@
       flex-wrap: wrap;
     }
 
-    .img {
+    img {
       scale: 0.95;
       border-radius: 12px;
       border: 16px solid var(--heading-color);
@@ -207,14 +202,15 @@
 
     .pic {
       height: auto;
-      width: 100%;
+      width: auto;
       max-width: 300px;
       border-radius: 18px;
     }
 
     .button {
       position: relative;
-      width: 100%;
+      display: block;
+      width: 50%;
       padding: 15px 30px;
       margin: auto;
       background: transparent;
@@ -222,10 +218,10 @@
       border: 2px solid var(--btn-color);
       outline: 2px solid var(--btn-color);
       outline-offset: -2px;
-      font-size: 1rem;
+      font-size: .6rem;
       font-family: 'Orbitron Variable', sans-serif;
       color: #00c2cb;
-      font-weight: 300;
+      font-weight: 200;
       text-decoration: none;
       text-align: center;
       cursor: pointer;
@@ -245,7 +241,7 @@
 
 @media (min-width: 48em) {
 
-  .img {
+  img {
     scale: 1;
     border-radius: 12px;
     border: 16px solid var(--heading-color);
@@ -340,10 +336,6 @@
 
 @media (min-width: 62em) {
   
-}
-
-@media (min-width: 75em) {
-
 }
 
 </style>
