@@ -35,8 +35,27 @@
 
 
 <main>
+
+  <article class="about-me">
+    <h1>About Me</h1>
+    <p>Hello! I'm [Your Name], a [Your Profession/Student/Enthusiast] with a passion for [Your Interests].</p>
+    <p>I'm excited to share my story with you, and I hope you'll find something that resonates with you.</p>
+    <section>
+      <h2>My Background</h2>
+      <p>[ Briefly describe your background, education, and relevant experience ]</p>
+    </section>
+    <section>
+      <h2>My Interests</h2>
+      <p>[ Describe your hobbies, interests, or passions outside of work/school ]</p>
+    </section>
+    <section>
+      <h2>Get in Touch</h2>
+      <p>If you'd like to connect, you can find me on [Your Social Media Platforms] or email me at [Your Email Address].</p>
+    </section>
+  </article>
+
   <article class="timeline-section">
-    <section class="journey">
+    <!-- <section class="journey">
       <h2>About my journey</h2>
       <p>I am a frontend developer That likes to create cool, accessible and stunning web experiences for clients and their users.</p>
       
@@ -61,7 +80,7 @@
       </p>
       <a class="button" href="/about" aria-label="More about me">My Resume</a>
       
-  </section>
+  </section> -->
   </article>
   
   <section class="timeline-section">
@@ -114,6 +133,15 @@
 </main>
 
 <style>
+
+  .about-me {
+    background-color: transparent;
+	  min-height: 100vh;
+	  padding: 100px 15px;
+    z-index: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
 
 .button {
     position: relative;
