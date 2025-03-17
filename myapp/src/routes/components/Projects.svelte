@@ -1,4 +1,6 @@
 <script>
+    
+    
 
 
 
@@ -87,32 +89,32 @@
     
     <section class="grid-wrapper">
         
-            <img class="img" src="/images/spiegel_1.jpg" alt="" />
-            <img class="img" src="/images/vogelpers_2.jpg" alt="" />
-            <img class="img" src="/images/texture_leaf.jpg" alt="" />
-            <img class="img" src="/images/lp_hoes_3.jpg" alt="" />
-            <img class="img" src="/images/vogelpers_4.jpg" alt="" />
-            <img class="img" src="/images/texture_gold.jpg" alt="" /> 
-            <img class="img" src="/images/hdr_2.jpg" alt="" />
-            <img class="img" src="/images/kikvors_3.jpg" alt="" />
-            <img class="img" src="/images/hdr_haventje.jpg" alt="" />
-            <img class="img" src="/images/hdr_3.jpg" alt="" />
-            <img class="img" src="/images/kikvors_1.jpg" alt="" />
-            <img class="img" src="/images/lp_hoes_1.jpg" alt="" />
-            <img class="img" src="/images/penrose.jpg" alt="" />
-            <img class="img" src="/images/perspectief_1.jpg" alt="" />
-            <img class="img" src="/images/lp_hoes_2.jpg" alt="" />
-            <img class="img" src="/images/planeet.jpg" alt="" />
-            <img class="img" src="/images/kunst_1.jpg" alt="" />
-            <img class="img" src="/images/esthetiek_1.jpg" alt="" />
-            <img class="img" src="/images/web_banner.jpg" alt="" />
-            <img class="img" src="/images/fingerprint.jpg" alt="" />      
-            <img class="img" src="/images/kunst_3.jpg" alt="" />     
-            <img class="img" src="/images/esthetiek_3.jpg" alt="" />
-            <img class="img" src="/images/kikvors_2.jpg" alt="" />
+            <img src="/images/spiegel_1.jpg" alt="" />
+            <img src="/images/vogelpers_2.jpg" alt="" />
+            <img src="/images/texture_leaf.jpg" alt="" />
+            <img src="/images/lp_hoes_3.jpg" alt="" />
+            <img src="/images/vogelpers_4.jpg" alt="" />
+            <img src="/images/texture_gold.jpg" alt="" /> 
+            <img src="/images/hdr_2.jpg" alt="" />
+            <img src="/images/kikvors_3.jpg" alt="" />
+            <img src="/images/hdr_haventje.jpg" alt="" />
+            <img src="/images/hdr_3.jpg" alt="" />
+            <img src="/images/kikvors_1.jpg" alt="" />
+            <img src="/images/lp_hoes_1.jpg" alt="" />
+            <img src="/images/penrose.jpg" alt="" />
+            <img src="/images/perspectief_1.jpg" alt="" />
+            <img src="/images/lp_hoes_2.jpg" alt="" />
+            <img src="/images/planeet.jpg" alt="" />
+            <img src="/images/kunst_1.jpg" alt="" />
+            <img src="/images/esthetiek_1.jpg" alt="" />
+            <img src="/images/web_banner.jpg" alt="" />
+            <img src="/images/fingerprint.jpg" alt="" />      
+            <img src="/images/kunst_3.jpg" alt="" />     
+            <img src="/images/esthetiek_3.jpg" alt="" />
+            <img src="/images/kikvors_2.jpg" alt="" />
             <img src="/images/kunst_2.jpg" alt="" />
             <img src="/images/texture_brick.jpg" alt="" />
-            <img  src="/images/perspectief_2.jpg" alt="" />
+            <img src="/images/perspectief_2.jpg" alt="" />
             <img src="/images/spiegel_2.jpg" alt="" />
             <img src="/images/perspectief_3.jpg" alt="" />
             <img src="/images/spiegel_3.jpg" alt="" />
