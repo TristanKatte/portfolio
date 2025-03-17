@@ -1,6 +1,9 @@
 <script>
 
 
+
+
+
 </script>
 
 <article>
@@ -81,94 +84,39 @@
 
 <article class="other-works">
     <h3>Some other work I made</h3>
+    
     <section class="grid-wrapper">
-        <picture>
+        
             <img class="img" src="/images/spiegel_1.jpg" alt="" />
-        </picture>
-        <picture>
             <img class="img" src="/images/vogelpers_2.jpg" alt="" />
-        </picture>
-        <picture class="tall">
             <img class="img" src="/images/texture_leaf.jpg" alt="" />
-        </picture>
-        <picture class="wide">
             <img class="img" src="/images/lp_hoes_3.jpg" alt="" />
-        </picture>
-        <picture>
             <img class="img" src="/images/vogelpers_4.jpg" alt="" />
-        </picture>
-        <picture class="tall">
-            <img class="img" src="/images/texture_gold.jpg" alt="" />
-        </picture>
-        <picture class="big">
+            <img class="img" src="/images/texture_gold.jpg" alt="" /> 
             <img class="img" src="/images/hdr_2.jpg" alt="" />
-        </picture>
-        <picture>
             <img class="img" src="/images/kikvors_3.jpg" alt="" />
-        </picture>
-        <picture class="wide">
             <img class="img" src="/images/hdr_haventje.jpg" alt="" />
-        </picture>
-        <picture class="big">
             <img class="img" src="/images/hdr_3.jpg" alt="" />
-        </picture>
-        <picture class="tall">
             <img class="img" src="/images/kikvors_1.jpg" alt="" />
-        </picture>
-        <picture>
             <img class="img" src="/images/lp_hoes_1.jpg" alt="" />
-        </picture>
-        <picture>
             <img class="img" src="/images/penrose.jpg" alt="" />
-        </picture>
-        <picture>
             <img class="img" src="/images/perspectief_1.jpg" alt="" />
-        </picture>
-        <picture>
             <img class="img" src="/images/lp_hoes_2.jpg" alt="" />
-        </picture>
-        <picture class="wide">
             <img class="img" src="/images/planeet.jpg" alt="" />
-        </picture>
-        <picture>
             <img class="img" src="/images/kunst_1.jpg" alt="" />
-        </picture>
-        <picture>
             <img class="img" src="/images/esthetiek_1.jpg" alt="" />
-        </picture>
-        <picture class="wide">
             <img class="img" src="/images/web_banner.jpg" alt="" />
-        </picture>
-        <picture>
-            <img class="img" src="/images/fingerprint.jpg" alt="" />
-        </picture>
-        <picture class="wide">
-            <img class="img" src="/images/kunst_3.jpg" alt="" />
-        </picture>
-        <picture class="big">
+            <img class="img" src="/images/fingerprint.jpg" alt="" />      
+            <img class="img" src="/images/kunst_3.jpg" alt="" />     
             <img class="img" src="/images/esthetiek_3.jpg" alt="" />
-        </picture>
-        <picture>
             <img class="img" src="/images/kikvors_2.jpg" alt="" />
-        </picture>
-        <picture>
             <img src="/images/kunst_2.jpg" alt="" />
-        </picture>
-        <picture class="big">
             <img src="/images/texture_brick.jpg" alt="" />
-        </picture>
-        <picture class="tall">
             <img  src="/images/perspectief_2.jpg" alt="" />
-        </picture>
-        <picture>
             <img src="/images/spiegel_2.jpg" alt="" />
-        </picture>
-        <picture>
             <img src="/images/perspectief_3.jpg" alt="" />
-        </picture>
-        <picture class="wide">
             <img src="/images/spiegel_3.jpg" alt="" />
-        </picture>
+        
     </section>
 
     
@@ -222,67 +170,16 @@
     }
 
     img {
-	max-width: 100%;
-	height: auto;
-	vertical-align: middle;
-	display: inline-block;
-}
-
-.grid-wrapper > picture {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-.grid-wrapper > picture > img {
 	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	border-radius: 5px;
+    margin-bottom: 1rem;
+    transform-style: preserve-3d;
 }
 
 .grid-wrapper {
-	display: grid;
-	grid-gap: 10px;
-	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	grid-auto-rows: 200px;
-	grid-auto-flow: dense;
-}
-.grid-wrapper .wide {
-	grid-column: span 2;
-}
-.grid-wrapper .tall {
-	grid-row: span 2;
-}
-.grid-wrapper .big {
-	grid-column: span 2;
-	grid-row: span 2;
+    columns: 300px;
+    padding: 2em;
 }
 
 
 
-    @media (max-width: 768px) {
-        h2 {
-            font-size: 1.8rem;
-        }
-
-        .projects-grid {
-            flex-direction: column;
-            align-items: stretch;
-        }
-
-        .project-card {
-            padding: 1rem;
-            max-width: none;
-        }
-    }
-
-    @media (max-width: 480px) {
-        h2 {
-            font-size: 1.5rem;
-        }
-
-        .project-card h3 {
-            font-size: 1.3rem;
-        }
-    }
 </style>

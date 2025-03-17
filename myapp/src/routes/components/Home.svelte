@@ -1,5 +1,4 @@
 <script>
-  import About from './About.svelte';
   import { onMount } from 'svelte';
 
 onMount(async () => {
@@ -30,6 +29,11 @@ onMount(async () => {
 <main>
 
 <article class="home">
+  <section>
+    <figure>
+      <enhanced:img class="pic img" alt="Foto van mij" src="$lib/assets/profielfoto-zw.jpg" />
+    </figure>
+  </section>
 <section class="home-content">
   <h2>About me</h2>
   <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.
@@ -37,20 +41,7 @@ onMount(async () => {
   </p>
     <a class="button"  href="/about" aria-label="More about me">More about me</a>
 </section>
-<section>
-  <figure>
-    <enhanced:img class="pic img" alt="Foto van mij" src="$lib/assets/profielfoto-zw.jpg" />
-  </figure>
-</section>
 
-
-
-</article>
-
-
-
-<article>
-  <About />
 </article>
 </main>
 
@@ -62,7 +53,6 @@ main  {
     height: 100%;
   }
 
-
 figure {
     border-radius: 20px;
     width: 100%;
@@ -73,7 +63,6 @@ figure {
     display: flex;
     align-items: center;
     height: 100vh;
-    font-family: 'alata', sans-serif;
     padding: 0 10%;
     background-size: cover;
     background-position: center;
@@ -309,12 +298,5 @@ margin-bottom: 1.5em;
 
 }
 
-@media (min-width: 62em) {
-
-}
-
-@media (min-width: 75em) {
-
-}
 
 </style>

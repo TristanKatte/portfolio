@@ -157,7 +157,7 @@ onMount(async () => {
   @media (max-width:30em) {
 
     .svg-line-class { 
-      height: 120%; 
+      height: 100%; 
       top: -10%; 
   }
     .all-skills {
@@ -169,16 +169,16 @@ onMount(async () => {
     }
 
     .skillset {
-      width: 100%;
+      width: 50%;
     }
 
     .all-skills {
-      width: 100%;
+      width: 40%;
       flex-flow: row;
     }
 
     .skill {
-      width: 100%;
+      width: 20%;
       font-size: .8em;
     }
 

@@ -23,7 +23,7 @@
         });
     });
 </script>
-
+<link rel="stylesheet" href="/css/styles.css">
 
 
 <div class="layout">
@@ -46,8 +46,6 @@
     background-color: #000000;
     background-image: linear-gradient(147deg, #434343 0%,  #000000 74%);
 }
-
-
 
 main {
     padding-block: var(--size-0);
