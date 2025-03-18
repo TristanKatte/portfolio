@@ -372,7 +372,7 @@ border-radius: 18px;
   }
 }
 
-@media(min-width: 48em){
+@media(max-width: 48em){
 	.timeline-items::before{
 		left: 7px;
 	}
