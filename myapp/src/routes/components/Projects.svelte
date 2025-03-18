@@ -73,7 +73,7 @@
            
             <a href="https://tristankatte.github.io/Informaat-opdracht/" target="_blank">
                 <h3>Squad Page</h3>
-                <enhanced:img src="/static//images/informaat.png" alt="" />
+                <enhanced:img src="/static/images/squadpage.png" alt="" />
             </a>
             <div> 
                 <strong>HTML, CSS</strong>
