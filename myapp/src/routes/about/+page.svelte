@@ -372,8 +372,7 @@ border-radius: 18px;
   }
 }
 
-/* responsive */
-@media(max-width: 767px){
+@media(min-width: 48em){
 	.timeline-items::before{
 		left: 7px;
 	}

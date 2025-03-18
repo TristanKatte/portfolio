@@ -217,6 +217,12 @@ figure {
   border-style: ridge;
 }
 
+figure {
+    border-radius: 20px;
+    width: 100%;
+    margin: auto
+}
+
 article {
   display: flex;
   justify-content: center;
@@ -229,7 +235,7 @@ article {
 .button {
   position: relative;
   padding: 15px 45px;
-  width: 100%;
+  width: 10%;
   background: transparent;
   border-radius: 0 50px 0 50px;
   border: 2px solid #00c2cb;
@@ -268,16 +274,18 @@ transform: scale(0.95);
 height: auto;
 width: 400px;
 border-radius: 18px;
+margin-right: 3.5em;
 }
 
 
 .home-content {
-  max-width: 800px;
+  max-width: 600px;
   margin-right: 50px;
   font-family: "Nunito", sans-serif;
   word-wrap: break-word;
   line-height: 1.6;
   letter-spacing: .5em;
+  margin-left: 3.5em;
 }
 
 .home-content h2 {
