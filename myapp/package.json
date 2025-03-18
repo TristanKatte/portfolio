@@ -22,6 +22,7 @@
 		"@fontsource-variable/orbitron": "^5.1.1",
 		"@fontsource/alata": "^5.1.2",
 		"@rodneylab/svelte-social-icons": "^0.0.31",
+		"bigger-picture": "^1.1.19",
 		"gsap": "^3.12.7",
 		"open-props": "^1.7.12",
 		"particlesjs": "^2.2.3",
