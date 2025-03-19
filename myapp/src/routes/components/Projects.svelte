@@ -86,9 +86,9 @@
 
 <article class="other-works">
     <h3>Some other work I made</h3>
-    
     <section class="grid-wrapper">
-        
+    <div class="columns">
+        <div class="column column-reverse">            
             <img src="/images/spiegel_1.jpg" alt="" />
             <img src="/images/vogelpers_2.jpg" alt="" />
             <img src="/images/texture_leaf.jpg" alt="" />
@@ -98,7 +98,8 @@
             <img src="/images/hdr_2.jpg" alt="" />
             <img src="/images/kikvors_3.jpg" alt="" />
             <img src="/images/hdr_haventje.jpg" alt="" />
-            <img src="/images/hdr_3.jpg" alt="" />
+            <img src="/images/hdr_3.jpg" alt="" /></div>
+        <div class="column">
             <img src="/images/kikvors_1.jpg" alt="" />
             <img src="/images/lp_hoes_1.jpg" alt="" />
             <img src="/images/penrose.jpg" alt="" />
@@ -108,7 +109,9 @@
             <img src="/images/kunst_1.jpg" alt="" />
             <img src="/images/esthetiek_1.jpg" alt="" />
             <img src="/images/web_banner.jpg" alt="" />
-            <img src="/images/fingerprint.jpg" alt="" />      
+            <img src="/images/fingerprint.jpg" alt="" />  
+        </div>
+        <div class="column column-reverse">
             <img src="/images/kunst_3.jpg" alt="" />     
             <img src="/images/esthetiek_3.jpg" alt="" />
             <img src="/images/kikvors_2.jpg" alt="" />
@@ -118,11 +121,9 @@
             <img src="/images/spiegel_2.jpg" alt="" />
             <img src="/images/perspectief_3.jpg" alt="" />
             <img src="/images/spiegel_3.jpg" alt="" />
-        
+        </div>
+    </div> 
     </section>
-
-    
-    
 </article>
 
 <style>
@@ -171,16 +172,84 @@
         margin-bottom: 1rem;
     }
 
+    .project-card a {
+        text-decoration: none;
+    }
+
     img {
 	width: 100%;
     margin-bottom: 1rem;
     transform-style: preserve-3d;
 }
 
+/* .other-works {
+    animation: fade-in linear;
+    animation-timeline: view();
+} */
+ 
 .grid-wrapper {
     columns: 300px;
     padding: 2em;
+    display: flex;
+    justify-content: center;
 }
+
+@keyframes fade-in {
+    from { opacity:0;}
+    to { opacity: 1;}
+}
+
+.columns {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+    
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+    margin: .6em;
+}
+
+.column-reverse {
+	transform: translateY(calc(-100% + 100vh));
+}
+
+.columns {
+	overflow-y: hidden;
+}
+
+.column-reverse {
+	flex-direction: column-reverse;
+}
+
+@keyframes adjust-position {
+	/* Start position: shift entire column up, but not so that it goes out of view */
+	from {
+		transform: translateY(calc(-100% + 100vh));
+	}
+
+	/* End position: shift entire column down, but not so that it goes out of view */
+	to {
+		transform: translateY(calc(100% - 100vh));
+	}
+}
+
+.column-reverse {
+	animation: adjust-position linear forwards;
+	animation-timeline: scroll(root block);
+}
+
+/* .grid-wrapper > img {
+    animation: fade-in linear;
+    animation-timeline: view();
+
+}
+
+@keyframes fade-in {
+    from {scale:.8; opacity: .5;}
+    to { scale:1; opacity: 1;}
+} */
 
 
 

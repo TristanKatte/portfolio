@@ -31,7 +31,7 @@
 </svelte:head>
 
 
-<main>
+<main class="relative flex justify-center items-center">
   <article class="timeline-section">
     <section>
       <figure>
