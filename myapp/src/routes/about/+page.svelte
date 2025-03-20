@@ -31,12 +31,13 @@
 </svelte:head>
 
 
-<main class="relative flex justify-center items-center">
+<main>
   <article class="timeline-section">
     <section>
       <figure>
         <enhanced:img class="pic img" alt="Foto van mij" src="$lib/assets/profielfoto-zw.jpg" />
       </figure>
+    
     </section>
     <section class="journey">
       <h2>About me</h2>
@@ -44,7 +45,7 @@
       
       <p>I've always been drawn to technology, and after exploring different creative fields
         I found my passion in coding. I started with Html and CSS in a study back in 2016 and from 2018 to 2022,
-        I dived into learning Wordpress.
+        I dived into learning Webdesign.
       </p>
       
       <p>
@@ -66,7 +67,6 @@
         Outside of coding, you’ll find me in the gym, playing video games, experimenting with graphic design, or exploring the latest tech trends.
       </p>
       <a class="button" href="/curriculum_vitae-1.pdf" aria-label="My Resume" target="_blank">My Resume</a>
-      
   </section>
 
   </article>
@@ -113,6 +113,14 @@
         <div class="timeline-content">
           <h3>Current study</h3>
           <p>Currently enrolled in advanced studies focusing on frontend development, honing my skills in modern frameworks and design systems. </p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">february 2025 - april 2025</div>
+        <div class="timeline-content">
+          <h3>1st Internship</h3>
+          <p>My first internship from my study, where I learned to use Microsoft PowerBI and visualize data. </p>
         </div>
       </div>
     </div>
@@ -260,6 +268,12 @@ article {
   word-wrap: break-word;
   line-height: 1.6;
   letter-spacing: .1em;
+
+}
+
+@keyframes fade-in {
+    from { opacity: .5;}
+    to {  opacity: 1;}
 }
 
 
@@ -274,6 +288,7 @@ article {
 height: auto;
 width: 450px;
 border-radius: 18px;
+margin-right: 3.5em;
 
 }
 
@@ -286,6 +301,8 @@ border-radius: 18px;
 .journey p {
   color: var(--txt-color);
   margin-bottom: 1.8em;
+  animation: fade-in ease-in-out 1s;
+  animation-timeline: scroll()
 }
 
 @media(max-width:30em){

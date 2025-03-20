@@ -11,10 +11,8 @@
 <article>
 <section>
     <h2>My Projects</h2>
-    <div class="projects-grid">
+    <section class="projects-grid">
         <article class="project-card">
-            <section>
-
             <a href="https://sprint-12-proof-of-concept-p6cy.onrender.com/" target="_blank">
                     <h3>Fresk.Digital</h3>    
                 <enhanced:img class="bright" src="/static/images/fresk-digital.png" alt="" />
@@ -23,7 +21,6 @@
         </article>
         
         <article class="project-card">
-
             <a href="https://i-love-web-amber.vercel.app/" target="_blank">
                     <h3>Digital garden</h3>
                 <enhanced:img class="align-top" src="/static/images/digital-garden.png" alt="" />
@@ -32,7 +29,6 @@
         </article>
         
         <article class="project-card">
-            
             <a href="https://your-tribe-for-life-profile-card-liart.vercel.app/" target="_blank">
                 <h3>Visitekaartje</h3>
                 <enhanced:img src="/static/images/visitekaartje.png" alt="">
@@ -70,7 +66,6 @@
         </article>
 
                 <article class="project-card">
-           
             <a href="https://ebok1.github.io/your-tribe-squad-page/" target="_blank">
                 <h3>Squad Page</h3>
                 <enhanced:img src="/static/images/squadpage.png" alt="" />
@@ -79,9 +74,20 @@
                 <strong>HTML, CSS</strong>
             </div>
         </article>
+
+                <article class="project-card">
+           
+            <a href="https://ebok1.github.io/your-tribe-squad-page/" target="_blank">
+                <h3>prototype website</h3>
+                <enhanced:img src="/static/images/squadpage.png" alt="" />
+            </a>
+            <div> 
+                <strong>HTML, CSS</strong>
+            </div>
+        </article>
         
-    </div>
-</section>
+    </section>
+
 </article>
 
 <article class="other-works">
@@ -144,13 +150,16 @@
         width: 100%;
         padding: 2rem 1rem;
         font-family: 'Orbitron Variable', sans-serif;
+        margin-bottom: 10em;
     }
 
     .projects-grid {
         display: flex;
+        flex-direction: row;
         flex-wrap: wrap;
-        gap: 1.5rem;
         justify-content: center;
+        align-items: normal;
+        align-content: center;
     }
 
     .project-card {
@@ -159,8 +168,8 @@
         border-radius: 8px;
         border: 1px solid rgba(255, 255, 255, 0.2);
         transition: transform 0.3s ease;
-        flex: 1 1 300px;
-        max-width: 400px;
+        flex: 1 1 350px;
+        margin: .8rem;
     }
     
     .project-card:hover {
@@ -179,24 +188,13 @@
     img {
 	width: 100%;
     margin-bottom: 1rem;
-    transform-style: preserve-3d;
 }
 
-/* .other-works {
-    animation: fade-in linear;
-    animation-timeline: view();
-} */
- 
 .grid-wrapper {
     columns: 300px;
     padding: 2em;
     display: flex;
     justify-content: center;
-}
-
-@keyframes fade-in {
-    from { opacity:0;}
-    to { opacity: 1;}
 }
 
 .columns {
@@ -240,16 +238,9 @@
 	animation-timeline: scroll(root block);
 }
 
-/* .grid-wrapper > img {
-    animation: fade-in linear;
-    animation-timeline: view();
 
-}
 
-@keyframes fade-in {
-    from {scale:.8; opacity: .5;}
-    to { scale:1; opacity: 1;}
-} */
+
 
 
 
