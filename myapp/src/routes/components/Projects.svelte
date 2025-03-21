@@ -9,12 +9,14 @@
 </script>
 
 <article>
+    
 <section>
-    <h2>My Projects</h2>
+    <div class="heading"><h2>My Projects</h2></div>
+    
     <section class="projects-grid">
         <article class="project-card">
             <section class="project-image">
-                <enhanced:img class="bright" src="/static/images/fresk-digital.png" alt="" />
+                <enhanced:img class="bright"  src="/static/images/fresk-digital.png" alt="" />
             </section>
             <section class="project-content">
                 <h3>Fresk.Digital</h3>
@@ -27,7 +29,7 @@
 
         <article class="project-card">
             <section class="project-image">
-                <enhanced:img class="align-top" src="/static/images/digital-garden.png" alt="" />
+                <enhanced:img class="bright" src="/static/images/digital-garden.png" alt="" />
             </section>
             <section class="project-content">
                 <h3>Digital garden</h3>
@@ -41,7 +43,7 @@
             <section class="project-image">
                 <strong>(Only works on desktop)</strong>
 
-                <enhanced:img src="/static/images/visitekaartje.png" alt="">
+                <enhanced:img class="bright" src="/static/images/visitekaartje.png" alt="">
             </section>
             <section class="project-content">
                 <h3>Digital business card</h3>
@@ -53,7 +55,7 @@
 
         <article class="project-card">
             <section class="project-image">
-                <enhanced:img src="/static/images/b-rain.png" alt="">
+                <enhanced:img class="bright" src="/static/images/b-rain.png" alt="">
             </section>
             <section class="project-content">
                 <h3>B-rain website</h3>
@@ -66,7 +68,7 @@
         <article class="project-card">
             <section class="project-image">
                 
-                <enhanced:img src="/static/images/redpers.png" alt="">
+                <enhanced:img class="bright" src="/static/images/redpers.png" alt="">
             </section>
             <section class="project-content">
                 <h3>Redpers website</h3>
@@ -78,7 +80,7 @@
 
         <article class="project-card">
             <section class="project-image">
-                <enhanced:img src="/static/images/informaat.png" alt="">
+                <enhanced:img class="bright" src="/static/images/informaat.png" alt="">
             </section>
             <section class="project-content">
                 <h3>Informaat website</h3>
@@ -90,7 +92,7 @@
 
         <article class="project-card">
             <section class="project-image">
-                <enhanced:img src="/static/images/squadpage.png" alt="">
+                <enhanced:img class="bright" src="/static/images/squadpage.png" alt="">
             </section>
             <section class="project-content">
                 <h3>Squad page</h3>
@@ -103,7 +105,7 @@
 
         <article class="project-card">
             <section class="project-image">
-                <enhanced:img src="/static/images/prototype-1.png" alt="">
+                <enhanced:img class="bright" src="/static/images/prototype-1.png" alt="">
             </section>
             <section class="project-content">
                 <h3>Prototype website</h3>
@@ -174,6 +176,7 @@
         font-size: 2rem;
         margin-bottom: 2rem;
         color: var(--heading-color);
+        text-align: center;
     }
     
     article {
@@ -185,14 +188,14 @@
 
     .projects-grid {
         display: flex;
-        flex-direction: column;
+        flex-direction:  column;
         flex-wrap: wrap;
         justify-content: center;
         align-items: normal;
         align-content: center;
         scroll-behavior: smooth;
         scrollbar-width: none;
-        margin-bottom:5em;
+        margin-bottom: 5em;
     }
 
     .project-card {
@@ -202,13 +205,13 @@
         border: 3px solid var(--btn-color);
         transition: transform 0.5s ease-in-out;
         flex: 1 1 350px;
-        width: 50%;
+        width: 30%;
         margin: .8rem;
         display: flex;
         flex-direction: row;
         position: sticky;
         top: 1.75em;
-        transform-origin: center top;
+        transform-origin: center bottom;
     }
 
     .project-card:nth-child(1) {
@@ -250,6 +253,12 @@
         margin-right: 2em;
     }
 
+    .bright {
+        display: block;
+        height: 20em;
+        max-width: 100%;
+    }
+
     .project-content p {
         max-width: 800px;
         margin-bottom: 1.5em;
@@ -266,7 +275,7 @@
         padding: 15px 45px;
         width:50%;
         background: transparent;
-        border-radius: 0 50px 0 50px;
+        border-radius: 12px 12px 12px 12px;
         border: 2px solid #00c2cb;
         outline: 2px solid #00c2cb;
         outline-offset: -2px;
@@ -309,6 +318,11 @@
     margin-bottom: .6em;
 }
 
+img {
+    margin-bottom: 1.6em;
+    border-radius: 12px;
+}
+
 .columns {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -320,7 +334,6 @@
 	display: flex;
 	flex-direction: column;
     margin: .6em;
-    
 }
 
 .column-reverse {
