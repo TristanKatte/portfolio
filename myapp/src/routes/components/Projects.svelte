@@ -1,17 +1,34 @@
 <script>
-    
-    
+      import { onMount } from 'svelte';
 
+onMount(async () => {
+  const { default: gsap } = await import('gsap');
+  const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+  
+  gsap.registerPlugin(ScrollTrigger);
+  
+  gsap.utils.toArray('.featured-projects').forEach((item, index) => {
 
-
-
-
+    gsap.from(item, {
+      scrollTrigger: {
+        trigger: item,
+        start: 'top 80%',
+        end: 'bottom 20%',
+        toggleActions: 'play none none reverse'
+      },
+      opacity: 0,
+      y: 50,
+      duration: 0.8,
+      delay: index * 0.2
+    });
+  });
+});
 </script>
 
-<article>
+<article class="featured-projects">
     
 <section>
-    <div class="heading"><h2>My Projects</h2></div>
+    <div class="heading"><h2>My featured Projects</h2></div>
     
     <section class="projects-grid">
         <article class="project-card">
@@ -23,7 +40,7 @@
                 <p>Fresk.Digital was a project i did in the final sprint of my 1st year at the study Frontend Design & Development.
                    Here, I made a website with <strong>NodeJS, EJS and Express</strong> to build a dashboard for the employees of Fresk.digital where they could see how many clicks they got and from what country those clicks
                 </p>
-                <a class="project-button" href="https://sprint-12-proof-of-concept-p6cy.onrender.com/" target="_blank">To project</a>
+                <a class="project-button" href="https://sprint-12-proof-of-concept-p6cy.onrender.com/" target="_blank">View Live site</a>
             </section>
         </article>
 
@@ -35,7 +52,7 @@
                 <h3>Digital garden</h3>
                 <p>A digital garden where i kept a journey from what i learned each sprint in my 3rd semester at the study Frontend Design & Development. Made with <strong>Sveltekit, Markdown</strong>
                 </p>
-                <a class="project-button" href="https://i-love-web-amber.vercel.app/" target="_blank">To project</a>
+                <a class="project-button" href="https://i-love-web-amber.vercel.app/" target="_blank">View Live site</a>
             </section>
         </article>
 
@@ -49,7 +66,7 @@
                 <h3>Digital business card</h3>
                 <p> A digital business card where i introduce myself and what my skills are. Made with <strong>Sveltekit, Directus</strong>
                 </p>
-                <a class="project-button" href="https://your-tribe-for-life-profile-card-liart.vercel.app/" target="_blank">To project</a>
+                <a class="project-button" href="https://your-tribe-for-life-profile-card-liart.vercel.app/" target="_blank">View Live site</a>
             </section>
         </article>
 
@@ -61,7 +78,7 @@
                 <h3>B-rain website</h3>
                 <p>This was a website i made in my 1st semester at the study Frontend Design & Development for an actual client. Made with <strong>Html, css, Javascript</strong>
                 </p>
-                <a class="project-button" href="https://tristankatte.github.io/Brain-website/" target="_blank">To project</a>
+                <a class="project-button" href="https://tristankatte.github.io/Brain-website/" target="_blank">View Live site</a>
             </section>
         </article>
 
@@ -74,7 +91,7 @@
                 <h3>Redpers website</h3>
                 <p>A newswebsite that i made in a group project in my 3rd semester at the study Frontend Design & Development. Made with <strong>Sveltekit, WPAPI</strong>
                 </p>
-                <a class="project-button" href="https://redpers.agency.fdnd.nl/" target="_blank">To project</a>
+                <a class="project-button" href="https://redpers.agency.fdnd.nl/" target="_blank">View Live site</a>
             </section>
         </article>
 
@@ -86,7 +103,7 @@
                 <h3>Informaat website</h3>
                 <p>An assignment i got in the final sprint of my 1st semester. Here, I had to make a desktop-first website into a mobile-first design given from a design file. Made with <strong>Html, CSS</strong>
                 </p>
-                <a class="project-button" href="https://tristankatte.github.io/Informaat-opdracht/" target="_blank">To project</a>
+                <a class="project-button" href="https://tristankatte.github.io/Informaat-opdracht/" target="_blank">View Live site</a>
             </section>
         </article>
 
@@ -99,7 +116,7 @@
                 <p>During the 1st sprint of the study, we got a group assignment to build a fun squadpage. My team had the idea to build a slot machine where you can actually run the machine and the students that you got, 
                     had also a link to their digital business card.. Made with <strong>Html, CSS, Javascript</strong>
                 </p>
-                <a class="project-button" href="https://ebok1.github.io/your-tribe-squad-page/" target="_blank">To project</a>
+                <a class="project-button" href="https://ebok1.github.io/your-tribe-squad-page/" target="_blank">View Live site</a>
             </section>
         </article>
 
@@ -113,7 +130,7 @@
                     They are committed to KPAG activities with the aim of providing communities in Kenya, East Africa and the rest of the world with nature-based, economically viable solutions.
                      Made with <strong>Wordpress, Elementor</strong>
                 </p>
-                <a class="project-button" href="https://tristankatte.nl/nieuw_portfolio/project-educatief-platform-wable/" target="_blank">To project</a>
+                <a class="project-button" href="https://tristankatte.nl/nieuw_portfolio/project-educatief-platform-wable/" target="_blank">View Live site</a>
             </section>
         </article>
         
@@ -165,7 +182,6 @@
 
 <style>
 
-
   h3 {
         color: var(--heading-color);
         font-family: "Azonix";
@@ -188,7 +204,7 @@
 
     .projects-grid {
         display: flex;
-        flex-direction:  column;
+        flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         align-items: normal;
@@ -204,51 +220,16 @@
         border-radius: 50px;
         border: 3px solid var(--btn-color);
         transition: transform 0.5s ease-in-out;
-        flex: 1 1 350px;
-        width: 30%;
+        flex: 1 1 700px;
+        width: 400px;
         margin: .8rem;
         display: flex;
         flex-direction: row;
-        position: sticky;
-        top: 1.75em;
-        transform-origin: center bottom;
-    }
-
-    .project-card:nth-child(1) {
-        transform: translateY(-100px);
-    }
-
-    .project-card:nth-child(2){
-        transform: translateY(-50px);
-    }
-
-    .project-card:nth-child(3){
-        transform: translateY(0px);
-    }
-
-    .project-card:nth-child(4){
-        transform: translateY(50px);
-    }
-
-    .project-card:nth-child(5){
-        transform: translateY(100px);
-    }
-
-    .project-card:nth-child(6){
-        transform: translateY(150px);
-    }
-
-    .project-card:nth-child(7){
-        transform: translateY(200px);
-    }
-
-    .project-card:nth-child(8){
-        transform: translateY(250px);
     }
 
     .project-image {
         width: 100%;
-        height: 100%;
+        height: auto;
         object-fit: cover;
         margin-right: 2em;
     }
@@ -295,9 +276,9 @@
         outline-offset: 4px;
     }
     
-    /* .project-card:hover {
+    .project-card:hover {
         transform: translateY(-5px);
-    } */
+    }
 
     .project-card h3 {
         font-size: 1.5rem;
