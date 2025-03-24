@@ -32,6 +32,7 @@
         padding: 1rem;
         background-color: transparent;
         position: relative;
+        z-index: 20;
     }
 
     img {
@@ -42,6 +43,7 @@
     nav {
         display: flex;
         align-items: center;
+        z-index: 15;
     }
 
     nav ul {
@@ -51,6 +53,7 @@
         margin: 0;
         padding: 0;
         font-family: 'Orbitron Variable', sans-serif;
+        z-index: 15;
     }
 
     nav ul li a:focus-visible {

@@ -66,7 +66,7 @@
     width: 650px;
     height: 750px;
     background: linear-gradient(0deg, transparent, 
-    #075662, #075662);
+    #10b9d3, #10b9d3);
     transform-origin: bottom right;
     animation: glowborder 6s linear infinite;
     animation-delay: -3s;
@@ -88,7 +88,7 @@
     margin: auto;
     overflow: hidden;
     position: relative;
-    z-index: 10;
+    z-index: 1;
     background: #161616;
     padding: 40px;
     border-radius: 20px;
@@ -118,7 +118,7 @@
     color: var(--txt-color);
   }
 
-  input, textarea:focus-visible{
+  input, textarea, button:focus-visible{
     outline: 3px solid var(--btn-color);
   }
 
@@ -126,10 +126,13 @@
     margin-top: 2em;
     padding: 10px;
     background-color: var(--btn-color);
-    color: var(--txt-color);
+    color: #e4e4e4;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-family: 'Orbitron Variable', sans-serif;
+    font-size: 1.2em;
+    letter-spacing: 2px;
   }
 
   button:hover {

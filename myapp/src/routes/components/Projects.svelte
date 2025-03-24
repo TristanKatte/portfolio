@@ -28,8 +28,7 @@ onMount(async () => {
 <article class="featured-projects">
     
 <section>
-    <div class="heading"><h2>My featured Projects</h2></div>
-    
+        <h2>My featured Projects</h2>
     <section class="projects-grid">
         <article class="project-card">
             <section class="project-image">
@@ -133,13 +132,23 @@ onMount(async () => {
                 <a class="project-button" href="https://tristankatte.nl/nieuw_portfolio/project-educatief-platform-wable/" target="_blank">View Live site</a>
             </section>
         </article>
+
+        <article class="project-card">
+            <section class="project-content">
+                <h3>Want to see more of my works?</h3>
+                <p>During the 2nd attempt at my final exam for the study Webdesign at the Grafisch Lyceum Utrecht, I had to design and build a prototype website for Wable.
+                    They are committed to KPAG activities with the aim of providing communities in Kenya, East Africa and the rest of the world with nature-based, economically viable solutions.
+                     Made with <strong>Wordpress, Elementor</strong>
+                </p>
+                <a class="project-button" href="https://github.com/TristanKatte" target="_blank">View all projects on Github</a>
+            </section>
+        </article>
         
     </section>
-
 </article>
 
 <article class="other-works">
-    <h3>Some other work I made</h3>
+    <h2>Some other work I made</h2>
     <section class="grid-wrapper">
     <div class="columns">
         <div class="column column-reverse">            
@@ -182,27 +191,21 @@ onMount(async () => {
 
 <style>
 
-  h3 {
+
+h2, h3 {
         color: var(--heading-color);
         font-family: "Azonix";
         text-align: left;
     }
-
-    h2 {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-        color: var(--heading-color);
-        text-align: center;
-    }
     
-    article {
+article {
         width: 100%;
         padding: 2rem 1rem;
         font-family: 'Orbitron Variable', sans-serif;
         margin-bottom: 10em;
     }
 
-    .projects-grid {
+.projects-grid {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -214,35 +217,134 @@ onMount(async () => {
         margin-bottom: 5em;
     }
 
-    .project-card {
+.project-card {
+        position: relative;
         background: var(--project-card-color);
         padding: 1.5rem;
         border-radius: 50px;
         border: 3px solid var(--btn-color);
         transition: transform 0.5s ease-in-out;
         flex: 1 1 700px;
-        width: 400px;
-        margin: .8rem;
+        width: 500px;
+        height: 750px;
+        margin: 1.8rem;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
-    .project-image {
+.project-card:hover {
+        transform: translateY(-5px);
+    }
+
+.project-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        align-items: flex-start;
+    }
+
+.project-card a {
+        text-decoration: none;
+    }
+
+.project-card:nth-child(1) {
+        display: block;
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: auto;
+        align-self: auto;
+        order: 0;
+    }
+
+.project-card:nth-child(2) {
+        display: block;
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: auto;
+        align-self: auto;
+        order: 0;
+    }
+
+.project-card:nth-child(3) {
+        display: block;
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: auto;
+        align-self: auto;
+        order: 0;
+    }
+
+.project-card:nth-child(4) {
+        display: block;
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: auto;
+        align-self: auto;
+        order: 0;
+    }
+
+.project-card:nth-child(5) {
+        display: block;
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: auto;
+        align-self: auto;
+        order: 0;
+    }
+
+.project-card:nth-child(6) {
+        display: block;
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: auto;
+        align-self: auto;
+        order: 0;
+    }
+
+.project-card:nth-child(7) {
+        display: block;
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: auto;
+        align-self: auto;
+        order: 0;
+    }
+
+.project-card:nth-child(8) {
+        display: block;
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: auto;
+        align-self: auto;
+        order: 0;
+    }
+
+.project-card:nth-child(9) {
+        display: block;
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: auto;
+        align-self: auto;
+        order: 0;
+    }
+
+.project-image {
         width: 100%;
         height: auto;
         object-fit: cover;
         margin-right: 2em;
     }
 
-    .bright {
+.bright {
         display: block;
-        height: 20em;
+        height: 12em;
         max-width: 100%;
     }
 
     .project-content p {
         max-width: 800px;
         margin-bottom: 1.5em;
+        color: var(--txt-color);
     }
 
     strong {
@@ -252,44 +354,36 @@ onMount(async () => {
     }
 
     .project-button {
-        position: relative;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
         padding: 15px 45px;
-        width:50%;
+        width:70%;
         background: transparent;
-        border-radius: 12px 12px 12px 12px;
+        border-radius: 45px;
         border: 2px solid #00c2cb;
         outline: 2px solid #00c2cb;
         outline-offset: -2px;
         font-size: .95rem;
         font-family: 'Orbitron Variable', sans-serif;
-        color: #00c2cb;
+        color: var(--txt-color);
         font-weight: 500;
         text-decoration: none;
         text-align: center;
         cursor: pointer;
         transition: outline-offset 200ms ease;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        margin-top: auto;
     }
 
     .project-button:hover {
         color: #e0ffff;
-        background-color: var(--heading-color);
+        background-color: var(--btn-color);
         outline-offset: 4px;
     }
-    
-    .project-card:hover {
-        transform: translateY(-5px);
-    }
-
-    .project-card h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        align-items: flex-start;
-    }
-
-    .project-card a {
-        text-decoration: none;
-    }
-
 
 .grid-wrapper {
     columns: 300px;
@@ -307,8 +401,6 @@ img {
 .columns {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-    
-    
 }
 
 .column {
@@ -346,5 +438,25 @@ img {
 	animation-timeline: scroll(root block);
 }
 
+@media (min-width: 30em) {
+    .columns {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (min-width: 48em) {
+    .columns {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 62em) {
+    .columns {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
 
 </style>
