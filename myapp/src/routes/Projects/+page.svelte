@@ -6,6 +6,5 @@
   <title>Projects</title>
 </svelte:head>
 <main>
-
     <Projects />
 </main>
