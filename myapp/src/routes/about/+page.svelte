@@ -40,8 +40,8 @@
     
     </section>
     <section class="journey">
-      <h2>About me</h2>
-      <p>Hello! I'm Tristan, a Frontend development student with a passion for creating visually stunning and user-friendly web experiences.</p>
+      <h1>About me</h1>
+      <p>Hello! I'm Tristan, I'm 26 years old and a Frontend development student with a passion for creating visually stunning, accessible, progressively enhanced and user-friendly web experiences.</p>
       
       <p>I've always been drawn to technology, and after exploring different creative fields
         I found my passion in coding. I started with Html and CSS in a study back in 2016 and from 2018 to 2022,
@@ -49,8 +49,8 @@
       </p>
       
       <p>
-        I specialize in HTML, CSS, and JavaScript, with experience in React, Vue.js, Nextjs and Sveltekit. 
-        I'm also familiar with version control (Git) and building responsive designs that work on all screen sizes.
+        I specialize in accessibility, progressive enhancement and responsive design with experience in React, Vue.js, Nodejs Nextjs and Sveltekit. 
+        I'm also familiar with version control (Git), npm package managers (npm, pnpm, yarn), and building responsive designs that work on all screen sizes.
       </p>
       
       <p>
@@ -72,10 +72,11 @@
   </article>
 
   <section class="timeline-section">
+    <h2>My education</h2>
     <div class="timeline-items">
       <div class="timeline-item">
         <div class="timeline-dot"></div>
-        <div class="timeline-date">2016</div>
+        <div class="timeline-date">2016 - 2018</div>
         <div class="timeline-content">
           <h3>DTP at the Grafisch Lyceum Utrecht</h3>
           <p>Developed a strong foundation in design principles and software skills, particularly with Adobe Creative Cloud. Here, the interest of coding began with a subject in my study. </p>
@@ -83,10 +84,11 @@
       </div>
       <div class="timeline-item">
         <div class="timeline-dot"></div>
-        <div class="timeline-date">2018</div>
+        <div class="timeline-date">2018 - 2022</div>
         <div class="timeline-content">
           <h3>Continuation as Webdesigner at the Grafisch Lyceum Utrecht</h3>
-          <p>Graduated with a specialization in web design, focusing on user experience and responsive design. </p>
+          <p>Graduated with a specialization in web design, focusing on user experience and responsive design.</p>
+           
         </div>
       </div>
       <div class="timeline-item">
@@ -115,16 +117,48 @@
           <p>Currently enrolled in advanced studies focusing on frontend development, honing my skills in modern frameworks and design systems. </p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="timeline-section">
+    <h2>My experience</h2>
+    <div class="timeline-items">
       <div class="timeline-item">
         <div class="timeline-dot"></div>
-        <div class="timeline-date">february 2025 - april 2025</div>
+        <div class="timeline-date">february 2025 - present</div>
         <div class="timeline-content">
-          <h3>1st Internship</h3>
-          <p>My first internship from my study, where I learned to use Microsoft PowerBI and visualize data. </p>
+          <h3>1st internship Frontend design & Development at the VRU</h3>
+          <p>The 2nd internship from my last study, where i applied my knowledge in webdesign, Wordpress and the Adobe Creative Cloud.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">august 2021 - january 2022</div>
+        <div class="timeline-content">
+          <h3>2nd internship Webdesign at ArtDcom</h3>
+          <p>The 2nd internship from my last study, where i applied my knowledge in webdesign, Wordpress and the Adobe Creative Cloud.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">february 2021 - june 2021</div>
+        <div class="timeline-content">
+          <h3>1st internship Webdesign at Centix</h3>
+          <p>During my 1st internship, I helped develop the new website for Centix in Elementor and Wordpress.</p>
+           
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2018 - present</div>
+        <div class="timeline-content">
+          <h3>Cleaner & warehouse worker</h3>
+          <p>Since 2018, I work every summer at a fresh produce wholesalery, where I assist with the cleaning and where i stack crates of food for delivery across the Netherlands.</p>
         </div>
       </div>
     </div>
   </section>
+
 
   <section class="timeline-section">
     <Skills />
@@ -133,6 +167,13 @@
 </main>
 
 <style>
+
+  h2 {
+    display: flex;
+    justify-content: center;
+    font-family: "Azonix";
+    color: var(--heading-color);
+  }
 .button {
     position: relative;
     padding: 15px 45px;
@@ -262,20 +303,14 @@ article {
 }
 
 .journey {
-  max-width: 700px;
-  margin-right: 50px;
-  font-family: 'alata', sans-serif;
-  word-wrap: break-word;
-  line-height: 1.6;
-  letter-spacing: .1em;
+    max-width: 650px;
+    margin-right: 50px;
+    font-family: 'alata', sans-serif;
+    word-wrap: break-word;
+    line-height: 1.6;
+    letter-spacing: .1em;
 
 }
-
-@keyframes fade-in {
-    from { opacity: .5;}
-    to {  opacity: 1;}
-}
-
 
 .img {
   scale: 1;
@@ -289,10 +324,9 @@ height: auto;
 width: 450px;
 border-radius: 18px;
 margin-right: 3.5em;
-
 }
 
-.journey h2 {
+.journey h1 {
   color: var(--heading-color);
   font-family: "Azonix";
   letter-spacing: .2em;
@@ -301,8 +335,7 @@ margin-right: 3.5em;
 .journey p {
   color: var(--txt-color);
   margin-bottom: 1.8em;
-  animation: fade-in ease-in-out 1s;
-  animation-timeline: scroll()
+
 }
 
 @media(max-width:30em){
@@ -347,7 +380,7 @@ margin-right: 3.5em;
     font-family: 'alata', sans-serif;
   }
 
-  .journey h2 {
+  .journey h1 {
     font-size: 24px;
   }
 
@@ -356,6 +389,7 @@ margin-right: 3.5em;
     width: 100%;
     max-width: 300px;
     border-radius: 18px;
+    margin-right: 0;
   }
 
   .button {
@@ -404,6 +438,10 @@ margin-right: 3.5em;
 	.timeline-dot{
 		left:0;
 	}
+
+  .pic {
+    margin-right: 3.5em;
+  }
 }
  
 </style>

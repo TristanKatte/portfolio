@@ -136,9 +136,7 @@ onMount(async () => {
         <article class="project-card">
             <section class="project-content">
                 <h3>Want to see more of my works?</h3>
-                <p>During the 2nd attempt at my final exam for the study Webdesign at the Grafisch Lyceum Utrecht, I had to design and build a prototype website for Wable.
-                    They are committed to KPAG activities with the aim of providing communities in Kenya, East Africa and the rest of the world with nature-based, economically viable solutions.
-                     Made with <strong>Wordpress, Elementor</strong>
+                <p>Click the button below to see more of my projects on Github.
                 </p>
                 <a class="project-button" href="https://github.com/TristanKatte" target="_blank">View all projects on Github</a>
             </section>
@@ -190,9 +188,15 @@ onMount(async () => {
 </article>
 
 <style>
+h2 {
+    display: flex;
+    justify-content: space-evenly;
+    color: var(--heading-color);
+    font-family: "Azonix";
+    text-align: left;
+}
 
-
-h2, h3 {
+ h3 {
         color: var(--heading-color);
         font-family: "Azonix";
         text-align: left;
@@ -234,7 +238,7 @@ article {
     }
 
 .project-card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-50px);
     }
 
 .project-card h3 {
@@ -450,6 +454,20 @@ img {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .projects-grid {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: normal;
+        align-content: center;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        margin-bottom: 3em;
+    }
+
+
 }
 
 @media (min-width: 62em) {
