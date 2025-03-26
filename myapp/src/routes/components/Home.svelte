@@ -132,7 +132,7 @@ figure {
   transform: scale(0.95);
   }
 
-@media (max-width: 30em) {
+  @media (max-width: 30em) {
   main {
     display: flex;
     flex-direction: column;
@@ -163,7 +163,7 @@ figure {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     padding: 20px;
   }
 
@@ -171,7 +171,6 @@ figure {
     margin-bottom: 30px;
     margin-right: 0;
     text-align: left;
-    max-width: 100%;
   }
 
   .home-content p {
@@ -192,15 +191,15 @@ figure {
 
   .button {
     position: relative;
-    width: 50%;
-    padding: 15px 15px;
+    width: 100%;
+    padding: 15px 30px;
     margin: auto;
     background: transparent;
     border-radius: 0 50px 0 50px;
     border: 2px solid var(--btn-color);
     outline: 2px solid var(--btn-color);
     outline-offset: -2px;
-    font-size: .8rem;
+    font-size: 1rem;
     font-family: 'Orbitron Variable', sans-serif;
     color: #00c2cb;
     font-weight: 300;
