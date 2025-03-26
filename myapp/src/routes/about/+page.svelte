@@ -113,7 +113,7 @@
         <div class="timeline-dot"></div>
         <div class="timeline-date">september 2023- present day</div>
         <div class="timeline-content">
-          <h3>Current study</h3>
+          <h3>Frontend Design & Development</h3>
           <p>Currently enrolled in advanced studies focusing on frontend development, honing my skills in modern frameworks and design systems. </p>
         </div>
       </div>
@@ -171,10 +171,14 @@
   h2 {
     display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
     font-family: "Azonix";
     color: var(--heading-color);
+    margin-bottom: 1em;
   }
-.button {
+
+  .button {
     position: relative;
     padding: 15px 45px;
     width: 50%;
@@ -424,6 +428,29 @@ margin-right: 3.5em;
 }
 
 @media(max-width: 48em){
+
+  h2 {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .timeline-section:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .journey {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .pic {
+    scale: .80;
+    
+  }
+
 	.timeline-items::before{
 		left: 7px;
 	}
@@ -442,6 +469,53 @@ margin-right: 3.5em;
   .pic {
     margin-right: 3.5em;
   }
+}
+
+@media (max-width: 64em) {
+
+  .timeline-section:nth-child(1) {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
+  }
+
+  .pic {
+    scale: .85;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-top: -550px;
+  }
+
+  .journey {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .pic {
+    scale: .80;
+  }
+
+  .button {
+    position: relative;
+    padding: 15px 45px;
+    width: 100%;
+    background: transparent;
+    border-radius: 0 50px 0 50px;
+    border: 2px solid #00c2cb;
+    outline: 2px solid #00c2cb;
+    outline-offset: -2px;
+    font-size: .95rem;
+    font-family: 'Orbitron Variable', sans-serif;
+    color: #00c2cb;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: outline-offset 200ms ease;
+    }
+
 }
  
 </style>

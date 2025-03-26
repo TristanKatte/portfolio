@@ -78,7 +78,7 @@ figure {
   }
 
 .home-content h2 {
-  color: var(--btn-color);
+  color: var(--heading-color);
   font-weight: 400;
   margin-bottom: 10px;
   font-family: "Azonix";
@@ -168,6 +168,7 @@ figure {
 
   .home-content h2 {
     font-size: 24px;
+    color: var(--heading-color);
   }
 
   .pic {
@@ -208,7 +209,7 @@ figure {
   }
 }
 
-@media (min-width: 48em) {
+@media  (max-width: 48em) {
 
 .img {
   scale: 1;
@@ -220,13 +221,15 @@ figure {
 figure {
     border-radius: 20px;
     width: 100%;
-    margin: auto
+    margin: auto;
+    margin-bottom: 1.5em;
 }
 
 article {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
   width: 100%;
   font-family: 'alata', sans-serif;
@@ -235,16 +238,16 @@ article {
 .button {
   position: relative;
   padding: 15px 45px;
-  width: 10%;
+  width: 100%;
   background: transparent;
   border-radius: 0 50px 0 50px;
   border: 2px solid #00c2cb;
   outline: 2px solid #00c2cb;
   outline-offset: -2px;
-  font-size: .95rem;
+  font-size: .75rem;
   font-family: 'Orbitron Variable', sans-serif;
   color: #00c2cb;
-  font-weight: 500;
+  font-weight: 200;
   text-decoration: none;
   cursor: pointer;
   transition: outline-offset 200ms ease;
@@ -303,6 +306,58 @@ line-height: 25px;
 letter-spacing: 1px;
 margin-bottom: 1.5em;
 }
+
+}
+
+@media (max-width: 64em) {
+  .home {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    padding: 0 10%;
+    background-size: cover;
+    background-position: center;
+  }
+
+.home-content {
+    max-width: 500px;
+    margin-left: 3.5em;
+    font-family: 'alata', sans-serif;
+    word-wrap: break-word;
+    line-height: 1.6;
+    letter-spacing: .5em;
+  }
+
+  .home-content h2 {
+    color: var(--heading-color);
+  }
+
+.img {
+    scale: 0.95;
+    border-radius: 12px;
+    border: 16px solid var(--heading-color);
+    border-style: ridge;
+    margin-right: 3.5em;
+  }
+
+.button {
+  position: relative;
+  padding: 15px 45px;
+  width: 100%;
+  background: transparent;
+  border-radius: 0 50px 0 50px;
+  border: 2px solid #00c2cb;
+  outline: 2px solid #00c2cb;
+  outline-offset: -2px;
+  font-size: .95rem;
+  font-family: 'Orbitron Variable', sans-serif;
+  color: #00c2cb;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: outline-offset 200ms ease;
+  }
 
 }
 

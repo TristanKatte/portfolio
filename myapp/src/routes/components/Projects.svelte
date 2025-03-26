@@ -470,10 +470,46 @@ img {
 
 }
 
-@media (min-width: 62em) {
+@media (max-width: 64em) {
+    .projects-grid {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: normal;
+        align-content: center;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        margin-bottom: 3em;
+    }
+
+    .project-card {
+        position: relative;
+        background: var(--project-card-color);
+        padding: 1.5rem;
+        border-radius: 50px;
+        border: 3px solid var(--btn-color);
+        transition: transform 0.5s ease-in-out;
+        flex: 1 1 700px;
+        width: 400px;
+        height: 680px;
+        margin: 1.8rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .grid-wrapper {
+        columns: 300px;
+        padding: 2em;
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: .6em;
+    }
+
     .columns {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 

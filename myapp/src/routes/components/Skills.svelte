@@ -47,6 +47,7 @@ onMount(async () => {
   <button class="skill">GSAP</button>
   <button class="skill">VueJS</button>
   <button class="skill">React</button>
+  <button class="skill">NodeJS</button>
 </div>
 
 <div class="skills-graphic">
@@ -211,7 +212,6 @@ onMount(async () => {
       margin-top: 8em;
     }
 
-
     .skillset {
       width: 100%;
     }
@@ -237,6 +237,35 @@ onMount(async () => {
       justify-content: flex-start;
     }
 
+
+  }
+
+  @media (max-width: 64em) {
+    .all-skills {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
+      margin-top: 2em;
+    }
+
+    .skills-frontend {
+      display: flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      width: 40%;
+      justify-content: flex-start;
+      margin-top: -16em;
+    }
+
+    .skills-graphic {
+      display: flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      width: 40%;
+      margin-top: -16em;
+
+    }
 
   }
 </style>

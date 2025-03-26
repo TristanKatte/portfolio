@@ -66,7 +66,7 @@
     width: 650px;
     height: 750px;
     background: linear-gradient(0deg, transparent, 
-    #10b9d3, #10b9d3);
+    #056837, #056837);
     transform-origin: bottom right;
     animation: glowborder 6s linear infinite;
     animation-delay: -3s;
@@ -149,4 +149,5 @@
       padding: 30px;
     }
   }
+
 </style>
