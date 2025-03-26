@@ -442,7 +442,7 @@ img {
 	animation-timeline: scroll(root block);
 }
 
-@media (max-width: 30em) {
+@media (min-width: 30em) {
     .columns {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
