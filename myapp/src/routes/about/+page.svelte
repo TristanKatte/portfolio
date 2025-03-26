@@ -395,8 +395,8 @@ margin-right: 3.5em;
     font-size: 24px;
   }
 
-  .pic, .img {
-display: none;
+  .pic, .img, figure {
+    display: none;
   }
 
   .button {
@@ -451,7 +451,6 @@ display: none;
 
   .pic {
     scale: .80;
-    
   }
 
 	.timeline-items::before{
