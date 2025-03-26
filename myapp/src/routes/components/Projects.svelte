@@ -442,14 +442,14 @@ img {
 	animation-timeline: scroll(root block);
 }
 
-@media (min-width: 30em) {
+@media (max-width: 30em) {
     .columns {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
     }
 }
 
-@media (min-width: 48em) {
+@media (max-width: 48em) {
     .columns {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
