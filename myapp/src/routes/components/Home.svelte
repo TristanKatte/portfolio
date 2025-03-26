@@ -59,6 +59,11 @@ figure {
     margin: auto;
   }
 
+  .pic {
+    border-radius: 20px;
+    
+  }
+
 .home {
     display: flex;
     align-items: center;
@@ -148,7 +153,7 @@ figure {
   
   .home {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 100%;
