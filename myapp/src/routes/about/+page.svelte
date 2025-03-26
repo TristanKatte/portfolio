@@ -473,48 +473,48 @@ margin-right: 3.5em;
 
 @media (max-width: 64em) {
 
-.timeline-section:nth-child(1) {
-  display: flex;
-  flex-direction: row;
-  max-width: 100%;
-}
-
-.pic {
-  scale: .85;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-start;
-  margin-top: -550px;
-}
-
-.journey {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.pic {
-  scale: .80;
-}
-
-.button {
-  position: relative;
-  padding: 15px 45px;
-  width: 100%;
-  background: transparent;
-  border-radius: 0 50px 0 50px;
-  border: 2px solid #00c2cb;
-  outline: 2px solid #00c2cb;
-  outline-offset: -2px;
-  font-size: .95rem;
-  font-family: 'Orbitron Variable', sans-serif;
-  color: #00c2cb;
-  font-weight: 500;
-  text-decoration: none;
-  text-align: center;
-  cursor: pointer;
-  transition: outline-offset 200ms ease;
+  .timeline-section:nth-child(1) {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
   }
+
+  .pic {
+    scale: .85;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-top: -550px;
+  }
+
+  .journey {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .pic {
+    scale: .80;
+  }
+
+  .button {
+    position: relative;
+    padding: 15px 45px;
+    width: 100%;
+    background: transparent;
+    border-radius: 0 50px 0 50px;
+    border: 2px solid #00c2cb;
+    outline: 2px solid #00c2cb;
+    outline-offset: -2px;
+    font-size: .95rem;
+    font-family: 'Orbitron Variable', sans-serif;
+    color: #00c2cb;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: outline-offset 200ms ease;
+    }
 
 }
  
