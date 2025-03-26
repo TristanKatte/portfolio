@@ -54,15 +54,25 @@ main  {
   }
 
 figure {
-    border-radius: 20px;
+  border-radius: 20px;
     width: 100%;
     margin: auto;
   }
 
-  .pic {
-    border-radius: 20px;
-    
-  }
+  .img {
+  scale: 1;
+  border-radius: 12px;
+  border: 16px solid var(--heading-color);
+  border-style: ridge;
+}
+
+.pic {
+height: auto;
+width: 450px;
+border-radius: 18px;
+margin-right: 3.5em;
+}
+
 
 .home {
     display: flex;
@@ -96,6 +106,7 @@ figure {
   letter-spacing: 2px;
   margin-bottom: 1.5em;
   }
+
 
 .button {
   position: relative;
