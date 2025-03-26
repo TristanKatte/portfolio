@@ -200,7 +200,7 @@ figure {
     border: 2px solid var(--btn-color);
     outline: 2px solid var(--btn-color);
     outline-offset: -2px;
-    font-size: 1rem;
+    font-size: .8rem;
     font-family: 'Orbitron Variable', sans-serif;
     color: #00c2cb;
     font-weight: 300;
