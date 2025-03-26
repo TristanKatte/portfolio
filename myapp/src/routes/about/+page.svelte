@@ -350,6 +350,12 @@ margin-right: 3.5em;
     flex-wrap: wrap;
   }
 
+  .timeline-section:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
   article {
     display: flex;
     justify-content: center;
