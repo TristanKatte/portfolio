@@ -449,7 +449,7 @@ img {
     }
 }
 
-@media (max-width: 48em) {
+@media (min-width: 48em) {
     .columns {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
