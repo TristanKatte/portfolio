@@ -35,7 +35,7 @@ onMount(async () => {
     </figure>
   </section>
 <section class="home-content">
-  <h1>About me</h1>
+  <h2>About me</h2>
   <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.
      I am currently in my 2nd and last year at the study Frontend Design & Development at the Amsterdam University of Applied Sciences.
   </p>
@@ -80,7 +80,7 @@ figure {
     letter-spacing: .5em;
   }
 
-.home-content h1 {
+.home-content h2 {
   color: var(--heading-color);
   font-weight: 400;
   margin-bottom: 10px;
@@ -178,7 +178,7 @@ figure {
     font-family: 'alata', sans-serif;
   }
 
-  .home-content h1 {
+  .home-content h2 {
     font-size: 24px;
     color: var(--heading-color);
   }
@@ -303,7 +303,7 @@ margin-right: 3.5em;
   margin-left: 3.5em;
 }
 
-.home-content h1 {
+.home-content h2 {
 color: var(--heading-color);
 font-weight: 400;
 margin-bottom: 10px;
@@ -322,56 +322,56 @@ margin-bottom: 1.5em;
 }
 
 @media (max-width: 64em) {
-  .home {
-    display: flex;
-    align-items: center;
-    height: 100vh;
-    padding: 0 10%;
-    background-size: cover;
-    background-position: center;
-  }
-
-.home-content {
-    max-width: 500px;
-    margin-left: 3.5em;
-    font-family: 'alata', sans-serif;
-    word-wrap: break-word;
-    line-height: 1.6;
-    letter-spacing: .5em;
-  }
-
-  .home-content h1 {
-    color: var(--heading-color);
-  }
-
-.img {
-    scale: 0.95;
-    border-radius: 12px;
-    border: 16px solid var(--heading-color);
-    border-style: ridge;
-    margin-right: 3.5em;
-  }
-
-.button {
-  position: relative;
-  padding: 15px 45px;
-  width: 100%;
-  background: transparent;
-  border-radius: 0 50px 0 50px;
-  border: 2px solid #00c2cb;
-  outline: 2px solid #00c2cb;
-  outline-offset: -2px;
-  font-size: .95rem;
-  font-family: 'Orbitron Variable', sans-serif;
-  color: #00c2cb;
-  font-weight: 500;
-  text-decoration: none;
-  text-align: center;
-  cursor: pointer;
-  transition: outline-offset 200ms ease;
-  }
-
-}
+   .home {
+     display: flex;
+     align-items: center;
+     height: 100vh;
+     padding: 0 10%;
+     background-size: cover;
+     background-position: center;
+   }
+ 
+ .home-content {
+     max-width: 500px;
+     margin-left: 3.5em;
+     font-family: 'alata', sans-serif;
+     word-wrap: break-word;
+     line-height: 1.6;
+     letter-spacing: .5em;
+   }
+ 
+   .home-content h2 {
+     color: var(--heading-color);
+   }
+ 
+ .img {
+     scale: 0.95;
+     border-radius: 12px;
+     border: 16px solid var(--heading-color);
+     border-style: ridge;
+     margin-right: 3.5em;
+   }
+ 
+ .button {
+   position: relative;
+   padding: 15px 45px;
+   width: 100%;
+   background: transparent;
+   border-radius: 0 50px 0 50px;
+   border: 2px solid #00c2cb;
+   outline: 2px solid #00c2cb;
+   outline-offset: -2px;
+   font-size: .95rem;
+   font-family: 'Orbitron Variable', sans-serif;
+   color: #00c2cb;
+   font-weight: 500;
+   text-decoration: none;
+   text-align: center;
+   cursor: pointer;
+   transition: outline-offset 200ms ease;
+   }
+ 
+ }
 
 
 </style>
