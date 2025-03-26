@@ -193,7 +193,7 @@ figure {
   .button {
     position: relative;
     width: 50%;
-    padding: 15px 30px;
+    padding: 15px 15px;
     margin: auto;
     background: transparent;
     border-radius: 0 50px 0 50px;
