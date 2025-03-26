@@ -121,7 +121,7 @@
   </section>
 
   <section class="timeline-section">
-    <h2>My experience</h2>
+    <h2>My work experience</h2>
     <div class="timeline-items">
       <div class="timeline-item">
         <div class="timeline-dot"></div>

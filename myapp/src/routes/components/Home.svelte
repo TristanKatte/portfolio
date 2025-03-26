@@ -35,7 +35,7 @@ onMount(async () => {
     </figure>
   </section>
 <section class="home-content">
-  <h2>About me</h2>
+  <h1>About me</h1>
   <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.
      I am currently in my 2nd and last year at the study Frontend Design & Development at the Amsterdam University of Applied Sciences.
   </p>
@@ -51,6 +51,9 @@ onMount(async () => {
 main  {
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
 figure {
@@ -69,7 +72,7 @@ figure {
   }
 
 .home-content {
-    max-width: 600px;
+    max-width: 100%;
     margin-right: 50px;
     font-family: 'alata', sans-serif;
     word-wrap: break-word;
@@ -77,7 +80,7 @@ figure {
     letter-spacing: .5em;
   }
 
-.home-content h2 {
+.home-content h1 {
   color: var(--heading-color);
   font-weight: 400;
   margin-bottom: 10px;
@@ -86,16 +89,24 @@ figure {
 
 .home-content p {
   color: var(--txt-color);
-  font-size: 16px;
-  line-height: 25px;
+  font-size: 32px;
+  line-height: 1.6;
   letter-spacing: 2px;
   margin-bottom: 1.5em;
+  }
+
+  .pic {
+    border-radius: 12px;
+    border: 16px solid var(--heading-color);
+    border-style: ridge;
+    scale: .80;
+    margin-right: 3.5em;
   }
 
 .button {
   position: relative;
   padding: 15px 45px;
-  width: 50%;
+  width: 100%;
   background: transparent;
   border-radius: 0 50px 0 50px;
   border: 2px solid #00c2cb;
@@ -166,7 +177,7 @@ figure {
     font-family: 'alata', sans-serif;
   }
 
-  .home-content h2 {
+  .home-content h1 {
     font-size: 24px;
     color: var(--heading-color);
   }
@@ -291,7 +302,7 @@ margin-right: 3.5em;
   margin-left: 3.5em;
 }
 
-.home-content h2 {
+.home-content h1 {
 color: var(--heading-color);
 font-weight: 400;
 margin-bottom: 10px;
@@ -328,7 +339,7 @@ margin-bottom: 1.5em;
     letter-spacing: .5em;
   }
 
-  .home-content h2 {
+  .home-content h1 {
     color: var(--heading-color);
   }
 
