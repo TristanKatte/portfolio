@@ -163,7 +163,7 @@ figure {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     padding: 20px;
   }
 
@@ -171,6 +171,7 @@ figure {
     margin-bottom: 30px;
     margin-right: 0;
     text-align: left;
+    max-width: 100%;
   }
 
   .home-content p {
