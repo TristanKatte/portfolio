@@ -199,8 +199,8 @@ margin-right: 3.5em;
 
   .button {
     position: relative;
-    width: 100%;
-    padding: 15px 30px;
+    width: 10%;
+    padding: 15px 45px;
     margin: auto;
     background: transparent;
     border-radius: 0 50px 0 50px;

@@ -286,6 +286,7 @@
 	font-weight: 500;
   font-family: "Azonix";
 }
+
 .timeline-content p{
   color: #c8c8c8;
 	font-size: 16px;
@@ -394,12 +395,8 @@ margin-right: 3.5em;
     font-size: 24px;
   }
 
-  .pic {
-    height: auto;
-    width: 100%;
-    max-width: 300px;
-    border-radius: 18px;
-    margin-right: 0;
+  .pic, .img {
+display: none;
   }
 
   .button {
