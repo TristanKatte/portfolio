@@ -121,7 +121,7 @@ figure {
   transform: scale(0.95);
   }
 
-@media (max-width: 30em) {
+@media (min-width: 30em) {
   main {
     display: flex;
     flex-direction: column;
