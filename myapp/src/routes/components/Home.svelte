@@ -39,7 +39,9 @@ onMount(async () => {
   <p>Hi! I'm Tristan Katte. I am a passionate developer and designer who loves to create beautiful and functional web applications.
      I am currently in my 2nd and last year at the study Frontend Design & Development at the Amsterdam University of Applied Sciences.
   </p>
-    <a class="button"  href="/about" aria-label="More about me">More about me</a>
+    <a class="button"  href="/about" aria-label="More about me">
+      More about me
+    </a>
 </section>
 
 </article>
@@ -110,17 +112,22 @@ margin-right: 3.5em;
   }
 
 
+
 .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 50px 0 50px;
   position: relative;
+  font-family: 'Orbitron Variable', sans-serif;
   padding: 15px 45px;
-  width: 50%;
+  width: 100%;
   background: transparent;
   border-radius: 0 50px 0 50px;
   border: 2px solid #00c2cb;
   outline: 2px solid #00c2cb;
-  outline-offset: -2px;
+  outline-offset: -4px;
   font-size: .95rem;
-  font-family: 'Orbitron Variable', sans-serif;
   color: #00c2cb;
   font-weight: 500;
   text-decoration: none;
@@ -198,23 +205,26 @@ margin-right: 3.5em;
   }
 
   .button {
-    position: relative;
-    width: 10%;
-    padding: 15px 45px;
-    margin: auto;
-    background: transparent;
-    border-radius: 0 50px 0 50px;
-    border: 2px solid var(--btn-color);
-    outline: 2px solid var(--btn-color);
-    outline-offset: -2px;
-    font-size: 1rem;
-    font-family: 'Orbitron Variable', sans-serif;
-    color: #00c2cb;
-    font-weight: 300;
-    text-decoration: none;
-    text-align: center;
-    cursor: pointer;
-    transition: outline-offset 200ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 50px 0 50px;
+  position: relative;
+  font-family: 'Orbitron Variable', sans-serif;
+  padding: 15px 45px;
+  width: 100%;
+  background: transparent;
+  border-radius: 0 50px 0 50px;
+  border: 2px solid #00c2cb;
+  outline: 2px solid #00c2cb;
+  outline-offset: -4px;
+  font-size: .75rem;
+  color: #00c2cb;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: outline-offset 200ms ease;
   }
 
   .button:hover {
