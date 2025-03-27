@@ -37,12 +37,13 @@
 
     footer {
         background-color: transparent;
+        margin-top: 5em;
     }
     
     ul {
         gap: 1rem;
         display: flex;
-        justify-content: center; /* Center the icons horizontally */
+        justify-content: center; 
         list-style-type: none;
 
     }
