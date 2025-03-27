@@ -37,7 +37,7 @@
 
     footer {
         background-color: transparent;
-        margin-top: 5em;
+        margin-top: 10em;
     }
     
     ul {
