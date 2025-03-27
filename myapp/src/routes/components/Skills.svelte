@@ -152,7 +152,7 @@ onMount(async () => {
   gap: 100px;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
-  max-width: 75%;
+  max-width: 100%;
   }
 
   @media (max-width:30em) {
@@ -163,23 +163,26 @@ onMount(async () => {
   }
     .all-skills {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       flex-wrap: nowrap;
       justify-content: center;
-      margin-top: 8em;
+      margin: 1em;
     }
 
     .skillset {
-      width: 50%;
+      width: 100%;
+      height: 100vh;
+      margin-top: 10em;
     }
 
     .all-skills {
-      width: 40%;
+      width: 100%;
       flex-flow: row;
+      margin-top: 3.5em;
     }
 
     .skill {
-      width: 20%;
+      width: 100%;
       font-size: .8em;
     }
 
@@ -190,7 +193,8 @@ onMount(async () => {
 
     .skills-graphic {
       justify-content: flex-end;
-      flex-flow: column-reverse;
+      flex-flow: column;
+    
     }
 
     .skills-other {
@@ -204,12 +208,13 @@ onMount(async () => {
       height: 120%; 
       top: -10%; 
   }
-    .all-skills {
+    
+  .all-skills {
       display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
+      flex-direction: column;
+      flex-wrap: wrap;
       justify-content: center;
-      margin-top: 8em;
+      padding-top: -10em;
     }
 
     .skillset {
@@ -246,7 +251,7 @@ onMount(async () => {
       flex-direction: row;
       flex-wrap: nowrap;
       justify-content: center;
-      margin-top: 2em;
+      margin-top: 14em;
     }
 
     .skills-frontend {

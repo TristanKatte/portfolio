@@ -40,7 +40,7 @@ onMount(async () => {
      I am currently in my 2nd and last year at the study Frontend Design & Development at the Amsterdam University of Applied Sciences.
   </p>
     <a class="button"  href="/about" aria-label="More about me">
-      More about me
+      Read more
     </a>
 </section>
 
@@ -386,6 +386,18 @@ margin-bottom: 1.5em;
   text-align: center;
   cursor: pointer;
   transition: outline-offset 200ms ease;
+  }
+
+}
+
+@media (max-width: 80em) {
+  .home-content {
+    max-width: 800px;
+    margin-left: 3.5em;
+    font-family: 'alata', sans-serif;
+    word-wrap: break-word;
+    line-height: 1.6;
+    letter-spacing: .5em;
   }
 
 }
