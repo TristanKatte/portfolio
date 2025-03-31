@@ -126,7 +126,6 @@ onMount(async () => {
             <section class="project-content">
                 <h3>Prototype website</h3>
                 <p>During the 2nd attempt at my final exam for the study Webdesign at the Grafisch Lyceum Utrecht, I had to design and build a prototype website for Wable.
-                    
                      Made with <strong>Wordpress, Elementor</strong>
                 </p>
                 <a class="project-button" href="https://tristankatte.nl/nieuw_portfolio/project-educatief-platform-wable/" target="_blank">View Live site</a>
