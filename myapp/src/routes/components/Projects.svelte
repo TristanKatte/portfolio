@@ -37,7 +37,7 @@ onMount(async () => {
             <section class="project-content">
                 <h3>Fresk.Digital</h3>
                 <p>Fresk.Digital was a project i did in the final sprint of my 1st year at the study Frontend Design & Development.
-                   Here, I made a website with <strong>NodeJS, EJS and Express</strong> to build a dashboard for the employees of Fresk.digital where they could see how many clicks they got and from what country those clicks
+                   Here, I made a website with <strong>NodeJS, EJS and Express</strong> to build a dashboard for the employees of Fresk.digital.
                 </p>
                 <a class="project-button" href="https://sprint-12-proof-of-concept-p6cy.onrender.com/" target="_blank">View Live site</a>
             </section>
@@ -126,7 +126,7 @@ onMount(async () => {
             <section class="project-content">
                 <h3>Prototype website</h3>
                 <p>During the 2nd attempt at my final exam for the study Webdesign at the Grafisch Lyceum Utrecht, I had to design and build a prototype website for Wable.
-                    They are committed to KPAG activities with the aim of providing communities in Kenya, East Africa and the rest of the world with nature-based, economically viable solutions.
+                    
                      Made with <strong>Wordpress, Elementor</strong>
                 </p>
                 <a class="project-button" href="https://tristankatte.nl/nieuw_portfolio/project-educatief-platform-wable/" target="_blank">View Live site</a>
