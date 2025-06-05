@@ -37,7 +37,7 @@
     background-color: var(--project-card-color);
   }
 
-  h1, h2, h3 {
+  /* h1, h2, h3 {
     color: var(--heading-color);
   }
 
@@ -48,7 +48,7 @@
 
   a:hover {
     text-decoration: underline;
-  }
+  } */
 
   @media (max-width: 768px) {
   main {
