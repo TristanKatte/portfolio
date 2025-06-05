@@ -1,266 +1,138 @@
 <script>
-    import Logo from '$lib/assets/logo_groen.png';
+  import Logo from '$lib/assets/logo_groen.png';
+  let isMenuOpen = false;
 
-    let isMenuOpen = $state(false);
+  function toggleMenu() {
+    isMenuOpen = !isMenuOpen;
+  }
 
-    function toggleMenu() {
-        isMenuOpen = !isMenuOpen;
-    }
+  function closeMenu() {
+    isMenuOpen = false;
+  }
 </script>
 
 <header>
-    <img alt="personal logo van mij" src={Logo}>
+  <img src={Logo} alt="Personal logo" class="logo" />
 
-    <nav class="effect" class:open={isMenuOpen}>
-        <button class="hamburger" onclick={toggleMenu} aria-label="Menu">
-            <span class="hamburger-icon">&#9776;</span>
-        </button>
-        <ul>
-            <li><a class="link-70" href="/" aria-label="Home">Home</a></li>
-            <li><a class="link-70" href="/about" aria-label="About Me">About Me</a></li>
-            <li><a class="link-70" href="/projects" aria-label="Projects">Projects</a></li>
-            <li><a class="link-70" href="/contact" aria-label="Contact">Contact</a></li>
-        </ul>
-    </nav>
+  <button class="hamburger" on:click={toggleMenu} aria-label="Toggle menu">
+    &#9776;
+  </button>
+
+  <nav class:open={isMenuOpen}>
+    <ul on:click={closeMenu}>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 </header>
 
 <style>
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem;
-        background-color: transparent;
-        position: relative;
-        z-index: 20;
-    }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: transparent;
+    position: relative;
+    z-index: 10;
+  }
 
-    img {
-        height: 185px;
-        margin-right: auto;
-    }
+  .logo {
+    height: 150px;
+  }
 
-    nav {
-        display: flex;
-        align-items: center;
-        z-index: 15;
-    }
+  .hamburger {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
 
-    nav ul {
-        display: flex;
-        flex-direction: row;
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        font-family: 'Orbitron Variable', sans-serif;
-        z-index: 15;
-    }
+  nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-    nav ul li a:focus-visible {
-        outline: 3px solid var(--btn-color);
-    }
+  nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-family: 'Orbitron Variable', sans-serif;
+    padding: 10px;
+    position: relative;
+  }
 
-    .link-70 {
-        color: #ffffff;
-        font-size: 20px;
-        text-decoration: none;
-        padding: 10px 20px;
-        margin: 0 5px;
-        position: relative;
-        display: inline-block;
-        cursor: pointer;
-    }
+  nav a::before,
+  nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 0%;
+    transition: all 0.5s ease;
+    border: 2px solid transparent;
+  }
 
-    .link-70::before,
-    .link-70::after {
-        content: "";
-        position: absolute;
-        display: block;
-        border: 0px solid transparent;
-        width: 0%;
-        height: 0%;
-        transition: all 0.5s ease;
-    }
+  nav a::before {
+    top: 0;
+    left: 0;
+    border-top-color: var(--btn-color);
+    border-left-color: var(--btn-color);
+  }
 
-    .link-70::after {
-        top: 0;
-        left: 0;
-        border-top: 2px solid transparent;
-        border-left: 2px solid transparent;
-    }
+  nav a::after {
+    bottom: 0;
+    right: 0;
+    border-bottom-color: var(--btn-color);
+    border-right-color: var(--btn-color);
+  }
 
-    .link-70::before {
-        right: 0;
-        bottom: 0;
-        border-bottom: 2px solid transparent;
-        border-right: 2px solid transparent;
-    }
+  nav a:hover::before,
+  nav a:hover::after {
+    width: 100%;
+    height: 100%;
+  }
 
-    .link-70:hover::before,
-    .link-70:hover::after {
-        width: 100%;
-        height: 100%;
-        border-color: var(--btn-color);
-    }
-
-    nav a {
-        position: relative;
-        display: inline-block;
-        margin: 0 15px;
-        padding: 10px 0;
-        color: #fff;
-        text-decoration: none;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-weight: 400;
-        font-size: 0.95em;
-        transition: color 0.3s ease;
+  /* --- Mobile styles --- */
+  @media (max-width: 48em) {
+    .logo {
+      height: 100px;
     }
 
     .hamburger {
-        display: none;
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 10px;
-        z-index: 1000;
+      display: block;
     }
 
-    .hamburger-icon {
-        font-size: 2rem;
-        color: white;
+    nav {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      width: 250px;
+      flex-direction: column;
+      padding: 1rem;
     }
 
-    @media screen and (max-width: 30em) {
-
-        nav {
-            z-index: 1;
-        }
-
-        nav ul {
-            width: 250px;
-            justify-items: center;
-        }
-
-        nav ul li a {
-            cursor: pointer;
-        }
-
-        .hamburger {
-            display: block;
-        }
-
-        img {
-            display: none;
-        }
-
-        nav ul li {
-        display: flex;
-        flex-direction: column;
-        list-style-type: none;
-        font-family: 'Orbitron Variable', sans-serif;
-        cursor: pointer;
-        }
-
+    nav.open {
+      display: flex;
     }
 
-    @media screen and (max-width: 48em) {
-        nav {
-            z-index: 1;
-        }
-        
-        img {
-            height: 120px;
-            margin-right: 22em;
-        }
-
-        .hamburger {
-            display: block;
-        }
-
-        nav ul {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            display: none;
-            flex-direction: column;
-            background-color: rgba(0, 0, 0, 0.9);
-            padding: 1rem;
-            width: 250px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        nav.open ul {
-            display: flex;
-        }
-
-        nav a {
-            margin: 10px 0;
-            padding: 10px;
-            display: block;
-        }
+    nav ul {
+      flex-direction: column;
+      gap: 1rem;
     }
 
-    
-
-
-    /* 
-
-    @media (min-width: 48em) {
-        img {
-            height: 120px;
-            display: block;
-            margin-right: 22em;
-        }
-
-        .hamburger {
-            display: block;
-        }
-
-        nav ul {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            display: none;
-            flex-direction: column;
-            background-color: rgba(0, 0, 0, 0.9);
-            padding: 1rem;
-            width: 100%; 
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        nav.open ul {
-            display: flex;
-            flex-direction: column; 
-        }
-
-
-        nav a {
-            margin: 10px 0;
-            padding: 10px;
-            display: block;
-        }
+    nav a {
+      display: block;
+      padding: 10px;
     }
-
-    @media (min-width: 62em) {
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            background-color: transparent;
-            position: relative;
-        }
-        nav ul {
-            display: flex;
-            flex-direction: row;
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-            width: 100%; 
-        }
-        .hamburger {
-            display: none;
-        }
-    } */
+  }
 </style>
