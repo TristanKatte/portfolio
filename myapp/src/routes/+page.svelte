@@ -72,17 +72,24 @@
   <section class="about">
     <h2 class="fade-in">About Me</h2>
   </section>
+
+    <section class="featured-projects">
+    <h2 class="fade-in">Featured projects</h2>
+  </section>
 </main>
 
 <style>
   main {
-    /* max-width: 960px; */
     margin: 0 auto;
     padding: 2rem 1rem;
     font-family: "Nunito", sans-serif;
     color: #eee;
     background-color: #121212;
     width: 100vw;
+    overflow-y: scroll;
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+
   }
 
   header {
@@ -170,12 +177,21 @@
   }
 
   .about {
-    background-color: #fff;
+    background-color: maroon;
+  }
+
+  .featured-projects {
+    background-color: #123E3A;
   }
 
   section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
-    padding: 2rem;
+    scroll-snap-align: start;
+    position: relative;
+    width: 100%;
   }
 
   @media (max-width: 480px) {

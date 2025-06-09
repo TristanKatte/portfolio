@@ -27,24 +27,26 @@
 
 
 <div class="layout">
-    <Header />
+    <!-- <Header /> -->
     <main>
        <slot />
        <Transition />
     </main>
-    <Footer />
+    <!-- <Footer /> -->
 </div>
 
 <style>
 .layout {
     height: 100%;
-    max-width: 100%;
+    max-width: 100vw;
     display: flex;
     flex-direction: column;
     margin-inline: auto;
     padding-inline: var(--size-7);
     background-color: #000000;
     background-image: linear-gradient(147deg, #434343 0%,  #000000 74%);
+    margin: 0;
+    padding: 0;
 }
 
 main {
