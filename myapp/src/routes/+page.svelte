@@ -29,10 +29,11 @@
       gsap.from(el, { opacity: 0, y: 30, delay: i * 0.3, duration: 0.8 });
     });
   });
+
 </script>
 
 <main>
-  <header in:fade={{ duration }} out:fade={{ duration }}>
+  <header>
     <h1>Tristan Katte</h1>
     <nav>
       <a
@@ -44,7 +45,7 @@
   </header>
 
   <section class="hero fade-in">
-    <h2>HI, I'm Tristan Katte, a Fontend Developer & Designer</h2>
+    <h2>Hi, I'm Tristan Katte, a Fontend Developer & Designer</h2>
     <p>Creating beautiful, functional web apps with passion and precision.</p>
   </section>
 
@@ -181,7 +182,7 @@
   }
 
   .featured-projects {
-    background-color: #123E3A;
+    background-color: gold;
   }
 
   section {
