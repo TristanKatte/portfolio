@@ -1,87 +1,87 @@
 <script>
-    import Footer from './components/Footer.svelte'
-    import Header from './components/Header.svelte'
-    import Transition from './transition.svelte'
-    import { onNavigate } from '$app/navigation';
+  import Transition from './transition.svelte';
+  import { onNavigate } from '$app/navigation';
 
+  // Design libs
+  import 'open-props/style';
+  import 'open-props/normalize';
+  import 'open-props/buttons';
 
-    import 'open-props/style'
-    import 'open-props/normalize'
-    import 'open-props/buttons'
+  // Fonts
+  import '@fontsource/alata';
+  import '@fontsource-variable/orbitron';
 
-    import '@fontsource/alata';
-    import '@fontsource-variable/orbitron';
+  // Global section styles
+  import '$lib/styles/sections.css';
 
-    onNavigate((navigation) => {
-        if (!document.startViewTransition) return;
+  // View transitions
+  onNavigate((navigation) => {
+    if (!document.startViewTransition) return;
 
-        return new Promise((resolve) => {
-            document.startViewTransition(async () => {
-                resolve();
-                await navigation.complete;
-            });
-        });
+    return new Promise((resolve) => {
+      document.startViewTransition(async () => {
+        resolve();
+        await navigation.complete;
+      });
     });
+  });
 </script>
-<link rel="stylesheet" href="/css/styles.css">
 
+<link rel="stylesheet" href="/css/styles.css" />
 
 <div class="layout">
-    <!-- <Header /> -->
-    <main>
-       <slot />
-       <Transition />
-    </main>
-    <!-- <Footer /> -->
+  <main>
+    <slot />
+    <Transition />
+  </main>
 </div>
 
 <style>
-.layout {
+  .layout {
     height: 100%;
     max-width: 100vw;
     display: flex;
     flex-direction: column;
     margin-inline: auto;
-    padding-inline: var(--size-7);
     background-color: #000000;
-    background-image: linear-gradient(147deg, #434343 0%,  #000000 74%);
+    background-image: linear-gradient(147deg, #434343 0%, #000000 74%);
     margin: 0;
     padding: 0;
-}
+  }
 
-main {
+  main {
     padding-block: var(--size-0);
     flex: 1;
-}
+  }
 
-@media (min-width: 1440px) {
+  @media (min-width: 1440px) {
     .layout {
-        padding-inline: 0;
+      padding-inline: 0;
     }
-}
+  }
 
-@media (max-width: 768px) {
+  @media (max-width: 768px) {
     .layout {
-        padding-inline: var(--size-4);
-        flex-direction: column;
-        align-items: center;
+      padding-inline: var(--size-4);
+      flex-direction: column;
+      align-items: center;
     }
 
     main {
-        width: 100%;
-        padding-block: var(--size-2);
+      width: 100%;
+      padding-block: var(--size-2);
     }
-}
+  }
 
-@media (max-width: 480px) {
+  @media (max-width: 480px) {
     .layout {
-        padding-inline: var(--size-2);
-        flex-direction: column;
-        justify-content: flex-start;
+      padding-inline: var(--size-2);
+      flex-direction: column;
+      justify-content: flex-start;
     }
 
     main {
-        padding-block: var(--size-1);
+      padding-block: var(--size-1);
     }
-}
-    </style>
+  }
+</style>
