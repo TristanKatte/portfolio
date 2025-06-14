@@ -1,51 +1,58 @@
 <script>
+  import ScrollIndicator from '$lib/components/atoms/ScrollIndicator.svelte';
   import { onMount } from 'svelte';
-  import gsap from 'gsap';
-  import ScrollTrigger  from 'gsap/ScrollTrigger';
-  
- gsap.registerPlugin(ScrollTrigger);
 
-  onMount(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".hero-title", {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out"
-      });
+  onMount(async () => {
+    const gsap = (await import('gsap')).default;
+    const ScrollTrigger = (await import('gsap/ScrollTrigger')).default;
 
-      gsap.from(".hero-sub", {
-        y: 30,
-        opacity: 0,
-        delay: 0.3,
-        duration: 1,
-        ease: "power2.out"
-      });
+    gsap.registerPlugin(ScrollTrigger);
 
-      gsap.from(".hero-buttons", {
-        y: 20,
-        opacity: 0,
-        delay: 0.6,
-        duration: 1,
-        ease: "power2.out"
-      });
+    // Intro animaties
+    gsap.from('.hero-title', {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: 'power3.out',
     });
 
-    return () => ctx.revert();
+    gsap.from('.hero-sub', {
+      y: 30,
+      opacity: 0,
+      delay: 0.3,
+      duration: 1,
+      ease: 'power2.out',
+    });
+
+    gsap.from('.hero-buttons', {
+      y: 20,
+      opacity: 0,
+      delay: 0.6,
+      duration: 1,
+      ease: 'power2.out',
+    });
   });
 </script>
 
 <section class="hero" aria-label="Introductie">
   <div class="container">
-    <h1 class="hero-title">Hi, ik ben <span class="highlight">[Jouw Naam]</span></h1>
-    <p class="hero-sub">Frontend developer met passie voor animatie, performance & UX.</p>
+    <h1 class="hero-title">
+      Hi!, I'm <span class="highlight">Tristan</span>
+    </h1>
+    <p class="hero-sub">
+       Passionate developer and designer who loves to create beautiful and functional web applications.
+    </p>
 
     <div class="hero-buttons">
-      <a href="#projects" class="btn primary">Bekijk mijn werk</a>
-      <a href="/curriculum_vitae-1.pdf" class="btn secondary" download>Download CV</a>
+      <a href="#work" class="btn primary">View my projects</a>
+      <a href="/cv.pdf" class="btn secondary" download>Download my Resume</a>
     </div>
+
+    <ScrollIndicator href="#about" ariaLabel="Scroll to the about me section" />
   </div>
 </section>
+
+
 
 <style>
   .hero {
@@ -53,10 +60,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
     padding: var(--size-7);
-    background: var(--bg);
-    color: var(--fg);
+    background-image:  var(--gradient-16);
+    color: var(--fg, white);
+    scroll-snap-align: start;
+    text-align: center;
   }
 
   .container {
@@ -74,9 +82,8 @@
   }
 
   .hero-sub {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    opacity: 0.8;
+    font-size: 1.25rem;
+    opacity: 0.85;
     margin-bottom: 2rem;
   }
 
@@ -90,11 +97,10 @@
   .btn {
     padding: 0.8rem 1.6rem;
     font-weight: 600;
-    border: none;
-    cursor: pointer;
     border-radius: 0.4rem;
     transition: all 0.3s ease;
     text-decoration: none;
+    border: 2px solid transparent;
   }
 
   .btn.primary {
@@ -108,12 +114,22 @@
 
   .btn.secondary {
     background: transparent;
-    border: 2px solid var(--brand, #64ffda);
+    border-color: var(--brand, #64ffda);
     color: var(--brand, #64ffda);
   }
 
   .btn.secondary:hover {
     background: var(--brand);
     color: #000;
+  }
+
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
   }
 </style>

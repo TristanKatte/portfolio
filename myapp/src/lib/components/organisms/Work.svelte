@@ -1,14 +1,64 @@
 <script>
-  import SectionWrapper from '$lib/components/atoms/SectionWrapper.svelte';
-  import WorkGrid from '$lib/components/molecules/WorkGrid.svelte';
+  import ScrollIndicator from '../atoms/ScrollIndicator.svelte';
+  import { onMount } from 'svelte';
 
-  const projects = [
-    { title: 'Portfolio Redesign' },
-    { title: 'Toegankelijke UI Toolkit' }
-  ];
+  onMount(async () => {
+    const gsap = (await import('gsap')).default;
+    const ScrollTrigger = (await import('gsap/ScrollTrigger')).default;
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from('.project', {
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '.projects',
+        start: 'top 85%',
+      },
+    });
+  });
 </script>
 
-<SectionWrapper id="work" className="work" label="Mijn werk">
-  <h2>Mijn werk</h2>
-  <WorkGrid {projects} />
-</SectionWrapper>
+<section id="work" class="work" aria-labelledby="work-heading">
+  <div class="work-content">
+    <h2 id="work-heading">Mijn Werk</h2>
+    <div class="projects">
+      <div class="project">✨ Portfolio Website</div>
+      <div class="project">🧠 AI Tooling</div>
+      <div class="project">📱 Responsive App</div>
+    </div>
+  </div>
+  <ScrollIndicator href="#contact" ariaLabel="Scroll to the contact section" />
+</section>
+
+<style>
+.work {
+  min-height: 100dvh;
+  padding: var(--size-7);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-image: var(--gradient-12);
+}
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.project {
+  background: white;
+  color: black;
+  padding: 2rem;
+  border-radius: 1rem;
+  min-width: 220px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+</style>
