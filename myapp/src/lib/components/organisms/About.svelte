@@ -10,23 +10,24 @@
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
     // SplitText voor "about-content"
-    const split = new SplitText(".about-content", {
-      type: "chars",
-      charsClass: "split-char",
-    });
+const split = new SplitText(".about-content", {
+  type: "lines",
+  linesClass: "split-line"
+});
 
-    gsap.from(split.chars, {
-      duration: 1,
-      y: 100,
-      autoAlpha: 0,
-      stagger: 0.02,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".about-content",
-        start: "top 80%",
-        onComplete: () => split.revert(),
-      },
+SplitText.create(".about-content", {
+  type: "lines, words",
+  mask: "lines",
+  autoSplit: true,
+  onSplit(self) {
+    return gsap.from(self.words, {
+      duration: 1, 
+      y: 100, 
+      autoAlpha: 0, 
+      stagger: 0.05
     });
+  }
+});
 
     // Timeline animatie voor education items
     gsap.utils

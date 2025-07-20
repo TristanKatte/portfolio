@@ -1,4 +1,5 @@
 <script>
+  import ContactForm from './ContactForm.svelte';
   import { onMount } from 'svelte';
 
   onMount(async () => {
@@ -19,15 +20,18 @@
   });
 </script>
 
+
+
 <section id="contact" class="contact" aria-labelledby="contact-heading">
-  <div class="contact-content">
+  <ContactForm />
+  <!-- <div class="contact-content">
     <h2 id="contact-heading">Contact</h2>
     <p>Stuur me gerust een bericht of connect via LinkedIn.</p>
     <a href="mailto:jouw@email.com" class="btn primary">Mail mij</a>
-  </div>
+  </div> -->
 </section>
 
-<style>
+<!-- <style>
 .contact {
   min-height: 100dvh;
   padding: var(--size-7);
@@ -52,4 +56,4 @@
   border-radius: 0.5rem;
   display: inline-block;
 }
-</style>
+</style> -->
