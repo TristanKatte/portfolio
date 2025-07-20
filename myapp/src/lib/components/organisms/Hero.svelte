@@ -2,6 +2,7 @@
   import ScrollIndicator from '$lib/components/atoms/ScrollIndicator.svelte';
   import { onMount } from 'svelte';
 
+
   onMount(async () => {
     const gsap = (await import('gsap')).default;
     const ScrollTrigger = (await import('gsap/ScrollTrigger')).default;
@@ -35,22 +36,29 @@
 </script>
 
 <section class="hero" aria-label="Introductie">
-  <div class="container">
-    <h1 class="hero-title">
-      Hi!, I'm <span class="highlight">Tristan</span>
-    </h1>
-    <p class="hero-sub">
-       Passionate developer and designer who loves to create beautiful and functional web applications.
-    </p>
+  <div class="container with-image">
+    <div class="hero-text">
+      <h1 class="hero-title">
+        Hi!, I'm <span class="highlight">Tristan</span>
+      </h1>
+      <p class="hero-sub">
+        Passionate developer and designer who loves to create beautiful and functional web applications.
+      </p>
 
-    <div class="hero-buttons">
-      <a href="#work" class="btn primary">View my projects</a>
-      <a href="/cv.pdf" class="btn secondary" download>Download my Resume</a>
+      <div class="hero-buttons">
+        <a href="#work" class="btn primary">View my projects</a>
+        <a href="/cv.pdf" class="btn secondary" download>Download my Resume</a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="/images/profielfoto-zw.jpg" alt="Tristan" />
     </div>
 
     <ScrollIndicator href="#about" ariaLabel="Scroll to the about me section" />
   </div>
 </section>
+
 
 
 
