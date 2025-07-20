@@ -81,7 +81,7 @@ gsap.from(split.lines, {
     padding: var(--size-7);
     scroll-snap-align: start;
     text-align: left;
-    background-color: #1f1c2c ;
+    background-image: var(--gradient-16);
   }
 
   .about-content {
@@ -98,6 +98,6 @@ gsap.from(split.lines, {
     font-size: 1.125rem;
     line-height: 1.7;
     opacity: 1;
-    color: #928dab;
+    color: var(--txt-color);
   }
 </style>
