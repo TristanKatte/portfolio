@@ -24,7 +24,7 @@ SplitText.create(".about-content", {
       duration: 1, 
       y: 100, 
       autoAlpha: 0, 
-      stagger: 0.05
+      stagger: 0.10
     });
   }
 });
@@ -225,13 +225,13 @@ SplitText.create(".about-content", {
   }
 
   .about h2 {
-    font-size: 1.5rem;
+    
     margin-bottom: 1rem;
     color: var(--heading-color);
   }
 
   .about p {
-    font-size: 1rem;
+    font-size: 1.3rem;
     line-height: 1.6;
     color: var(--txt-color);
   }
@@ -242,6 +242,7 @@ SplitText.create(".about-content", {
 	  min-height: 100vh;
 	  padding: 100px 15px;
     z-index: 0;
+    margin-top: 15em;
 }
 
   .timeline-items{

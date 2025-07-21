@@ -51,9 +51,9 @@
       </div>
     </div>
 
-    <div class="hero-image">
+    <!-- <div class="hero-image">
       <img src="/images/profielfoto-zw.jpg" alt="Tristan" />
-    </div>
+    </div> -->
 
     <ScrollIndicator href="#about" ariaLabel="Scroll to the about me section" />
   </div>
@@ -83,6 +83,8 @@
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
     margin-bottom: 1rem;
+    font-family: "Nunito", sans-serif;
+    letter-spacing: 5px;
   }
 
   .highlight {
@@ -101,6 +103,8 @@
     justify-content: center;
     flex-wrap: wrap;
   }
+
+  
 
   .btn {
     padding: 0.8rem 1.6rem;
