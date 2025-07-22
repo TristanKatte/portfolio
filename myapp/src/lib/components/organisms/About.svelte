@@ -242,7 +242,7 @@ SplitText.create(".about-content", {
 	  min-height: 100vh;
 	  padding: 100px 15px;
     z-index: 0;
-    margin-top: 15em;
+    margin: 15em 0 15em 0;
 }
 
   .timeline-items{
@@ -309,16 +309,17 @@ SplitText.create(".about-content", {
 	color: #ffffff;
 	margin:0 0 10px;
 	text-transform: capitalize;
-	font-weight: 500;
-  font-family: "Azonix";
+	font-weight: 300;
+  font-family: "Titillium Web", sans-serif;
+  letter-spacing: 3px;
 }
 
 .timeline-content p{
   color: #c8c8c8;
 	font-size: 16px;
-	font-weight: 300;
+	font-weight: 100;
 	line-height: 22px;
-  font-family: 'Orbitron Variable', sans-serif;
+  font-family: "Titillium Web", sans-serif;
   letter-spacing: 3px;
 }
   /* === Desktop-uitbreiding vanaf 768px (48em) === */

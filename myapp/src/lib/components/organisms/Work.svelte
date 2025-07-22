@@ -25,9 +25,9 @@
   <div class="work-content">
     <h2 id="work-heading">Mijn Werk</h2>
     <div class="projects">
-      <div class="project">✨ Portfolio Website</div>
-      <div class="project">🧠 AI Tooling</div>
-      <div class="project">📱 Responsive App</div>
+      <div class="project">✨ We Love Web blog</div>
+      <div class="project">🧠 Bieb in Bloei</div>
+      <div class="project">📱 I Love Web blog</div>
     </div>
   </div>
   <ScrollIndicator href="#contact" ariaLabel="Scroll to the contact section" />
