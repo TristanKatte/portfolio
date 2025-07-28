@@ -36,7 +36,6 @@
     display: flex;
     flex-direction: column;
     margin-inline: auto;
-
     margin: 0;
     padding: 0;
   }

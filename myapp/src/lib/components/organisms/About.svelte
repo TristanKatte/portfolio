@@ -214,10 +214,10 @@ SplitText.create(".about-content", {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     padding: var(--size-7);
     scroll-snap-align: start;
     text-align: left;
-    background-image: var(--gradient-16);
   }
 
   .about-content {
@@ -242,7 +242,7 @@ SplitText.create(".about-content", {
 	  min-height: 100vh;
 	  padding: 100px 15px;
     z-index: 0;
-    margin: 15em 0 15em 0;
+    margin: 15em 0 2em 0;
 }
 
   .timeline-items{
@@ -251,14 +251,15 @@ SplitText.create(".about-content", {
 	  display: flex;
 	  flex-wrap: wrap;
 	  position: relative;
-}
+  }
+    
 
 .timeline-items::before{
 	  content: '';
 	  position: absolute;
 	  width: 2px;
 	  height: 100%;
-	  background-color: #2f363e;
+	  background-color: var(--heading-color);
 	  left: calc(50% - 1px);
 }
 
@@ -318,7 +319,7 @@ SplitText.create(".about-content", {
   color: #c8c8c8;
 	font-size: 16px;
 	font-weight: 100;
-	line-height: 22px;
+	line-height: 1.6;
   font-family: "Titillium Web", sans-serif;
   letter-spacing: 3px;
 }

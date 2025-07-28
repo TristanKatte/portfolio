@@ -26,8 +26,8 @@ onMount(async () => {
   // Rotating phrases
   const phrases = [
     "Frontend Developer",
-    "WebDesigner",
-    "Accessibility Advocate",
+    "Web Designer",
+    "Fulltime Nerd",
     "SvelteKit Enthusiast"
   ];
   const el = document.querySelector('.rotating-text');
@@ -72,7 +72,7 @@ onMount(async () => {
       </h1>
       <p class="hero-sub">
         I'm a
-        <span class="rotating-text"></span>
+        <span class="rotating-text highlight"></span>
       </p>
 
       <div class="hero-buttons">
@@ -99,14 +99,9 @@ onMount(async () => {
     align-items: center;
     justify-content: center;
     padding: var(--size-7);
-    background-image:  var(--gradient-16);
     color: var(--fg, white);
     scroll-snap-align: start;
     text-align: center;
-  }
-
-  .container {
-    max-width: 60ch;
   }
 
   .hero-title {
