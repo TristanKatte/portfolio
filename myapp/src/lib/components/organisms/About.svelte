@@ -24,7 +24,7 @@ SplitText.create(".about-content", {
       duration: 1, 
       y: 100, 
       autoAlpha: 0, 
-      stagger: 0.10
+      stagger: 0.15
     });
   }
 });
@@ -195,7 +195,7 @@ SplitText.create(".about-content", {
         <div class="timeline-dot"></div>
         <time class="timeline-date" datetime="2018">2018 - present</time>
         <div class="timeline-content">
-          <h3>Cleaner & Warehouse Worker</h3>
+          <h3>Cleaner & Warehouse Worker at VersAlert</h3>
           <p>
             Seasonal job at a produce wholesaler, assisting with cleaning and
             stacking crates for deliveries across the Netherlands.

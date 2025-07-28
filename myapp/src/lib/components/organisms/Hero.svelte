@@ -2,37 +2,66 @@
   import ScrollIndicator from '$lib/components/atoms/ScrollIndicator.svelte';
   import { onMount } from 'svelte';
 
+onMount(async () => {
+  const gsap = (await import('gsap')).default;
+  const ScrollTrigger = (await import('gsap/ScrollTrigger')).default;
+  gsap.registerPlugin(ScrollTrigger);
 
-  onMount(async () => {
-    const gsap = (await import('gsap')).default;
-    const ScrollTrigger = (await import('gsap/ScrollTrigger')).default;
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Intro animaties
-    gsap.from('.hero-title', {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: 'power3.out',
-    });
-
-    gsap.from('.hero-sub', {
-      y: 30,
-      opacity: 0,
-      delay: 0.3,
-      duration: 1,
-      ease: 'power2.out',
-    });
-
-    gsap.from('.hero-buttons', {
-      y: 20,
-      opacity: 0,
-      delay: 0.6,
-      duration: 1,
-      ease: 'power2.out',
-    });
+  // Intro animaties
+  gsap.from('.hero-title', {
+    y: 50,
+    opacity: 0,
+    duration: 1,
+    ease: 'power3.out',
   });
+
+  gsap.from('.hero-buttons', {
+    y: 20,
+    opacity: 0,
+    delay: 0.6,
+    duration: 1,
+    ease: 'power2.out',
+  });
+
+  // Rotating phrases
+  const phrases = [
+    "Frontend Developer",
+    "WebDesigner",
+    "Accessibility Advocate",
+    "SvelteKit Enthusiast"
+  ];
+  const el = document.querySelector('.rotating-text');
+  let i = 0;
+
+  function animatePhrase() {
+    el.textContent = phrases[i];
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: 'power2.out',
+        onComplete: () => {
+          gsap.to(el, {
+            opacity: 0,
+            y: -20,
+            delay: 2,
+            duration: 0.8,
+            ease: 'power2.in',
+            onComplete: () => {
+              i = (i + 1) % phrases.length;
+              animatePhrase();
+            }
+          });
+        }
+      }
+    );
+  }
+
+  animatePhrase();
+});
 </script>
 
 <section class="hero" aria-label="Introductie">
@@ -42,12 +71,13 @@
         Hi!, I'm <span class="highlight">Tristan</span>
       </h1>
       <p class="hero-sub">
-        Passionate developer and designer who loves to create beautiful and functional web applications.
+        I'm a
+        <span class="rotating-text"></span>
       </p>
 
       <div class="hero-buttons">
         <a href="#work" class="btn primary">View my projects</a>
-        <a href="/cv.pdf" class="btn secondary" download>Download my Resume</a>
+        <a href="/curriculum_vitae-1.pdf" class="btn secondary" download>Download my Resume</a>
       </div>
     </div>
 
@@ -92,7 +122,7 @@
   }
 
   .hero-sub {
-    font-size: 1.25rem;
+    font-size: 1.45rem;
     opacity: 0.85;
     margin-bottom: 2rem;
   }
