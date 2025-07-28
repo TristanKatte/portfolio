@@ -7,13 +7,6 @@
   import 'open-props/normalize';
   import 'open-props/buttons';
 
-  // Fonts
-  import '@fontsource/alata';
-  import '@fontsource-variable/orbitron';
-
-  // Global section styles
-  import '$lib/styles/sections.css';
-
   // View transitions
   onNavigate((navigation) => {
     if (!document.startViewTransition) return;
@@ -27,7 +20,7 @@
   });
 </script>
 
-<link rel="stylesheet" href="/css/styles.css" />
+<!-- <link rel="stylesheet" href="/css/styles.css" /> -->
 
 <div class="layout">
   <main>
@@ -43,8 +36,7 @@
     display: flex;
     flex-direction: column;
     margin-inline: auto;
-    background-color: #000000;
-    background-image: linear-gradient(147deg, #434343 0%, #000000 74%);
+
     margin: 0;
     padding: 0;
   }
@@ -52,6 +44,12 @@
   main {
     padding-block: var(--size-0);
     flex: 1;
+        background: #414345;
+    background: linear-gradient(
+      315deg,
+      rgba(65, 67, 69, 1) 0%,
+      rgba(35, 37, 38, 1) 100%
+    );
   }
 
   @media (min-width: 1440px) {

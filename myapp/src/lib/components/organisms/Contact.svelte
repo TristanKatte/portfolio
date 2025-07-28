@@ -24,14 +24,10 @@
 
 <section id="contact" class="contact" aria-labelledby="contact-heading">
   <ContactForm />
-  <!-- <div class="contact-content">
-    <h2 id="contact-heading">Contact</h2>
-    <p>Stuur me gerust een bericht of connect via LinkedIn.</p>
-    <a href="mailto:jouw@email.com" class="btn primary">Mail mij</a>
-  </div> -->
+
 </section>
 
-<!-- <style>
+<style>
 .contact {
   min-height: 100dvh;
   padding: var(--size-7);
@@ -42,18 +38,4 @@
   text-align: center;
 }
 
-.contact-content {
-  max-width: 60ch;
-}
-
-.btn.primary {
-  margin-top: 2rem;
-  background: var(--brand, #64ffda);
-  color: black;
-  padding: 0.75rem 1.5rem;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 0.5rem;
-  display: inline-block;
-}
-</style> -->
+</style>

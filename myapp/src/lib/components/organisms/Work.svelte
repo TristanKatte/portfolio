@@ -65,7 +65,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background-image: var(--gradient-16);
+   
   }
 
   #work-heading {
