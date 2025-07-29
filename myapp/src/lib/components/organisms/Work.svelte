@@ -17,6 +17,49 @@
       image: "/images/bieb-in-bloei.jpg",
       size: "small",
     },
+    {
+      slug: "Redpers",
+      title: "🗞️ Redpers",
+      description: "Een nieuwswebsite voor Redpers.",
+      image: "/images/vogelpers.png",
+      size: "large",
+    },
+    {
+      slug: "Informaat",
+      title: "🧠 Informaat",
+      description: "Een desktop-first website voor Informaat.",
+      image: "/images/informaat.png",
+      size: "small",
+    },
+    {
+      slug: "B-rain",
+      title: "🧠 B-rain",
+      description: "Een website voor B-rain.",
+      image: "/images/b-rain.png",
+      size: "small",
+    },
+    {
+      slug: "squad-page",
+      title: "🧠 Squad page",
+      description: "Een squadpage voor Tribe for life.",
+      image: "/images/squadpage.png",
+      size: "small",
+    },
+    {
+      slug: "visitekaartje",
+      title: "🧠 Visitekaartje",
+      description: "Een digitale business card voor Tribe for life.",
+      image: "/images/visitekaartje.png",
+      size: "small",
+    },
+        {
+      slug: "I Love Web",
+      title: "🧠 I Love Web",
+      description: "A digital garden.",
+      image: "/images/digital-garden.png",
+      size: "small",
+    },
+
   ];
 
   onMount(async () => {

@@ -300,7 +300,7 @@ SplitText.create(".about-content", {
 }
 
 .timeline-content{
-  background-color: #2f363e;
+  background-color: var( --project-card-color);
 	padding: 30px;
 	border-radius: 5px;
 }

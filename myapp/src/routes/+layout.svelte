@@ -1,11 +1,11 @@
 <script>
-  import Transition from './transition.svelte';
-  import { onNavigate } from '$app/navigation';
+  import Transition from "./transition.svelte";
+  import { onNavigate } from "$app/navigation";
 
   // Design libs
-  import 'open-props/style';
-  import 'open-props/normalize';
-  import 'open-props/buttons';
+  import "open-props/style";
+  import "open-props/normalize";
+  import "open-props/buttons";
 
   // View transitions
   onNavigate((navigation) => {
@@ -43,11 +43,13 @@
   main {
     padding-block: var(--size-0);
     flex: 1;
-        background: #414345;
+
+
+    background: #485563;
     background: linear-gradient(
-      315deg,
-      rgba(65, 67, 69, 1) 0%,
-      rgba(35, 37, 38, 1) 100%
+      0deg,
+      rgba(72, 85, 99, 1) 0%,
+      rgba(41, 50, 60, 1) 100%
     );
   }
 
