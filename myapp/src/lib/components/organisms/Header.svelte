@@ -31,9 +31,11 @@
     z-index: 100;
     width: 100%;
     padding: 1rem 2rem;
-    background: var(--heading-color);
-    color: var(--fg, white);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 4px 12px rgba(0, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
   }
 
   .container {
@@ -46,9 +48,16 @@
 
   .logo {
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     text-decoration: none;
-    color: var(--fg, white);
+    color: var(--highlight);
+    font-family: 'Orbitron Variable', sans-serif;
+    letter-spacing: 1px;
+    transition: text-shadow 0.3s ease;
+  }
+
+  .logo:hover {
+    text-shadow: 0 0 10px var(--highlight);
   }
 
   .nav {
@@ -62,9 +71,11 @@
     position: absolute;
     top: 100%;
     right: 0;
-    background: transparent;
+    background: var(--surface);
     padding: 1rem;
     border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+    border: 1px solid var(--border);
   }
 
   .nav ul.open {
@@ -73,20 +84,22 @@
 
   .nav a {
     text-decoration: none;
-    color: var(--fg, white);
+    color: var(--text);
     font-weight: 600;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    font-family: 'Orbitron Variable', sans-serif;
   }
 
   .nav a:hover {
-    color: var(--brand, #64ffda);
+    color: var(--highlight);
+    text-shadow: 0 0 6px var(--highlight);
   }
 
   .nav-toggle {
     background: none;
     border: none;
-    font-size: 1.5rem;
-    color: var(--fg, white);
+    font-size: 1.75rem;
+    color: var(--text);
     cursor: pointer;
   }
 
@@ -98,6 +111,8 @@
       gap: 2rem;
       background: none;
       padding: 0;
+      box-shadow: none;
+      border: none;
     }
 
     .nav-toggle {

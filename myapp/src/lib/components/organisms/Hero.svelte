@@ -24,7 +24,6 @@
       ease: "power2.out",
     });
 
-    // Rotating phrases
     const phrases = [
       "Frontend Developer",
       "Web Designer",
@@ -75,10 +74,10 @@
         I'm a <span class="rotating-text highlight"></span>
       </p>
 
-<div class="hero-buttons">
-  <Button label="View my projects" href="#work" />
-  <Button label="Download my Resume" href="/curriculum_vitae-1.pdf" />
-</div>
+      <div class="hero-buttons">
+        <Button label="View my projects" href="#work" />
+        <Button label="Download my Resume" href="/curriculum_vitae-1.pdf" />
+      </div>
     </section>
 
     <section class="hero-image">
@@ -102,6 +101,8 @@
     overflow: hidden;
     width: 100%;
     text-align: center;
+    background-color: var(--bg);
+    color: var(--text);
   }
 
   .hero-inner {
@@ -128,7 +129,8 @@
     height: auto;
     border-radius: 1rem;
     object-fit: cover;
-    border: 12px ridge var(--brand);
+    border: 8px solid var(--border);
+    box-shadow: 0 0 20px var(--brand-soft);
   }
 
   .hero-title {
@@ -141,24 +143,23 @@
   }
 
   .highlight {
-    color: var(--brand);
+    color: var(--highlight);
+    text-shadow: 0 0 8px var(--highlight);
   }
 
   .hero-sub {
-    font-size: 2.45rem;
+    font-size: 2.2rem;
     opacity: 0.85;
     margin-bottom: 2rem;
-    color: var(--highlight-color);
+    color: var(--text);
   }
 
   .hero-buttons {
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
     justify-content: flex-start;
     flex-wrap: wrap;
   }
-
-  
 
   /* Desktop layout */
   @media (min-width: 768px) {

@@ -225,9 +225,8 @@ SplitText.create(".about-content", {
   }
 
   .about h2 {
-    
     margin-bottom: 1rem;
-    color: var(--heading-color);
+    color: var(--brand);
   }
 
   .about p {
@@ -259,7 +258,7 @@ SplitText.create(".about-content", {
 	  position: absolute;
 	  width: 2px;
 	  height: 100%;
-	  background-color: var(--heading-color);
+	  background-color: var(--brand);
 	  left: calc(50% - 1px);
 }
 
@@ -285,7 +284,7 @@ SplitText.create(".about-content", {
 .timeline-dot{
 	  height: 16px;
 	  width: 16px;
-	  background-color: var(--btn-color);
+	  background-color: var(--brand-soft);
 	  position: absolute;
 	  left: calc(50% - 8px);
 	  border-radius: 50%;
@@ -300,7 +299,7 @@ SplitText.create(".about-content", {
 }
 
 .timeline-content{
-  background-color: var( --project-card-color);
+  background-color: var( --surface);
 	padding: 30px;
 	border-radius: 5px;
 }
