@@ -1,5 +1,6 @@
 <script>
   import ScrollIndicator from "$lib/components/atoms/ScrollIndicator.svelte";
+  import Button from "../atoms/Button.svelte";
   import { onMount } from "svelte";
 
   onMount(async () => {
@@ -74,10 +75,10 @@
         I'm a <span class="rotating-text highlight"></span>
       </p>
 
-      <div class="hero-buttons">
-        <a href="#work" class="btn primary">View my projects</a>
-        <a href="/curriculum_vitae-1.pdf" class="btn secondary" download>Download my Resume</a>
-      </div>
+<div class="hero-buttons">
+  <Button label="View my projects" href="#work" />
+  <Button label="Download my Resume" href="/curriculum_vitae-1.pdf" />
+</div>
     </section>
 
     <section class="hero-image">
@@ -151,39 +152,12 @@
 
   .hero-buttons {
     display: flex;
-    gap: 1rem;
+    gap: 3rem;
     justify-content: flex-start;
     flex-wrap: wrap;
   }
 
-  .btn {
-    padding: 0.8rem 1.6rem;
-    font-weight: 600;
-    border-radius: 0.4rem;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    border: 2px solid transparent;
-  }
-
-  .btn.primary {
-    background: var(--brand, #64ffda);
-    color: #000;
-  }
-
-  .btn.primary:hover {
-    filter: brightness(0.9);
-  }
-
-  .btn.secondary {
-    background: transparent;
-    border-color: var(--brand, #64ffda);
-    color: var(--brand, #64ffda);
-  }
-
-  .btn.secondary:hover {
-    background: var(--brand);
-    color: #000;
-  }
+  
 
   /* Desktop layout */
   @media (min-width: 768px) {

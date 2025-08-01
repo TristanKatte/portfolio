@@ -1,9 +1,18 @@
 <script>
   export let label = '';
   export let href = '#';
+  export let download = false;
+  export let target = null;
 </script>
 
-<a href={href} class="cta-button">{label}</a>
+<a
+  href={href}
+  class="cta-button"
+  download={download}
+  target={target}
+>
+  {label}
+</a>
 
 
 <style>

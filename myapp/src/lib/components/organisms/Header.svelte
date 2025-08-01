@@ -31,7 +31,7 @@
     z-index: 100;
     width: 100%;
     padding: 1rem 2rem;
-    background: var(--bg, #000);
+    background: #050505;
     color: var(--fg, white);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
@@ -62,7 +62,7 @@
     position: absolute;
     top: 100%;
     right: 0;
-    background: var(--bg, #000);
+    background: transparent;
     padding: 1rem;
     border-radius: 0.5rem;
   }

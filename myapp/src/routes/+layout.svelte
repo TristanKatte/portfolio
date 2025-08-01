@@ -48,7 +48,7 @@
     padding-block: var(--size-0);
     flex: 1;
 
-    background-color: #0d0d0e;
+    background-color: #050505;
     /* background: linear-gradient(0deg,rgba(50, 55, 59, 1) 0%, rgba(7, 9, 10, 1) 100%); */
   }
 
