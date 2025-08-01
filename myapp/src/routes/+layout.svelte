@@ -1,6 +1,7 @@
 <script>
   import Transition from "./transition.svelte";
   import { onNavigate } from "$app/navigation";
+  import Header from "../lib/components/organisms/Header.svelte";
 
   // Design libs
   import "open-props/style";
@@ -23,6 +24,7 @@
 <!-- <link rel="stylesheet" href="/css/styles.css" /> -->
 
 <div class="layout">
+  <Header />
   <main>
     <slot />
     <Transition />
@@ -44,13 +46,8 @@
     padding-block: var(--size-0);
     flex: 1;
 
-
-    background: #485563;
-    background: linear-gradient(
-      0deg,
-      rgba(72, 85, 99, 1) 0%,
-      rgba(41, 50, 60, 1) 100%
-    );
+background: #32373b;
+background: linear-gradient(0deg,rgba(50, 55, 59, 1) 0%, rgba(7, 9, 10, 1) 100%);
   }
 
   @media (min-width: 1440px) {
