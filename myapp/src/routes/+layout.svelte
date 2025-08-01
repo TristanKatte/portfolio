@@ -7,6 +7,7 @@
   import "open-props/style";
   import "open-props/normalize";
   import "open-props/buttons";
+  import Footer from "../lib/components/organisms/Footer.svelte";
 
   // View transitions
   onNavigate((navigation) => {
@@ -29,6 +30,7 @@
     <slot />
     <Transition />
   </main>
+  <Footer />
 </div>
 
 <style>
@@ -46,8 +48,8 @@
     padding-block: var(--size-0);
     flex: 1;
 
-background: #32373b;
-background: linear-gradient(0deg,rgba(50, 55, 59, 1) 0%, rgba(7, 9, 10, 1) 100%);
+    background-color: #0d0d0e;
+    /* background: linear-gradient(0deg,rgba(50, 55, 59, 1) 0%, rgba(7, 9, 10, 1) 100%); */
   }
 
   @media (min-width: 1440px) {

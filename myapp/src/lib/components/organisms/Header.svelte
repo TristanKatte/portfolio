@@ -1,138 +1,107 @@
 <script>
-  import Logo from '$lib/assets/logo_groen.png';
-  let isMenuOpen = false;
-
-  function toggleMenu() {
-    isMenuOpen = !isMenuOpen;
-  }
-
-  function closeMenu() {
-    isMenuOpen = false;
-  }
+  let isOpen = false;
 </script>
 
-<header>
-  <img src={Logo} alt="Personal logo" class="logo" />
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="logo">Tristan</a>
 
-  <button class="hamburger" on:click={toggleMenu} aria-label="Toggle menu">
-    &#9776;
-  </button>
+    <nav class="nav" aria-label="Hoofdnavigatie">
+      <ul class:open={isOpen}>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
 
-  <nav class:open={isMenuOpen}>
-    <ul on:click={closeMenu}>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About Me</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+      <button
+        class="nav-toggle"
+        aria-label="Menu"
+        on:click={() => (isOpen = !isOpen)}
+      >
+        ☰
+      </button>
+    </nav>
+  </div>
 </header>
 
 <style>
-  header {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: var(--bg, #000);
+    color: var(--fg, white);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    background: none;
-    position: relative;
-    z-index: 10;
   }
 
   .logo {
-    height: 150px;
-  }
-
-  .hamburger {
-    display: none;
-    font-size: 2rem;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-  }
-
-  nav ul {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  nav a {
+    font-weight: 700;
+    font-size: 1.5rem;
     text-decoration: none;
-    color: white;
-    font-size: 1rem;
-    text-transform: uppercase;
-    font-family: 'Orbitron Variable', sans-serif;
-    padding: 10px;
+    color: var(--fg, white);
+  }
+
+  .nav {
     position: relative;
   }
 
-  nav a::before,
-  nav a::after {
-    content: "";
+  .nav ul {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
     position: absolute;
-    width: 0%;
-    height: 0%;
-    transition: all 0.5s ease;
-    border: 2px solid transparent;
-  }
-
-  nav a::before {
-    top: 0;
-    left: 0;
-    border-top-color: var(--btn-color);
-    border-left-color: var(--btn-color);
-  }
-
-  nav a::after {
-    bottom: 0;
+    top: 100%;
     right: 0;
-    border-bottom-color: var(--btn-color);
-    border-right-color: var(--btn-color);
+    background: var(--bg, #000);
+    padding: 1rem;
+    border-radius: 0.5rem;
   }
 
-  nav a:hover::before,
-  nav a:hover::after {
-    width: 100%;
-    height: 100%;
+  .nav ul.open {
+    display: flex;
   }
 
-  /* --- Mobile styles --- */
-  @media (max-width: 48em) {
-    .logo {
-      height: 100px;
+  .nav a {
+    text-decoration: none;
+    color: var(--fg, white);
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  .nav a:hover {
+    color: var(--brand, #64ffda);
+  }
+
+  .nav-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--fg, white);
+    cursor: pointer;
+  }
+
+  @media (min-width: 768px) {
+    .nav ul {
+      display: flex !important;
+      position: static;
+      flex-direction: row;
+      gap: 2rem;
+      background: none;
+      padding: 0;
     }
 
-    .hamburger {
-      display: block;
-    }
-
-    nav {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      background: rgba(0, 0, 0, 0.9);
+    .nav-toggle {
       display: none;
-      width: 250px;
-      flex-direction: column;
-      padding: 1rem;
-    }
-
-    nav.open {
-      display: flex;
-    }
-
-    nav ul {
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    nav a {
-      display: block;
-      padding: 10px;
     }
   }
 </style>
