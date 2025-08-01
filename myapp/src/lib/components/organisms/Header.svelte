@@ -31,7 +31,7 @@
     z-index: 100;
     width: 100%;
     padding: 1rem 2rem;
-    background: #050505;
+    background: var(--heading-color);
     color: var(--fg, white);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }

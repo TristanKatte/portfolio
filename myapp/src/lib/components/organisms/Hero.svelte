@@ -98,7 +98,6 @@
     align-items: center;
     min-height: 100dvh;
     padding: var(--size-7);
-    color: var(--fg, white);
     scroll-snap-align: start;
     overflow: hidden;
     width: 100%;
@@ -109,7 +108,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 6rem;
     width: 100%;
     max-width: 1200px;
   }
@@ -129,7 +128,7 @@
     height: auto;
     border-radius: 1rem;
     object-fit: cover;
-    border: 12px ridge var(--heading-color);
+    border: 12px ridge var(--brand);
   }
 
   .hero-title {
@@ -138,16 +137,18 @@
     margin-bottom: 1rem;
     font-family: "Nirequa", sans-serif;
     letter-spacing: 5px;
+    color: var(--brand);
   }
 
   .highlight {
-    color: var(--brand, #64ffda);
+    color: var(--brand);
   }
 
   .hero-sub {
-    font-size: 1.45rem;
+    font-size: 2.45rem;
     opacity: 0.85;
     margin-bottom: 2rem;
+    color: var(--highlight-color);
   }
 
   .hero-buttons {

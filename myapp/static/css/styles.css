@@ -2,12 +2,15 @@
 
 :root {
     /* colors */
-    --main-bg-color: #393c44;
-    --btn-color: #00adb5;
-    --txt-color: #c2c2c2;
-    --heading-color: #50cece;
-    --project-card-color: #495057;
-    --strong-color: #f2e9e4;
+    --main-bg-color: #0e0e10;
+    --surface: #1a1a1f;
+    --brand: #00c2cb;
+    --brand-soft: #004e50;
+    --text: #e0ffff;
+    --muted-text: #94a1b2;
+    --border: #2c2c34;
+    --highlight: #00fff7;
+    --danger: #ff0066;
 
     /* headings */
     --heading-large: 4.5em;
