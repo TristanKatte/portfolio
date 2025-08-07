@@ -12,7 +12,26 @@
       description: 'Diepere uitleg over ontwerp, onderzoek en uitwerking...',
       image: '/images/bieb-in-bloei.jpg',
     },
-    // etc.
+    'redpers': {
+      title: '🗞️ Redpers',
+      description: 'Diepere uitleg over ontwerp, onderzoek en uitwerking...',
+      image: '/images/vogelpers.png',
+    },
+    'informaat': {
+      title: '🧠 Informaat',
+      description: 'Diepere uitleg over ontwerp, onderzoek en uitwerking...',
+      image: '/images/informaat.png',
+    },
+    'i-love-web': {
+      title: '🧠 I Love Web',
+      description: 'Diepere uitleg over ontwerp, onderzoek en uitwerking...',
+      image: '/images/digital-garden.png',
+    },
+        'we-love-web': {
+      title: '🧠 We Love Web',
+      description: 'Diepere uitleg over ontwerp, onderzoek en uitwerking...',
+      image: '/images/digital-garden.png',
+    },
   };
 
   $: slug = $page.params.slug;

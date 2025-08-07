@@ -8,6 +8,7 @@
   import "open-props/normalize";
   import "open-props/buttons";
   import Footer from "../lib/components/organisms/Footer.svelte";
+ 
 
   // View transitions
   onNavigate((navigation) => {
@@ -42,6 +43,10 @@
     margin-inline: auto;
     margin: 0;
     padding: 0;
+    background-image: url("/images/stars.svg");
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-position: center;
   }
 
   main {
@@ -49,6 +54,10 @@
     flex: 1;
     overflow: hidden;
     background-color: var(--main-bg-color);
+        background-image: url("/images/stars.svg");
+    background-size: 200% 200%;
+    background-attachment: fixed;
+    background-position: center;
   }
 
   @media (min-width: 1440px) {

@@ -8,7 +8,24 @@
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
     gsap.registerPlugin(ScrollTrigger);
 
-    // Intro animaties
+    // Overlay animatie
+    gsap.fromTo(
+      ".overlay",
+      {
+        opacity: 0,
+        scale: 1.2,
+        filter: "blur(20px)"
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        filter: "blur(0px)",
+        duration: 1.5,
+        ease: "power2.out"
+      }
+    );
+
+    // Hero tekst animaties
     gsap.from(".hero-title", {
       y: 50,
       opacity: 0,
@@ -24,6 +41,7 @@
       ease: "power2.out",
     });
 
+    // Rotating text
     const phrases = [
       "Frontend Developer",
       "Web Designer",
@@ -56,7 +74,7 @@
               },
             });
           },
-        }
+        },
       );
     }
 
@@ -64,20 +82,18 @@
   });
 </script>
 
-<section class="hero" aria-label="Introductie">
+<section class="hero" aria-label="Introduction">
+  <div class="overlay" aria-hidden="true"></div>
+
   <div class="hero-inner">
     <section class="hero-text">
       <h1 class="hero-title">
         Hi!, I'm <span class="highlight">Tristan</span>
       </h1>
       <p class="hero-sub">
-        I'm a <span class="rotating-text highlight"></span>
+        I'm a <span class="rotating-text highlight"></span> who loves to create beautiful
+        and functional web applications.
       </p>
-
-      <div class="hero-buttons">
-        <Button label="View my projects" href="#work" />
-        <Button label="Download my Resume" href="/curriculum_vitae-1.pdf" />
-      </div>
     </section>
 
     <section class="hero-image">
@@ -85,7 +101,11 @@
     </section>
   </div>
 
-  <ScrollIndicator href="#about" ariaLabel="Scroll to the about me section" class="scroll-indicator" />
+  <ScrollIndicator
+    href="#about"
+    ariaLabel="Scroll to the about me section"
+    class="scroll-indicator"
+  />
 </section>
 
 <style>
@@ -103,7 +123,9 @@
     text-align: center;
     background-color: var(--bg);
     color: var(--text);
+    z-index: 1;
   }
+
 
   .hero-inner {
     display: flex;
@@ -112,6 +134,7 @@
     gap: 6rem;
     width: 100%;
     max-width: 1200px;
+    z-index: 1;
   }
 
   .hero-text {
@@ -154,18 +177,11 @@
     color: var(--text);
   }
 
-  .hero-buttons {
-    display: flex;
-    gap: 2rem;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-
   /* Desktop layout */
   @media (min-width: 768px) {
     .hero-inner {
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
     }
 

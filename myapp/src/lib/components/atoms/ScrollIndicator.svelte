@@ -1,23 +1,51 @@
 <script>
     export let href = "#";
-    export let ariaLabel = "Scroll naar volgende sectie";
+    export let ariaLabel = "Scroll to the next section";
 </script>
 
-<a {href} class="scroll-indicator" aria-label={ariaLabel}> ⌄ </a>
+<a {href} class="scroll-indicator" aria-label={ariaLabel}>
+    <span class="scroll-arrow">↓</span>
+    <span class="scroll-text">Scroll down</span>
+</a>
 
 <style>
     .scroll-indicator {
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
         margin-top: 3rem;
-        font-size: 2rem;
+        font-size: 1rem;
         color: var(--brand, #64ffda);
-        animation: bounce 1.5s infinite;
         text-decoration: none;
+        cursor: pointer;
     }
 
-    .scroll-indicator:hover,
-    .scroll-indicator:focus {
+    .scroll-text {
+        font-family: "Orbitron Variable", sans-serif;
+        font-weight: 500;
+        font-size: 1.95rem;
+        letter-spacing: 1px;
+    }
+
+    .scroll-arrow {
+        font-size: 2.15rem;
+        animation: bounce 1.5s infinite;
+        transform-origin: center;
+    }
+
+    .scroll-indicator:hover .scroll-arrow,
+    .scroll-indicator:focus .scroll-arrow {
         transform: translateY(5px);
         outline: none;
+    }
+
+    @keyframes bounce {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(8px);
+        }
     }
 </style>

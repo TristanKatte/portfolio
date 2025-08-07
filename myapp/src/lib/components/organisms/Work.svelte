@@ -52,14 +52,13 @@
       image: "/images/visitekaartje.png",
       size: "small",
     },
-        {
+    {
       slug: "I Love Web",
       title: "🧠 I Love Web",
       description: "A digital garden.",
       image: "/images/digital-garden.png",
       size: "small",
     },
-
   ];
 
   onMount(async () => {
@@ -84,17 +83,17 @@
 <section id="work" class="work" aria-labelledby="work-heading">
   <div class="work-content">
     <h2 id="work-heading">Mijn Werk</h2>
-<div class="projects">
-  {#each projects as project}
-    <a class="project {project.size}" href={`/projects/${project.slug}`}>
-      <img src={project.image} alt={project.title} />
-      <div class="project-info">
-        <h3>{project.title}</h3>
-        <p>{project.description}</p>
-      </div>
-    </a>
-  {/each}
-</div>
+    <div class="projects">
+      {#each projects as project}
+        <a class="project {project.size}" href={`/projects/${project.slug}`}>
+          <img src={project.image} alt={project.title} />
+          <div class="project-info">
+            <h3>{project.title}</h3>
+            <p>{project.description}</p>
+          </div>
+        </a>
+      {/each}
+    </div>
   </div>
   <ScrollIndicator href="#contact" ariaLabel="Scroll to the contact section" />
 </section>
@@ -108,7 +107,6 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-   
   }
 
   #work-heading {
@@ -130,19 +128,19 @@
   }
 
   .project {
-  position: relative;
-  overflow: hidden;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  color: white;
-  padding: 1rem;
-  border-radius: 1rem;
-  background: #111;
-  text-decoration: none;
-  transition: transform 0.3s ease;
-}
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: #111;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
 
   .project:hover {
     transform: scale(1.03);
@@ -164,36 +162,36 @@
     grid-row: span 2;
   }
 
-.project img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  opacity: 0.7;
-  transition: opacity 0.3s;
-}
+  .project img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
 
-.project:hover img {
-  opacity: 0.5;
-}
+  .project:hover img {
+    opacity: 0.5;
+  }
 
-.project-info {
-  position: relative;
-  z-index: 1;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 1rem;
-  border-radius: 0.5rem;
-}
+  .project-info {
+    position: relative;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
 
-.project-info h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1.25rem;
-}
+  .project-info h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+  }
 
-.project-info p {
-  font-size: 0.95rem;
-  opacity: 0.85;
-}
+  .project-info p {
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
 </style>
