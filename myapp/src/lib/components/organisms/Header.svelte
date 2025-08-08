@@ -28,12 +28,12 @@
 
 <style>
   .site-header {
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 100;
     width: 100%;
     padding: 1rem 2rem;
-    background: var(--bg, #000);
+    background-color: var(--bg);
     color: var(--text);
     box-shadow: 0 4px 12px rgba(0, 255, 255, 0.05);
     backdrop-filter: blur(10px);

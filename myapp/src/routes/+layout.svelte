@@ -43,19 +43,15 @@
     margin-inline: auto;
     margin: 0;
     padding: 0;
-    background-image: url("/images/stars.svg");
-    background-size: 100% 100%;
-    background-attachment: fixed;
-    background-position: center;
+    background-image: var(--gradient-16);
   }
 
   main {
     padding-block: var(--size-0);
     flex: 1;
     overflow: hidden;
-    background-color: var(--main-bg-color);
-        background-image: url("/images/stars.svg");
-    background-size: 200% 200%;
+    background-image: url("/images/stars.svg");
+    background-size: 250% 250%;
     background-attachment: fixed;
     background-position: center;
   }

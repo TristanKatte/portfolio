@@ -121,11 +121,9 @@
     overflow: hidden;
     width: 100%;
     text-align: center;
-    background-color: var(--bg);
     color: var(--text);
     z-index: 1;
   }
-
 
   .hero-inner {
     display: flex;

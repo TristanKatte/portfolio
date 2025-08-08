@@ -2,11 +2,6 @@
   import { page } from '$app/stores';
 
   const projectData = {
-    'we-love-web': {
-      title: '✨ We Love Web blog',
-      description: 'Een volledige uitleg van het project...',
-      image: '/images/we-love-web.png',
-    },
     'bieb-in-bloei': {
       title: '🧠 Bieb in Bloei',
       description: 'Diepere uitleg over ontwerp, onderzoek en uitwerking...',
@@ -29,7 +24,7 @@
     },
         'we-love-web': {
       title: '🧠 We Love Web',
-      description: 'Diepere uitleg over ontwerp, onderzoek en uitwerking...',
+      description: 'A blog about guest speakers, insights at FDND',
       image: '/images/digital-garden.png',
     },
   };
@@ -49,7 +44,7 @@
 {/if}
 
 <style>
-    .project-detail {
+.project-detail {
   max-width: 60ch;
   margin: 0 auto;
   padding: 4rem 1.5rem;

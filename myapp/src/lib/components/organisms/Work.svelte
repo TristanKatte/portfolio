@@ -82,7 +82,7 @@
 
 <section id="work" class="work" aria-labelledby="work-heading">
   <div class="work-content">
-    <h2 id="work-heading">Mijn Werk</h2>
+    <h2 id="work-heading">My best work</h2>
     <div class="projects">
       {#each projects as project}
         <a class="project {project.size}" href={`/projects/${project.slug}`}>
@@ -109,11 +109,11 @@
     text-align: center;
   }
 
-  #work-heading {
+  h2 {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 800;
     margin-bottom: 1rem;
-    color: var(--heading-color);
+    color: var(--brand);
   }
 
   .projects {

@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "gsap": "^3.12.7"
+    "clsx": "^2.1.1",
+    "gsap": "^3.12.7",
+    "svelte-motion": "^0.12.2",
+    "tailwind-merge": "^3.3.1"
   }
 }
