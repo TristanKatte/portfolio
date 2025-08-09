@@ -197,13 +197,29 @@ The main challenge was balancing information density with clarity. I solved this
   }
 
   .project-detail h1 {
-    font-size: 2.5rem;
+    font-size: 3.55rem;
     margin-bottom: 1rem;
+    font-family: "Nunito", sans-serif;
+    color: var(--brand);
   }
+
+
+:global(.description h2),
+:global(.description h3),
+:global(.description h4),
+:global(.description h5),
+:global(.description h6) {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  font-style: italic;
+  color: var(--brand);
+}
 
   .project-detail .description {
     font-size: 1.2rem;
-    line-height: 1.6;
+    line-height: 1.9;
     margin-bottom: 1em;
+    font-family: "Titillium Web", sans-serif;
   }
 </style>

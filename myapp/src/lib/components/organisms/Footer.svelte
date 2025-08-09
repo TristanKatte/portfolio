@@ -11,8 +11,8 @@
 <style>
   .site-footer {
     padding: 2rem;
-    background: var(--bg, #000);
-    color: var(--fg, white);
+    background-color: var(--brand-soft);
+    color: var(--text);
     text-align: center;
   }
 
