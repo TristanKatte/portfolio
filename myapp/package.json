@@ -27,6 +27,7 @@
 		"@tailwindcss/vite": "^4.0.14",
 		"bigger-picture": "^1.1.19",
 		"gsap": "^3.13.0",
+		"marked": "^16.1.2",
 		"open-props": "^1.7.12",
 		"react-social-icons": "^6.22.0",
 		"scrolltrigger": "^1.0.1",
