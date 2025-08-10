@@ -1,6 +1,5 @@
 <script>
   import ScrollIndicator from "$lib/components/atoms/ScrollIndicator.svelte";
-  import Button from "../atoms/Button.svelte";
   import { onMount } from "svelte";
 
   onMount(async () => {
