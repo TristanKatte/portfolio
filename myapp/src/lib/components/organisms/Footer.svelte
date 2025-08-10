@@ -14,6 +14,7 @@
     background-color: var(--brand-soft);
     color: var(--text);
     text-align: center;
+    width: 100vw;
   }
 
   .container {

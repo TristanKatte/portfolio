@@ -5,149 +5,111 @@
   let submitted = false;
 
   function handleSubmit() {
-    // Handle form submission logic here
     submitted = true;
   }
-
-  
 </script>
-<div class="form-container">
-<form on:submit|preventDefault={handleSubmit}>
-  <h2>Contact Me</h2>
-  <label for="name">Name:</label>
-  <input type="text" id="name" bind:value={name} required />
 
-  <label for="email">Email:</label>
-  <input type="email" id="email" bind:value={email} required />
+<div class="form-wrapper">
+  <form on:submit|preventDefault={handleSubmit} novalidate>
+    <h2>Contact Me</h2>
+    <label for="name">Name</label>
+    <input type="text" id="name" bind:value={name} required autocomplete="name" />
 
-  <label for="message">Message:</label>
-  <textarea id="message" bind:value={message} required></textarea>
+    <label for="email">Email</label>
+    <input type="email" id="email" bind:value={email} required autocomplete="email" />
 
-  <button type="submit">Submit</button>
-</form>
+    <label for="message">Message</label>
+    <textarea id="message" rows="5" bind:value={message} required></textarea>
+
+    <button type="submit">Send Message</button>
+  </form>
+
+  {#if submitted}
+    <p class="thank-you">Thanks for reaching out, {name}! I'll get back to you soon.</p>
+  {/if}
 </div>
-{#if submitted}
-  <p>Thank you for your message, {name}!</p>
-{/if}
 
 <style>
-
-  .form-container {
-    position: relative;
-    width: 650px;
-    padding: 50px 40px;
-    background: transparent;
-    border-radius: 20px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    background: transparent;
-  }
-
-  .form-container::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 650px;
-    height: 750px;
-    background: linear-gradient(0deg, transparent, 
-    #45f3ff, #45f3ff);
-    transform-origin: bottom right;
-    animation: glowborder 6s linear infinite;
-  }
-
-  .form-container::after {
-    content:'';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 650px;
-    height: 750px;
-    background: linear-gradient(0deg, transparent, 
-    #056837, #056837);
-    transform-origin: bottom right;
-    animation: glowborder 6s linear infinite;
-    animation-delay: -3s;
-  }
-
-  @keyframes glowborder {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+  .form-wrapper {
+    max-width: 680px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: var(--surface);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text);
   }
 
   form {
     display: flex;
     flex-direction: column;
-    width: 500px;
-    margin: auto;
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-    background: #161616;
-    padding: 40px;
-    border-radius: 20px;
-    gap: 25px;
+    gap: 1rem;
   }
 
   h2 {
-    color: var(--heading-color);
-    font-family: "Azonix";
-    letter-spacing: 3px;
-    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--brand);
   }
 
   label {
-    display: flex;
-    margin: 10px 0 5px;
-    color: var(--txt-color);
-    font-family: 'alata', sans-serif;
-    letter-spacing: 3px;
-    justify-content: flex-start;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
   }
 
   input, textarea {
-    padding: 10px;
-    margin-bottom: 1em;
-    border-radius: 4px;
-    color: var(--txt-color);
+    padding: 0.8rem 1rem;
+    border: 2px solid var(--highlight);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
-  input, textarea, button:focus-visible{
-    outline: 3px solid var(--btn-color);
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--brand-soft);
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.4);
+  }
+
+  textarea {
+    resize: vertical;
   }
 
   button {
-    margin-top: 2em;
-    padding: 10px;
-    background-color: var(--btn-color);
-    color: #e4e4e4;
+    margin-top: 1rem;
+    background-color: var(--brand-soft);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.85rem;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
-    font-family: 'Orbitron Variable', sans-serif;
-    font-size: 1.2em;
-    letter-spacing: 2px;
+    transition: background-color 0.3s ease;
   }
 
   button:hover {
-    background-color: #008080;
+    background-color: var(--brand);
   }
 
-  @media (max-width: 30em) {
-    .form-container {
-      width: 90%;
-      padding: 30px;
-    }
-
-    form {
-      padding: 30px;
-    }
+  .thank-you {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #dff0d8;
+    color: #3c763d;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 600;
   }
 
+  @media (max-width: 480px) {
+    .form-wrapper {
+      margin: 2rem 1rem;
+      padding: 1.5rem;
+    }
+  }
 </style>

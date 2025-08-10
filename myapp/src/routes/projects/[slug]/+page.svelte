@@ -1,6 +1,7 @@
 <script>
   import { page } from "$app/stores";
   import { marked } from "marked";
+  import Button from "../../../lib/components/atoms/Button.svelte";
 
   const projectData = {
     "bieb-in-bloei": {
@@ -20,6 +21,7 @@ SvelteKit · SCSS · GSAP · Accessibility best practices
 ### Challenges & solutions  
 One challenge was making the digital space feel as “alive” as the concept itself. I solved this by using soft motion design — small animations that mimic natural growth patterns — and a color palette inspired by foliage, soil, and sunlight. This kept the site engaging without becoming distracting.
       `,
+      LiveUrl: "https://biebinbloei.nl",
       image: "/images/bieb-in-bloei.png",
     },
     Redpers: {
@@ -39,6 +41,7 @@ SvelteKit · WPAPI · CSS Grid & Flexbox · Git Collaboration
 ### Challenges & solutions  
 The main challenge was ensuring smooth and fast article loading from the WordPress API without blocking the interface. I implemented efficient fetch requests and loading states, so users could start reading while other content continued to load in the background.
       `,
+      LiveUrl: "https://redpers.agency.fdnd.nl",
       image: "/images/redpers.png",
     },
     Informaat: {
@@ -62,6 +65,7 @@ HTML5 · CSS3
 ### Challenges & solutions  
 Switching from my usual **mobile-first** mindset to desktop-first was an adjustment. I solved this by defining the desktop grid system first, then creating progressive CSS breakpoints that gracefully adapted to tablets and mobiles.
       `,
+      LiveUrl: "https://tristankatte.github.io/Informaat-opdracht/",
       image: "/images/informaat.png",
     },
     "I-Love-Web": {
@@ -81,6 +85,7 @@ SvelteKit · Markdown · Tailwind CSS · GSAP for micro-animations
 ### Challenges & solutions  
 The hardest part was designing a navigation that encouraged exploration rather than strict categorization. I solved this by linking related posts together and using visual tags so users could discover content through curiosity instead of menus.
       `,
+      LiveUrl: "https://i-love-web-amber.vercel.app/",
       image: "/images/digital-garden.png",
     },
     "we-love-web": {
@@ -100,6 +105,7 @@ SvelteKit · Markdown · View Transitions API
 ### Challenges & solutions  
 The key challenge was making each article engaging without cluttering the reading experience. I used a simple card-based layout for the overview and generous spacing + large typography on article pages to improve readability.
       `,
+      LiveUrl: "https://we-love-web-blog-one.vercel.app",
       image: "/images/we-love-web.png",
     },
     visitekaartje: {
@@ -119,6 +125,7 @@ SvelteKit · Tailwind CSS · GSAP for animations
 ### Challenges & solutions  
 The main challenge was balancing information density with clarity. I solved this by using section-based navigation and reveal animations to keep the page minimal while still feeling dynamic.
       `,
+      LiveUrl: "https://your-tribe-for-life-profile-card-liart.vercel.app/",
       image: "/images/visitekaartje.png",
     },
     squadpage: {
@@ -138,6 +145,7 @@ HTML5 · CSS3 · Vanilla JavaScript · GitHub for collaboration
 ### Challenges & solutions  
 Since this was our first team project, merging different coding styles into one codebase was tricky. We solved this by setting a basic style guide early on, which ensured the final site felt consistent despite multiple contributors.
       `,
+      LiveUrl: "https://ebok1.github.io/your-tribe-squad-page/",
       image: "/images/squadpage.png",
     },
     "B-rain": {
@@ -157,6 +165,7 @@ SvelteKit · Tailwind CSS · GSAP for animations
 ### Challenges & solutions  
 The main challenge was balancing information density with clarity. I solved this by using section-based navigation and reveal animations to keep the page minimal while still feeling dynamic.
       `,
+      LiveUrl: "https://tristankatte.github.io/Brain-website/",
       image: "/images/b-rain.png",
     },
   };
@@ -173,6 +182,12 @@ The main challenge was balancing information density with clarity. I solved this
     <div class="description">
       {@html htmlDescription}
     </div>
+  </section>
+  <section class="buttons">
+    <Button label="back to projects" href="/#projects" />
+    {#if project.LiveUrl}
+      <Button label="view live site" href={project.LiveUrl} target="_blank" />
+    {/if}
   </section>
 {:else}
   <p>Project niet gevonden.</p>
@@ -203,23 +218,46 @@ The main challenge was balancing information density with clarity. I solved this
     color: var(--brand);
   }
 
-
-:global(.description h2),
-:global(.description h3),
-:global(.description h4),
-:global(.description h5),
-:global(.description h6) {
-  font-family: "Fira Sans", sans-serif;
-  font-weight: 600;
-  margin-top: 1.5rem;
-  font-style: italic;
-  color: var(--brand);
-}
+  :global(.description h2),
+  :global(.description h3),
+  :global(.description h4),
+  :global(.description h5),
+  :global(.description h6) {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    font-style: italic;
+    color: var(--brand);
+  }
 
   .project-detail .description {
     font-size: 1.2rem;
     line-height: 1.9;
     margin-bottom: 1em;
     font-family: "Titillium Web", sans-serif;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .buttons :global(.cta-button) {
+    flex: 1 1 200px;
+    max-width: 300px;
+  }
+
+  @media (max-width: 480px) {
+    .buttons {
+      flex-direction: column;
+    }
+
+    .buttons :global(.cta-button) {
+      max-width: 100%;
+      width: 100%;
+    }
   }
 </style>

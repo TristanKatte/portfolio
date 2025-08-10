@@ -8,6 +8,7 @@
       title: "✨ We Love Web blog",
       description: "A blog about guest speakers, insights at FDND.",
       image: "/images/we-love-web.png",
+      LiveUrl: "https://we-love-web-blog-one.vercel.app",
       size: "large",
     },
     {
@@ -15,6 +16,7 @@
       title: "🧠 Bieb in Bloei",
       description: "A concept for a green Library, where people can learn about green.",
       image: "/images/bieb-in-bloei.png",
+      LiveUrl: "https://biebinbloei.nl",
       size: "small",
     },
     {
@@ -22,6 +24,7 @@
       title: "🗞️ Redpers",
       description: "A newswebsite that i made in a group project in my 3rd semester at the study Frontend Design & Development. Made with Sveltekit, WPAPI Redpers.",
       image: "/images/redpers.png",
+      LiveUrl: "https://redpers.agency.fdnd.nl",
       size: "large",
     },
     {
@@ -29,6 +32,7 @@
       title: "🧠 Informaat",
       description: "A desktop-first website for Informaat.",
       image: "/images/informaat.png",
+      LiveUrl: "https://tristankatte.github.io/Informaat-opdracht/",
       size: "small",
     },
     {
@@ -36,6 +40,7 @@
       title: "🧠 B-rain",
       description: "A website made voor B-rain for an actual client.",
       image: "/images/b-rain.png",
+      LiveUrl: "https://tristankatte.github.io/Brain-website/",
       size: "small",
     },
     {
@@ -43,6 +48,7 @@
       title: "🧠 Squad page",
       description: "A fun squadpage I made in my 1st sprint at FDND.",
       image: "/images/squadpage.png",
+      LiveUrl: "https://ebok1.github.io/your-tribe-squad-page/",
       size: "small",
     },
     {
@@ -50,6 +56,7 @@
       title: "🧠 Digital businesscard",
       description: "A digital businesscard, where I introduce myself and what my skills are.",
       image: "/images/visitekaartje.png",
+      LiveUrl: "https://your-tribe-for-life-profile-card-liart.vercel.app/",
       size: "small",
     },
     {
@@ -57,27 +64,34 @@
       title: "🧠 I Love Web",
       description: "A digital garden.",
       image: "/images/digital-garden.png",
+      LiveUrl: "https://i-love-web-amber.vercel.app/",
       size: "medium",
     },
   ];
 
-  onMount(async () => {
-    const gsap = (await import("gsap")).default;
-    const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
-    gsap.registerPlugin(ScrollTrigger);
+onMount(async () => {
+  const gsap = (await import("gsap")).default;
+  const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
+  gsap.registerPlugin(ScrollTrigger);
 
-    gsap.from(".project", {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      stagger: 0.1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".projects",
-        start: "top 85%",
-      },
-    });
+  gsap.utils.toArray(".project").forEach((project) => {
+    gsap.fromTo(
+      project,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: project,
+          start: "top 90%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
   });
+});
 </script>
 
 <section id="work" class="work" aria-labelledby="work-heading">
@@ -116,15 +130,33 @@
     color: var(--brand);
   }
 
+  /* Mobile-first: single column stacked */
   .projects {
     display: grid;
     gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-auto-rows: 200px;
-    grid-auto-flow: dense;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
     margin-top: 2rem;
     width: 100%;
     max-width: 1000px;
+  }
+
+  /* Small tablets and up: 2 columns */
+  @media (min-width: 600px) {
+    .projects {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 200px;
+      grid-auto-flow: dense;
+    }
+  }
+
+  /* Larger screens: your original grid with bento effect */
+  @media (min-width: 900px) {
+    .projects {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-auto-rows: 200px;
+      grid-auto-flow: dense;
+    }
   }
 
   .project {
@@ -140,26 +172,30 @@
     background: #111;
     text-decoration: none;
     transition: transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(50px);
   }
 
   .project:hover {
     transform: scale(1.03);
   }
 
-  /* Grid sizing for bento effect */
-  .project.small {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
+  /* Grid sizing for bento effect on larger screens */
+  @media (min-width: 900px) {
+    .project.small {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
 
-  .project.medium {
-    grid-column: span 2;
-    grid-row: span 1;
-  }
+    .project.medium {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
 
-  .project.large {
-    grid-column: span 2;
-    grid-row: span 2;
+    .project.large {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
   }
 
   .project img {
