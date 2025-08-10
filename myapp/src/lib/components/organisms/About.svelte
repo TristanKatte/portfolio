@@ -63,7 +63,7 @@
         design and frontend technologies in depth.
       </p>
       <p>
-        I work with tools like React, Vue, SvelteKit, and Node.js, and I'm
+        I work with tools like React, Nextjs, SvelteKit, and Node.js, and I'm
         familiar with Git, npm, pnpm, and responsive design principles.
       </p>
       <p>
