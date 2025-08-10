@@ -305,7 +305,7 @@
   }
 
   .timeline-content {
-    background-color: var(--main-bg-color);
+    background-color: var(--surface);
     padding: 30px;
     border-radius: 5px;
   }
