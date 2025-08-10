@@ -116,6 +116,7 @@
     align-items: center;
     min-height: 100dvh;
     padding: var(--size-7);
+    margin-top: 8rem; 
     scroll-snap-align: start;
     overflow: hidden;
     width: 100%;
