@@ -105,6 +105,7 @@
     background: var(--surface);
     border: none;
     font-size: 1.75rem;
+    padding: var(--size-5);
     color: var(--text);
     cursor: pointer;
   }
