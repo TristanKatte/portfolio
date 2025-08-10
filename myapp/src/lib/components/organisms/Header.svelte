@@ -102,7 +102,7 @@
   }
 
   .nav-toggle {
-    background: none;
+    background: var(--surface);
     border: none;
     font-size: 1.75rem;
     color: var(--text);
