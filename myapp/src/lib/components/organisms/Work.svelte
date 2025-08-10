@@ -28,14 +28,6 @@
       size: "large",
     },
     {
-      slug: "Informaat",
-      title: "🧠 Informaat",
-      description: "A desktop-first website for Informaat.",
-      image: "/images/informaat.png",
-      LiveUrl: "https://tristankatte.github.io/Informaat-opdracht/",
-      size: "small",
-    },
-    {
       slug: "B-rain",
       title: "🧠 B-rain",
       description: "A website made voor B-rain for an actual client.",

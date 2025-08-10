@@ -2,8 +2,10 @@
   <div class="container">
     <p>&copy; {new Date().getFullYear()} Tristan. All rights reserved.</p>
     <div class="socials">
-      <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/yourname" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/TristanKatte" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/tristan-katte-600b53148/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.instagram.com/tristankatte98" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/tristan.katte" target="_blank" rel="noopener">Facebook</a>
     </div>
   </div>
 </footer>
@@ -13,19 +15,23 @@
     padding: 2rem;
     background-color: var(--brand-soft);
     color: var(--text);
-    text-align: center;
     width: 100vw;
   }
 
   .container {
     max-width: 1200px;
     margin: 0 auto;
+
+    /* Nieuw: zet copyright en socials op één regel */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* zorgt dat het op mobiel onder elkaar valt */
+    gap: 1rem;
   }
 
   .socials {
-    margin-top: 1rem;
     display: flex;
-    justify-content: center;
     gap: 1.5rem;
   }
 
@@ -37,5 +43,13 @@
 
   .socials a:hover {
     color: var(--brand, #64ffda);
+  }
+
+  /* Mobiel: zet items onder elkaar */
+  @media (max-width: 600px) {
+    .container {
+      flex-direction: column;
+      text-align: center;
+    }
   }
 </style>

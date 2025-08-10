@@ -11,15 +11,15 @@
 To design a concept for a sustainable, eco-friendly library where the physical and digital space both inspire learning about green living, urban gardening, and environmental responsibility.
 
 ### My role  
-- Concept development & branding  
-- UI/UX design with a nature-inspired theme  
-- Front-end implementation of the website prototype  
+- Making weather animations from an API based on actual conditions  
+- Creating variants of the mascotte  
+- Slight back-end work  
 
 ### Tools used  
 SvelteKit · SCSS · GSAP · Accessibility best practices  
 
-### Challenges & solutions  
-One challenge was making the digital space feel as “alive” as the concept itself. I solved this by using soft motion design — small animations that mimic natural growth patterns — and a color palette inspired by foliage, soil, and sunlight. This kept the site engaging without becoming distracting.
+### Description  
+We were commissioned to optimize and enhance the current live library-in-bloei website. Previously, several CMD minor students developed their own version of the library-in-bloei website. They experimented with a weather API. They also developed concepts such as a seasonal theme and the mascot Harry. Our task was to integrate these concepts into the live library-in-bloei website.
       `,
       LiveUrl: "https://biebinbloei.nl",
       image: "/images/bieb-in-bloei.png",
@@ -32,58 +32,35 @@ To create a modern, responsive news website for *Redpers*, an independent journa
 
 ### My role  
 - Front-end development in SvelteKit  
-- Integrating WPAPI to fetch live content from WordPress  
+- cleaning up files using the boy scout rule  
 - Styling and layout for responsive reading experiences  
 
 ### Tools used  
 SvelteKit · WPAPI · CSS Grid & Flexbox · Git Collaboration  
 
-### Challenges & solutions  
-The main challenge was ensuring smooth and fast article loading from the WordPress API without blocking the interface. I implemented efficient fetch requests and loading states, so users could start reading while other content continued to load in the background.
+### Description  
+We were commissioned to create a modern, responsive news website for *Redpers*, an independent journalism initiative.  
+The goal of this project was to make the website more user-friendly and accessible. The site was not yet fully responsive and doesn’t work perfectly on all devices. We worked to change that. We focused on frontend design and development principles, standards, and best practices to create a solution for the client that follows RAP/PE. This includes responsiveness, accessibility, performance, and progressive enhancement.
       `,
       LiveUrl: "https://redpers.agency.fdnd.nl",
       image: "/images/redpers.png",
     },
-    Informaat: {
-      title: "💻 Informaat",
-      description: `
-### Project goal  
-To design a **desktop-first** website for the design agency Informaat, prioritizing a pixel-perfect, professional layout that reflects the agency’s brand identity.
-<br>
-<br>
-### My role  
-- Layout design for large screens  
-- Front-end coding with strict adherence to a design system  
-- Implementing subtle, brand-aligned animations 
-<br>
-<br> 
 
-### Tools used  
-HTML5 · CSS3   
-<br>
-<br>
-### Challenges & solutions  
-Switching from my usual **mobile-first** mindset to desktop-first was an adjustment. I solved this by defining the desktop grid system first, then creating progressive CSS breakpoints that gracefully adapted to tablets and mobiles.
-      `,
-      LiveUrl: "https://tristankatte.github.io/Informaat-opdracht/",
-      image: "/images/informaat.png",
-    },
     "I-Love-Web": {
       title: "🌐 I-Love-Web",
       description: `
 ### Project goal  
-To create a “digital garden” — a personal, ever-growing collection of ideas, experiments, and inspirations about web development and design.
+To create a “digital garden” — a personal, ever-growing collection of ideas, experiments, and inspirations about web development and design. Kinda like having my own space on the internet.
 
-### My role  
-- Designing a non-linear navigation system  
+### My role   
 - Creating a modular card layout for content snippets  
 - Writing original content for the site  
 
 ### Tools used  
-SvelteKit · Markdown · Tailwind CSS · GSAP for micro-animations  
+SvelteKit · Markdown · View Transitions API · GSAP for micro-animations  
 
-### Challenges & solutions  
-The hardest part was designing a navigation that encouraged exploration rather than strict categorization. I solved this by linking related posts together and using visual tags so users could discover content through curiosity instead of menus.
+### Description  
+The I Love Web blog is a digital garden where I share my thoughts, experiments, and inspirations about web development and design. This was a small project I made before my internship started. It was a great way to experiment with SvelteKit and build a personal website. 
       `,
       LiveUrl: "https://i-love-web-amber.vercel.app/",
       image: "/images/digital-garden.png",
@@ -102,8 +79,8 @@ To document guest lectures and events at FDND in a blog format that is inviting,
 ### Tools used  
 SvelteKit · Markdown · View Transitions API  
 
-### Challenges & solutions  
-The key challenge was making each article engaging without cluttering the reading experience. I used a simple card-based layout for the overview and generous spacing + large typography on article pages to improve readability.
+### Description  
+I wanted my notes to be more than just a page on a Github wiki, so I used a simple card-based layout for the overview and generous spacing + large typography on article pages to improve readability. This was a small project I made during my summer vacation.
       `,
       LiveUrl: "https://we-love-web-blog-one.vercel.app",
       image: "/images/we-love-web.png",
@@ -122,8 +99,8 @@ To design an interactive, web-based alternative to a printed business card, allo
 ### Tools used  
 SvelteKit · Tailwind CSS · GSAP for animations  
 
-### Challenges & solutions  
-The main challenge was balancing information density with clarity. I solved this by using section-based navigation and reveal animations to keep the page minimal while still feeling dynamic.
+### Description  
+This was an assignment for both the first and second sprint of the study. The goal was to design an interactive, web-based alternative to a printed business card, allowing people to learn about me and access my work instantly online.
       `,
       LiveUrl: "https://your-tribe-for-life-profile-card-liart.vercel.app/",
       image: "/images/visitekaartje.png",
@@ -135,7 +112,7 @@ The main challenge was balancing information density with clarity. I solved this
 To introduce our project group in semester 1 of FDND and showcase our work in a fun, collaborative way.
 
 ### My role  
-- Creating my individual profile section  
+- Brainstorming and ideating a page layout 
 - Collaborating on global styles and layout consistency  
 - Integrating each member’s content into the final page  
 
@@ -152,18 +129,18 @@ Since this was our first team project, merging different coding styles into one 
       title: "🌧️ B-rain",
       description: `
 ### Project goal  
-To design a website for a local business that sells rain gear for outdoor activities.
+To design a website for Spatwater, a local business that helps people to use the rainwater efficiency of their home.
 
 ### My role  
-- Designing the website layout    
+- Designing a website layout    
 - Adding animations and interactive elements  
 - Linking to social media and contact methods  
 
 ### Tools used  
-SvelteKit · Tailwind CSS · GSAP for animations  
+Html5 · CSS3 · JavaScript
 
-### Challenges & solutions  
-The main challenge was balancing information density with clarity. I solved this by using section-based navigation and reveal animations to keep the page minimal while still feeling dynamic.
+### Description 
+This was an assignment from the 2nd to 5th sprint in my 1st semester at the study Frontend Design & Development. The goal was to design a website for Spatwater, a local business that helps people to use the rainwater efficiency of their home.
       `,
       LiveUrl: "https://tristankatte.github.io/Brain-website/",
       image: "/images/b-rain.png",

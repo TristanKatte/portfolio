@@ -26,6 +26,7 @@
 		"@rodneylab/svelte-social-icons": "^0.0.31",
 		"@tailwindcss/vite": "^4.0.14",
 		"bigger-picture": "^1.1.19",
+		"emailjs-com": "^3.2.0",
 		"gsap": "^3.13.0",
 		"marked": "^16.1.2",
 		"open-props": "^1.7.12",

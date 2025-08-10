@@ -1,33 +1,94 @@
 <script>
+  import emailjs from 'emailjs-com';
+
   let name = '';
   let email = '';
   let message = '';
-  let submitted = false;
+  let feedback = '';
+  let isSubmitting = false;
 
-  function handleSubmit() {
-    submitted = true;
+  const SERVICE_ID = 'service_hxcg059';
+  const TEMPLATE_ID = 'template_rqh4yep';
+  const USER_ID = 'wYAZFEbNF6IsKKX86';
+
+  // checkt of velden correct zijn ingevuld
+  $: formValid =
+    name.trim() !== '' &&
+    message.trim() !== '' &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  async function handleSubmit() {
+    feedback = '';
+    isSubmitting = true;
+
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      message: message,
+    };
+
+    try {
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID);
+      feedback = "Thank you for your message! I'll get back to you soon.";
+      name = '';
+      email = '';
+      message = '';
+    } catch (error) {
+      console.error('EmailJS fout:', error);
+      feedback = "Something went wrong while sending your message. Try again later.";
+    } finally {
+      isSubmitting = false;
+    }
   }
 </script>
 
 <div class="form-wrapper">
   <form on:submit|preventDefault={handleSubmit} novalidate>
     <h2>Contact Me</h2>
+
     <label for="name">Name</label>
-    <input type="text" id="name" bind:value={name} required autocomplete="name" />
+    <input
+      type="text"
+      id="name"
+      bind:value={name}
+      required
+      autocomplete="name"
+    />
 
     <label for="email">Email</label>
-    <input type="email" id="email" bind:value={email} required autocomplete="email" />
+    <input
+      type="email"
+      id="email"
+      bind:value={email}
+      required
+      autocomplete="email"
+    />
 
     <label for="message">Message</label>
-    <textarea id="message" rows="5" bind:value={message} required></textarea>
+    <textarea
+      id="message"
+      rows="5"
+      bind:value={message}
+      required
+    ></textarea>
 
-    <button type="submit">Send Message</button>
+    <button
+      type="submit"
+      disabled={!formValid || isSubmitting}
+    >
+      {#if isSubmitting}
+        Submitting...
+      {:else}
+        Send Message
+      {/if}
+    </button>
   </form>
 
-  {#if submitted}
-    <p class="thank-you">Thanks for reaching out, {name}! I'll get back to you soon.</p>
+  {#if feedback}
+    <p class="feedback">{feedback}</p>
   {/if}
 </div>
+
 
 <style>
   .form-wrapper {
@@ -96,14 +157,16 @@
     background-color: var(--brand);
   }
 
-  .thank-you {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    background-color: #dff0d8;
-    color: #3c763d;
-    border-radius: 10px;
-    text-align: center;
+  button[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .feedback {
+    margin-top: 1rem;
     font-weight: 600;
+    text-align: center;
+    color: var(--brand);
   }
 
   @media (max-width: 480px) {
