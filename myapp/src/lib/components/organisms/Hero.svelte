@@ -198,7 +198,7 @@
     font-size: clamp(2.5rem, 5vw, 6rem);
     font-weight: 800;
     margin-bottom: 1rem;
-    font-family: "Nirequa", sans-serif;
+    font-family: "Azonix", sans-serif;
     letter-spacing: 5px;
     color: var(--brand);
   }

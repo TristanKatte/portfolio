@@ -228,12 +228,14 @@
     margin-bottom: 1rem;
     color: var(--brand);
     letter-spacing: 3px;
+    font-family: "Azonix";
   }
 
   #about-heading {
     font-size: 2.5rem;
     width: 100%;
     letter-spacing: 8px;
+    font-family: "Azonix";
   }
 
   .about p {

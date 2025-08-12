@@ -120,6 +120,8 @@ onMount(async () => {
     font-weight: 800;
     margin-bottom: 1rem;
     color: var(--brand);
+    letter-spacing: 3px;
+    font-family: "Azonix";
   }
 
   /* Mobile-first: single column stacked */

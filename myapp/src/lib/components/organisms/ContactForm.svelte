@@ -114,6 +114,8 @@
     margin-bottom: 1rem;
     text-align: center;
     color: var(--brand);
+    letter-spacing: 3px;
+    font-family: "Azonix";
   }
 
   label {

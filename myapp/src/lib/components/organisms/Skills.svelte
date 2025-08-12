@@ -109,6 +109,7 @@
     margin-bottom: 2rem;
     text-align: center;
     color: var(--highlight);
+    font-family: "Azonix";
   }
 
   h3 {
