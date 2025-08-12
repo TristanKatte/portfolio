@@ -16,7 +16,9 @@
     gsap.from('#contact', { opacity: 0, y: 50, duration: 1, delay: 1.5 });
   });
 </script>
-
+<svelte:head>
+  <title>Home</title>
+</svelte:head>
 
   <Hero />
 
