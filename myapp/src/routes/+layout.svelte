@@ -24,6 +24,10 @@
   });
 </script>
 
+<svelte:head>
+  <link rel="icon" href="/logo_groen.png" />
+</svelte:head>
+
 <div class="layout">
  
   <GalaxyBackground /> 
