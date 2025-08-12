@@ -7,21 +7,36 @@
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
     gsap.registerPlugin(ScrollTrigger);
 
+    // GSAP ScrollIndicator fade & bounce
+    gsap.fromTo(
+      ".scroll-indicator",
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 1, ease: "power2.out", delay: 0.5 },
+    );
+
+    gsap.to(".scroll-indicator", {
+      y: 10,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+      duration: 1.2,
+    });
+
     // Overlay animatie
     gsap.fromTo(
       ".overlay",
       {
         opacity: 0,
         scale: 1.2,
-        filter: "blur(20px)"
+        filter: "blur(20px)",
       },
       {
         opacity: 1,
         scale: 1,
         filter: "blur(0px)",
         duration: 1.5,
-        ease: "power2.out"
-      }
+        ease: "power2.out",
+      },
     );
 
     // Hero tekst animaties
@@ -78,33 +93,70 @@
     }
 
     animatePhrase();
+
+    // 3D hover tilt + shine effect for profile image
+    const img = document.querySelector(".image-card img");
+    const shine = document.createElement("div");
+    shine.className = "shine";
+    img.parentElement.style.position = "relative";
+    img.parentElement.appendChild(shine);
+
+    const rotateCard = (e) => {
+      const { left, top, width, height } = img.getBoundingClientRect();
+      const x = e.clientX - left;
+      const y = e.clientY - top;
+      const rotateY = (x / width - 0.5) * 20; // max 20deg
+      const rotateX = (y / height - 0.5) * -20;
+
+      img.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+      img.style.boxShadow = `${-rotateY * 2}px ${rotateX * 2}px 20px var(--brand-soft)`;
+
+      // Shine position and rotation
+      const posX = (x / width) * 100;
+      const posY = (y / height) * 100;
+      shine.style.background = `radial-gradient(circle at ${posX}% ${posY}%, rgba(255 255 255 / 0.4), transparent 60%)`;
+    };
+
+    const resetCard = () => {
+      img.style.transform = "rotateX(0) rotateY(0) scale(1)";
+      img.style.boxShadow = `0 0 20px var(--brand-soft)`;
+      shine.style.background = "transparent";
+    };
+
+    img.parentElement.addEventListener("mousemove", rotateCard);
+    img.parentElement.addEventListener("mouseleave", resetCard);
   });
 </script>
 
-<section class="hero" aria-label="Introduction">
-  <div class="overlay" aria-hidden="true"></div>
-
-  <div class="hero-inner">
-    <section class="hero-text">
-      <h1 class="hero-title">
-        Hi!, I'm <span class="highlight">Tristan</span>
-      </h1>
+<section class="hero">
+  <div class="hero-content">
+    <div class="text">
+      <h1 class="hero-title">Hi, I’m Tristan</h1>
       <p class="hero-sub">
         I'm a <span class="rotating-text highlight"></span> who loves to create beautiful
         and functional web applications.
       </p>
-    </section>
+    </div>
 
-    <section class="hero-image">
-      <img src="/images/profielfoto-zw.jpg" alt="Tristan" />
-    </section>
+    <div class="hero-image">
+      <div class="image-card">
+        <picture>
+          <source srcset="/images/profielfoto-zw.avif" type="image/avif" />
+          <source srcset="/images/profielfoto-zw.webp" type="image/webp" />
+          <img
+            src="/images/profielfoto-zw.jpg"
+            alt="Tristan"
+            width="400"
+            height="400"
+          />
+        </picture>
+      </div>
+    </div>
   </div>
 
-  <ScrollIndicator
-    href="#about"
-    ariaLabel="Scroll to the about me section"
-    class="scroll-indicator"
-  />
+  <div class="scroll-indicator">
+    <ScrollIndicator ariaLabel="Scroll to about section" />
+  </div>
 </section>
 
 <style>
@@ -116,7 +168,7 @@
     align-items: center;
     min-height: 100dvh;
     padding: var(--size-7);
-    margin-top: 8rem; 
+    margin-top: 8rem;
     scroll-snap-align: start;
     overflow: hidden;
     width: 100%;
@@ -125,33 +177,21 @@
     z-index: 1;
   }
 
-  .hero-inner {
+  .hero-content {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     gap: 6rem;
-    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
     max-width: 1200px;
+    width: 100%;
     z-index: 1;
   }
 
-  .hero-text {
-    flex: 1;
-  }
-
-  .hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-  }
-
-  .hero-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 1rem;
-    object-fit: cover;
-    border: 8px solid var(--border);
-    box-shadow: 0 0 20px var(--brand-soft);
+  .text {
+    flex: 1 1 300px;
+    text-align: left;
   }
 
   .hero-title {
@@ -175,21 +215,48 @@
     color: var(--text);
   }
 
-  /* Desktop layout */
-  @media (min-width: 768px) {
-    .hero-inner {
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: center;
-    }
+  .rotating-text {
+    font-weight: 700;
+    color: var(--highlight);
+    text-shadow: 0 0 8px var(--highlight);
+  }
 
-    .hero-text {
-      flex: 0 0 60%;
-      text-align: left;
-    }
+  .hero-image {
+    flex: 1 1 300px;
+    display: flex;
+    justify-content: center;
+  }
 
-    .hero-image {
-      flex: 0 0 40%;
+  .image-card {
+    perspective: 1000px;
+    position: relative;
+  }
+
+  .image-card img {
+    display: block;
+    border-radius: 1rem;
+    object-fit: cover;
+    border: 8px solid var(--border);
+    box-shadow: 0 0 20px var(--brand-soft);
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
+    transform-style: preserve-3d;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .scroll-indicator {
+    margin-top: 2rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-content {
+      flex-direction: column;
+    }
+    .text {
+      text-align: center;
     }
   }
 </style>

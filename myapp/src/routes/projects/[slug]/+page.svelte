@@ -227,14 +227,18 @@ This was an assignment from the 2nd to 5th sprint in my 1st semester at the stud
     max-width: 300px;
   }
 
-  @media (max-width: 480px) {
-    .buttons {
-      flex-direction: column;
-    }
-
-    .buttons :global(.cta-button) {
-      max-width: 100%;
-      width: 100%;
-    }
+@media (max-width: 480px) {
+  .buttons {
+    flex-direction: row; /* don't stack vertically */
+    gap: 0.5rem; /* space between */
+    justify-content: center;
   }
+
+  .buttons :global(.cta-button) {
+    width: auto; /* shrink to content */
+    max-width: none; /* no force max-width */
+    padding: 0.5rem 1rem; /* smaller padding */
+    font-size: 0.9rem; /* slightly smaller text */
+  }
+}
 </style>
