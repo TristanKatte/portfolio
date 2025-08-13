@@ -5,7 +5,7 @@
 
   const skills = {
     frontend: [
-      { name: 'HTML', image: '/images/html.svg'},
+      { name: 'HTML', image: '/images/html.svg' },
       { name: 'CSS', image: '/images/css.svg' },
       { name: 'JavaScript', image: '/images/javascript.svg' },
       { name: 'Svelte', image: '/images/svelte.svg' }
@@ -28,30 +28,50 @@
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    const rotateX = ((y / rect.height) - 0.5) * 10; // tilt max 10deg
-    const rotateY = ((x / rect.width) - 0.5) * 10;
+    const rotateX = ((y / rect.height) - 0.5) * 15;
+    const rotateY = ((x / rect.width) - 0.5) * 15;
 
-    card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+    card.style.setProperty('--rotateX', `${-rotateX}deg`);
+    card.style.setProperty('--rotateY', `${rotateY}deg`);
+
+    // Update glow position
+    card.style.setProperty('--glowX', `${x}px`);
+    card.style.setProperty('--glowY', `${y}px`);
   }
 
   function handleMouseLeave(e) {
     const card = e.currentTarget;
-    card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+    card.style.setProperty('--rotateX', `0deg`);
+    card.style.setProperty('--rotateY', `0deg`);
+    card.style.setProperty('--glowX', `50%`);
+    card.style.setProperty('--glowY', `50%`);
   }
 
   onMount(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.from('.skill-card', {
-      scrollTrigger: {
-        trigger: '.skills-section',
-        start: 'top 80%',
-      },
-      opacity: 0,
-      y: 50,
-      stagger: 0.15,
-      duration: 0.8,
-      ease: 'power2.out'
+    gsap.utils.toArray('.category-block').forEach((block, i) => {
+      const fromX = i % 2 === 0 ? -100 : 100;
+
+      gsap.from(block, {
+        scrollTrigger: {
+          trigger: block,
+          start: 'top 80%',
+        },
+        opacity: 0,
+        x: fromX,
+        duration: 1,
+        ease: 'power3.out',
+        onComplete: () => {
+          gsap.from(block.querySelectorAll('.skill-card'), {
+            opacity: 0,
+            y: 30,
+            stagger: 0.15,
+            duration: 0.8,
+            ease: 'power2.out'
+          });
+        }
+      });
     });
   });
 </script>
@@ -59,134 +79,174 @@
 <section class="skills-section">
   <h2>Skills</h2>
 
-  {#each Object.entries(skills) as [category, items]}
-    <h3>{category}</h3>
-    <div class="skills-grid">
-      {#each items as skill}
-        <div 
-          class="skill-card" 
-          role="button"
-          tabindex="0"
-          aria-label={`Skill: ${skill.name}`}
-          on:mousemove={handleMouseMove} 
-          on:mouseleave={handleMouseLeave}
-          on:keydown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              // Optional: add keyboard interaction here
-            }
-          }}
-        >
-          <img src={skill.image} alt={skill.name} />
-          <p>{skill.name}</p>
-        </div>
-      {/each}
+  {#each Object.entries(skills) as [category, items], i}
+    <div class="category-block">
+      <h3>{category}</h3>
+      <div class="skills-grid">
+        {#each items as skill}
+          <div 
+            class="skill-card"
+            role="button"
+            tabindex="0"
+            aria-label={`Skill: ${skill.name}`}
+            on:mousemove={handleMouseMove} 
+            on:mouseleave={handleMouseLeave}
+          >
+            <div class="card-inner">
+              <img src={skill.image} alt={skill.name} />
+              <p>{skill.name}</p>
+            </div>
+          </div>
+        {/each}
+      </div>
     </div>
   {/each}
 </section>
 
 <style>
-  :root {
-    --main-bg-color: #040404ff;
-    --surface: #313138ff;
-    --brand: #00c2cb;
-    --brand-soft: #004e50;
-    --text: #e0ffff;
-    --muted-text: #94a1b2;
-    --border: #2c2c34;
-    --highlight: #00fff7;
-    --danger: #ff0066;
-  }
+:root {
+  --main-bg-color: #040404;
+  --surface: rgba(20, 20, 30, 0.4);
+  --brand: #00c2cb;
+  --highlight: #00fff7;
+}
 
-  .skills-section {
-    padding: 4rem 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+.skills-section {
+  padding: 3rem 1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
 
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    color: var(--highlight);
-    font-family: "Azonix";
-  }
+h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
 
-  h3 {
-    font-size: 1.5rem;
-    margin: 2rem 0 1rem;
-    color: var(--brand);
-    text-transform: capitalize;
-  }
+.category-block {
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  background: rgba(10,10,20,0.3);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0,255,247,0.1);
+  text-align: center;
+}
 
+.category-block h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-transform: capitalize;
+}
+
+.skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* Skill Card */
+.skill-card {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  border-radius: 1rem;
+  padding: 2px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(270deg, var(--highlight), var(--brand), #ff0066, var(--brand));
+  background-size: 600% 600%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  animation: glowing 6s linear infinite;
+  z-index: 0;
+}
+
+/* Inner glass card */
+.card-inner {
+  position: relative;
+  border-radius: inherit;
+  background: var(--surface);
+  backdrop-filter: blur(15px) saturate(180%);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+/* Cursor-follow glow */
+.card-inner::before {
+  content: '';
+  position: absolute;
+  top: var(--glowY, 50%);
+  left: var(--glowX, 50%);
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle closest-side, rgba(0,255,247,0.25), transparent);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: top 0.1s, left 0.1s;
+  z-index: 0;
+}
+
+/* 3D hover */
+.skill-card:hover .card-inner {
+  transform: rotateX(var(--rotateX,0deg)) rotateY(var(--rotateY,0deg)) scale(1.05);
+}
+
+/* Image and text */
+.card-inner img {
+  max-width: 64px;
+  margin-bottom: 0.75rem;
+  filter: drop-shadow(0 0 6px var(--highlight));
+}
+
+.card-inner p {
+  color: var(--highlight);
+  text-align: center;
+  font-weight: 500;
+  text-shadow: 0 0 6px rgba(0,255,247,0.3);
+}
+
+@keyframes glowing {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Responsive grid for tablets/desktops */
+@media(min-width: 600px) {
   .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1.5rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
   }
 
   .skill-card {
-    position: relative;
-    background: var(--surface);
-    padding: 1.5rem;
-    border-radius: 1rem;
-    text-align: center;
-    overflow: hidden;
-    z-index: 0;
-    transition: transform 0.2s ease;
-    transform-style: preserve-3d;
-    will-change: transform;
-    cursor: pointer;
-    outline-offset: 3px;
+    flex: 1 1 150px;
   }
+}
 
-  .skill-card:focus-visible {
-    outline: 3px solid var(--highlight);
+@media(min-width: 900px) {
+  .skills-grid {
+    gap: 2.5rem;
   }
-
-  .skill-card img {
-    max-width: 64px;
-    margin-bottom: 0.75rem;
-    margin: auto;
-  }
-
-  .skill-card p {
-    color: var(--text);
-    font-size: 1rem;
-    margin: 0;
-  }
-
-  /* Glowing border animation */
-  .skill-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 2px;
-    background: linear-gradient(
-      270deg,
-      var(--highlight),
-      var(--brand),
-      var(--danger),
-      var(--brand)
-    );
-    background-size: 600% 600%;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: destination-out;
-    mask-composite: exclude;
-    animation: glowing 6s linear infinite;
-    z-index: -1;
-  }
-
-  .skill-card:hover::before,
-  .skill-card:focus-visible::before {
-    animation-duration: 2s; /* Speed up on hover/focus */
-  }
-
-  @keyframes glowing {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+}
 </style>

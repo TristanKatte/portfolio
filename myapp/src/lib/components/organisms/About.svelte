@@ -218,6 +218,7 @@
     padding: var(--size-7);
     scroll-snap-align: start;
     text-align: left;
+    margin-top: 8rem;
   }
 
   .about-content {
