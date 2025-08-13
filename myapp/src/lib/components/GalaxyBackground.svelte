@@ -4,6 +4,7 @@
   let canvas;
   let ctx;
   let stars = [];
+  let meteorites = [];
   const numStars = 200;
 
   let width;
@@ -11,9 +12,6 @@
 
   let mouseX = 0;
   let mouseY = 0;
-
-  // Planets array
-  let planets = [];
 
   function randomRange(min, max) {
     return Math.random() * (max - min) + min;
@@ -33,30 +31,51 @@
     }
   }
 
-  // Initialize planets with orbit and rotation properties
-  function createPlanets() {
-    const colors = [
-      "rgba(255, 100, 100, 0.8)",   // warm red
-      "rgba(100, 255, 150, 0.8)",   // soft green
-      "rgba(100, 150, 255, 0.8)",   // cool blue
-      "rgba(255, 255, 100, 0.8)",   // yellow
-      "rgba(180, 100, 255, 0.8)",   // purple
-    ];
-    planets = [];
-    for (let i = 0; i < 6; i++) {
-      const baseX = Math.random() * width;
-      const baseY = Math.random() * height;
-      planets.push({
-        baseX,
-        baseY,
-        radius: 15 + Math.random() * 10,
-        color: colors[i % colors.length],
-        orbitRadius: 10 + Math.random() * 20,
-        orbitAngle: Math.random() * Math.PI * 2,
-        orbitSpeed: (Math.random() * 0.002 + 0.0005) * (Math.random() > 0.5 ? 1 : -1),
-        rotation: Math.random() * Math.PI * 2,
-        rotationSpeed: (Math.random() * 0.004 + 0.001) * (Math.random() > 0.5 ? 1 : -1),
-      });
+  function createMeteorite() {
+    // Randomly create a meteor
+    const startX = Math.random() * width;
+    const startY = Math.random() * height * 0.5;
+    const speed = randomRange(4, 8);
+    meteorites.push({
+      x: startX,
+      y: startY,
+      dx: speed,
+      dy: speed * 0.6,
+      life: 0,
+      maxLife: 80,
+    });
+  }
+
+  function updateMeteorites() {
+    for (let i = meteorites.length - 1; i >= 0; i--) {
+      const m = meteorites[i];
+      m.x += m.dx;
+      m.y += m.dy;
+      m.life++;
+
+      if (m.life > m.maxLife) {
+        meteorites.splice(i, 1);
+      }
+    }
+
+    // Random chance to add a new meteorite
+    if (Math.random() < 0.02) {
+      createMeteorite();
+    }
+  }
+
+  function drawMeteorites() {
+    for (let m of meteorites) {
+      const grad = ctx.createLinearGradient(m.x, m.y, m.x - m.dx * 10, m.y - m.dy * 10);
+      grad.addColorStop(0, "rgba(255,255,255,0.8)");
+      grad.addColorStop(1, "rgba(255,255,255,0)");
+
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(m.x, m.y);
+      ctx.lineTo(m.x - m.dx * 10, m.y - m.dy * 10);
+      ctx.stroke();
     }
   }
 
@@ -93,52 +112,12 @@
     }
   }
 
-  // Draw planets with orbit and rotation
-  function drawPlanets() {
-    planets.forEach(p => {
-      // Update orbit angle and rotation
-      p.orbitAngle += p.orbitSpeed;
-      p.rotation += p.rotationSpeed;
-
-      // Calculate current position on orbit
-      const x = p.baseX + p.orbitRadius * Math.cos(p.orbitAngle);
-      const y = p.baseY + p.orbitRadius * Math.sin(p.orbitAngle);
-
-      // Create planet glow gradient
-      const gradient = ctx.createRadialGradient(
-        x,
-        y,
-        p.radius * 0.3,
-        x,
-        y,
-        p.radius
-      );
-      gradient.addColorStop(0, p.color);
-      gradient.addColorStop(1, "rgba(0,0,0,0)");
-
-      ctx.fillStyle = gradient;
-      ctx.beginPath();
-      ctx.arc(x, y, p.radius, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Draw subtle ring around planet (like Saturn)
-      ctx.save();
-      ctx.translate(x, y);
-      ctx.rotate(p.rotation);
-      ctx.strokeStyle = p.color.replace(/0\.8\)/, "0.3)"); // less opaque ring
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.ellipse(0, 0, p.radius * 1.5, p.radius * 0.5, 0, 0, Math.PI * 2);
-      ctx.stroke();
-      ctx.restore();
-    });
-  }
-
   let animationFrame;
 
   function animate() {
     drawStars();
-    drawPlanets();
+    updateMeteorites();
+    drawMeteorites();
     animationFrame = requestAnimationFrame(animate);
   }
 
@@ -148,7 +127,6 @@
     canvas.width = width;
     canvas.height = height;
     createStars();
-    createPlanets();
   }
 
   function onMouseMove(e) {
@@ -171,6 +149,8 @@
     };
   });
 </script>
+
+
 
 <canvas
   bind:this={canvas}
