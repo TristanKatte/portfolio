@@ -148,6 +148,7 @@
             alt="Tristan"
             width="400"
             height="400"
+            loading="lazy"
           />
         </picture>
       </div>

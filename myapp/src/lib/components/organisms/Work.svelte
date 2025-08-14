@@ -61,29 +61,26 @@
     },
   ];
 
-onMount(async () => {
-  const gsap = (await import("gsap")).default;
-  const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
-  gsap.registerPlugin(ScrollTrigger);
+  onMount(async () => {
+    const gsap = (await import("gsap")).default;
+    const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
+    gsap.registerPlugin(ScrollTrigger);
 
-  gsap.utils.toArray(".project").forEach((project) => {
-    gsap.fromTo(
-      project,
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: project,
-          start: "top 90%",
-          toggleActions: "play none none none",
-        },
-      }
-    );
+    // Batch animation with fade-in + Y motion, reverse on scroll up
+    ScrollTrigger.batch(".project", {
+      start: "top 90%",
+      onEnter: (batch) => {
+        gsap.fromTo(
+          batch,
+          { opacity: 0, y: 50 },
+          { opacity: 1, y: 0, duration: 1, ease: "power2.out", stagger: 0.1 }
+        );
+      },
+      onLeaveBack: (batch) => {
+        gsap.to(batch, { opacity: 0, y: 50, duration: 0.5, ease: "power2.in" });
+      },
+    });
   });
-});
 </script>
 
 <section id="work" class="work" aria-labelledby="work-heading">
@@ -92,7 +89,7 @@ onMount(async () => {
     <div class="projects">
       {#each projects as project}
         <a class="project {project.size}" href={`/projects/${project.slug}`}>
-          <img src={project.image} alt={project.title} />
+          <img src={project.image} alt={project.title} loading="lazy" />
           <div class="project-info">
             <h3>{project.title}</h3>
             <p>{project.description}</p>
@@ -103,6 +100,7 @@ onMount(async () => {
   </div>
   <ScrollIndicator href="#contact" ariaLabel="Scroll to the contact section" />
 </section>
+
 
 <style>
   .work {
@@ -124,7 +122,6 @@ onMount(async () => {
     font-family: "Azonix";
   }
 
-  /* Mobile-first: single column stacked */
   .projects {
     display: grid;
     gap: 1.5rem;
@@ -135,7 +132,6 @@ onMount(async () => {
     max-width: 1000px;
   }
 
-  /* Small tablets and up: 2 columns */
   @media (min-width: 600px) {
     .projects {
       grid-template-columns: repeat(2, 1fr);
@@ -144,7 +140,6 @@ onMount(async () => {
     }
   }
 
-  /* Larger screens: your original grid with bento effect */
   @media (min-width: 900px) {
     .projects {
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -166,30 +161,18 @@ onMount(async () => {
     background: #111;
     text-decoration: none;
     transition: transform 0.3s ease;
-    opacity: 0;
-    transform: translateY(50px);
+    opacity: 0; /* start invisible for fade-in */
+    transform: translateY(50px); /* start offset for animation */
   }
 
   .project:hover {
     transform: scale(1.03);
   }
 
-  /* Grid sizing for bento effect on larger screens */
   @media (min-width: 900px) {
-    .project.small {
-      grid-column: span 1;
-      grid-row: span 1;
-    }
-
-    .project.medium {
-      grid-column: span 2;
-      grid-row: span 1;
-    }
-
-    .project.large {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
+    .project.small { grid-column: span 1; grid-row: span 1; }
+    .project.medium { grid-column: span 2; grid-row: span 1; }
+    .project.large { grid-column: span 2; grid-row: span 2; }
   }
 
   .project img {

@@ -9,43 +9,41 @@
 
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
-    // SplitText voor "about-content"
-    const split = new SplitText(".about-content", {
-      type: "lines",
+    // Animate "about-card" text with SplitText
+    const split = new SplitText(".about-card p", {
+      type: "lines, words",
       linesClass: "split-line",
     });
 
-    SplitText.create(".about-content", {
-      type: "lines, words",
-      mask: "lines",
-      autoSplit: true,
-      onSplit(self) {
-        return gsap.from(self.words, {
-          duration: 1,
-          y: 100,
-          autoAlpha: 0,
-          stagger: 0.15,
-        });
+    gsap.from(split.words, {
+      duration: 1,
+      y: 80,
+      autoAlpha: 0,
+      stagger: 0.12,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".about-card",
+        start: "top 85%",
       },
     });
 
-    // Timeline animatie voor education items
-    gsap.utils
-      .toArray(".timeline-item, .timeline-section")
-      .forEach((item, index) => {
-        gsap.from(item, {
-          scrollTrigger: {
-            trigger: item,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-          opacity: 0,
-          y: 50,
+    // Timeline animation using ScrollTrigger.batch for performance
+    ScrollTrigger.batch(".timeline-item, .timeline-section", {
+      start: "top 80%",
+      onEnter: batch => {
+        gsap.to(batch, {
+          opacity: 1,
+          y: 0,
+          stagger: 0.15,
           duration: 0.8,
-          delay: index * 0.2,
+          ease: "power2.out",
+          overwrite: "auto",
         });
-      });
+      },
+      onLeaveBack: batch => {
+        gsap.to(batch, { opacity: 0, y: 50, overwrite: "auto" });
+      },
+    });
   });
 </script>
 
