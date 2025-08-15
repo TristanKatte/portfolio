@@ -1,370 +1,252 @@
 <script>
   import { onMount } from "svelte";
-  import ScrollIndicator from "../atoms/ScrollIndicator.svelte";
+
+  const educationItems = [
+    { title: "2016-2018", text: "Completed my 1st study as a Desktop publisher at the Grafisch Lyceum Utrecht.", color: "#00ffea" },
+    { title: "2018-2022", text: "Completed my 2nd study as a Web Designer at the Grafisch Lyceum Utrecht.", color: "#1affd5" },
+    { title: "2022", text: "Studied Communication and Multimedia design for a while, before switching to Frontend development.", color: "#00ccaa" },
+    { title: "2023", text: "This year was mostly a gap year, where I worked, travelled, and Started my studies at FDND.", color: "#00ffea" }
+  ];
+
+  const jobItems = [
+    { title: "Internship at the VRU", text: "Helped building reports for the VRU.", color: "#ff6b6b" },
+    { title: "Internship at ArtDcom", text: "My 2nd internship for the GLU, where i helped building websites and optimizing them.", color: "#ff8b8b" },
+    { title: "Internship at Centix", text: "Helped building and optimizing the Wordpress website for Centix.", color: "#ff4c4c" },
+    { title: "Warehouse worker", text: "Seasonal job at VersAlert, where I helped with sorting, packing and cleaning for the warehouse.", color: "#ff6b6b" }
+  ];
+
+  const timelines = [
+    { title: "My Education", items: educationItems },
+    { title: "Work Experience", items: jobItems }
+  ];
 
   onMount(async () => {
     const gsap = (await import("gsap")).default;
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
-    const SplitText = (await import("gsap/SplitText")).default;
+    gsap.registerPlugin(ScrollTrigger);
 
-    gsap.registerPlugin(ScrollTrigger, SplitText);
+    const allTimelines = document.querySelectorAll(".timeline");
 
-    // SplitText voor "about-content"
-    const split = new SplitText(".about-content", {
-      type: "lines",
-      linesClass: "split-line",
-    });
+    allTimelines.forEach((timeline) => {
+      const nodes = gsap.utils.toArray(timeline.querySelectorAll(".timeline-node"));
+      const items = gsap.utils.toArray(timeline.querySelectorAll(".timeline-item"));
 
-    SplitText.create(".about-content", {
-      type: "lines, words",
-      mask: "lines",
-      autoSplit: true,
-      onSplit(self) {
-        return gsap.from(self.words, {
-          duration: 1,
-          y: 100,
-          autoAlpha: 0,
-          stagger: 0.15,
+      // Animate glowing progress line
+      const progressLine = timeline.querySelector(".timeline-progress");
+      gsap.fromTo(
+        progressLine,
+        { scaleY: 0, transformOrigin: "top" },
+        {
+          scaleY: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: timeline,
+            start: "top center",
+            end: "bottom center",
+            scrub: 0.5,
+          },
+        }
+      );
+
+      // Animate nodes & boxes on scroll
+      nodes.forEach((node, i) => {
+        const item = items[i].querySelector(".timeline-content");
+        const color = node.style.getPropertyValue("--color");
+
+        ScrollTrigger.create({
+          trigger: node,
+          start: "top center",
+          onEnter: () => {
+            gsap.to(node, {
+              scale: 1.2,
+              opacity: 1,
+              boxShadow: `0 0 15px ${color}, 0 0 25px ${color}`,
+              duration: 0.5,
+            });
+            gsap.to(item, {
+              boxShadow: `0 0 20px ${color}, 0 0 40px ${color}`,
+              duration: 0.5,
+            });
+          },
+          onLeaveBack: () => {
+            gsap.to(node, { scale: 1, opacity: 1, boxShadow: "none", duration: 0.3 });
+            gsap.to(item, { boxShadow: "none", duration: 0.3 });
+          },
         });
-      },
-    });
+      });
 
-    // Timeline animatie voor education items
-    gsap.utils
-      .toArray(".timeline-item, .timeline-section")
-      .forEach((item, index) => {
+      // Animate boxes entering
+      items.forEach((item) => {
         gsap.from(item, {
           scrollTrigger: {
             trigger: item,
-            start: "top 80%",
-            end: "bottom 20%",
+            start: "top 90%",
             toggleActions: "play none none reverse",
           },
-          opacity: 0,
-          y: 50,
+          autoAlpha: 0,
+          y: 30,
           duration: 0.8,
-          delay: index * 0.2,
+          ease: "power2.out",
         });
       });
+    });
   });
 </script>
 
-<section id="about" class="about" aria-labelledby="about-heading">
-  <header class="about-content">
-    <h2 id="about-heading">About me</h2>
-    <article>
-      <p>
-        Hi! I'm Tristan, a 26-year-old Frontend Development student passionate
-        about creating visually engaging, accessible, and user-friendly web
-        experiences.
-      </p>
-      <p>
-        My journey started in 2016 with HTML & CSS, and I've since explored web
-        design and frontend technologies in depth.
-      </p>
-      <p>
-        I work with tools like React, Nextjs, SvelteKit, and Node.js, and I'm
-        familiar with Git, npm, pnpm, and responsive design principles.
-      </p>
-      <p>
-        I focus on writing clean, maintainable code using progressive
-        enhancement and accessibility best practices.
-      </p>
-      <p>
-        Outside of coding, I enjoy working out, gaming, experimenting with
-        graphic design, and keeping up with tech trends.
-      </p>
-    </article>
-  </header>
+<section class="about-me">
+  {#each timelines as timeline}
+    <h2 class="timeline-heading">{timeline.title}</h2>
+    <div class="timeline">
+      <div class="timeline-line"></div>
+      <div class="timeline-progress" style="--color: {timeline.items[0].color}"></div>
 
-  <section class="timeline-section" aria-labelledby="education-heading">
-    <header>
-      <h2 id="education-heading">My education</h2>
-    </header>
-    <div class="timeline-items">
-      <article class="timeline-item">
-        <div class="timeline-dot"></div>
-        <time class="timeline-date" datetime="2016-2018">2016 - 2018</time>
-        <div class="timeline-content">
-          <h3>DTP at the Grafisch Lyceum Utrecht</h3>
-          <p>
-            Developed a strong foundation in design principles and software
-            skills, particularly with Adobe Creative Cloud. Here, the interest
-            of coding began with a subject in my study.
-          </p>
+      {#each timeline.items as item, i}
+        <div class="timeline-item {i % 2 === 0 ? 'left' : 'right'}">
+          <div class="timeline-content" style="--color: {item.color}">
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+          <div class="timeline-node" style="--color: {item.color}"></div>
         </div>
-      </article>
-
-      <article class="timeline-item">
-        <div class="timeline-dot"></div>
-        <time class="timeline-date" datetime="2018-2022">2018 - 2022</time>
-        <div class="timeline-content">
-          <h3>Webdesign at the Grafisch Lyceum Utrecht</h3>
-          <p>
-            Graduated with a specialization in web design, focusing on user
-            experience and responsive design.
-          </p>
-        </div>
-      </article>
-
-      <article class="timeline-item">
-        <div class="timeline-dot"></div>
-        <time class="timeline-date" datetime="2022">2022</time>
-        <div class="timeline-content">
-          <h3>Communication & Multimedia Design</h3>
-          <p>
-            A study I briefly attended where I explored various multimedia
-            concepts, enhancing my understanding of digital storytelling and
-            interactive design.
-          </p>
-        </div>
-      </article>
-
-      <article class="timeline-item">
-        <div class="timeline-dot"></div>
-        <time class="timeline-date" datetime="2023">2023</time>
-        <div class="timeline-content">
-          <h3>Gap year</h3>
-          <p>
-            I took a gap year after realizing Communication & Multimedia Design
-            wasn't the right fit. I used this time to work, travel, and begin my
-            current Frontend development studies.
-          </p>
-        </div>
-      </article>
-
-      <article class="timeline-item">
-        <div class="timeline-dot"></div>
-        <time class="timeline-date" datetime="2023-09"
-          >September 2023 - present</time
-        >
-        <div class="timeline-content">
-          <h3>Frontend Design & Development</h3>
-          <p>
-            Currently enrolled in advanced studies focusing on frontend
-            development, honing my skills in modern frameworks and design
-            systems.
-          </p>
-        </div>
-      </article>
+      {/each}
     </div>
-  </section>
-
-  <section class="timeline-section" aria-labelledby="experience-heading">
-    <header>
-      <h2 id="experience-heading">My work experience</h2>
-    </header>
-    <div class="timeline-items">
-      <article class="timeline-item">
-        <div class="timeline-dot"></div>
-        <time class="timeline-date" datetime="2025-02">Feb 2025 - Apr 2025</time
-        >
-        <div class="timeline-content">
-          <h3>Internship at VRU</h3>
-          <p>First internship from my current study.</p>
-        </div>
-      </article>
-
-      <article class="timeline-item">
-        <div class="timeline-dot"></div>
-        <time class="timeline-date" datetime="2021-08">Aug 2021 - Jan 2022</time
-        >
-        <div class="timeline-content">
-          <h3>Internship at ArtDcom</h3>
-          <p>
-            Second internship from my previous study, focusing on web design,
-            WordPress and Adobe Creative Cloud.
-          </p>
-        </div>
-      </article>
-
-      <article class="timeline-item">
-        <div class="timeline-dot"></div>
-        <time class="timeline-date" datetime="2021-02">Feb 2021 – Jun 2021</time
-        >
-        <div class="timeline-content">
-          <h3>Internship at Centix</h3>
-          <p>
-            Assisted in developing Centix’s website using Elementor and
-            WordPress.
-          </p>
-        </div>
-      </article>
-
-      <article class="timeline-item">
-        <div class="timeline-dot"></div>
-        <time class="timeline-date" datetime="2018">2018 - present</time>
-        <div class="timeline-content">
-          <h3>Cleaner & Warehouse Worker at VersAlert</h3>
-          <p>
-            Seasonal job at a produce wholesaler, assisting with cleaning and
-            stacking crates for deliveries across the Netherlands.
-          </p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <ScrollIndicator href="#work" ariaLabel="Scroll to the projects section" />
+  {/each}
 </section>
 
 <style>
-  .about {
-    min-height: 100dvh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: var(--size-7);
-    scroll-snap-align: start;
-    text-align: left;
-    margin-top: 8rem;
+  section.about-me {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 1rem;
   }
 
-  .about-content {
-    max-width: 60ch;
-  }
-
-  .about h2 {
-    margin-bottom: 1rem;
+  .timeline-heading {
+    font-size: 2rem;
+    margin-bottom: 2rem;
     color: var(--brand);
-    letter-spacing: 3px;
-    font-family: "Azonix";
+    text-align: center;
   }
 
-  #about-heading {
-    font-size: 2.5rem;
-    width: 100%;
-    letter-spacing: 8px;
-    font-family: "Azonix";
-  }
-
-  .about p {
-    font-size: 1.3rem;
-    line-height: 1.6;
-    color: var(--txt-color);
-  }
-
-  /* === Mobile-first basisstijl === */
-  .timeline-section {
-    background-color: transparent;
-    min-height: 100vh;
-    padding: 100px 15px;
-    z-index: 0;
-    margin: 15em 0 2em 0;
-  }
-
-  .timeline-items {
-    max-width: 1000px;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
+  .timeline {
     position: relative;
+    margin-bottom: 6rem;
   }
 
-  .timeline-items::before {
-    content: "";
+  .timeline-line {
     position: absolute;
-    width: 2px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
     height: 100%;
-    background-color: var(--brand);
-    left: calc(50% - 1px);
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 1;
+  }
+
+  .timeline-progress {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) scaleY(0);
+    width: 4px;
+    height: 100%;
+    background: var(--color);
+    box-shadow: 0 0 10px var(--color), 0 0 20px var(--color), 0 0 30px var(--color);
+    transform-origin: top;
+    z-index: 2;
   }
 
   .timeline-item {
-    margin-bottom: 40px;
-    width: 100%;
     position: relative;
+    width: 100%;
+    margin: 4rem 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
   }
 
-  .timeline-item:last-child {
-    margin-bottom: 0;
+  .timeline-item.left {
+    justify-content: flex-start;
+    text-align: left;
+    padding-right: 70px;
   }
 
-  .timeline-item:nth-child(odd) {
-    padding-right: calc(50% + 30px);
+  .timeline-item.right {
+    justify-content: flex-end;
     text-align: right;
-  }
-
-  .timeline-item:nth-child(even) {
-    padding-left: calc(50% + 30px);
-  }
-
-  .timeline-dot {
-    height: 16px;
-    width: 16px;
-    background-color: var(--brand-soft);
-    position: absolute;
-    left: calc(50% - 8px);
-    border-radius: 50%;
-    top: 10px;
-  }
-
-  .timeline-date {
-    font-size: 18px;
-    color: var(--txt-color);
-    margin: 6px 0 15px;
-    font-family: "Azonix";
+    padding-left: 70px;
   }
 
   .timeline-content {
-    background-color: var(--surface);
-    padding: 30px;
-    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    border-radius: 1rem;
+    padding: 1.5rem 2rem;
+    max-width: 350px;
+    z-index: 3;
+    transition: box-shadow 0.3s ease;
   }
 
   .timeline-content h3 {
-    font-size: 20px;
-    color: #ffffff;
-    margin: 0 0 10px;
-    text-transform: capitalize;
-    font-weight: 300;
-    font-family: "Titillium Web", sans-serif;
-    letter-spacing: 3px;
+    font-size: 1.5rem;
+    margin-bottom: 0.4rem;
+    color: white;
   }
 
   .timeline-content p {
-    color: #c8c8c8;
-    font-size: 16px;
-    font-weight: 100;
-    line-height: 1.6;
-    font-family: "Titillium Web", sans-serif;
-    letter-spacing: 3px;
+    font-size: 1rem;
+    color: white;
+    opacity: 0.85;
   }
-  /* === Desktop-uitbreiding vanaf 768px (48em) === */
-  @media (max-width: 48em) {
-    h2 {
-      display: flex;
-      justify-content: flex-start;
+
+  .timeline-node {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 12px;
+    height: 12px;
+    background: var(--color);
+    border-radius: 50%;
+    opacity: 0.2;
+    z-index: 4;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  @media (min-width: 768px) {
+    .timeline-item.left {
+      padding-right: 90px;
     }
 
-    .timeline-section:nth-child(1) {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
+    .timeline-item.right {
+      padding-left: 90px;
+    }
+  }
+
+  /* RESPONSIVE: stack items on mobile, timeline line on left */
+  @media (max-width: 767px) {
+    .timeline-line,
+    .timeline-progress {
+      left: 20px;
+      transform: none;
     }
 
-    .timeline-items::before {
-      left: 7px;
+    .timeline-item {
+      flex-direction: row;
+      justify-content: flex-start !important;
+      margin: 3rem 0;
     }
-    .timeline-item:nth-child(odd) {
+
+    .timeline-item.left,
+    .timeline-item.right {
+      padding-left: 50px;
       padding-right: 0;
       text-align: left;
     }
-    .timeline-item:nth-child(odd),
-    .timeline-item:nth-child(even) {
-      padding-left: 37px;
-    }
-    .timeline-dot {
-      left: 0;
-    }
-  }
 
-  @media (max-width: 64em) {
-    .timeline-section:nth-child(1) {
-      display: flex;
-      flex-direction: row;
-      max-width: 100%;
+    .timeline-node {
+      left: 20px;
     }
   }
 </style>

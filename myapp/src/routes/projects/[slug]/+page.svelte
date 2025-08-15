@@ -173,7 +173,7 @@ This was an assignment from the 2nd to 5th sprint in my 1st semester at the stud
 <style>
   .project-detail {
     min-height: 100dvh;
-    max-width: 60ch;
+    max-width: 75ch;
     margin: 0 auto;
     padding: 4rem 1.5rem;
     text-align: left;
@@ -191,8 +191,12 @@ This was an assignment from the 2nd to 5th sprint in my 1st semester at the stud
   .project-detail h1 {
     font-size: 3.55rem;
     margin-bottom: 1rem;
-    font-family: "Nunito", sans-serif;
+    font-family: "Azonix", sans-serif;
     color: var(--brand);
+  }
+
+  :global(ul) {
+    list-style-type: '☑️';
   }
 
   :global(.description h2),
@@ -200,11 +204,12 @@ This was an assignment from the 2nd to 5th sprint in my 1st semester at the stud
   :global(.description h4),
   :global(.description h5),
   :global(.description h6) {
-    font-family: "Fira Sans", sans-serif;
-    font-weight: 600;
+    font-family: "Azonix", sans-serif;
+    font-weight: 300;
     margin-top: 1.5rem;
     font-style: italic;
     color: var(--brand);
+    letter-spacing: 1px;
   }
 
   .project-detail .description {
@@ -212,6 +217,7 @@ This was an assignment from the 2nd to 5th sprint in my 1st semester at the stud
     line-height: 1.9;
     margin-bottom: 1em;
     font-family: "Titillium Web", sans-serif;
+    letter-spacing: 1.5px;
   }
 
   .buttons {
@@ -227,18 +233,18 @@ This was an assignment from the 2nd to 5th sprint in my 1st semester at the stud
     max-width: 300px;
   }
 
-@media (max-width: 480px) {
-  .buttons {
-    flex-direction: row; /* don't stack vertically */
-    gap: 0.5rem; /* space between */
-    justify-content: center;
-  }
+  @media (max-width: 480px) {
+    .buttons {
+      flex-direction: row; /* don't stack vertically */
+      gap: 0.5rem; /* space between */
+      justify-content: center;
+    }
 
-  .buttons :global(.cta-button) {
-    width: auto; /* shrink to content */
-    max-width: none; /* no force max-width */
-    padding: 0.5rem 1rem; /* smaller padding */
-    font-size: 0.9rem; /* slightly smaller text */
+    .buttons :global(.cta-button) {
+      width: auto; /* shrink to content */
+      max-width: none; /* no force max-width */
+      padding: 0.5rem 1rem; /* smaller padding */
+      font-size: 0.9rem; /* slightly smaller text */
+    }
   }
-}
 </style>

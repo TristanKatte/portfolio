@@ -25,17 +25,11 @@
   <link rel="canonical" href="https://tristankatte.com" />
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:title" content="Frontend Developer Portfolio – Tristan Katte" />
+  <meta property="og:title" content="Tristan Katte | Portfolio" />
   <meta property="og:description" content="Portfolio of Tristan Katte, a frontend developer specializing in SvelteKit, modern web animations, and accessible UI design." />
-  <meta property="og:image" content="https://tristankatte.com/images/og-image.jpg" />
+  <meta property="og:image" content="https://tristankatte.com/images/og-image.jpg" width = "1200" height = "630" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://tristankatte.com" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Frontend Developer Portfolio – Tristan Katte" />
-  <meta name="twitter:description" content="Portfolio of Tristan Katte, a frontend developer specializing in SvelteKit, modern web animations, and accessible UI design." />
-  <meta name="twitter:image" content="https://tristankatte.com/images/og-image.jpg" />
 
   <!-- Favicons -->
   <link rel="icon" href="/favicon.ico" sizes="any" />
