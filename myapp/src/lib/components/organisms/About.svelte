@@ -1,18 +1,24 @@
 <script>
   import { onMount } from "svelte";
 
+  const introText = `I’m a passionate frontend developer with a background in both design and development.
+  My journey started in graphic design, evolved through web design, and finally led me to frontend development.
+  I love building creative, accessible, and performant experiences that bring ideas to life.
+  Beyond coding, I enjoy exploring new design trends, experimenting with animations, and learning the latest technologies
+  that help me craft engaging digital experiences.`;
+
   const educationItems = [
     { title: "2016-2018", text: "Completed my 1st study as a Desktop publisher at the Grafisch Lyceum Utrecht.", color: "#00ffea" },
     { title: "2018-2022", text: "Completed my 2nd study as a Web Designer at the Grafisch Lyceum Utrecht.", color: "#1affd5" },
     { title: "2022", text: "Studied Communication and Multimedia design for a while, before switching to Frontend development.", color: "#00ccaa" },
-    { title: "2023", text: "This year was mostly a gap year, where I worked, travelled, and Started my studies at FDND.", color: "#00ffea" }
+    { title: "2023", text: "Gap year working, travelling, and starting studies at FDND.", color: "#00ffea" }
   ];
 
   const jobItems = [
     { title: "Internship at the VRU", text: "Helped building reports for the VRU.", color: "#ff6b6b" },
-    { title: "Internship at ArtDcom", text: "My 2nd internship for the GLU, where i helped building websites and optimizing them.", color: "#ff8b8b" },
+    { title: "Internship at ArtDcom", text: "Helped building websites and optimizing them.", color: "#ff8b8b" },
     { title: "Internship at Centix", text: "Helped building and optimizing the Wordpress website for Centix.", color: "#ff4c4c" },
-    { title: "Warehouse worker", text: "Seasonal job at VersAlert, where I helped with sorting, packing and cleaning for the warehouse.", color: "#ff6b6b" }
+    { title: "Warehouse worker", text: "Seasonal job at VersAlert, handling sorting, packing and cleaning.", color: "#ff6b6b" }
   ];
 
   const timelines = [
@@ -25,14 +31,56 @@
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
     gsap.registerPlugin(ScrollTrigger);
 
+    // Split-text + gradient animation
+    const aboutTextEl = document.querySelector(".about-text");
+    const words = aboutTextEl.textContent.trim().split(" ");
+    aboutTextEl.innerHTML = words.map(word => `<span class="word">${word}</span>`).join(" ");
+
+    gsap.from(".about-text", {
+      opacity: 0,
+      y: 20,
+      duration: 0.6,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: aboutTextEl,
+        start: "top 85%",
+      }
+    });
+
+    gsap.fromTo(
+      ".about-text .word",
+      { opacity: 0, y: 20, rotationZ: 5, scale: 0.95 },
+      {
+        opacity: 1,
+        y: 0,
+        rotationZ: 0,
+        scale: 1,
+        stagger: 0.05,
+        ease: "back.out(1.7)",
+        duration: 0.6,
+        scrollTrigger: {
+          trigger: aboutTextEl,
+          start: "top 80%",
+        }
+      }
+    );
+
+    // Animate gradient shift
+    gsap.to(".about-text", {
+      backgroundPosition: "200% center",
+      ease: "linear",
+      duration: 8,
+      repeat: -1
+    });
+
+    // Timelines animations
     const allTimelines = document.querySelectorAll(".timeline");
 
     allTimelines.forEach((timeline) => {
       const nodes = gsap.utils.toArray(timeline.querySelectorAll(".timeline-node"));
       const items = gsap.utils.toArray(timeline.querySelectorAll(".timeline-item"));
-
-      // Animate glowing progress line
       const progressLine = timeline.querySelector(".timeline-progress");
+
       gsap.fromTo(
         progressLine,
         { scaleY: 0, transformOrigin: "top" },
@@ -48,7 +96,6 @@
         }
       );
 
-      // Animate nodes & boxes on scroll
       nodes.forEach((node, i) => {
         const item = items[i].querySelector(".timeline-content");
         const color = node.style.getPropertyValue("--color");
@@ -75,7 +122,6 @@
         });
       });
 
-      // Animate boxes entering
       items.forEach((item) => {
         gsap.from(item, {
           scrollTrigger: {
@@ -94,6 +140,8 @@
 </script>
 
 <section class="about-me">
+  <p class="about-text">{introText}</p>
+
   {#each timelines as timeline}
     <h2 class="timeline-heading">{timeline.title}</h2>
     <div class="timeline">
@@ -120,9 +168,31 @@
     padding: 4rem 1rem;
   }
 
+  .about-text {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    max-width: 750px;
+    margin: 0 auto 3rem auto;
+    text-align: left;
+    background: linear-gradient(
+      270deg,
+      #00ffea,
+      #1affd5,
+      #00ccaa,
+      #ff6b6b,
+      #ff8b8b,
+      #ff4c4c,
+      #00ffea
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   .timeline-heading {
     font-size: 2rem;
-    margin-bottom: 2rem;
+    margin: 3rem 0 2rem;
     color: var(--brand);
     text-align: center;
   }
@@ -214,17 +284,6 @@
     transition: box-shadow 0.3s ease, transform 0.3s ease;
   }
 
-  @media (min-width: 768px) {
-    .timeline-item.left {
-      padding-right: 90px;
-    }
-
-    .timeline-item.right {
-      padding-left: 90px;
-    }
-  }
-
-  /* RESPONSIVE: stack items on mobile, timeline line on left */
   @media (max-width: 767px) {
     .timeline-line,
     .timeline-progress {
