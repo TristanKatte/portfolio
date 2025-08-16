@@ -43,113 +43,86 @@
   }
 
   onMount(() => {
-    gsap.from('.form-wrapper', { y: 30, opacity: 0, duration: 1, ease: 'power3.out' });
-    const img = document.querySelector('.image-wrapper img');
-    gsap.from(img, { x: 30, opacity: 0, duration: 1, ease: 'power3.out' });
-
-    img.addEventListener('mouseenter', () => {
-      gsap.to(img, { scale: 1.05, rotationX: 5, rotationY: 5, duration: 0.4, ease: 'power1.out' });
-    });
-    img.addEventListener('mouseleave', () => {
-      gsap.to(img, { scale: 1, rotationX: 0, rotationY: 0, duration: 0.4, ease: 'power1.out' });
-    });
-
-    gsap.to(img, { y: -10, rotationX: 2, rotationY: -2, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-    gsap.to('.form-wrapper', { y: -8, duration: 4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-
-    // Pulsing neon glow animation for the border
-    gsap.to('.form-wrapper::before', {
-      '--glow-opacity': 1,
-      duration: 1.5,
-      repeat: -1,
-      yoyo: true,
-      ease: 'sine.inOut'
-    });
+    gsap.from('.form-wrapper', { opacity: 0, y: 20, duration: 1, ease: 'power3.out' });
   });
 </script>
 
-<div class="contact-container">
-  <div class="form-wrapper">
-    <form on:submit|preventDefault={handleSubmit} novalidate>
-      <h2>Contact Me</h2>
+<div class="form-wrapper">
+  <form on:submit|preventDefault={handleSubmit} novalidate>
+    <h2>Contact Me</h2>
 
-      <label for="name">Name</label>
-      <input type="text" id="name" bind:value={name} required autocomplete="name" />
+    <label for="name">Name</label>
+    <input type="text" id="name" bind:value={name} required autocomplete="name" />
 
-      <label for="email">Email</label>
-      <input type="email" id="email" bind:value={email} required autocomplete="email" />
+    <label for="email">Email</label>
+    <input type="email" id="email" bind:value={email} required autocomplete="email" />
 
-      <label for="message">Message</label>
-      <textarea id="message" rows="5" bind:value={message} required></textarea>
+    <label for="message">Message</label>
+    <textarea id="message" rows="5" bind:value={message} required></textarea>
 
-      <button type="submit" disabled={!formValid || isSubmitting}>
-        {#if isSubmitting}
-          Submitting...
-        {:else}
-          Send Message
-        {/if}
-      </button>
-    </form>
+    <button type="submit" disabled={!formValid || isSubmitting}>
+      {#if isSubmitting}
+        Submitting...
+      {:else}
+        Send Message
+      {/if}
+    </button>
+  </form>
 
-    {#if feedback}
-      <p class="feedback">{feedback}</p>
-    {/if}
-  </div>
-
-  <div class="image-wrapper">
-    <img src="/images/futuristic-bg.jpg" alt="Contact design" />
-  </div>
+  {#if feedback}
+    <p class="feedback">{feedback}</p>
+  {/if}
 </div>
-
 <style>
-.contact-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  max-width: 900px;
-  margin: 4rem auto;
-  padding: 0 1rem;
-  flex-wrap: wrap;
+/* Contact Form Styles */
+.form-wrapper {
+  max-width: 720px;
+  margin: 3rem auto;
+  padding: 2rem;
+  border-radius: 16px;
+  position: relative;
+  color: var(--text);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+
+  /* DARK background inside for readability */
+  background: linear-gradient(0deg,rgba(65, 67, 69, 1) 0%, rgba(35, 37, 38, 1) 100%);
+  border: 2px solid transparent;
 }
 
-.form-wrapper {
-  --glow-opacity: 0.6;
-  flex: 1;
-  min-width: 300px;
-  background: rgba(20, 20, 20, 0.3);
-  backdrop-filter: blur(12px);
-  border-radius: 16px;
-  padding: 2rem;
-  position: relative;
-  overflow: hidden;
+/* animated border layer */
+.form-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 4px; /* thickness of border */
+  background: linear-gradient(
+    45deg,
+    var(--brand),
+    var(--brand-soft),
+    var(--highlight),
+    var(--brand)
+  );
+  background-size: 400% 400%;
+  animation: gradientNeon 12s ease infinite;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
   z-index: 0;
 }
 
-.form-wrapper::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, #222, #444, #555, #222);
-  filter: drop-shadow(0 0 12px rgba(52, 152, 219, var(--glow-opacity)));
-  animation: borderAnim 6s linear infinite;
-  z-index: -1;
-  border-radius: 16px;
-}
-
-@keyframes borderAnim {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
+/* make sure form content sits above */
 form {
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  position: relative;
   z-index: 1;
 }
 
@@ -166,87 +139,129 @@ h2 {
 label {
   font-weight: 600;
   font-size: 0.9rem;
-  margin-bottom: 0.3rem;
 }
 
-input, textarea {
+input,
+textarea {
   padding: 0.8rem 1rem;
-  border: 2px solid rgba(255,255,255,0.1);
+  border: 2px solid var(--highlight);
   border-radius: 8px;
   font-size: 1rem;
-  background: rgba(30, 30, 30, 0.2);
-  color: var(--text);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   outline: none;
   border-color: var(--brand-soft);
-  box-shadow: 0 0 10px rgba(52, 152, 219, 0.6);
+  box-shadow: 0 0 8px rgba(52, 152, 219, 0.4);
 }
 
-textarea {
-  resize: vertical;
-}
-
+/* Button */
 button {
   margin-top: 1rem;
-  background-color: var(--brand-soft);
+  position: relative;
+  background: linear-gradient(135deg, rgba(10,10,10,0.95), rgba(25,25,25,0.9));
   color: var(--text);
   font-weight: 600;
   font-size: 1.1rem;
-  padding: 0.85rem;
+  padding: 0.85rem 1.2rem;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 0.2s ease;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(
+    45deg,
+    var(--brand),
+    var(--brand-soft),
+    var(--highlight),
+    var(--brand)
+  );
+  background-size: 400% 400%;
+  animation: gradientNeon 8s ease infinite;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
 }
 
 button:hover {
-  background-color: var(--brand);
+  transform: translateY(-2px) scale(1.02);
 }
 
 button[disabled] {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
 }
 
+/* Feedback */
 .feedback {
-  margin-top: 1rem;
-  font-weight: 600;
-  text-align: center;
-  color: var(--brand);
-  background: rgba(30,30,30,0.3);
-  backdrop-filter: blur(10px);
-  padding: 0.8rem 1rem;
+  margin-top: 1.5rem;
+  padding: 1rem 1.2rem;
   border-radius: 12px;
-  border: 1px solid rgba(80,80,80,0.3);
-  box-shadow: 0 0 12px rgba(52,152,219,0.4);
+  text-align: center;
+  font-weight: 600;
+  position: relative;
+  background: linear-gradient(135deg, rgba(10,10,10,0.95), rgba(20,20,20,0.9));
+  color: var(--text);
+  overflow: hidden;
 }
 
-.image-wrapper {
-  flex: 0 0 250px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.feedback::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(
+    45deg,
+    var(--brand),
+    var(--brand-soft),
+    var(--highlight),
+    var(--brand)
+  );
+  background-size: 400% 400%;
+  animation: gradientNeon 10s ease infinite;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
 }
 
-.image-wrapper img {
-  width: 100%;
-  max-width: 180px;
-  border-radius: 16px;
-  transform-style: preserve-3d;
-  cursor: pointer;
+/* Gradient animation */
+@keyframes gradientNeon {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-@media (max-width: 768px) {
-  .contact-container {
-    flex-direction: column;
-    align-items: center;
+@media (max-width: 480px) {
+  .form-wrapper {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
   }
-
-  .image-wrapper {
-    margin-top: 2rem;
-  }
 }
-</style>
+</style>  
