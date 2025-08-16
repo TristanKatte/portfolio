@@ -8,7 +8,16 @@
       { name: 'HTML', image: '/images/html.svg' },
       { name: 'CSS', image: '/images/css.svg' },
       { name: 'JavaScript', image: '/images/javascript.svg' },
-      { name: 'Svelte', image: '/images/svelte.svg' }
+      { name: 'Svelte', image: '/images/svelte.svg' },
+      { name: 'Tailwind', image: '/images/tailwind.svg' },
+      { name: 'Bootstrap', image: '/images/bootstrap.svg' },
+      { name: 'GSAP', image: '/images/greensock.svg' },
+      { name: 'Next.js', image: '/images/next-js.svg' },
+      { name: 'Power BI', image: '/images/power-bi.svg' }
+    ],
+    backend: [
+      { name: 'Express.js', image: '/images/express-js.svg' },
+      { name: 'Node.js', image: '/images/nodejs.svg' }
     ],
     design: [
       { name: 'Figma', image: '/images/figma.svg' },
