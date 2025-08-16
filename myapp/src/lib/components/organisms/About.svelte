@@ -139,7 +139,8 @@
   });
 </script>
 
-<section class="about-me">
+<section id="about" class="about-me">
+  <h2 class="about-heading">About Me</h2>
   <p class="about-text">{introText}</p>
 
   {#each timelines as timeline}
@@ -162,8 +163,12 @@
 </section>
 
 <style>
+  :root {
+  --blue: #00bfff;
+  --danger: #ff4c4c; /* already used */
+}
   section.about-me {
-    max-width: 900px;
+    max-width: 90ch;
     margin: 0 auto;
     padding: 4rem 1rem;
   }
@@ -190,11 +195,18 @@
     -webkit-text-fill-color: transparent;
   }
 
-  .timeline-heading {
+  .about-heading {
     font-size: 2rem;
     margin: 3rem 0 2rem;
     color: var(--brand);
-    text-align: center;
+    text-align: left;
+  }
+
+  .timeline-heading {
+    font-size: 2rem;
+    margin: 3rem 0 2rem;
+    text-align: left;
+    color: var(--highlight);
   }
 
   .timeline {
@@ -248,9 +260,9 @@
   }
 
   .timeline-content {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(20px);
+    background: var(--bg);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
     border-radius: 1rem;
     padding: 1.5rem 2rem;
     max-width: 350px;

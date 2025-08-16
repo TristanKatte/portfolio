@@ -11,6 +11,7 @@
     <nav class="nav" aria-label="Hoofdnavigatie">
       <ul class:open={isOpen}>
         <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
         <li><a href="#work">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>

@@ -12,7 +12,7 @@
     ],
     design: [
       { name: 'Figma', image: '/images/figma.svg' },
-      { name: 'Adobe XD', image: '/images/illustrator.svg' },
+      { name: 'Adobe Illustrator', image: '/images/illustrator.svg' },
       { name: 'Photoshop', image: '/images/photoshop.svg' }
     ],
     tools: [
@@ -76,7 +76,7 @@
   });
 </script>
 
-<section class="skills-section">
+<section id="skills" class="skills-section">
   <h2>Skills</h2>
 
   {#each Object.entries(skills) as [category, items], i}
@@ -121,6 +121,7 @@ h2 {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 2rem;
+  color: var(--brand);
 }
 
 .category-block {
@@ -137,6 +138,7 @@ h2 {
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
   text-transform: capitalize;
+  color: var(--highlight);
 }
 
 .skills-grid {
