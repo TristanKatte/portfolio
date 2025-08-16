@@ -1,7 +1,7 @@
 <script>
-  import emailjs from 'emailjs-com';
   import { onMount } from 'svelte';
-  import { gsap } from 'gsap';
+  import emailjs from 'emailjs-com';
+  import gsap from 'gsap';
 
   let name = '';
   let email = '';
@@ -12,8 +12,6 @@
   const SERVICE_ID = 'service_hxcg059';
   const TEMPLATE_ID = 'template_rqh4yep';
   const USER_ID = 'wYAZFEbNF6IsKKX86';
-
-  let nameInput, emailInput, messageInput, sendBtn, contactImage;
 
   $: formValid =
     name.trim() !== '' &&
@@ -36,230 +34,219 @@
       name = '';
       email = '';
       message = '';
-      gsap.from(".feedback", { y: 20, opacity: 0, duration: 0.6 });
     } catch (error) {
-      console.error('EmailJS fout:', error);
+      console.error('EmailJS error:', error);
       feedback = "Something went wrong while sending your message. Try again later.";
-      gsap.from(".feedback", { y: 20, opacity: 0, duration: 0.6 });
     } finally {
       isSubmitting = false;
     }
   }
 
-  function hoverIn(el) {
-    gsap.to(el, { y: -3, boxShadow: '0 0 15px rgba(0,255,255,0.5)', duration: 0.3 });
-  }
-
-  function hoverOut(el) {
-    gsap.to(el, { y: 0, boxShadow: '0 0 0 rgba(0,0,0,0)', duration: 0.3 });
-  }
-
   onMount(() => {
-    // Initial form animation
-    const tl = gsap.timeline();
-    tl.from(".form-wrapper", { y: 30, opacity: 0, duration: 0.8 })
-      .from(".form-wrapper form h2", { y: 20, opacity: 0, duration: 0.5 }, "-=0.5")
-      .from(".form-wrapper form label, .form-wrapper form input, .form-wrapper form textarea, .form-wrapper form button", {
-        y: 20,
-        opacity: 0,
-        stagger: 0.1,
-        duration: 0.5
-      }, "-=0.4")
-      .from(contactImage, { x: 50, opacity: 0, duration: 0.8 }, "-=1");
+    gsap.from('.form-wrapper', { y: 30, opacity: 0, duration: 1, ease: 'power3.out' });
+    const img = document.querySelector('.image-wrapper img');
+    gsap.from(img, { x: 30, opacity: 0, duration: 1, ease: 'power3.out' });
 
-    // Floating image animation
-    gsap.to(contactImage, {
-      y: 15,
-      duration: 2.5,
+    img.addEventListener('mouseenter', () => {
+      gsap.to(img, { scale: 1.05, rotationX: 5, rotationY: 5, duration: 0.4, ease: 'power1.out' });
+    });
+    img.addEventListener('mouseleave', () => {
+      gsap.to(img, { scale: 1, rotationX: 0, rotationY: 0, duration: 0.4, ease: 'power1.out' });
+    });
+
+    gsap.to(img, { y: -10, rotationX: 2, rotationY: -2, duration: 3, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    gsap.to('.form-wrapper', { y: -8, duration: 4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+
+    // Pulsing neon glow animation for the border
+    gsap.to('.form-wrapper::before', {
+      '--glow-opacity': 1,
+      duration: 1.5,
       repeat: -1,
       yoyo: true,
-      ease: "sine.inOut"
+      ease: 'sine.inOut'
     });
   });
 </script>
 
 <div class="contact-container">
-  <div class="form-image-wrapper">
-    <div class="form-wrapper">
-      <form on:submit|preventDefault={handleSubmit} novalidate>
-        <h2>Contact Me</h2>
+  <div class="form-wrapper">
+    <form on:submit|preventDefault={handleSubmit} novalidate>
+      <h2>Contact Me</h2>
 
-        <label for="name">Name</label>
-        <input
-          type="text"
-          id="name"
-          bind:value={name}
-          required
-          autocomplete="name"
-          on:mouseenter={() => hoverIn(nameInput)}
-          on:mouseleave={() => hoverOut(nameInput)}
-          bind:this={nameInput}
-        />
+      <label for="name">Name</label>
+      <input type="text" id="name" bind:value={name} required autocomplete="name" />
 
-        <label for="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          bind:value={email}
-          required
-          autocomplete="email"
-          on:mouseenter={() => hoverIn(emailInput)}
-          on:mouseleave={() => hoverOut(emailInput)}
-          bind:this={emailInput}
-        />
+      <label for="email">Email</label>
+      <input type="email" id="email" bind:value={email} required autocomplete="email" />
 
-        <label for="message">Message</label>
-        <textarea
-          id="message"
-          rows="5"
-          bind:value={message}
-          required
-          on:mouseenter={() => hoverIn(messageInput)}
-          on:mouseleave={() => hoverOut(messageInput)}
-          bind:this={messageInput}
-        ></textarea>
+      <label for="message">Message</label>
+      <textarea id="message" rows="5" bind:value={message} required></textarea>
 
-        <button
-          type="submit"
-          disabled={!formValid || isSubmitting}
-          on:mouseenter={() => hoverIn(sendBtn)}
-          on:mouseleave={() => hoverOut(sendBtn)}
-          bind:this={sendBtn}
-        >
-          {#if isSubmitting}Submitting...{:else}Send Message{/if}
-        </button>
-      </form>
+      <button type="submit" disabled={!formValid || isSubmitting}>
+        {#if isSubmitting}
+          Submitting...
+        {:else}
+          Send Message
+        {/if}
+      </button>
+    </form>
 
-      {#if feedback}
-        <p class="feedback">{feedback}</p>
-      {/if}
-    </div>
+    {#if feedback}
+      <p class="feedback">{feedback}</p>
+    {/if}
+  </div>
 
-    <div class="image-wrapper">
-      <img bind:this={contactImage} src="/images/form-image.jpg" alt="Contact illustration" />
-    </div>
+  <div class="image-wrapper">
+    <img src="/images/futuristic-bg.jpg" alt="Contact design" />
   </div>
 </div>
 
 <style>
-  :global(body) {
-    --surface: rgba(255,255,255,0.05);
-    --text: #fff;
-    --highlight: rgba(255,255,255,0.2);
-    --brand: #00ffff;
-    --brand-soft: rgba(0,255,255,0.2);
-  }
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 0 1rem;
+  flex-wrap: wrap;
+}
 
+.form-wrapper {
+  --glow-opacity: 0.6;
+  flex: 1;
+  min-width: 300px;
+  background: rgba(20, 20, 20, 0.3);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.form-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, #222, #444, #555, #222);
+  filter: drop-shadow(0 0 12px rgba(52, 152, 219, var(--glow-opacity)));
+  animation: borderAnim 6s linear infinite;
+  z-index: -1;
+  border-radius: 16px;
+}
+
+@keyframes borderAnim {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 1;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--brand);
+  letter-spacing: 3px;
+  font-family: "Azonix";
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+
+input, textarea {
+  padding: 0.8rem 1rem;
+  border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: rgba(30, 30, 30, 0.2);
+  color: var(--text);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--brand-soft);
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.6);
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  margin-top: 1rem;
+  background-color: var(--brand-soft);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.85rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--brand);
+}
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.feedback {
+  margin-top: 1rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--brand);
+  background: rgba(30,30,30,0.3);
+  backdrop-filter: blur(10px);
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(80,80,80,0.3);
+  box-shadow: 0 0 12px rgba(52,152,219,0.4);
+}
+
+.image-wrapper {
+  flex: 0 0 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-wrapper img {
+  width: 100%;
+  max-width: 180px;
+  border-radius: 16px;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
   .contact-container {
-    display: flex;
-    justify-content: center;
-    padding: 4rem 1rem;
-  }
-
-  .form-image-wrapper {
-    display: flex;
-    gap: 3rem;
-    max-width: 1100px;
-    width: 100%;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .form-wrapper {
-    flex: 1;
-    min-width: 320px;
-    max-width: 500px;
-    padding: 2rem;
-    border-radius: 16px;
-    background: rgba(255,255,255,0.05);
-    border: 2px solid rgba(0,255,255,0.2);
-    backdrop-filter: blur(15px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    animation: borderPulse 3s infinite;
-    color: var(--text);
-  }
-
-  @keyframes borderPulse {
-    0%, 100% { border-color: rgba(0,255,255,0.2); }
-    50% { border-color: rgba(0,255,255,0.6); }
-  }
-
-  form {
-    display: flex;
     flex-direction: column;
-    gap: 1rem;
-  }
-
-  h2 {
-    font-weight: 700;
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    color: var(--brand);
-    letter-spacing: 3px;
-    font-family: "Azonix";
-  }
-
-  label {
-    font-weight: 600;
-    font-size: 0.9rem;
-  }
-
-  input, textarea {
-    padding: 0.8rem 1rem;
-    border: 2px solid var(--highlight);
-    border-radius: 8px;
-    font-size: 1rem;
-    background: rgba(255,255,255,0.1);
-    color: var(--text);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-  }
-
-  button {
-    margin-top: 1rem;
-    background-color: var(--brand-soft);
-    color: var(--text);
-    font-weight: 600;
-    font-size: 1.1rem;
-    padding: 0.85rem;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  }
-
-  .feedback {
-    margin-top: 1rem;
-    font-weight: 600;
-    text-align: center;
-    color: var(--brand);
-    padding: 0.6rem 1rem;
-    border-radius: 12px;
-    background: rgba(255,255,255,0.05);
-    border: 2px solid rgba(0,255,255,0.2);
-    backdrop-filter: blur(10px);
-    animation: borderPulse 3s infinite;
+    align-items: center;
   }
 
   .image-wrapper {
-    flex: 1;
-    min-width: 300px;
-    display: flex;
-    justify-content: center;
+    margin-top: 2rem;
   }
-
-  .image-wrapper img {
-    max-width: 100%;
-    border-radius: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    border: 2px solid rgba(0,255,255,0.2);
-    animation: borderPulse 3s infinite;
-  }
-
-  @media (max-width: 768px) {
-    .form-image-wrapper {
-      flex-direction: column;
-    }
-  }
+}
 </style>
