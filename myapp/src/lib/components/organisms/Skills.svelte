@@ -148,6 +148,7 @@ h2 {
   margin-bottom: 1.5rem;
   text-transform: capitalize;
   color: var(--highlight);
+  letter-spacing: 3px;
 }
 
 .skills-grid {
@@ -232,6 +233,7 @@ h2 {
   color: var(--highlight);
   text-align: center;
   font-weight: 500;
+  letter-spacing: 2px;
   text-shadow: 0 0 6px rgba(0,255,247,0.3);
 }
 

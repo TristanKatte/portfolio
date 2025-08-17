@@ -11,14 +11,14 @@
     { title: "2016-2018", text: "Completed my 1st study as a Desktop publisher at the Grafisch Lyceum Utrecht.", color: "#00ffea" },
     { title: "2018-2022", text: "Completed my 2nd study as a Web Designer at the Grafisch Lyceum Utrecht.", color: "#1affd5" },
     { title: "2022", text: "Studied Communication and Multimedia design for a while, before switching to Frontend development.", color: "#00ccaa" },
-    { title: "2023", text: "Gap year working, travelling, and starting studies at FDND.", color: "#00ffea" }
+    { title: "2023", text: "Gap year working, travelling, and starting my studies at FDND.", color: "#00ffea" }
   ];
 
   const jobItems = [
-    { title: "Internship at the VRU", text: "Helped building reports for the VRU.", color: "#ff6b6b" },
-    { title: "Internship at ArtDcom", text: "Helped building websites and optimizing them.", color: "#ff8b8b" },
-    { title: "Internship at Centix", text: "Helped building and optimizing the Wordpress website for Centix.", color: "#ff4c4c" },
-    { title: "Warehouse worker", text: "Seasonal job at VersAlert, handling sorting, packing and cleaning.", color: "#ff6b6b" }
+    { title: "Feb 2025 - Apr 2025: Internship at the VRU", text: "Helped building reports for the VRU.", color: "#ff6b6b" },
+    { title: "Aug 2021 - Jan 2022: Internship at ArtDcom", text: "Helped building websites and optimizing them.", color: "#ff8b8b" },
+    { title: "Feb 2021 - Jun 2021: Internship at Centix", text: "Helped building and optimizing the Wordpress website for Centix.", color: "#ff4c4c" },
+    { title: "2018 - Present: Warehouse worker", text: "Seasonal job at VersAlert, handling sorting, packing and cleaning.", color: "#ff6b6b" }
   ];
 
   const timelines = [
@@ -26,117 +26,96 @@
     { title: "Work Experience", items: jobItems }
   ];
 
-  onMount(async () => {
-    const gsap = (await import("gsap")).default;
-    const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
-    gsap.registerPlugin(ScrollTrigger);
+onMount(async () => {
+  const gsap = (await import("gsap")).default;
+  const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
+  gsap.registerPlugin(ScrollTrigger);
 
-    // Split-text + gradient animation
-    const aboutTextEl = document.querySelector(".about-text");
-    const words = aboutTextEl.textContent.trim().split(" ");
-    aboutTextEl.innerHTML = words.map(word => `<span class="word">${word}</span>`).join(" ");
+  // ----------------------------
+  // Animate about text
+  // ----------------------------
+  const aboutTextEl = document.querySelector(".about-text");
+  const words = aboutTextEl.textContent.trim().split(" ");
+  aboutTextEl.innerHTML = words.map(word => `<span class="word">${word}</span>`).join(" ");
 
-    gsap.from(".about-text", {
-      opacity: 0,
-      y: 20,
-      duration: 0.6,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: aboutTextEl,
-        start: "top 85%",
-      }
+  gsap.fromTo(".about-text .word", 
+    { opacity: 0, y: 20 }, 
+    { opacity: 1, y: 0, stagger: 0.05, duration: 0.6, ease: "power2.out",
+      scrollTrigger: { trigger: aboutTextEl, start: "top 80%" } 
+    }
+  );
+
+  // ----------------------------
+  // Timeline animations
+  // ----------------------------
+  document.querySelectorAll(".timeline").forEach((timeline) => {
+    const nodes = gsap.utils.toArray(timeline.querySelectorAll(".timeline-node"));
+    const items = gsap.utils.toArray(timeline.querySelectorAll(".timeline-content"));
+    const progressLine = timeline.querySelector(".timeline-progress");
+
+    // Animate progress line
+    gsap.fromTo(progressLine, { scaleY: 0 }, { 
+      scaleY: 1, 
+      transformOrigin: "top",
+      scrollTrigger: { trigger: timeline, start: "top center", end: "bottom center", scrub: 0.5 }
     });
 
-    gsap.fromTo(
-      ".about-text .word",
-      { opacity: 0, y: 20, rotationZ: 5, scale: 0.95 },
-      {
-        opacity: 1,
-        y: 0,
-        rotationZ: 0,
-        scale: 1,
-        stagger: 0.05,
-        ease: "back.out(1.7)",
-        duration: 0.6,
-        scrollTrigger: {
-          trigger: aboutTextEl,
-          start: "top 80%",
+    // Animate nodes and items individually
+    nodes.forEach((node, i) => {
+      const color = node.style.getPropertyValue("--color");
+
+      ScrollTrigger.create({
+        trigger: node,
+        start: "top center",
+        onEnter: () => {
+          gsap.to(node, { scale: 1.2, opacity: 1, boxShadow: `0 0 15px ${color}, 0 0 25px ${color}`, duration: 0.5 });
+          gsap.to(items[i], { boxShadow: `0 0 20px ${color}, 0 0 40px ${color}`, duration: 0.5 });
+        },
+        onLeaveBack: () => {
+          gsap.to(node, { scale: 1, opacity: 1, boxShadow: "none", duration: 0.3 });
+          gsap.to(items[i], { boxShadow: "none", duration: 0.3 });
         }
-      }
-    );
+      });
 
-    // Animate gradient shift
-    gsap.to(".about-text", {
-      backgroundPosition: "200% center",
-      ease: "linear",
-      duration: 8,
-      repeat: -1
-    });
+      // Curved slide & fade for items
+      const desktopX = i % 2 === 0 ? -60 : 60;
+      const desktopY = -30 + Math.random() * 20;
+      const mobileX = 0;
+      const mobileY = 30;
 
-    // Timelines animations
-    const allTimelines = document.querySelectorAll(".timeline");
-
-    allTimelines.forEach((timeline) => {
-      const nodes = gsap.utils.toArray(timeline.querySelectorAll(".timeline-node"));
-      const items = gsap.utils.toArray(timeline.querySelectorAll(".timeline-item"));
-      const progressLine = timeline.querySelector(".timeline-progress");
-
-      gsap.fromTo(
-        progressLine,
-        { scaleY: 0, transformOrigin: "top" },
+      gsap.fromTo(items[i],
         {
-          scaleY: 1,
-          ease: "none",
+          autoAlpha: 0,
+          x: window.innerWidth > 768 ? desktopX : mobileX,
+          y: window.innerWidth > 768 ? desktopY : mobileY
+        },
+        {
+          autoAlpha: 1,
+          x: 0,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
           scrollTrigger: {
-            trigger: timeline,
-            start: "top center",
-            end: "bottom center",
-            scrub: 0.5,
-          },
+            trigger: items[i],
+            start: "top 90%",
+            end: "bottom 60%",
+            scrub: 0.5
+          }
         }
       );
-
-      nodes.forEach((node, i) => {
-        const item = items[i].querySelector(".timeline-content");
-        const color = node.style.getPropertyValue("--color");
-
-        ScrollTrigger.create({
-          trigger: node,
-          start: "top center",
-          onEnter: () => {
-            gsap.to(node, {
-              scale: 1.2,
-              opacity: 1,
-              boxShadow: `0 0 15px ${color}, 0 0 25px ${color}`,
-              duration: 0.5,
-            });
-            gsap.to(item, {
-              boxShadow: `0 0 20px ${color}, 0 0 40px ${color}`,
-              duration: 0.5,
-            });
-          },
-          onLeaveBack: () => {
-            gsap.to(node, { scale: 1, opacity: 1, boxShadow: "none", duration: 0.3 });
-            gsap.to(item, { boxShadow: "none", duration: 0.3 });
-          },
-        });
-      });
-
-      items.forEach((item) => {
-        gsap.from(item, {
-          scrollTrigger: {
-            trigger: item,
-            start: "top 90%",
-            toggleActions: "play none none reverse",
-          },
-          autoAlpha: 0,
-          y: 30,
-          duration: 0.8,
-          ease: "power2.out",
-        });
-      });
     });
   });
+
+  // ----------------------------
+  // Optional: continuous gradient shift on about text
+  // ----------------------------
+  gsap.to(".about-text", { 
+    backgroundPosition: "200% 0", 
+    duration: 10, 
+    ease: "linear", 
+    repeat: -1 
+  });
+});
 </script>
 
 <section id="about" class="about-me">
@@ -144,29 +123,32 @@
   <p class="about-text">{introText}</p>
 
   {#each timelines as timeline}
-    <h2 class="timeline-heading">{timeline.title}</h2>
-    <div class="timeline">
-      <div class="timeline-line"></div>
-      <div class="timeline-progress" style="--color: {timeline.items[0].color}"></div>
+    <section aria-labelledby={timeline.title} class="timeline-section">
+      <header>
+        <h2 id={timeline.title} class="timeline-heading" style="color: {timeline.items[0].color}">
+          {timeline.title}
+        </h2>
+      </header>
 
-      {#each timeline.items as item, i}
-        <div class="timeline-item {i % 2 === 0 ? 'left' : 'right'}">
-          <div class="timeline-content" style="--color: {item.color}">
-            <h3>{item.title}</h3>
-            <p>{item.text}</p>
+      <div class="timeline">
+        <div class="timeline-line"></div>
+        <div class="timeline-progress" style="--color: {timeline.items[0].color}"></div>
+
+        {#each timeline.items as item, i}
+          <div class="timeline-item {i % 2 === 0 ? 'left' : 'right'}">
+            <span class="timeline-node" style="--color: {item.color}"></span>
+            <article class="timeline-content" style="--color: {item.color}; color: {item.color}">
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
           </div>
-          <div class="timeline-node" style="--color: {item.color}"></div>
-        </div>
-      {/each}
-    </div>
+        {/each}
+      </div>
+    </section>
   {/each}
 </section>
 
 <style>
-  :root {
-  --blue: #00bfff;
-  --danger: #ff4c4c; /* already used */
-}
   section.about-me {
     max-width: 90ch;
     margin: 0 auto;
@@ -195,13 +177,7 @@
     -webkit-text-fill-color: transparent;
   }
 
-  .about-heading {
-    font-size: 2rem;
-    margin: 3rem 0 2rem;
-    color: var(--brand);
-    text-align: left;
-  }
-
+  .about-heading,
   .timeline-heading {
     font-size: 2rem;
     margin: 3rem 0 2rem;
@@ -209,9 +185,22 @@
     color: var(--highlight);
   }
 
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* p {
+    font-size: 1.35rem;
+    line-height: 1.7;
+    font-family: Titillium Web, sans-serif;
+    font-weight: 100;
+  } */
+
   .timeline {
     position: relative;
     margin-bottom: 6rem;
+    font-weight: 100;
   }
 
   .timeline-line {
@@ -243,76 +232,68 @@
     width: 100%;
     margin: 4rem 0;
     display: flex;
-    justify-content: flex-start;
     align-items: flex-start;
   }
 
   .timeline-item.left {
-    justify-content: flex-start;
-    text-align: left;
-    padding-right: 70px;
+    justify-content: flex-end;
   }
 
   .timeline-item.right {
-    justify-content: flex-end;
-    text-align: right;
-    padding-left: 70px;
-  }
-
-  .timeline-content {
-    background: var(--bg);
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    border-radius: 1rem;
-    padding: 1.5rem 2rem;
-    max-width: 350px;
-    z-index: 3;
-    transition: box-shadow 0.3s ease;
-  }
-
-  .timeline-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.4rem;
-    color: white;
-  }
-
-  .timeline-content p {
-    font-size: 1rem;
-    color: white;
-    opacity: 0.85;
+    justify-content: flex-start;
   }
 
   .timeline-node {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    width: 12px;
-    height: 12px;
-    background: var(--color);
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    opacity: 0.2;
-    z-index: 4;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    background: var(--color);
+    border: 4px solid #222;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
   }
 
-  @media (max-width: 767px) {
+  .timeline-content {
+    max-width: 300px;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--color);
+    color: var(--color);
+    position: relative;
+    z-index: 2;
+  }
+
+  .timeline-item.left .timeline-content {
+    margin-right: 3rem;
+    text-align: right;
+  }
+
+  .timeline-item.right .timeline-content {
+    margin-left: 3rem;
+    text-align: left;
+  }
+
+  /* Mobile layout */
+  @media (max-width: 768px) {
     .timeline-line,
     .timeline-progress {
       left: 20px;
-      transform: none;
+      transform: translateX(0);
     }
 
     .timeline-item {
       flex-direction: row;
       justify-content: flex-start !important;
-      margin: 3rem 0;
+      margin: 2rem 0;
     }
 
-    .timeline-item.left,
-    .timeline-item.right {
-      padding-left: 50px;
-      padding-right: 0;
+    .timeline-item.left .timeline-content,
+    .timeline-item.right .timeline-content {
+      margin: 0 0 0 3rem;
       text-align: left;
     }
 
