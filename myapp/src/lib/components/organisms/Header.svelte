@@ -48,6 +48,7 @@
     justify-content: space-between;
     align-items: center;
   }
+
   .logo-link {
     display: inline-block;
     transition: transform 0.3s ease;
@@ -87,19 +88,77 @@
     display: flex;
   }
 
-  .nav a {
-    text-decoration: none;
-    color: var(--text);
-    font-weight: 600;
-    transition:
-      color 0.3s ease,
-      text-shadow 0.3s ease;
-    font-family: "Orbitron Variable", sans-serif;
+  .nav li {
+    position: relative;
   }
 
-  .nav a:hover {
-    color: var(--highlight);
-    text-shadow: 0 0 6px var(--highlight);
+  .nav a {
+    position: relative;
+    padding: 0.75rem 1rem;
+    color: var(--text);
+    font-weight: 600;
+    font-family: "Azonix", sans-serif;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  /* ::before for corner frame */
+  .nav a::before {
+    content: "";
+    position: absolute;
+    border: 0 solid transparent;
+    display: block;
+    width: 0%;
+    height: 0%;
+    transition: all 0.3s ease;
+    right: 0;
+    bottom: 0;
+    border-bottom: 2px solid transparent;
+    border-right: 2px solid transparent;
+    z-index: 2;
+  }
+
+  /* ::after for shimmer beam */
+  .nav a::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      rgba(0, 255, 255, 0) 0%,
+      rgba(0, 230, 255, 0.4) 50%,
+      rgba(0, 255, 255, 0) 100%
+    );
+    transform: skewX(-20deg);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .nav a:hover::before {
+    width: 10px;
+    height: 10px;
+    border-color: var(--highlight);
+  }
+
+  .nav a:hover::after {
+    animation: shimmer 0.75s ease forwards;
+  }
+
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
   }
 
   .nav-toggle {
