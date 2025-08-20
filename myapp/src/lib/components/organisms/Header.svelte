@@ -127,8 +127,6 @@
     position: absolute;
     top: 0;
     left: -100%;
-    border-top: 2px solid transparent;
-    border-left: 2px solid transparent;
     width: 100%;
     height: 100%;
     background: linear-gradient(
