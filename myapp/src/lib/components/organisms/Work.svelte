@@ -129,7 +129,7 @@
     grid-auto-rows: auto;
     margin-top: 2rem;
     width: 100%;
-    max-width: 1000px;
+    max-width: 900px;
   }
 
   @media (min-width: 600px) {

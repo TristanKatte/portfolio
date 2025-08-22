@@ -47,48 +47,102 @@
   });
 </script>
 
-<div class="form-wrapper">
-  <form on:submit|preventDefault={handleSubmit} novalidate>
-    <h2>Contact Me</h2>
 
-    <label for="name">Name</label>
-    <input type="text" id="name" bind:value={name} required autocomplete="name" />
+  <article class="form-wrapper">
+    <section class="form-container">
+      <img
+        src="./images/futuristic-bg.jpg"
+        alt="Futuristic Background"
+        class="side-img"
+        loading="lazy"
+      />
 
-    <label for="email">Email</label>
-    <input type="email" id="email" bind:value={email} required autocomplete="email" />
+      <form on:submit|preventDefault={handleSubmit} novalidate>
+        <h2>Contact Me</h2>
 
-    <label for="message">Message</label>
-    <textarea id="message" rows="5" bind:value={message} required></textarea>
+        <label for="name">Name</label>
+        <input type="text" id="name" bind:value={name} required autocomplete="name" />
 
-    <button type="submit" disabled={!formValid || isSubmitting}>
-      {#if isSubmitting}
-        Submitting...
-      {:else}
-        Send Message
-      {/if}
-    </button>
-  </form>
+        <label for="email">Email</label>
+        <input type="email" id="email" bind:value={email} required autocomplete="email" />
 
-  {#if feedback}
-    <p class="feedback">{feedback}</p>
-  {/if}
-</div>
+        <label for="message">Message</label>
+        <textarea id="message" rows="5" bind:value={message} required></textarea>
+
+        <button type="submit" disabled={!formValid || isSubmitting}>
+          {#if isSubmitting}
+            Submitting...
+          {:else}
+            Send Message
+          {/if}
+        </button>
+      </form>
+    </section>
+
+    {#if feedback}
+      <p class="feedback">{feedback}</p>
+    {/if}
+  </article>
+
 <style>
 /* Contact Form Styles */
 .form-wrapper {
-  max-width: 720px;
+  max-width: 1000px;
   margin: 3rem auto;
   padding: 2rem;
   border-radius: 16px;
   position: relative;
   color: var(--text);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
   overflow: hidden;
-
-  /* DARK background inside for readability */
-  background: linear-gradient(0deg,rgba(65, 67, 69, 1) 0%, rgba(35, 37, 38, 1) 100%);
+    background: #152331;
+  background: linear-gradient(
+    to left,
+    #152331,#000000
+  );
   border: 2px solid transparent;
 }
+
+
+/* Flex container for image + form */
+.form-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5rem;
+
+}
+
+/* Side image */
+.side-img {
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+  justify-content: flex-start;
+  backdrop-filter: blur(25px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .form-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .side-img {
+    display: none;
+  }
+
+  .form-wrapper {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+}
+
 
 /* animated border layer */
 .form-wrapper::before {
@@ -96,7 +150,7 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  padding: 4px; /* thickness of border */
+  padding: 4px;
   background: linear-gradient(
     45deg,
     var(--brand),
@@ -106,24 +160,20 @@
   );
   background-size: 400% 400%;
   animation: gradientNeon 12s ease infinite;
-  mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   z-index: 0;
 }
 
-/* make sure form content sits above */
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   position: relative;
   z-index: 1;
+  width: 100%;
 }
 
 h2 {
@@ -148,7 +198,7 @@ textarea {
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   color: var(--text);
 }
 
@@ -159,11 +209,10 @@ textarea:focus {
   box-shadow: 0 0 8px rgba(52, 152, 219, 0.4);
 }
 
-/* Button */
 button {
   margin-top: 1rem;
   position: relative;
-  background: linear-gradient(135deg, rgba(10,10,10,0.95), rgba(25,25,25,0.9));
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.95), rgba(25, 25, 25, 0.9));
   color: var(--text);
   font-weight: 600;
   font-size: 1.1rem;
@@ -191,12 +240,8 @@ button::before {
   );
   background-size: 400% 400%;
   animation: gradientNeon 8s ease infinite;
-  mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   z-index: -1;
@@ -220,7 +265,7 @@ button[disabled] {
   text-align: center;
   font-weight: 600;
   position: relative;
-  background: linear-gradient(135deg, rgba(10,10,10,0.95), rgba(20,20,20,0.9));
+  background: linear-gradient(135deg, rgba(10, 10, 10, 0.95), rgba(20, 20, 20, 0.9));
   color: var(--text);
   overflow: hidden;
 }
@@ -240,12 +285,8 @@ button[disabled] {
   );
   background-size: 400% 400%;
   animation: gradientNeon 10s ease infinite;
-  mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   z-index: -1;
@@ -253,15 +294,14 @@ button[disabled] {
 
 /* Gradient animation */
 @keyframes gradientNeon {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@media (max-width: 480px) {
-  .form-wrapper {
-    margin: 2rem 1rem;
-    padding: 1.5rem;
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
-</style>  
+</style>

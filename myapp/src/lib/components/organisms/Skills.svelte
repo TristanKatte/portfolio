@@ -13,7 +13,7 @@
       { name: 'Bootstrap', image: '/images/bootstrap.svg' },
       { name: 'GSAP', image: '/images/greensock.svg' },
       { name: 'Next.js', image: '/images/next-js.svg' },
-      { name: 'Power BI', image: '/images/power-bi.svg' }
+      { name: 'React.js', image: '/images/reactjs.svg' }
     ],
     backend: [
       { name: 'Express.js', image: '/images/express-js.svg' },
