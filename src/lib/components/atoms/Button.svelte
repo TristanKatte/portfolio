@@ -27,8 +27,8 @@
     border-radius: 0 1.5rem 0 1.5rem;
     border: 2px solid var(--brand);
     color: var(--text);
-    font-family: 'Orbitron Variable', sans-serif;
-    font-weight: 600;
+    font-family: 'Azonix', sans-serif;
+    font-weight: 100;
     font-size: 1rem;
     text-align: center;
     text-decoration: none;

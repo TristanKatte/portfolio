@@ -1,12 +1,44 @@
 <script>
-    export let href = "#";
-    export let ariaLabel = "Scroll to the next section";
+    import { onMount } from "svelte";
+
+    let isVisible = true;
+
+    function scrollToNextSection() {
+        const sections = Array.from(document.querySelectorAll("section"));
+        const currentScroll = window.scrollY + 1; // +1 to avoid exact matches
+
+        // Find the first section that starts after the current scroll
+        const nextSection = sections.find(
+            (sec) => sec.offsetTop > currentScroll
+        );
+
+        if (nextSection) {
+            nextSection.scrollIntoView({ behavior: "smooth" });
+        }
+    }
+
+    onMount(() => {
+        const handleScroll = () => {
+            const scrolledToBottom =
+                window.innerHeight + window.scrollY >=
+                document.body.offsetHeight - 10;
+            isVisible = !scrolledToBottom;
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    });
 </script>
 
-<a {href} class="scroll-indicator" aria-label={ariaLabel}>
+<button
+    class="scroll-indicator"
+    class:hide={!isVisible}
+    on:click={scrollToNextSection}
+    aria-label="Scroll to next section"
+>
     <span class="scroll-arrow">↓</span>
     <span class="scroll-text">Scroll down</span>
-</a>
+</button>
 
 <style>
     .scroll-indicator {
@@ -16,12 +48,21 @@
         margin-top: 3rem;
         font-size: 1rem;
         color: var(--brand, #64ffda);
-        text-decoration: none;
         cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .scroll-indicator.hide {
+        opacity: 0;
+        transform: translateY(10px);
+        pointer-events: none;
     }
 
     .scroll-text {
-        font-family: "Orbitron Variable", sans-serif;
+        font-family: "Nirequa", sans-serif;
         font-weight: 500;
         font-size: 1.95rem;
         letter-spacing: 1px;
@@ -40,8 +81,7 @@
     }
 
     @keyframes bounce {
-        0%,
-        100% {
+        0%, 100% {
             transform: translateY(0);
         }
         50% {

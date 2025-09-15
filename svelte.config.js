@@ -9,10 +9,10 @@ const config = {
     adapter: adapter({
       pages: 'build',
       assets: 'build',
-      fallback: 'index.html', // SPA fallback
+      fallback: 'index.html', // important for SPA routing
       precompress: false
-    }),
-    // Uncomment if hosted in subfolder:
+    })
+    // If your site is hosted in a subfolder on Hostinger, uncomment and set it here:
     // paths: { base: '/subfolder' }
   }
 };
