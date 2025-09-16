@@ -1,0 +1,22 @@
+{
+  "format": "custom",
+  "id": "page",
+  "label": "page",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "Page UID",
+          "placeholder": "Homepage"
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone"
+      }
+    }
+  }
+}
