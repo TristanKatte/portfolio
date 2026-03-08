@@ -2,18 +2,55 @@
   import ScrollIndicator from "$lib/components/atoms/ScrollIndicator.svelte";
   import { onMount } from "svelte";
 
+  // Grid config — lives here since it's hero-only
+  const columns = [
+  [{ height: '3.5em', delay: '150ms' }, { height: '5em', delay: '274ms' }, { height: '3.5em', delay: '350ms' }],
+  [{ height: '4em', delay: '150ms' }, { height: '9em', delay: '274ms' }, { height: '4em', delay: '350ms' }],
+  [{ height: '3.5em', delay: '280ms' }, { height: '5em', delay: '95ms'  }, { height: '3.5em', delay: '350ms' }],
+];
+
+  const phrases = [
+    "Frontend Developer",
+    "Web Designer",
+    "Fulltime Nerd",
+    "SvelteKit Enthusiast",
+  ];
+
   onMount(async () => {
     const gsap = (await import("gsap")).default;
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
     gsap.registerPlugin(ScrollTrigger);
 
-    // GSAP ScrollIndicator fade & bounce
+    // Entrance animations
+    gsap.from(".hero-title", {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+    });
+
+    gsap.from(".hero-sub", {
+      y: 20,
+      opacity: 0,
+      delay: 0.3,
+      duration: 1,
+      ease: "power2.out",
+    });
+
+    gsap.from(".image-grid", {
+      x: 40,
+      opacity: 0,
+      delay: 0.4,
+      duration: 1,
+      ease: "power2.out",
+    });
+
+    // Scroll indicator
     gsap.fromTo(
       ".scroll-indicator",
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 1, ease: "power2.out", delay: 0.5 },
     );
-
     gsap.to(".scroll-indicator", {
       y: 10,
       repeat: -1,
@@ -22,46 +59,7 @@
       duration: 1.2,
     });
 
-    // Overlay animatie
-    gsap.fromTo(
-      ".overlay",
-      {
-        opacity: 0,
-        scale: 1.2,
-        filter: "blur(20px)",
-      },
-      {
-        opacity: 1,
-        scale: 1,
-        filter: "blur(0px)",
-        duration: 1.5,
-        ease: "power2.out",
-      },
-    );
-
-    // Hero tekst animaties
-    gsap.from(".hero-title", {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
-
-    gsap.from(".hero-buttons", {
-      y: 20,
-      opacity: 0,
-      delay: 0.6,
-      duration: 1,
-      ease: "power2.out",
-    });
-
     // Rotating text
-    const phrases = [
-      "Frontend Developer",
-      "Web Designer",
-      "Fulltime Nerd",
-      "SvelteKit Enthusiast",
-    ];
     const el = document.querySelector(".rotating-text");
     let i = 0;
 
@@ -93,65 +91,30 @@
     }
 
     animatePhrase();
-
-    // 3D hover tilt + shine effect for profile image
-    const img = document.querySelector(".image-card img");
-    const shine = document.createElement("div");
-    shine.className = "shine";
-    img.parentElement.style.position = "relative";
-    img.parentElement.appendChild(shine);
-
-    const rotateCard = (e) => {
-      const { left, top, width, height } = img.getBoundingClientRect();
-      const x = e.clientX - left;
-      const y = e.clientY - top;
-      const rotateY = (x / width - 0.5) * 20; // max 20deg
-      const rotateX = (y / height - 0.5) * -20;
-
-      img.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-      img.style.boxShadow = `${-rotateY * 2}px ${rotateX * 2}px 20px var(--brand-soft)`;
-
-      // Shine position and rotation
-      const posX = (x / width) * 100;
-      const posY = (y / height) * 100;
-      shine.style.background = `radial-gradient(circle at ${posX}% ${posY}%, rgba(255 255 255 / 0.4), transparent 60%)`;
-    };
-
-    const resetCard = () => {
-      img.style.transform = "rotateX(0) rotateY(0) scale(1)";
-      img.style.boxShadow = `0 0 20px var(--brand-soft)`;
-      shine.style.background = "transparent";
-    };
-
-    img.parentElement.addEventListener("mousemove", rotateCard);
-    img.parentElement.addEventListener("mouseleave", resetCard);
   });
 </script>
 
 <section class="hero">
   <div class="hero-content">
     <div class="text">
-      <h1 class="hero-title">Hi, I’m Tristan</h1>
+      <h1 class="hero-title">Hi, I'm Tristan</h1>
       <p class="hero-sub">
         I'm a <span class="rotating-text highlight"></span> who loves to create beautiful
         and functional web applications.
       </p>
     </div>
 
-    <div class="hero-image">
-      <div class="image-card">
-        <picture>
-          <source srcset="/images/profielfoto-zw.avif" type="image/avif" />
-          <source srcset="/images/profielfoto-zw.webp" type="image/webp" />
-          <img
-            src="/images/profielfoto-zw.jpg"
-            alt="Tristan"
-            width="400"
-            height="400"
-            loading="lazy"
-          />
-        </picture>
-      </div>
+    <div class="image-grid">
+      {#each columns as column}
+        <div class="grid-column">
+          {#each column as item}
+            <div
+              class="grid-item"
+              style="height: {item.height}; animation-delay: {item.delay};"
+            ></div>
+          {/each}
+        </div>
+      {/each}
     </div>
   </div>
 
@@ -161,35 +124,36 @@
 </section>
 
 <style>
+  :global(:root) {
+    --image-1: url(https://assets.codepen.io/907368/slider-1.jpg?format=webp&quality=40);
+    --image-2: url(https://assets.codepen.io/907368/slider-2.jpg?format=webp&quality=40);
+    --image-3: url(https://assets.codepen.io/907368/slider-3.jpg?format=webp&quality=40);
+  }
+
   .hero {
-    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100dvh;
     padding: var(--size-7);
-    margin-top: 8rem;
     scroll-snap-align: start;
-    overflow: hidden;
     width: 100%;
-    text-align: center;
     color: var(--text);
-    z-index: 1;
   }
 
   .hero-content {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 6rem;
+    gap: var(--size-9, 4rem);
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1200px;
+    max-width: 1500px;
     width: 100%;
-    z-index: 1;
   }
 
+  /* Text side */
   .text {
     flex: 1 1 300px;
     text-align: left;
@@ -204,60 +168,81 @@
     color: var(--brand);
   }
 
-  .highlight {
-    color: var(--highlight);
-    text-shadow: 0 0 8px var(--highlight);
-  }
-
   .hero-sub {
-    font-size: 2.2rem;
+    font-size: clamp(1.2rem, 2vw, 2.2rem);
     opacity: 0.85;
     margin-bottom: 2rem;
     color: var(--text);
   }
 
+  .highlight,
   .rotating-text {
     font-weight: 700;
     color: var(--highlight);
     text-shadow: 0 0 8px var(--highlight);
   }
 
-  .hero-image {
-    flex: 1 1 300px;
+  /* Grid side */
+  .image-grid {
+    --grid-scale: 2;
+    font-size: calc(1rem * var(--grid-scale));
+    flex: 0 0 auto;
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    width: min(80%, 20.5em);
+    max-width: 22.5em;
+    gap: 0.5em;
   }
 
-  .image-card {
-    perspective: 1000px;
-    position: relative;
+  .grid-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    width: 100%;
   }
 
-  .image-card img {
-    display: block;
-    border-radius: 1rem;
-    object-fit: cover;
-    border: 8px solid var(--border);
-    box-shadow: 0 0 20px var(--brand-soft);
-    transition:
-      transform 0.15s ease,
-      box-shadow 0.15s ease;
-    transform-style: preserve-3d;
-    max-width: 100%;
-    height: auto;
+  .grid-item {
+    width: 100%;
+    border-radius: 0.5em;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: bg-cycle 5s infinite ease-in-out;
   }
-  
+
+  @keyframes bg-cycle {
+    0%,
+    30% {
+      background-image: var(--image-1);
+    }
+    33%,
+    63% {
+      background-image: var(--image-2);
+    }
+    66%,
+    96% {
+      background-image: var(--image-3);
+    }
+    100% {
+      background-image: var(--image-1);
+    }
+  }
+
+  /* Scroll indicator */
   .scroll-indicator {
     margin-top: 2rem;
   }
 
   /* Responsive */
   @media (max-width: 768px) {
-    .hero-content {
-      flex-direction: column;
-    }
     .text {
       text-align: center;
+    }
+
+    .image-grid {
+      width: min(100%, 22.5rem);
     }
   }
 </style>
