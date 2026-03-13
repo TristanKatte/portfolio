@@ -140,16 +140,18 @@
     scroll-snap-align: start;
     width: 100%;
     color: var(--text);
+    background-color: var(--main-bg-color);
   }
 
   .hero-content {
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding-top: var(--size-9);
     gap: var(--size-9, 4rem);
     flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1500px;
+    justify-content: flex-end;
+    max-width: 1350px;
     width: 100%;
   }
 

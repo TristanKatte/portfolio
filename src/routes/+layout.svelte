@@ -28,7 +28,7 @@
 
 <div class="layout">
  
-  <GalaxyBackground /> 
+  <!-- <GalaxyBackground />  -->
 
   <Header />
   <main>
