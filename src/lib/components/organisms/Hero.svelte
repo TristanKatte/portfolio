@@ -4,10 +4,22 @@
 
   // Grid config — lives here since it's hero-only
   const columns = [
-  [{ height: '3.5em', delay: '150ms' }, { height: '5em', delay: '274ms' }, { height: '3.5em', delay: '350ms' }],
-  [{ height: '4em', delay: '150ms' }, { height: '9em', delay: '274ms' }, { height: '4em', delay: '350ms' }],
-  [{ height: '3.5em', delay: '280ms' }, { height: '5em', delay: '95ms'  }, { height: '3.5em', delay: '350ms' }],
-];
+    [
+      { height: "4em", delay: "150ms", pos: "0% 0%" },
+      { height: "5em", delay: "274ms", pos: "0% 50%" },
+      { height: "4em", delay: "350ms", pos: "0% 100%" },
+    ],
+    [
+      { height: "4em", delay: "150ms", pos: "50% 0%" },
+      { height: "9em", delay: "274ms", pos: "50% 50%" },
+      { height: "4em", delay: "350ms", pos: "50% 100%" },
+    ],
+    [
+      { height: "4em", delay: "280ms", pos: "100% 0%" },
+      { height: "5em", delay: "95ms", pos: "100% 50%" },
+      { height: "4em", delay: "350ms", pos: "100% 100%" },
+    ],
+  ];
 
   const phrases = [
     "Frontend Developer",
@@ -110,7 +122,7 @@
           {#each column as item}
             <div
               class="grid-item"
-              style="height: {item.height}; animation-delay: {item.delay};"
+              style="height: {item.height}; animation-delay: {item.delay}; background-position: {item.pos};"
             ></div>
           {/each}
         </div>
@@ -141,6 +153,24 @@
     width: 100%;
     color: var(--text);
     background-color: var(--main-bg-color);
+    position: relative;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    width: 80rem;
+    height: 80rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, #00ccc9 25%, transparent 70%);
+    opacity: 0.1;
+    pointer-events: none;
+    filter: blur(4rem);
+
+    /* position it where you want the glow */
+    top: 50%;
+    right: 25%;
+    translate: 20% -50%;
   }
 
   .hero-content {
@@ -186,7 +216,7 @@
 
   /* Grid side */
   .image-grid {
-    --grid-scale: 2;
+    --grid-scale: 2.5;
     font-size: calc(1rem * var(--grid-scale));
     flex: 0 0 auto;
     display: flex;
@@ -207,10 +237,11 @@
   .grid-item {
     width: 100%;
     border-radius: 0.5em;
+    border: 2px solid var(--border);
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: scroll;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 300% 300%;
     animation: bg-cycle 5s infinite ease-in-out;
   }
 
