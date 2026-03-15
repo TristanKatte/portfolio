@@ -46,6 +46,11 @@
     src: url('../fonts/Inconsolata[wdth\,wght].ttf');
 }
 
+@font-face {
+    font-family: "Neofolia", sans-serif;
+    src: url('../fonts/neofolia.ttf');
+}
+
 * {
     margin: 0;
     padding: 0;

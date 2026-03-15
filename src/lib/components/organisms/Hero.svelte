@@ -2,12 +2,11 @@
   import ScrollIndicator from "$lib/components/atoms/ScrollIndicator.svelte";
   import { onMount } from "svelte";
 
-  // Grid config — lives here since it's hero-only
   const columns = [
     [
-      { height: "4em", delay: "150ms", pos: "0% 0%" },
+      { height: "3.5em", delay: "150ms", pos: "0% 0%" },
       { height: "5em", delay: "274ms", pos: "0% 50%" },
-      { height: "4em", delay: "350ms", pos: "0% 100%" },
+      { height: "3.5em", delay: "350ms", pos: "0% 100%" },
     ],
     [
       { height: "4em", delay: "150ms", pos: "50% 0%" },
@@ -15,9 +14,9 @@
       { height: "4em", delay: "350ms", pos: "50% 100%" },
     ],
     [
-      { height: "4em", delay: "280ms", pos: "100% 0%" },
+      { height: "3.5em", delay: "280ms", pos: "100% 0%" },
       { height: "5em", delay: "95ms", pos: "100% 50%" },
-      { height: "4em", delay: "350ms", pos: "100% 100%" },
+      { height: "3.5em", delay: "350ms", pos: "100% 100%" },
     ],
   ];
 
@@ -28,92 +27,168 @@
     "SvelteKit Enthusiast",
   ];
 
+  const stats = [
+    { value: 3, label: "Years experience" },
+    { value: 24, label: "Projects shipped" },
+    { value: 8, label: "Technologies" },
+  ];
+
+  const titleText = "Hi, I'm Tristan";
+
   onMount(async () => {
     const gsap = (await import("gsap")).default;
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
     gsap.registerPlugin(ScrollTrigger);
 
-    // Entrance animations
-    gsap.from(".hero-title", {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out",
-    });
+    const tl = gsap.timeline();
 
-    gsap.from(".hero-sub", {
-      y: 20,
-      opacity: 0,
+    // 1. Boot overlay sweeps off screen
+    tl.to(".boot-overlay", {
+      scaleY: 0,
+      transformOrigin: "bottom",
+      duration: 3.8,
+      ease: "power2.inOut",
       delay: 0.3,
-      duration: 1,
-      ease: "power2.out",
     });
 
-    gsap.from(".image-grid", {
-      x: 40,
-      opacity: 0,
-      delay: 0.4,
-      duration: 1,
-      ease: "power2.out",
+    // 2. Scanline flicker on reveal
+    tl.fromTo(
+      ".scanline",
+      { opacity: 0.6 },
+      { opacity: 0, duration: 0.4, ease: "power1.out" },
+      "-=0.1",
+    );
+
+    // 3. Typewriter title
+    const titleEl = document.querySelector(".hero-title");
+    titleEl.textContent = "";
+    tl.to(
+      {},
+      {
+        duration: titleText.length * 0.05,
+        onUpdate() {
+          const chars = Math.round(this.progress() * titleText.length);
+          titleEl.textContent = titleText.slice(0, chars);
+        },
+      },
+      "+=0.1",
+    );
+
+    // 4. Subtitle flicker in
+    tl.fromTo(
+      ".hero-sub",
+      { opacity: 0, filter: "blur(6px)" },
+      { opacity: 0.85, filter: "blur(0px)", duration: 0.6, ease: "power2.out" },
+      "+=0.05",
+    );
+
+    // 5. Grid columns stagger in
+    tl.fromTo(
+      ".grid-column",
+      { opacity: 0, y: 20, filter: "brightness(4)" },
+      {
+        opacity: 1,
+        y: 0,
+        filter: "brightness(1)",
+        duration: 0.4,
+        stagger: 0.15,
+        ease: "power2.out",
+      },
+      "-=0.3",
+    );
+
+    // 6. Stats count up
+    document.querySelectorAll(".stat-value").forEach((stat) => {
+      const target = +stat.dataset.value;
+      tl.to(
+        stat,
+        {
+          innerText: target,
+          duration: 1.2,
+          snap: { innerText: 1 },
+          ease: "power1.out",
+        },
+        "-=0.8",
+      );
     });
 
-    // Scroll indicator
-    gsap.fromTo(
+    // 7. Scroll indicator
+    tl.fromTo(
       ".scroll-indicator",
       { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 1, ease: "power2.out", delay: 0.5 },
+      { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
+      "-=0.4",
     );
-    gsap.to(".scroll-indicator", {
-      y: 10,
-      repeat: -1,
-      yoyo: true,
-      ease: "power1.inOut",
-      duration: 1.2,
+
+    // Idle bounce on scroll indicator after timeline
+    tl.call(() => {
+      gsap.to(".scroll-indicator", {
+        y: 10,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut",
+        duration: 1.2,
+      });
     });
 
-    // Rotating text
-    const el = document.querySelector(".rotating-text");
-    let i = 0;
+    // 8. Rotating text starts after boot sequence
+    tl.call(() => {
+      const rotEl = document.querySelector(".rotating-text");
+      let i = 0;
 
-    function animatePhrase() {
-      el.textContent = phrases[i];
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-          onComplete: () => {
-            gsap.to(el, {
-              opacity: 0,
-              y: -20,
-              delay: 2,
-              duration: 0.8,
-              ease: "power2.in",
-              onComplete: () => {
-                i = (i + 1) % phrases.length;
-                animatePhrase();
-              },
-            });
+      function animatePhrase() {
+        rotEl.textContent = phrases[i];
+        gsap.fromTo(
+          rotEl,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            onComplete: () => {
+              gsap.to(rotEl, {
+                opacity: 0,
+                y: -20,
+                delay: 2,
+                duration: 0.8,
+                ease: "power2.in",
+                onComplete: () => {
+                  i = (i + 1) % phrases.length;
+                  animatePhrase();
+                },
+              });
+            },
           },
-        },
-      );
-    }
+        );
+      }
 
-    animatePhrase();
+      animatePhrase();
+    });
   });
 </script>
 
 <section class="hero">
+  <div class="boot-overlay" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
   <div class="hero-content">
     <div class="text">
-      <h1 class="hero-title">Hi, I'm Tristan</h1>
+      <h1 class="hero-title">{titleText}</h1>
       <p class="hero-sub">
         I'm a <span class="rotating-text highlight"></span> who loves to create beautiful
         and functional web applications.
       </p>
+
+      <div class="stats">
+        {#each stats as stat}
+          <div class="stat">
+            <span class="stat-value" data-value={stat.value}>0</span>
+            <span class="stat-label">{stat.label}</span>
+          </div>
+        {/each}
+      </div>
     </div>
 
     <div class="image-grid">
@@ -141,7 +216,7 @@
     --image-2: url(https://assets.codepen.io/907368/slider-2.jpg?format=webp&quality=40);
     --image-3: url(https://assets.codepen.io/907368/slider-3.jpg?format=webp&quality=40);
   }
-
+  /* Hero */
   .hero {
     display: flex;
     flex-direction: column;
@@ -154,8 +229,10 @@
     color: var(--text);
     background-color: var(--main-bg-color);
     position: relative;
+    overflow: hidden;
   }
 
+  /* Glow */
   .hero::before {
     content: "";
     position: absolute;
@@ -166,13 +243,28 @@
     opacity: 0.1;
     pointer-events: none;
     filter: blur(4rem);
-
-    /* position it where you want the glow */
-    top: 50%;
-    right: 25%;
-    translate: 20% -50%;
+    top: 0;
+    right: 0;
+    translate: 25% -25%;
+    z-index: 0;
   }
 
+  /* Scanline */
+  .boot-overlay {
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 2px,
+      rgba(0, 204, 201, 0.25) 2px,
+      rgba(0, 204, 201, 0.25) 4px
+    );
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Layout */
   .hero-content {
     display: flex;
     flex-direction: row;
@@ -180,12 +272,14 @@
     padding-top: var(--size-9);
     gap: var(--size-9, 4rem);
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: center;
     max-width: 1350px;
     width: 100%;
+    position: relative;
+    z-index: 1;
   }
 
-  /* Text side */
+  /* Text */
   .text {
     flex: 1 1 300px;
     text-align: left;
@@ -195,14 +289,15 @@
     font-size: clamp(2.5rem, 5vw, 6rem);
     font-weight: 800;
     margin-bottom: 1rem;
-    font-family: "Azonix", sans-serif;
+    font-family: "Neofolia", sans-serif;
     letter-spacing: 5px;
     color: var(--brand);
+    min-height: 1.2em; /* prevents layout shift during typewriter */
   }
 
   .hero-sub {
     font-size: clamp(1.2rem, 2vw, 2.2rem);
-    opacity: 0.85;
+    opacity: 0;
     margin-bottom: 2rem;
     color: var(--text);
   }
@@ -214,16 +309,44 @@
     text-shadow: 0 0 8px var(--highlight);
   }
 
-  /* Grid side */
+  /* Stats */
+  .stats {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .stat-value {
+    font-family: "Azonix", sans-serif;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-weight: 800;
+    color: var(--brand);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  /* Grid */
   .image-grid {
-    --grid-scale: 2.5;
+    --grid-scale: 2;
     font-size: calc(1rem * var(--grid-scale));
     flex: 0 0 auto;
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: min(80%, 20.5em);
-    max-width: 22.5em;
+    width: 35rem;
     gap: 0.5em;
   }
 
@@ -238,8 +361,6 @@
     width: 100%;
     border-radius: 0.5em;
     border: 2px solid var(--border);
-    background-position: center;
-    background-attachment: scroll;
     background-repeat: no-repeat;
     background-size: 300% 300%;
     animation: bg-cycle 5s infinite ease-in-out;
@@ -266,12 +387,18 @@
   /* Scroll indicator */
   .scroll-indicator {
     margin-top: 2rem;
+    position: relative;
+    z-index: 1;
   }
 
   /* Responsive */
   @media (max-width: 768px) {
     .text {
       text-align: center;
+    }
+
+    .stats {
+      justify-content: center;
     }
 
     .image-grid {
