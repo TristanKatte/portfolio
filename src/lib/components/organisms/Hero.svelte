@@ -21,6 +21,7 @@
   ];
 
   const phrases = [
+    "Creative Developer",
     "Frontend Developer",
     "Web Designer",
     "Fulltime Nerd",
@@ -46,7 +47,7 @@
     tl.to(".boot-overlay", {
       scaleY: 0,
       transformOrigin: "bottom",
-      duration: 3.8,
+      duration: 0.8,
       ease: "power2.inOut",
       delay: 0.3,
     });
@@ -55,22 +56,36 @@
     tl.fromTo(
       ".scanline",
       { opacity: 0.6 },
-      { opacity: 0, duration: 0.4, ease: "power1.out" },
+      { opacity: 1, duration: 0.4, ease: "power1.out" },
       "-=0.1",
     );
 
-    // 3. Typewriter title
+    // 3. Character reveal with glow flash
     const titleEl = document.querySelector(".hero-title");
-    titleEl.textContent = "";
-    tl.to(
-      {},
+    titleEl.innerHTML = titleText
+      .split("")
+      .map((char) =>
+        char === " "
+          ? `<span class="char" style="display:inline-block;">&nbsp;</span>`
+          : `<span class="char" style="display:inline-block;">${char}</span>`,
+      )
+      .join("");
+
+    tl.staggerFromTo(
+      ".hero-title .char",
+      0.5,
       {
-        duration: titleText.length * 0.05,
-        onUpdate() {
-          const chars = Math.round(this.progress() * titleText.length);
-          titleEl.textContent = titleText.slice(0, chars);
-        },
+        visibility: "hidden",
+        background: "rgba(0, 204, 201, 0.3)",
+        textShadow: "0 0 0 #00ccc9",
       },
+      {
+        visibility: "visible",
+        background: "rgba(0, 204, 201, 0)",
+        textShadow: "0 0 60px #00ccc9",
+        ease: "sine.out",
+      },
+      0.05,
       "+=0.1",
     );
 
@@ -120,7 +135,7 @@
       "-=0.4",
     );
 
-    // Idle bounce on scroll indicator after timeline
+    // Idle bounce after timeline
     tl.call(() => {
       gsap.to(".scroll-indicator", {
         y: 10,
@@ -168,17 +183,17 @@
   });
 </script>
 
+<div class="boot-overlay" aria-hidden="true"></div>
+
 <section class="hero">
-  <div class="boot-overlay" aria-hidden="true"></div>
-  <div class="scanline" aria-hidden="true"></div>
-  <div class="vignette" aria-hidden="true"></div>
+  <!-- <div class="scanline" aria-hidden="true"></div> -->
 
   <div class="hero-content">
     <div class="text">
-      <h1 class="hero-title">{titleText}</h1>
+      <h1 class="hero-title"> {titleText} </h1>
       <p class="hero-sub">
-        I'm a <span class="rotating-text highlight"></span> who loves to create beautiful
-        and functional web applications.
+        I'm a <span class="rotating-text highlight"></span> who loves to create
+        beautiful and functional web applications.
       </p>
 
       <div class="stats">
@@ -211,11 +226,16 @@
 </section>
 
 <style>
-  :global(:root) {
-    --image-1: url(https://assets.codepen.io/907368/slider-1.jpg?format=webp&quality=40);
-    --image-2: url(https://assets.codepen.io/907368/slider-2.jpg?format=webp&quality=40);
-    --image-3: url(https://assets.codepen.io/907368/slider-3.jpg?format=webp&quality=40);
+  /* Boot overlay */
+  .boot-overlay {
+    position: fixed;
+    inset: 0;
+    background: #0c1016;
+    transform-origin: top;
+    z-index: 100;
+    pointer-events: none;
   }
+
   /* Hero */
   .hero {
     display: flex;
@@ -227,9 +247,10 @@
     scroll-snap-align: start;
     width: 100%;
     color: var(--text);
-    background-color: var(--main-bg-color);
+    background-color: #101a21;
     position: relative;
     overflow: hidden;
+    z-index: 1;
   }
 
   /* Glow */
@@ -247,21 +268,6 @@
     right: 0;
     translate: 25% -25%;
     z-index: 0;
-  }
-
-  /* Scanline */
-  .boot-overlay {
-    position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(
-      to bottom,
-      transparent 0px,
-      transparent 2px,
-      rgba(0, 204, 201, 0.25) 2px,
-      rgba(0, 204, 201, 0.25) 4px
-    );
-    pointer-events: none;
-    z-index: 10;
   }
 
   /* Layout */
@@ -292,7 +298,7 @@
     font-family: "Neofolia", sans-serif;
     letter-spacing: 5px;
     color: var(--brand);
-    min-height: 1.2em; /* prevents layout shift during typewriter */
+    min-height: 1.2em;
   }
 
   .hero-sub {
@@ -367,21 +373,10 @@
   }
 
   @keyframes bg-cycle {
-    0%,
-    30% {
-      background-image: var(--image-1);
-    }
-    33%,
-    63% {
-      background-image: var(--image-2);
-    }
-    66%,
-    96% {
-      background-image: var(--image-3);
-    }
-    100% {
-      background-image: var(--image-1);
-    }
+    0%,  30% { background-image: var(--image-1); }
+    33%, 63% { background-image: var(--image-2); }
+    66%, 96% { background-image: var(--image-3); }
+    100%      { background-image: var(--image-1); }
   }
 
   /* Scroll indicator */
