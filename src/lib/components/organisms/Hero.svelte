@@ -35,6 +35,7 @@
   ];
 
   const titleText = "Hi, I'm Tristan";
+  const titleSub = "Creative Developer";
 
   onMount(async () => {
     const gsap = (await import("gsap")).default;
@@ -60,34 +61,37 @@
       "-=0.1",
     );
 
-    // 3. Character reveal with glow flash
-    const titleEl = document.querySelector(".hero-title");
-    titleEl.innerHTML = titleText
-      .split("")
-      .map((char) =>
-        char === " "
-          ? `<span class="char" style="display:inline-block;">&nbsp;</span>`
-          : `<span class="char" style="display:inline-block;">${char}</span>`,
-      )
-      .join("");
+    // 3. Character reveal — title
+const titleEl = document.querySelector(".hero-title");
+titleEl.innerHTML = titleText
+  .split("")
+  .map(char => char === " "
+    ? `<span class="char" style="display:inline-block;">&nbsp;</span>`
+    : `<span class="char" style="display:inline-block;">${char}</span>`
+  ).join("");
 
-    tl.staggerFromTo(
-      ".hero-title .char",
-      0.5,
-      {
-        visibility: "hidden",
-        background: "rgba(0, 204, 201, 0.3)",
-        textShadow: "0 0 0 #00ccc9",
-      },
-      {
-        visibility: "visible",
-        background: "rgba(0, 204, 201, 0)",
-        textShadow: "0 0 60px #00ccc9",
-        ease: "sine.out",
-      },
-      0.05,
-      "+=0.1",
-    );
+tl.staggerFromTo(
+  ".hero-title .char", 0.5,
+  { visibility: "hidden", background: "rgba(0, 204, 201, 0.3)", textShadow: "0 0 0 #00ccc9" },
+  { visibility: "visible", background: "rgba(0, 204, 201, 0)", textShadow: "0 0 60px #00ccc9", ease: "sine.out" },
+  0.05, "+=0.1"
+);
+
+// 3b. Character reveal — subtitle
+const subEl = document.querySelector(".hero-title-sub");
+subEl.innerHTML = titleSub
+  .split("")
+  .map(char => char === " "
+    ? `<span class="char" style="display:inline-block;">&nbsp;</span>`
+    : `<span class="char" style="display:inline-block;">${char}</span>`
+  ).join("");
+
+tl.staggerFromTo(
+  ".hero-title-sub .char", 0.5,
+  { visibility: "hidden", background: "rgba(0, 204, 201, 0.3)", textShadow: "0 0 0 #00ccc9" },
+  { visibility: "visible", background: "rgba(0, 204, 201, 0)", textShadow: "0 0 60px #00ccc9", ease: "sine.out" },
+  0.05, "+=0.05"
+);
 
     // 4. Subtitle flicker in
     tl.fromTo(
@@ -186,11 +190,11 @@
 <div class="boot-overlay" aria-hidden="true"></div>
 
 <section class="hero">
-  <!-- <div class="scanline" aria-hidden="true"></div> -->
 
   <div class="hero-content">
     <div class="text">
       <h1 class="hero-title"> {titleText} </h1>
+      <h2 class="hero-title-sub"> {titleSub} </h2>
       <p class="hero-sub">
         I'm a <span class="rotating-text highlight"></span> who loves to create
         beautiful and functional web applications.
@@ -300,6 +304,17 @@
     color: var(--brand);
     min-height: 1.2em;
   }
+
+  .hero-title-sub {
+  font-size: clamp(1.2rem, 2.5vw, 2.5rem);
+  font-weight: 400;
+  font-family: "Azonix", sans-serif;
+  letter-spacing: 8px;
+  color: var(--highlight);
+  text-shadow: 0 0 8px var(--highlight);
+  margin-bottom: 2rem;
+  min-height: 1.2em;
+}
 
   .hero-sub {
     font-size: clamp(1.2rem, 2vw, 2.2rem);
