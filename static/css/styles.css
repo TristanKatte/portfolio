@@ -27,9 +27,9 @@
 
     /* images */
     --img-border: 2px solid var(--border);
-    --image-1: url('/images/slider-1.jpg');
-    --image-2: url('/images/slider-2.jpg');
-    --image-3: url('/images/slider-3.jpg');
+    --image-1: url('/images/tech-image-1.jpg');
+    --image-2: url('/images/tech-image-2.jpg');
+    --image-3: url('/images/tech-image-3.jpg');
 }
 
 @font-face {

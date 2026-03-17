@@ -1,6 +1,8 @@
 <script>
   import ScrollIndicator from "$lib/components/atoms/ScrollIndicator.svelte";
   import { onMount } from "svelte";
+  import HexagonCanvas from "../molecules/HexagonCanvas.svelte";
+  import Button from "../atoms/Button.svelte";
 
   const columns = [
     [
@@ -36,6 +38,12 @@
 
   const titleText = "Hi, I'm Tristan";
   const titleSub = "Creative Developer";
+
+  const images = {
+    1: "/images/tech-image-1.jpg",
+    2: "/images/tech-image-2.jpg",
+    3: "/images/tech-image-3.jpg",
+  };
 
   onMount(async () => {
     const gsap = (await import("gsap")).default;
@@ -216,6 +224,7 @@
 <div class="boot-overlay" aria-hidden="true"></div>
 
 <section class="hero">
+  <HexagonCanvas />
   <div class="hero-content">
     <div class="text">
       <h1 class="hero-title">{titleText}</h1>
@@ -226,17 +235,31 @@
         and progressive enhancement.
       </p>
 
-      <div class="stats">
+      
+
+      <section class="stats">
         {#each stats as stat}
           <div class="stat">
             <span class="stat-value" data-value={stat.value}>0</span>
             <span class="stat-label">{stat.label}</span>
           </div>
         {/each}
-      </div>
+      </section>
+
+      <section class="buttons">
+        <Button label="View projects" href="#work" />
+        <Button label="Download CV" href="/curriculum_vitae-1.pdf" variant="secondary" />
+      </section>
     </div>
 
-    <div class="image-grid">
+    <div
+      class="image-grid"
+      style="
+  --image-1: url('{images[1]}');
+  --image-2: url('{images[2]}');
+  --image-3: url('{images[3]}');
+"
+    >
       {#each columns as column}
         <div class="grid-column">
           {#each column as item}
@@ -256,12 +279,12 @@
 </section>
 
 <style>
-:global(:root) {
+  :global(:root) {
     --image-1: url(https://assets.codepen.io/907368/slider-1.jpg?format=webp&quality=40);
     --image-2: url(https://assets.codepen.io/907368/slider-2.jpg?format=webp&quality=40);
     --image-3: url(https://assets.codepen.io/907368/slider-3.jpg?format=webp&quality=40);
   }
-  
+
   /* Boot overlay */
   .boot-overlay {
     position: fixed;
@@ -288,47 +311,6 @@
     overflow: hidden;
     z-index: 1;
   }
-
-  /* Glow */
-  .hero::before {
-    content: "";
-    position: absolute;
-    width: 80rem;
-    height: 80rem;
-    border-radius: 50%;
-    background: radial-gradient(circle, #00ccc9 25%, transparent 70%);
-    opacity: 0.1;
-    pointer-events: none;
-    filter: blur(4rem);
-    top: 0;
-    right: 0;
-    translate: 25% -25%;
-    z-index: 0;
-    animation: glow-pulse 6s ease-in-out infinite;
-  }
-
-  .hero::after {
-    content: "";
-    position: absolute;
-    width: 80rem;
-    height: 80rem;
-    border-radius: 50%;
-    background: radial-gradient(circle, #00ccc9 25%, transparent 70%);
-    opacity: 0.1;
-    pointer-events: none;
-    filter: blur(4rem);
-    top: 0;
-    left: 0;
-    translate: -25% 25%;
-    z-index: 0;
-    animation: glow-pulse 6s ease-in-out infinite;
-  }
-
-  @keyframes glow-pulse {
-  0%   { opacity: 0.05; transform: scale(0.95); }
-  50%  { opacity: 0.15; transform: scale(1.05); }
-  100% { opacity: 0.05; transform: scale(0.95); }
-}
 
   /* Layout */
   .hero-content {
@@ -386,18 +368,32 @@
     text-shadow: 0 0 8px var(--highlight);
   }
 
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+
   /* Stats */
   .stats {
     display: flex;
     flex-direction: row;
     gap: 2rem;
     margin-top: 1rem;
+    
   }
 
   .stat {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    background-color: var(--surface);
+    padding: 1rem 1.5rem;
+    border-radius: 1.5rem;
+    border: 2px solid var(--border);
+    text-align: center;
+    font-family: "Azonix", sans-serif;
   }
 
   .stat-value {
@@ -466,6 +462,48 @@
     margin-top: 2rem;
     position: relative;
     z-index: 1;
+  }
+
+  @media (max-width: 22.5rem) {
+    .image-grid {
+      display: none;
+    }
+
+    .hero {
+      padding: var(--size-5);
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 5rem);
+      text-align: center;
+      margin-top: 5rem;
+    }
+
+    .hero-title-sub {
+      font-size: clamp(1rem, 2.5vw, 2.5rem);
+      text-align: center;
+    }
+
+    .hero-sub {
+      text-align: center;
+      font-size: clamp(1.25rem, 2vw, 2rem);
+    }
+
+    .buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .text {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: clamp(1rem, 2vw, 2rem);
+    }
+
+    .stats {
+      justify-content: center;
+      flex-direction: column;
+    }
   }
 
   /* Responsive */
