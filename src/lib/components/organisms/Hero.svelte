@@ -62,36 +62,62 @@
     );
 
     // 3. Character reveal — title
-const titleEl = document.querySelector(".hero-title");
-titleEl.innerHTML = titleText
-  .split("")
-  .map(char => char === " "
-    ? `<span class="char" style="display:inline-block;">&nbsp;</span>`
-    : `<span class="char" style="display:inline-block;">${char}</span>`
-  ).join("");
+    const titleEl = document.querySelector(".hero-title");
+    titleEl.innerHTML = titleText
+      .split("")
+      .map((char) =>
+        char === " "
+          ? `<span class="char" style="display:inline-block;">&nbsp;</span>`
+          : `<span class="char" style="display:inline-block;">${char}</span>`,
+      )
+      .join("");
 
-tl.staggerFromTo(
-  ".hero-title .char", 0.5,
-  { visibility: "hidden", background: "rgba(0, 204, 201, 0.3)", textShadow: "0 0 0 #00ccc9" },
-  { visibility: "visible", background: "rgba(0, 204, 201, 0)", textShadow: "0 0 60px #00ccc9", ease: "sine.out" },
-  0.05, "+=0.1"
-);
+    tl.staggerFromTo(
+      ".hero-title .char",
+      0.5,
+      {
+        visibility: "hidden",
+        background: "rgba(0, 204, 201, 0.3)",
+        textShadow: "0 0 0 #00ccc9",
+      },
+      {
+        visibility: "visible",
+        background: "rgba(0, 204, 201, 0)",
+        textShadow: "0 0 60px #00ccc9",
+        ease: "sine.out",
+      },
+      0.05,
+      "+=0.1",
+    );
 
-// 3b. Character reveal — subtitle
-const subEl = document.querySelector(".hero-title-sub");
-subEl.innerHTML = titleSub
-  .split("")
-  .map(char => char === " "
-    ? `<span class="char" style="display:inline-block;">&nbsp;</span>`
-    : `<span class="char" style="display:inline-block;">${char}</span>`
-  ).join("");
+    // 3b. Character reveal — subtitle
+    const subEl = document.querySelector(".hero-title-sub");
+    subEl.innerHTML = titleSub
+      .split("")
+      .map((char) =>
+        char === " "
+          ? `<span class="char" style="display:inline-block;">&nbsp;</span>`
+          : `<span class="char" style="display:inline-block;">${char}</span>`,
+      )
+      .join("");
 
-tl.staggerFromTo(
-  ".hero-title-sub .char", 0.5,
-  { visibility: "hidden", background: "rgba(0, 204, 201, 0.3)", textShadow: "0 0 0 #00ccc9" },
-  { visibility: "visible", background: "rgba(0, 204, 201, 0)", textShadow: "0 0 60px #00ccc9", ease: "sine.out" },
-  0.05, "+=0.05"
-);
+    tl.staggerFromTo(
+      ".hero-title-sub .char",
+      0.5,
+      {
+        visibility: "hidden",
+        background: "rgba(0, 204, 201, 0.3)",
+        textShadow: "0 0 0 #00ccc9",
+      },
+      {
+        visibility: "visible",
+        background: "rgba(0, 204, 201, 0)",
+        textShadow: "0 0 60px #00ccc9",
+        ease: "sine.out",
+      },
+      0.05,
+      "+=0.05",
+    );
 
     // 4. Subtitle flicker in
     tl.fromTo(
@@ -190,14 +216,14 @@ tl.staggerFromTo(
 <div class="boot-overlay" aria-hidden="true"></div>
 
 <section class="hero">
-
   <div class="hero-content">
     <div class="text">
-      <h1 class="hero-title"> {titleText} </h1>
-      <h2 class="hero-title-sub"> {titleSub} </h2>
+      <h1 class="hero-title">{titleText}</h1>
+      <h2 class="hero-title-sub">{titleSub}</h2>
       <p class="hero-sub">
-        I'm a <span class="rotating-text highlight"></span> who loves to create
-        beautiful and functional web applications.
+        I'm a <span class="rotating-text highlight"></span> who loves crafting beautiful,
+        functional, and accessible web experiences, with a strong focus on performance
+        and progressive enhancement.
       </p>
 
       <div class="stats">
@@ -230,6 +256,12 @@ tl.staggerFromTo(
 </section>
 
 <style>
+:global(:root) {
+    --image-1: url(https://assets.codepen.io/907368/slider-1.jpg?format=webp&quality=40);
+    --image-2: url(https://assets.codepen.io/907368/slider-2.jpg?format=webp&quality=40);
+    --image-3: url(https://assets.codepen.io/907368/slider-3.jpg?format=webp&quality=40);
+  }
+  
   /* Boot overlay */
   .boot-overlay {
     position: fixed;
@@ -251,7 +283,7 @@ tl.staggerFromTo(
     scroll-snap-align: start;
     width: 100%;
     color: var(--text);
-    background-color: #101a21;
+    background-color: var(--main-bg-color);
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -272,7 +304,31 @@ tl.staggerFromTo(
     right: 0;
     translate: 25% -25%;
     z-index: 0;
+    animation: glow-pulse 6s ease-in-out infinite;
   }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    width: 80rem;
+    height: 80rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, #00ccc9 25%, transparent 70%);
+    opacity: 0.1;
+    pointer-events: none;
+    filter: blur(4rem);
+    top: 0;
+    left: 0;
+    translate: -25% 25%;
+    z-index: 0;
+    animation: glow-pulse 6s ease-in-out infinite;
+  }
+
+  @keyframes glow-pulse {
+  0%   { opacity: 0.05; transform: scale(0.95); }
+  50%  { opacity: 0.15; transform: scale(1.05); }
+  100% { opacity: 0.05; transform: scale(0.95); }
+}
 
   /* Layout */
   .hero-content {
@@ -283,7 +339,7 @@ tl.staggerFromTo(
     gap: var(--size-9, 4rem);
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1350px;
+    max-width: 1500px;
     width: 100%;
     position: relative;
     z-index: 1;
@@ -306,15 +362,15 @@ tl.staggerFromTo(
   }
 
   .hero-title-sub {
-  font-size: clamp(1.2rem, 2.5vw, 2.5rem);
-  font-weight: 400;
-  font-family: "Azonix", sans-serif;
-  letter-spacing: 8px;
-  color: var(--highlight);
-  text-shadow: 0 0 8px var(--highlight);
-  margin-bottom: 2rem;
-  min-height: 1.2em;
-}
+    font-size: clamp(1.2rem, 2.5vw, 2.5rem);
+    font-weight: 400;
+    font-family: "Azonix", sans-serif;
+    letter-spacing: 8px;
+    color: var(--highlight);
+    text-shadow: 0 0 8px var(--highlight);
+    margin-bottom: 2rem;
+    min-height: 1.2em;
+  }
 
   .hero-sub {
     font-size: clamp(1.2rem, 2vw, 2.2rem);
@@ -388,10 +444,21 @@ tl.staggerFromTo(
   }
 
   @keyframes bg-cycle {
-    0%,  30% { background-image: var(--image-1); }
-    33%, 63% { background-image: var(--image-2); }
-    66%, 96% { background-image: var(--image-3); }
-    100%      { background-image: var(--image-1); }
+    0%,
+    30% {
+      background-image: var(--image-1);
+    }
+    33%,
+    63% {
+      background-image: var(--image-2);
+    }
+    66%,
+    96% {
+      background-image: var(--image-3);
+    }
+    100% {
+      background-image: var(--image-1);
+    }
   }
 
   /* Scroll indicator */
