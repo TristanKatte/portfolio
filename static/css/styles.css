@@ -54,8 +54,9 @@
 }
 
 @font-face {
-    font-family: "Neofolia", sans-serif;
-    src: url('../fonts/neofolia.ttf');
+    font-family: "Neofolia";
+    src: url('../fonts/neofolia.ttf') format('truetype');
+
 }
 
 * {

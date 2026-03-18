@@ -56,6 +56,7 @@
     padding-block: var(--size-0);
     flex: 1;
     overflow: hidden;
+    
     /* optionally you can remove your current background image since galaxy is now active */
     /* background-image: url("/images/stars.svg"); */
     /* background-size: 250% 250%; */

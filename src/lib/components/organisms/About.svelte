@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import HexagonCanvas from "../molecules/HexagonCanvas.svelte";  
 
   const introText = `I’m a passionate frontend developer with a background in both design and development.
   My journey started in graphic design, evolved through web design, and finally led me to frontend development.
@@ -195,6 +196,7 @@ gsap.fromTo(
 </script>
 
 <section id="about" class="about-me">
+  <HexagonCanvas />
   <h2 class="about-heading">About Me</h2>
   <p class="about-text">{introText}</p>
 
@@ -235,10 +237,13 @@ gsap.fromTo(
 </section>
 
 <style>
+
   section.about-me {
     max-width: 90ch;
+    width: 100%;
     margin: 0 auto;
     padding: 4rem 1rem;
+    text-align: center;
   }
 
   .about-text {
