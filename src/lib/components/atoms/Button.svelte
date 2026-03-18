@@ -24,7 +24,7 @@
     max-width: 320px;
     width: 100%;
     background: transparent;
-    border-radius: 0 1.5rem 0 1.5rem;
+    border-radius: 0.5rem;
     border: 2px solid var(--brand);
     color: var(--text);
     font-family: 'Azonix', sans-serif;

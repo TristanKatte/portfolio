@@ -3,8 +3,7 @@
   import { onNavigate } from "$app/navigation";
   import Header from "../lib/components/organisms/Header.svelte";
   import Footer from "../lib/components/organisms/Footer.svelte";
-  import GalaxyBackground from "../lib/components/GalaxyBackground.svelte";  // <-- import
-  import FuturisticBackground from "../lib/components/FuturisticBackground.svelte";
+  import HexagonCanvas from "../lib/components/molecules/HexagonCanvas.svelte";
 
   // Design libs
   import "open-props/style";
@@ -28,7 +27,8 @@
 
 <div class="layout">
  
-  <GalaxyBackground /> 
+  <!-- <HexagonCanvas /> -->
+  
 
   <Header />
   <main>
