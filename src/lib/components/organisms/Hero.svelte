@@ -331,11 +331,20 @@
   .text {
     flex: 1 1 300px;
     text-align: left;
+    font-family: "Inter", sans-serif;
+  }
+
+  .text p {
+    font-family: "Inter", sans-serif;
+    font-size: 2.2rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    color: var(--text);
   }
 
   .hero-title {
-    font-size: clamp(2.5rem, 5vw, 6rem);
-    font-weight: 800;
+    font-size: clamp(3.5rem, 5vw, 6.5rem);
+    font-weight: 700;
     margin-bottom: 1rem;
     font-family: "Neofolia", sans-serif;
     letter-spacing: 5px;
@@ -344,8 +353,8 @@
   }
 
   .hero-title-sub {
-    font-size: clamp(1.2rem, 2.5vw, 2.5rem);
-    font-weight: 400;
+    font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+    font-weight: 600;
     font-family: "Azonix", sans-serif;
     letter-spacing: 8px;
     color: var(--highlight);
@@ -373,6 +382,8 @@
     flex-direction: row;
     gap: 1.5rem;
     margin-top: 4rem;
+    flex-wrap: wrap;
+    font-family: "Space Grotesk", sans-serif;
   }
 
   /* Stats */
@@ -393,11 +404,11 @@
     border-radius: 1.5rem;
     border: 2px solid var(--border);
     text-align: center;
-    font-family: "Azonix", sans-serif;
+    font-family: "Space Grotesk", sans-serif;
   }
 
   .stat-value {
-    font-family: "Azonix", sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     font-size: clamp(2rem, 3vw, 3rem);
     font-weight: 800;
     color: var(--brand);
@@ -409,6 +420,7 @@
     opacity: 0.5;
     text-transform: uppercase;
     letter-spacing: 2px;
+    color: var(--text);
   }
 
   /* Grid */
@@ -518,6 +530,80 @@
 
     .image-grid {
       width: min(100%, 22.5rem);
+    }
+  }
+
+  @media (min-width: 480px) {
+    .hero {
+      width: 100%;
+      padding: var(--size-7);
+    }
+
+    .hero-content {
+      flex-direction: column;
+      gap: var(--size-9, 4rem);
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 1500px;
+      width: 100%;
+      margin: 0 auto;
+      padding-top: var(--size-9);
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 5rem);
+      text-align: center;
+      margin-top: 5rem;
+    }
+
+    .hero-title-sub {
+      font-size: clamp(1.5rem, 2.5vw, 3.5rem);
+      text-align: center;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+      font-family: "Azonix", sans-serif;
+      color: var(--brand);
+      text-shadow: 0 0 8px var(--brand);
+      letter-spacing: 4px;
+    }
+
+    .hero-sub {
+      text-align: center;
+      font-size: clamp(1.25rem, 2vw, 2rem);
+    }
+
+    .text {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: clamp(1rem, 2vw, 2rem);
+    }
+
+    .buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .image-grid {
+      width: min(100%, 22.5rem);
+    }
+
+    .stats {
+      justify-content: center;
+    }
+
+    .scroll-indicator {
+      margin-top: 2rem;
+    }
+
+    .buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .stats {
+      flex-direction: column;
+      gap: 1rem;
     }
   }
 </style>
