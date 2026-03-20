@@ -158,7 +158,7 @@
     align-items: center;
     gap: 2rem;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1500px;
     position: relative;
     z-index: 1;
   }
@@ -167,6 +167,13 @@
     margin-top: 1rem;
     position: relative;
     z-index: 1;
+  }
+
+  /* Mobile */
+  @media (min-width: 400px) {
+    .hero {
+      padding: var(--size-9);
+    }
   }
 
   /* Tablet */
@@ -180,6 +187,13 @@
 
   /* Desktop */
   @media (min-width: 900px) {
+
+    .hero {
+      padding: var(--size-9);
+      gap: 4rem;
+      justify-content: center;
+      width: 100%;
+    }
     .hero-content {
       flex-direction: row;
       justify-content: space-between;

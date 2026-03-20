@@ -31,10 +31,10 @@
   
 
   <Header />
-  <main>
+  
     <slot />
     <Transition />
-  </main>
+  
   <Footer />
 </div>
 
@@ -42,27 +42,18 @@
   .layout {
     position: relative; /* needed to stack relative children */
     height: 100%;
+    width: 100%;
     max-width: 100vw;
     display: flex;
     flex-direction: column;
     margin-inline: auto;
     margin: 0;
     padding: 0;
-    /* background-image: var(--gradient-16); */
+    background-image: var(--gradient-16);
     overflow-x: hidden;
   }
 
-  main {
-    padding-block: var(--size-0);
-    flex: 1;
-    overflow: hidden;
-    
-    /* optionally you can remove your current background image since galaxy is now active */
-    /* background-image: url("/images/stars.svg"); */
-    /* background-size: 250% 250%; */
-    /* background-attachment: fixed; */
-    /* background-position: center; */
-  }
+
 
   @media (min-width: 1440px) {
     .layout {
@@ -77,10 +68,6 @@
       align-items: center;
     }
 
-    main {
-      width: 100%;
-      padding-block: var(--size-2);
-    }
   }
 
   @media (max-width: 480px) {
@@ -90,8 +77,6 @@
       justify-content: flex-start;
     }
 
-    main {
-      padding-block: var(--size-1);
-    }
+ 
   }
 </style>
