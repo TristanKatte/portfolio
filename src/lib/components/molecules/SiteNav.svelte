@@ -1,4 +1,5 @@
 <script>
+export let isOpen = false;
   import { onMount } from "svelte";
 
   const links = [
@@ -51,7 +52,7 @@
   });
 </script>
 
-<div class="nav-wrap">
+<div class="nav-wrap" class:open={isOpen}>
   <!-- Active bubble -->
   <div
     class="bubble active"
@@ -101,6 +102,16 @@
     box-shadow:
       inset 10px 0 10px rgba(0, 0, 0, 0.5),
       0 0 20px rgba(0, 204, 201, 0.05);
+    transition: all 0.3s ease;
+    display: none;
+    position: absolute;
+    top: calc(100% + 1rem);
+    right: 1rem;
+    border-radius: 1rem; /* square-ish on mobile */
+  }
+
+  .nav-wrap.open {
+    display: block;
   }
 
   .nav-wrap::after {
@@ -115,7 +126,7 @@
 
   .nav {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: 6px;
     position: relative;
     z-index: 10;
@@ -192,5 +203,44 @@
     z-index: 1;
     background: linear-gradient(180deg, rgba(0, 255, 241, 0.1), rgba(0, 204, 201, 0.05));
     box-shadow: inset 0 2px 7px rgba(0, 255, 241, 0.1);
+  }
+
+  /* Desktop — inline pill */
+  @media (min-width: 768px) {
+    .nav-wrap {
+      display: block;
+      position: static;
+      border-radius: 500px;
+    }
+
+    .nav {
+      flex-direction: row;
+    }
+
+    .nav a {
+      padding: 0.75rem 1.5rem;
+    }
+
+    .nav-wrap::after {
+      display: none;
+    }
+
+    .bubble.active {
+      filter: blur(2px);
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+
+    .bubble.hover {
+      filter: blur(1px);
+      transform: scale(1.1);
+    }
+
+    .bubble {
+      border-radius: 500px;
+      transition: all 0.25s ease;
+      pointer-events: none;
+      padding: 0.75rem 1.5rem;
+    }
   }
 </style>
