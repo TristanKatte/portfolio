@@ -62,23 +62,29 @@
     });
 
     // 2. Flash on reveal
-    tl.fromTo(".boot-overlay",
+    tl.fromTo(
+      ".boot-overlay",
       { opacity: 0.3 },
       { opacity: 0, duration: 0.2, ease: "power1.out" },
-      "-=0.1"
+      "-=0.1",
     );
 
     // 3. Scroll indicator
-    tl.fromTo(".scroll-indicator",
+    tl.fromTo(
+      ".scroll-indicator",
       { opacity: 0, y: 20 },
       { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-      "-=0.4"
+      "-=0.4",
     );
 
     // Idle bounce
     tl.call(() => {
       gsap.to(".scroll-indicator", {
-        y: 10, repeat: -1, yoyo: true, ease: "power1.inOut", duration: 1.2,
+        y: 10,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut",
+        duration: 1.2,
       });
     });
   });
@@ -98,8 +104,10 @@
   </div>
 
   <div class="hero-bottom">
-    <HeroStats {stats} />
-    <HeroButtons />
+    <div class="stats-and-buttons">
+      <HeroStats {stats} />
+      <HeroButtons />
+    </div>
   </div>
 
   <div class="scroll-indicator">
@@ -156,11 +164,19 @@
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+    justify-content: center;
     gap: 2rem;
     width: 100%;
     max-width: 1500px;
     position: relative;
     z-index: 1;
+  }
+
+  .stats-and-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
   }
 
   .scroll-indicator {
@@ -187,7 +203,6 @@
 
   /* Desktop */
   @media (min-width: 900px) {
-
     .hero {
       padding: var(--size-9);
       gap: 4rem;
@@ -206,6 +221,10 @@
 
     .hero-bottom {
       justify-content: flex-start;
+    }
+
+    .stats-and-buttons {
+      align-items: flex-start;
     }
   }
 </style>

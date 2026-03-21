@@ -49,7 +49,8 @@
     margin-inline: auto;
     margin: 0;
     padding: 0;
-    background-image: var(--gradient-16);
+    box-sizing: border-box;
+    background-color: var(--main-bg-color);
     overflow-x: hidden;
   }
 

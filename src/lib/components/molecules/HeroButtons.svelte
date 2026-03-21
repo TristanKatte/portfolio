@@ -14,6 +14,8 @@
     align-items: center;
     gap: 1.5rem;
     font-family: "Space Grotesk", sans-serif;
+    margin-top: 2rem;
+    width: 100%;
   }
 
   @media (min-width: 600px) {

@@ -1,12 +1,12 @@
 <script>
-export let isOpen = false;
+  export let isOpen = false;
   import { onMount } from "svelte";
 
   const links = [
-    { label: "Home",    href: "/"   },
-    { label: "About",   href: "#about"  },
-    { label: "Projects", href: "#work"    },
-    { label: "Contact",  href: "#contact" },
+    { label: "Home", href: "/" },
+    { label: "About", href: "#about" },
+    { label: "Projects", href: "#work" },
+    { label: "Contact", href: "#contact" },
   ];
 
   let activeIndex = 0;
@@ -14,20 +14,20 @@ export let isOpen = false;
 
   let navEl;
   let bubbleActive = { left: 0, top: 0, width: 0, height: 0 };
-  let bubbleHover  = { left: 0, top: 0, width: 0, height: 0 };
+  let bubbleHover = { left: 0, top: 0, width: 0, height: 0 };
 
   function getItemRect(index) {
-  const items = navEl?.querySelectorAll("a");
-  if (!items?.[index]) return null;
-  const wrapRect = navEl.parentElement.getBoundingClientRect(); // nav-wrap, not nav
-  const itemRect = items[index].getBoundingClientRect();
-  return {
-    left:   itemRect.left   - wrapRect.left,
-    top:    itemRect.top    - wrapRect.top,
-    width:  itemRect.width,
-    height: itemRect.height,
-  };
-}
+    const items = navEl?.querySelectorAll("a");
+    if (!items?.[index]) return null;
+    const navRect = navEl.getBoundingClientRect();
+    const itemRect = items[index].getBoundingClientRect();
+    return {
+      left: itemRect.left - navRect.left,
+      top: itemRect.top - navRect.top,
+      width: itemRect.width,
+      height: itemRect.height,
+    };
+  }
 
   function setActive(index) {
     activeIndex = index;
@@ -79,15 +79,15 @@ export let isOpen = false;
 
   <nav class="nav" bind:this={navEl} aria-label="Hoofdnavigatie">
     {#each links as link, i}
-       <a
-         href={link.href}
-         class:active={i === activeIndex}
-         on:click|preventDefault={() => setActive(i)}
-         on:mouseenter={() => onMouseEnter(i)}
-         on:mouseleave={onMouseLeave}
-       >
-         {link.label}
-       </a>
+      <a
+        href={link.href}
+        class:active={i === activeIndex}
+        on:click={() => setActive(i)}
+        on:mouseenter={() => onMouseEnter(i)}
+        on:mouseleave={onMouseLeave}
+      >
+        {link.label}
+      </a>
     {/each}
   </nav>
 </div>
@@ -176,8 +176,12 @@ export let isOpen = false;
   }
 
   @keyframes shimmer {
-    0%   { left: -100%; }
-    100% { left: 100%;  }
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
   }
 
   /* Bubbles */
@@ -186,6 +190,7 @@ export let isOpen = false;
     border-radius: 500px;
     transition: all 0.25s ease;
     pointer-events: none;
+    
   }
 
   .bubble.active {
@@ -195,30 +200,61 @@ export let isOpen = false;
       inset 0 2px 7px rgba(255, 255, 255, 0.4),
       0 0 12px rgba(0, 204, 201, 0.4);
     filter: blur(1px);
-    transform: scale(1.1);
-    opacity: 0.75;
+    transform: scale(1.05);
+    padding: 0.75rem 2rem;
+    color: #0c1016;
+    text-decoration: none;
+    font-family: "Azonix", sans-serif;
+    font-size: clamp(0.7rem, 1vw, 0.9rem);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+    margin: 0 auto;
+    opacity: 0.95;
+    transition: all 0.25s ease;
+    overflow: hidden;
+    border-radius: 500px; /* square-ish on mobile */
+    pointer-events: none;
+    border: 5px solid var(--brand-soft);
   }
 
   .bubble.hover {
     z-index: 1;
-    background: linear-gradient(180deg, rgba(0, 255, 241, 0.1), rgba(0, 204, 201, 0.05));
+    background: linear-gradient(
+      180deg,
+      rgba(0, 255, 241, 0.1),
+      rgba(0, 204, 201, 0.05)
+    );
     box-shadow: inset 0 2px 7px rgba(0, 255, 241, 0.1);
+      filter: blur(10px);
   }
+
 
   /* Desktop — inline pill */
   @media (min-width: 768px) {
     .nav-wrap {
       display: block;
-      position: static;
+      position: relative;
       border-radius: 500px;
+      background: linear-gradient(0deg, #0c1016, #111a22);
+      box-shadow:
+        inset 10px 0 10px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(0, 204, 201, 0.05);
+      overflow: hidden;
+      margin: 6px;
     }
 
     .nav {
       flex-direction: row;
+      position: relative;
+      z-index: 10;
+      margin: 0;
     }
 
     .nav a {
       padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 500px;
     }
 
     .nav-wrap::after {
