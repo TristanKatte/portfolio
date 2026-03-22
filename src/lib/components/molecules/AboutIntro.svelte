@@ -6,30 +6,31 @@
   onMount(async () => {
     const gsap = (await import("gsap")).default;
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
-    gsap.registerPlugin(ScrollTrigger);
+    const ScrambleTextPlugin = (await import("gsap/ScrambleTextPlugin")).default;
+    gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
 
     const el = document.querySelector(".about-text");
-    const words = el.textContent.trim().split(" ");
-    el.innerHTML = words
-      .map((word) => `<span class="word">${word}</span>`)
-      .join(" ");
 
-    gsap.fromTo(
-      ".about-text .word",
-      { opacity: 0, y: 60 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.2,
-        ease: "bounce.out",
-        stagger: { each: 0.1, from: "start" },
-        scrollTrigger: {
-          trigger: el,
-          start: "top 80%",
-        },
-      }
-    );
+    ScrollTrigger.create({
+      trigger: el,
+      start: "top 80%",
+      once: true,
+      onEnter: () => {
+        gsap.to(el, {
+          duration: 20,
+          scrambleText: {
+            text: introText,
+            chars: "01アイウエOカキクケCO!@#$%",
+            revealDelay: 0.3,
+            speed: 0.5,
+            newClass: "scramble-char",
+          },
+          ease: "none",
+        });
+      },
+    });
 
+    // Gradient shift animation
     gsap.to(".about-text", {
       backgroundPosition: "200% 0",
       duration: 10,
@@ -41,7 +42,7 @@
 
 <div class="about-intro">
   <h2 class="about-heading">About Me</h2>
-  <p class="about-text">{introText}</p>
+  <p class="about-text"></p>
 </div>
 
 <style>
@@ -50,6 +51,10 @@
     margin: 3rem 0 2rem;
     text-align: left;
     color: var(--highlight);
+    font-family: "Neofolia", sans-serif;
+    letter-spacing: 3px;
+    font-weight: 700;
+    font-size: 3rem;
   }
 
   .about-text {
@@ -59,14 +64,13 @@
     max-width: 750px;
     margin: 0 auto 3rem auto;
     text-align: left;
-    background: linear-gradient(
-      270deg,
-      #00ffe5, #29ffd3, #7df9ff,
-      #ff4fe2, #ff00c8, #ff5bbd, #00ffe5
-    );
-    background-size: 400% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text);
+    min-height: 8rem; /* prevents layout shift while empty */
+    font-family: 'Inter';
+  }
+
+  /* Scramble chars get a dimmer color while resolving */
+  :global(.scramble-char) {
+    color: rgba(245, 245, 240, 0.65);
   }
 </style>

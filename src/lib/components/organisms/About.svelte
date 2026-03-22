@@ -3,7 +3,13 @@
   import AboutIntro from "../molecules/AboutIntro.svelte";
   import Timeline from "../molecules/Timeline.svelte";
 
-  const introText = `I'm a passionate frontend developer...`;
+  const introText = `I’m a recently graduated frontend developer with a strong foundation in both design and development. My journey started in desktop publishing, where I developed an eye for layout and visual detail. From there, I moved into web design and eventually found my passion in frontend development.
+
+Today, I focus on building accessible, performant, and visually engaging web experiences. I work with modern technologies and apply principles like progressive enhancement to ensure that my work is not only visually appealing, but also usable and reliable across different devices and environments.
+
+I enjoy combining design and code to create interfaces that feel intuitive and polished. Whether it’s refining layouts, improving accessibility, or adding subtle animations, I care about the details that elevate a user experience.
+
+Beyond development, I like exploring new design trends, experimenting with motion and interaction, and continuously improving my skills to stay up to date in the ever-evolving world of web development.`;
 
   const timelines = [
     {
@@ -143,9 +149,9 @@
     }
   }
 
-
   @keyframes border-glow {
-    0%, 100% {
+    0%,
+    100% {
       box-shadow:
         0 0 0 2px rgba(9, 132, 227, 0.6),
         0 0 20px rgba(9, 132, 227, 0.2),

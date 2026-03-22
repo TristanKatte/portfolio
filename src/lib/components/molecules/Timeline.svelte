@@ -12,12 +12,17 @@
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
     gsap.registerPlugin(ScrollTrigger);
 
-    const nodes = gsap.utils.toArray(timelineEl.querySelectorAll(".timeline-node"));
-    const cards = gsap.utils.toArray(timelineEl.querySelectorAll(".timeline-content"));
+    const nodes = gsap.utils.toArray(
+      timelineEl.querySelectorAll(".timeline-node"),
+    );
+    const cards = gsap.utils.toArray(
+      timelineEl.querySelectorAll(".timeline-content"),
+    );
     const progressLine = timelineEl.querySelector(".timeline-progress");
 
     // Progress line
-    gsap.fromTo(progressLine,
+    gsap.fromTo(
+      progressLine,
       { scaleY: 0 },
       {
         scaleY: 1,
@@ -28,7 +33,7 @@
           end: "bottom center",
           scrub: 0.5,
         },
-      }
+      },
     );
 
     // Nodes and cards
@@ -39,20 +44,34 @@
         trigger: node,
         start: "top center",
         onEnter: () => {
-          gsap.to(node, { scale: 1.2, opacity: 1, boxShadow: `0 0 15px ${color}, 0 0 25px ${color}`, duration: 0.5 });
-          gsap.to(cards[i], { boxShadow: `0 0 20px ${color}, 0 0 40px ${color}`, duration: 0.5 });
+          gsap.to(node, {
+            scale: 1.2,
+            opacity: 1,
+            boxShadow: `0 0 15px ${color}, 0 0 25px ${color}`,
+            duration: 0.5,
+          });
+          gsap.to(cards[i], {
+            boxShadow: `0 0 20px ${color}, 0 0 40px ${color}`,
+            duration: 0.5,
+          });
         },
         onLeaveBack: () => {
-          gsap.to(node, { scale: 1, opacity: 1, boxShadow: "none", duration: 0.3 });
+          gsap.to(node, {
+            scale: 1,
+            opacity: 1,
+            boxShadow: "none",
+            duration: 0.3,
+          });
           gsap.to(cards[i], { boxShadow: "none", duration: 0.3 });
         },
       });
 
-      gsap.fromTo(cards[i],
+      gsap.fromTo(
+        cards[i],
         {
           autoAlpha: 0,
-          x: window.innerWidth > 768 ? (i % 2 === 0 ? -60 : 60) : 0,
-          y: window.innerWidth > 768 ? -30 + Math.random() * 20 : 30,
+          x: -60, // always slides in from the left
+          y: 0,
         },
         {
           autoAlpha: 1,
@@ -66,7 +85,7 @@
             end: "bottom 60%",
             scrub: 0.5,
           },
-        }
+        },
       );
     });
   });
@@ -83,8 +102,8 @@
     <div class="timeline-line"></div>
     <div class="timeline-progress" style="--color: {items[0].color}"></div>
 
-    {#each items as item, i}
-      <TimelineItem {item} {i} />
+    {#each items as item}
+      <TimelineItem {item} />
     {/each}
   </div>
 </section>
@@ -121,9 +140,19 @@
     width: 4px;
     height: 100%;
     background: var(--color);
-    box-shadow: 0 0 10px var(--color), 0 0 20px var(--color), 0 0 30px var(--color);
+    box-shadow:
+      0 0 10px var(--color),
+      0 0 20px var(--color),
+      0 0 30px var(--color);
     transform-origin: top;
     z-index: 2;
+  }
+
+  .timeline-line,
+  .timeline-progress {
+    left: auto;
+    right: 0;
+    transform: translateX(0);
   }
 
   @media (max-width: 768px) {

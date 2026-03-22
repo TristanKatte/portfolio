@@ -5,7 +5,7 @@
   const HEXAGON_RADIUS = 50;
   const HEXAGON_MAX_SPEED = 0.05;
   const HEXAGON_SPACING = 10;
-  const HEXAGON_LINE_WIDTH = 8;
+  const HEXAGON_LINE_WIDTH = 0.75;
   const HEXAGON_COLOR = "#00ccc9";
 
   let canvas;
