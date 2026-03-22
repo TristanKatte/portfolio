@@ -4,7 +4,7 @@
 
   const HEXAGON_RADIUS = 50;
   const HEXAGON_MAX_SPEED = 0.1;
-  const HEXAGON_SPACING = 2;
+  const HEXAGON_SPACING = 10;
   const HEXAGON_LINE_WIDTH = 2;
   const HEXAGON_COLOR = '#00ccc9';
 
@@ -72,8 +72,9 @@
   }
 
   function init() {
-    canvas.width  = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    const parent = canvas.parentElement;
+    canvas.width  = parent.offsetWidth;
+    canvas.height = parent.offsetHeight;
 
     const ctx = canvas.getContext('2d');
     ctx.globalCompositeOperation = 'source-over';
@@ -96,8 +97,9 @@
 
   function handleResize() {
     if (!canvas) return;
-    canvas.width  = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    const parent = canvas.parentElement;
+    canvas.width  = parent.offsetWidth;
+    canvas.height = parent.offsetHeight;
     hexagons.length = 0;
     cancelAnimationFrame(animationId);
     init();
@@ -129,6 +131,6 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    opacity: 0.25;
+    opacity: 0.15;
   }
 </style>
