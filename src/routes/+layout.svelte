@@ -27,11 +27,11 @@
 
 <div class="layout">
  
-  <!-- <HexagonCanvas /> -->
   
-
+  
+ <HexagonCanvas />
   <Header />
-  
+ 
     <slot />
     <Transition />
   
@@ -52,6 +52,22 @@
     box-sizing: border-box;
     background-color: var(--main-bg-color);
     overflow-x: hidden;
+    z-index: 1;
+  }
+
+  :global(body) {
+    position: relative;
+  }
+
+  /* Make sure HexagonCanvas fills the full page */
+  :global(canvas) {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.25;
+    position: fixed;
   }
 
 

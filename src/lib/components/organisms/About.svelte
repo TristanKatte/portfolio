@@ -60,12 +60,15 @@
 </script>
 
 <section id="about" class="about-me">
-  
   <div class="about-content">
-    <AboutIntro {introText} />
-    {#each timelines as timeline}
-      <Timeline title={timeline.title} items={timeline.items} />
-    {/each}
+    <div class="about-profile">
+      <AboutIntro {introText} />
+    </div>
+    <div class="about-timeline">
+      {#each timelines as timeline}
+        <Timeline title={timeline.title} items={timeline.items} />
+      {/each}
+    </div>
   </div>
 </section>
 
@@ -75,17 +78,84 @@
     min-height: 100dvh;
     position: relative;
     padding: 4rem 1rem;
-    text-align: center;
-    background-color: var(--main-bg-color);
+    background-color: transparent;
     color: var(--text);
     overflow: hidden;
   }
 
   .about-content {
-    max-width: 90ch;
     width: 100%;
+    max-width: 1500px;
     margin: 0 auto;
     position: relative;
     z-index: 1;
+    border-radius: 1rem;
+    padding: 2rem;
+    border: 50px solid transparent;
+    background-color: rgba(30, 39, 46, 0.05);
+    backdrop-filter: blur(8px);
+    animation: border-glow 4s ease-in-out infinite;
+
+    /* Side by side layout */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-profile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .about-timeline {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start; /* stack to the right side */
+    text-align: left;
+  }
+
+  /* Tablet — side by side */
+  @media (min-width: 768px) {
+    .about-content {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 3rem;
+    }
+
+    .about-profile {
+      width: 30%;
+      flex-shrink: 0;
+      position: sticky;
+      top: 6rem; /* sticks while timeline scrolls */
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .about-timeline {
+      width: 70%;
+      align-items: flex-end; /* pushes content to the right */
+    }
+  }
+
+
+  @keyframes border-glow {
+    0%, 100% {
+      box-shadow:
+        0 0 0 2px rgba(9, 132, 227, 0.6),
+        0 0 20px rgba(9, 132, 227, 0.2),
+        0 0 40px rgba(0, 206, 201, 0.1);
+    }
+    50% {
+      box-shadow:
+        0 0 0 2px rgba(0, 206, 201, 0.9),
+        0 0 30px rgba(9, 132, 227, 0.4),
+        0 0 60px rgba(0, 206, 201, 0.3);
+    }
   }
 </style>

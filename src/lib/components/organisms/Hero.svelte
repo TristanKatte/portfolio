@@ -1,6 +1,5 @@
 <script>
   import ScrollIndicator from "$lib/components/atoms/ScrollIndicator.svelte";
-  import HexagonCanvas from "$lib/components/molecules/HexagonCanvas.svelte";
   import HeroText from "$lib/components/molecules/HeroText.svelte";
   import HeroStats from "$lib/components/molecules/HeroStats.svelte";
   import HeroButtons from "$lib/components/molecules/HeroButtons.svelte";
@@ -93,7 +92,7 @@
 <div class="boot-overlay" aria-hidden="true"></div>
 
 <section class="hero">
-  <HexagonCanvas />
+
 
   <div class="hero-content">
     <HeroText {phrases} />
@@ -135,7 +134,7 @@
     scroll-snap-align: start;
     width: 100%;
     color: var(--text);
-    background-color: var(--main-bg-color);
+    background-color: transparent;
     position: relative;
     overflow: hidden;
     z-index: 1;
