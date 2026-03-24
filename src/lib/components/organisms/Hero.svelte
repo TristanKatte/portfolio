@@ -4,6 +4,7 @@
   import HeroStats from "$lib/components/molecules/HeroStats.svelte";
   import HeroButtons from "$lib/components/molecules/HeroButtons.svelte";
   import ImageGrid from "$lib/components/molecules/ImageGrid.svelte";
+  import HexagonCanvas from "../molecules/HexagonCanvas.svelte";
   import { onMount } from "svelte";
 
   const phrases = [
@@ -92,7 +93,8 @@
 <div class="boot-overlay" aria-hidden="true"></div>
 
 <section class="hero">
-
+  <HexagonCanvas />
+  <div class="hero-fade" aria-hidden="true"></div>
 
   <div class="hero-content">
     <HeroText {phrases} />
@@ -140,6 +142,18 @@
     z-index: 1;
     gap: 2rem;
   }
+
+  .hero-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    var(--main-bg-color) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
 
   .hero-content {
     display: flex;

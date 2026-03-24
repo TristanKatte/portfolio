@@ -3,7 +3,7 @@
   import { onNavigate } from "$app/navigation";
   import Header from "../lib/components/organisms/Header.svelte";
   import Footer from "../lib/components/organisms/Footer.svelte";
-  import HexagonCanvas from "../lib/components/molecules/HexagonCanvas.svelte";
+
 
   // Design libs
   import "open-props/style";
@@ -29,7 +29,7 @@
  
   
   
- <HexagonCanvas />
+
   <Header />
  
     <slot />
@@ -60,15 +60,6 @@
   }
 
   /* Make sure HexagonCanvas fills the full page */
-  :global(canvas) {
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.25;
-    position: fixed;
-  }
 
 
 

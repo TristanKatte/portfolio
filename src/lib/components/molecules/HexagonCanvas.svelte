@@ -81,9 +81,9 @@
   }
 
   function init() {
-    if (!canvas) return;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const parent = canvas.parentElement;
+    canvas.width = parent.offsetWidth;
+    canvas.height = parent.offsetHeight;
 
     const ctx = canvas.getContext("2d");
     ctx.globalCompositeOperation = "source-over";
@@ -115,8 +115,9 @@
 
   function handleResize() {
     if (!canvas) return;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const parent = canvas.parentElement;
+    canvas.width = parent.offsetWidth;
+    canvas.height = parent.offsetHeight;
     hexagons.length = 0;
     cancelAnimationFrame(animationId);
     init();
@@ -143,9 +144,12 @@
 
 <style>
   canvas {
+    position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
+    opacity: 0.25;
+    z-index: 0;
   }
 </style>

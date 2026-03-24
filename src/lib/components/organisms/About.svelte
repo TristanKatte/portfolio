@@ -1,7 +1,8 @@
-<!-- AboutSection.svelte -->
 <script>
   import AboutIntro from "../molecules/AboutIntro.svelte";
   import Timeline from "../molecules/Timeline.svelte";
+
+  export let profileImage = "/images/profielfoto-zw.avif";
 
   const introText = `I’m a recently graduated frontend developer with a strong foundation in both design and development. My journey started in desktop publishing, where I developed an eye for layout and visual detail. From there, I moved into web design and eventually found my passion in frontend development.
 
@@ -15,51 +16,19 @@ Beyond development, I like exploring new design trends, experimenting with motio
     {
       title: "My Education",
       items: [
-        {
-          title: "2016-2018",
-          text: "Completed my 1st study as a Desktop publisher at the Grafisch Lyceum Utrecht.",
-          color: "#00ffea",
-        },
-        {
-          title: "2018-2022",
-          text: "Completed my 2nd study as a Web Designer at the Grafisch Lyceum Utrecht.",
-          color: "#1affd5",
-        },
-        {
-          title: "2022",
-          text: "Studied Communication and Multimedia design for a while, before switching to Frontend development.",
-          color: "#00ccaa",
-        },
-        {
-          title: "2023",
-          text: "Gap year working, travelling, and starting my studies at FDND.",
-          color: "#00ffea",
-        },
+        { title: "2016-2018", text: "Completed my 1st study as a Desktop publisher at the Grafisch Lyceum Utrecht.", color: "#00ffea" },
+        { title: "2018-2022", text: "Completed my 2nd study as a Web Designer at the Grafisch Lyceum Utrecht.", color: "#1affd5" },
+        { title: "2022", text: "Studied Communication and Multimedia design for a while, before switching to Frontend development.", color: "#00ccaa" },
+        { title: "2023", text: "Gap year working, travelling, and starting my studies at FDND.", color: "#00ffea" },
       ],
     },
     {
       title: "Work Experience",
       items: [
-        {
-          title: "Feb 2025 - Apr 2025: Internship at the VRU",
-          text: "Helped building reports for the VRU.",
-          color: "#ff6b6b",
-        },
-        {
-          title: "Aug 2021 - Jan 2022: Internship at ArtDcom",
-          text: "Helped building websites and optimizing them.",
-          color: "#ff8b8b",
-        },
-        {
-          title: "Feb 2021 - Jun 2021: Internship at Centix",
-          text: "Helped building and optimizing the Wordpress website for Centix.",
-          color: "#ff4c4c",
-        },
-        {
-          title: "2018 - Present: Warehouse worker",
-          text: "Seasonal job at VersAlert, handling sorting, packing and cleaning.",
-          color: "#ff6b6b",
-        },
+        { title: "Feb 2025 - Apr 2025: Internship at the VRU", text: "Helped building reports for the VRU.", color: "#ff6b6b" },
+        { title: "Aug 2021 - Jan 2022: Internship at ArtDcom", text: "Helped building websites and optimizing them.", color: "#ff8b8b" },
+        { title: "Feb 2021 - Jun 2021: Internship at Centix", text: "Helped building and optimizing the Wordpress website for Centix.", color: "#ff4c4c" },
+        { title: "2018 - Present: Warehouse worker", text: "Seasonal job at VersAlert, handling sorting, packing and cleaning.", color: "#ff6b6b" },
       ],
     },
   ];
@@ -67,14 +36,24 @@ Beyond development, I like exploring new design trends, experimenting with motio
 
 <section id="about" class="about-me">
   <div class="about-content">
+
+    <!-- Profile row: image + text -->
     <div class="about-profile">
-      <AboutIntro {introText} />
+      <div class="profile-image-wrap">
+        <img src={profileImage} alt="Tristan" class="profile-image" />
+      </div>
+      <div class="profile-text">
+        <AboutIntro {introText} />
+      </div>
     </div>
+
+    <!-- Timelines below -->
     <div class="about-timeline">
       {#each timelines as timeline}
         <Timeline title={timeline.title} items={timeline.items} />
       {/each}
     </div>
+
   </div>
 </section>
 
@@ -97,61 +76,66 @@ Beyond development, I like exploring new design trends, experimenting with motio
     z-index: 1;
     border-radius: 1rem;
     padding: 2rem;
-    border: 50px solid transparent;
-    background-color: rgba(30, 39, 46, 0.05);
+    background-color: rgba(30, 39, 46, 0.75);
     backdrop-filter: blur(8px);
     animation: border-glow 4s ease-in-out infinite;
-
-    /* Side by side layout */
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 4rem;
   }
 
+  /* Profile row */
   .about-profile {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    text-align: center;
-  }
-
-  .about-timeline {
-    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    align-items: flex-start; /* stack to the right side */
-    text-align: left;
+    align-items: center;
   }
 
-  /* Tablet — side by side */
+  .profile-image-wrap {
+    flex-shrink: 0;
+    width: 180px;
+    height: 180px;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 2px solid rgba(0, 206, 201, 0.4);
+    box-shadow: 0 0 20px rgba(0, 206, 201, 0.2);
+  }
+
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .profile-text {
+    flex: 1;
+  }
+
+  /* Timeline row */
+  .about-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  /* Tablet+ */
   @media (min-width: 768px) {
-    .about-content {
+    .about-profile {
       flex-direction: row;
       align-items: flex-start;
-      gap: 3rem;
     }
 
-    .about-profile {
-      width: 30%;
-      flex-shrink: 0;
-      position: sticky;
-      top: 6rem; /* sticks while timeline scrolls */
-      align-items: flex-start;
-      text-align: left;
-    }
-
-    .about-timeline {
-      width: 70%;
-      align-items: flex-end; /* pushes content to the right */
+    .profile-image-wrap {
+      width: 220px;
+      height: 280px;
     }
   }
 
   @keyframes border-glow {
-    0%,
-    100% {
+    0%, 100% {
       box-shadow:
         0 0 0 2px rgba(9, 132, 227, 0.6),
         0 0 20px rgba(9, 132, 227, 0.2),

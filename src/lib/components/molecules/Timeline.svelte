@@ -70,8 +70,8 @@
         cards[i],
         {
           autoAlpha: 0,
-          x: -60, // always slides in from the left
-          y: 0,
+          x: window.innerWidth > 768 ? (i % 2 === 0 ? -60 : 60) : 0,
+          y: window.innerWidth > 768 ? 0 : 30,
         },
         {
           autoAlpha: 1,
@@ -102,8 +102,8 @@
     <div class="timeline-line"></div>
     <div class="timeline-progress" style="--color: {items[0].color}"></div>
 
-    {#each items as item}
-      <TimelineItem {item} />
+    {#each items as item, i}
+      <TimelineItem {item} {i} />
     {/each}
   </div>
 </section>
@@ -119,6 +119,8 @@
     position: relative;
     margin-bottom: 6rem;
     font-weight: 100;
+    z-index: 1;
+    margin: 0 auto;
   }
 
   .timeline-line {
@@ -146,13 +148,6 @@
       0 0 30px var(--color);
     transform-origin: top;
     z-index: 2;
-  }
-
-  .timeline-line,
-  .timeline-progress {
-    left: auto;
-    right: 0;
-    transform: translateX(0);
   }
 
   @media (max-width: 768px) {

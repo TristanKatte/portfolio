@@ -17,7 +17,7 @@
       once: true,
       onEnter: () => {
         gsap.to(el, {
-          duration: 20,
+          duration: 5,
           scrambleText: {
             text: introText,
             chars: "01アイウエOカキクケCO!@#$%",
