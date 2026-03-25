@@ -66,7 +66,7 @@
     text-align: left;
     color: var(--text);
     min-height: 8rem; /* prevents layout shift while empty */
-    font-family: 'Inter';
+    font-family: 'Titillium Web', sans-serif;
   }
 
   /* Scramble chars get a dimmer color while resolving */
