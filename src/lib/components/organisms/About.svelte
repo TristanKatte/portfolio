@@ -1,6 +1,7 @@
 <script>
   import AboutIntro from "../molecules/AboutIntro.svelte";
   import Timeline from "../molecules/Timeline.svelte";
+  import CyberHexBackground from "../molecules/CyberHexBackground.svelte";
 
   export let profileImage = "/images/profielfoto-zw.avif";
 
@@ -35,6 +36,7 @@ Beyond development, I like exploring new design trends, experimenting with motio
 </script>
 
 <section id="about" class="about-me">
+  <CyberHexBackground />
   <div class="about-content">
 
     <!-- Profile row: image + text -->
@@ -74,11 +76,7 @@ Beyond development, I like exploring new design trends, experimenting with motio
     margin: 0 auto;
     position: relative;
     z-index: 1;
-    border-radius: 1rem;
     padding: 2rem;
-    background-color: rgba(30, 39, 46, 0.75);
-    backdrop-filter: blur(8px);
-    animation: border-glow 4s ease-in-out infinite;
     display: flex;
     flex-direction: column;
     gap: 4rem;
@@ -88,17 +86,19 @@ Beyond development, I like exploring new design trends, experimenting with motio
   .about-profile {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    align-items: center;
+    gap: 10rem;
+    align-items: stretch;
   }
 
   .profile-image-wrap {
     flex-shrink: 0;
-    width: 180px;
-    height: 180px;
+    width: 100%;
+    height: 350px;
+    position: relative;
     border-radius: 1rem;
+    background-color: #222;
+    border: 1px solid var(--border);
     overflow: hidden;
-    border: 2px solid rgba(0, 206, 201, 0.4);
     box-shadow: 0 0 20px rgba(0, 206, 201, 0.2);
   }
 
@@ -111,6 +111,7 @@ Beyond development, I like exploring new design trends, experimenting with motio
 
   .profile-text {
     flex: 1;
+    max-width: 95ch;
   }
 
   /* Timeline row */
@@ -129,23 +130,8 @@ Beyond development, I like exploring new design trends, experimenting with motio
     }
 
     .profile-image-wrap {
-      width: 220px;
-      height: 280px;
-    }
-  }
-
-  @keyframes border-glow {
-    0%, 100% {
-      box-shadow:
-        0 0 0 2px rgba(9, 132, 227, 0.6),
-        0 0 20px rgba(9, 132, 227, 0.2),
-        0 0 40px rgba(0, 206, 201, 0.1);
-    }
-    50% {
-      box-shadow:
-        0 0 0 2px rgba(0, 206, 201, 0.9),
-        0 0 30px rgba(9, 132, 227, 0.4),
-        0 0 60px rgba(0, 206, 201, 0.3);
+      width: 520px;
+      height: 620px;
     }
   }
 </style>

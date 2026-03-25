@@ -150,6 +150,17 @@
     z-index: 2;
   }
 
+  .timeline-heading {
+    font-size: 2rem;
+    margin: 3rem 0 2rem;
+    text-align: left;
+    color: var(--highlight);
+    font-family: "Space Grotesk", sans-serif;
+    letter-spacing: 3px;
+    font-weight: 700;
+    font-size: 3rem;
+  }
+
   @media (max-width: 768px) {
     .timeline-line,
     .timeline-progress {

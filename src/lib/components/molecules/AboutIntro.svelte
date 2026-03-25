@@ -60,13 +60,13 @@
   .about-text {
     font-size: 1.25rem;
     letter-spacing: 2px;
-    line-height: 1.7;
-    max-width: 750px;
+    line-height: 1.6;
+    max-width: 100%;
     margin: 0 auto 3rem auto;
     text-align: left;
     color: var(--text);
-    min-height: 8rem; /* prevents layout shift while empty */
     font-family: 'Titillium Web', sans-serif;
+    
   }
 
   /* Scramble chars get a dimmer color while resolving */

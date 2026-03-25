@@ -31,7 +31,6 @@
   .timeline-node {
     width: 20px;
     height: 20px;
-    /* border-radius: 50%; */
     background: var(--color);
     border: 4px solid #222;
     position: absolute;
@@ -43,7 +42,12 @@
   }
 
   .timeline-content {
-    max-width: 45%;
+    max-width: 45ch;
+    margin: 0 1rem;
+    width: 100%;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    line-height: 1.7;
     padding: 1rem 1.5rem;
     border-radius: 12px;
     background-color: rgba(255, 255, 255, 0.05);
