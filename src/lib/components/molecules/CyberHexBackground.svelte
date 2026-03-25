@@ -137,8 +137,12 @@
   });
 
   onDestroy(() => {
-    cancelAnimationFrame(animId);
-    window.removeEventListener('resize', resize);
+    if (typeof cancelAnimationFrame !== "undefined") {
+      cancelAnimationFrame(animationId);
+    }
+    if (typeof window !== "undefined") {
+      window.removeEventListener("resize", handleResize);
+    }
   });
 </script>
 
