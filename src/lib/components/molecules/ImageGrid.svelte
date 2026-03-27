@@ -85,8 +85,8 @@
     rx: 0.4em;
     fill: none;
     stroke: #00fff1;
-    stroke-width: 2;
-    stroke-dasharray: 8 6;
+    stroke-width: 4;
+    stroke-dasharray: 0;
     animation: dash-pulse 2s linear infinite;
     filter: drop-shadow(0 0 4px #00fff1);
   }

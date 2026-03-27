@@ -2,8 +2,8 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
 
-  const HEX_RADIUS = 30;
-  const HEX_GAP = 4;
+  const HEX_RADIUS = 50;
+  const HEX_GAP = 12;
   const COLORS = ['#00ccc9', '#0984e3', '#00fff1'];
   const PULSE_CHANCE = 0.0008;
   const MAX_PULSES = 12;
@@ -62,11 +62,7 @@
       ctx.globalAlpha = 0.6;
       ctx.fillStyle = '#00fff1';
       ctx.font = `${8 + Math.random() * 6}px monospace`;
-      ctx.fillText(
-        Math.random() > 0.5 ? '1' : '0',
-        hex.x - 4,
-        hex.y + 4
-      );
+      
       ctx.restore();
     }
   }
