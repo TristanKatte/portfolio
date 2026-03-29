@@ -5,13 +5,14 @@
 
   export let profileImage = "/images/profielfoto-zw.avif";
 
-  const introText = `I’m a recently graduated frontend developer with a strong foundation in both design and development. My journey started in desktop publishing, where I developed an eye for layout and visual detail. From there, I moved into web design and eventually found my passion in frontend development.
+  const introText = `I'm a recently graduated frontend developer with a strong foundation in both design and development. I focus on building accessible, performant, and visually engaging web experiences that feel intuitive and polished. With a background in web design, I have a keen eye for aesthetics and user experience, which I combine with my technical skills to create websites that not only look great but also function seamlessly. I'm passionate about pushing the boundaries of what's possible on the web and am always eager to learn new technologies and techniques. I'm currently seeking opportunities to contribute my skills and creativity to exciting projects, while continuing to grow as a developer. I'm excited about the possibilities that lie ahead and am eager to make a positive impact in the world of web development.`;
 
-Today, I focus on building accessible, performant, and visually engaging web experiences. I work with modern technologies and apply principles like progressive enhancement to ensure that my work is not only visually appealing, but also usable and reliable across different devices and environments.
-
-I enjoy combining design and code to create interfaces that feel intuitive and polished. Whether it’s refining layouts, improving accessibility, or adding subtle animations, I care about the details that elevate a user experience.
-
-Beyond development, I like exploring new design trends, experimenting with motion and interaction, and continuously improving my skills to stay up to date in the ever-evolving world of web development.`;
+  const focusAreas = [
+    "Accessible & inclusive design",
+    "Progressive enhancement",
+    "Performance & optimization",
+    "Creative frontend development",
+  ];
 
   const stats = [
     { value: "3+", label: "Years experience" },
@@ -25,22 +26,22 @@ Beyond development, I like exploring new design trends, experimenting with motio
       items: [
         {
           title: "2016-2018",
-          text: "Completed my 1st study as a Desktop publisher at the Grafisch Lyceum Utrecht.",
+          text: "Desktop publisher at the Grafisch Lyceum Utrecht.",
           color: "#00ffea",
         },
         {
           title: "2018-2022",
-          text: "Completed my 2nd study as a Web Designer at the Grafisch Lyceum Utrecht.",
+          text: "Web Designer at the Grafisch Lyceum Utrecht.",
           color: "#1affd5",
         },
         {
           title: "2022",
-          text: "Studied Communication and Multimedia design for a while, before switching to Frontend development.",
+          text: "Communication and Multimedia design, before switching to Frontend.",
           color: "#00ccaa",
         },
         {
           title: "2023",
-          text: "Gap year working, travelling, and starting my studies at FDND.",
+          text: "Gap year working, travelling, and starting at FDND.",
           color: "#00ffea",
         },
       ],
@@ -49,23 +50,23 @@ Beyond development, I like exploring new design trends, experimenting with motio
       title: "Work Experience",
       items: [
         {
-          title: "Feb 2025 - Apr 2025: Internship at the VRU",
-          text: "Helped building reports for the VRU.",
+          title: "Feb–Apr 2025: VRU",
+          text: "Internship building reports for the VRU.",
           color: "#ff6b6b",
         },
         {
-          title: "Aug 2021 - Jan 2022: Internship at ArtDcom",
-          text: "Helped building websites and optimizing them.",
+          title: "Aug 2021–Jan 2022: ArtDcom",
+          text: "Building and optimizing websites.",
           color: "#ff8b8b",
         },
         {
-          title: "Feb 2021 - Jun 2021: Internship at Centix",
-          text: "Helped building and optimizing the Wordpress website for Centix.",
+          title: "Feb–Jun 2021: Centix",
+          text: "Optimizing the Wordpress website for Centix.",
           color: "#ff4c4c",
         },
         {
-          title: "2018 - Present: Warehouse worker",
-          text: "Seasonal job at VersAlert, handling sorting, packing and cleaning.",
+          title: "2018–Present: VersAlert",
+          text: "Seasonal warehouse work — sorting, packing, cleaning.",
           color: "#ff6b6b",
         },
       ],
@@ -74,9 +75,9 @@ Beyond development, I like exploring new design trends, experimenting with motio
 </script>
 
 <section id="about" class="about-me">
-<CyberHexBackground />
+  <CyberHexBackground />
   <div class="about-content">
-    <!-- Section header -->
+    <!-- Header -->
     <div class="about-header">
       <span class="about-label">01 / Who I Am</span>
       <h2 class="about-heading">
@@ -85,45 +86,59 @@ Beyond development, I like exploring new design trends, experimenting with motio
       </h2>
     </div>
 
-    <!-- Profile row: image left, text right -->
-    <div class="about-profile">
-      <div class="profile-image-corners">
-        <span class="corner corner-tr"></span>
-        <span class="corner corner-bl"></span>
-        <div class="profile-image-outer">
-          <div class="profile-image-wrap">
-            <img src={profileImage} alt="Tristan" class="profile-image" />
-            <div class="profile-fade"></div>
-            <div class="profile-hud">
-              <span class="hud-status">
-                <span class="hud-dot"></span>
-                STATUS: ONLINE
-              </span>
-              <span class="hud-clearance">CLEARANCE: LVL 3</span>
-              <span class="hud-id">ID: TRS-001 // FDND</span>
+    <!-- Main row: image-col left, content-col right -->
+    <div class="about-main">
+      <!-- Left column: image + focus card -->
+      <div class="about-left">
+        <div class="profile-image-corners">
+          <span class="corner corner-tr"></span>
+          <span class="corner corner-bl"></span>
+          <div class="profile-image-outer">
+            <div class="profile-image-wrap">
+              <img src={profileImage} alt="Tristan" class="profile-image" />
+              <div class="profile-fade"></div>
+              <div class="profile-hud">
+                <span class="hud-status">
+                  <span class="hud-dot"></span>STATUS: ONLINE
+                </span>
+                <span class="hud-clearance">CLEARANCE: LVL 3</span>
+                <span class="hud-id">ID: TRS-001 // FDND</span>
+              </div>
             </div>
           </div>
         </div>
+
+        <!-- Focus areas card -->
+        <div class="focus-card">
+          <span class="focus-card-label">Focus Areas</span>
+          <ul class="focus-list">
+            {#each focusAreas as area}
+              <li class="focus-item">
+                <span class="focus-dot"></span>
+                {area}
+              </li>
+            {/each}
+          </ul>
+        </div>
       </div>
 
-      <div class="profile-right">
+      <!-- Right column: text + stats + timelines -->
+      <div class="about-right">
         <div class="profile-text">
           <AboutIntro {introText} />
         </div>
 
-        <!-- Stats -->
         <div class="about-stats">
           {#each stats as stat}
-            <div class="stat">
-              <span class="stat-value">{stat.value}</span>
-              <span class="stat-label">{stat.label}</span>
+            <div class="about-stat">
+              <span class="about-stat-value">{stat.value}</span>
+              <span class="about-stat-label">{stat.label}</span>
             </div>
           {/each}
         </div>
       </div>
     </div>
 
-    <!-- Timelines: line left, items right -->
     <div class="about-timelines">
       {#each timelines as timeline}
         <Timeline title={timeline.title} items={timeline.items} />
@@ -187,31 +202,91 @@ Beyond development, I like exploring new design trends, experimenting with motio
     -webkit-text-fill-color: transparent;
   }
 
-  /* Profile row */
-  .about-profile {
+  /* Main two-column layout */
+  .about-main {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
     align-items: flex-start;
   }
 
-  .profile-right {
+  /* Left column */
+  .about-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex-shrink: 0;
+    width: 325px;
+  }
+
+  /* Focus card */
+  .focus-card {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 206, 201, 0.2);
+    border-radius: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .focus-card-label {
+    font-family: "Azonix", monospace;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #00fff1;
+    opacity: 0.7;
+  }
+
+  .focus-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .focus-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: rgba(245, 245, 240, 0.75);
+    font-family: "Titillium Web", sans-serif;
+  }
+
+  .focus-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #00fff1;
+    box-shadow: 0 0 6px #00fff1;
+    flex-shrink: 0;
+  }
+
+  /* Right column */
+  .about-right {
     flex: 1;
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
   }
 
   /* Stats */
   .about-stats {
     display: flex;
     flex-direction: row;
-    gap: 1.5rem;
+    gap: 2.5rem;
     flex-wrap: wrap;
+    
   }
 
-  .stat {
+  .about-stat {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
@@ -224,11 +299,11 @@ Beyond development, I like exploring new design trends, experimenting with motio
     transition: border-color 0.3s ease;
   }
 
-  .stat:hover {
+  .about-stat:hover {
     border-color: rgba(0, 206, 201, 0.4);
   }
 
-  .stat-value {
+  .about-stat-value {
     font-family: "Azonix", sans-serif;
     font-size: clamp(1.8rem, 3vw, 2.5rem);
     font-weight: 800;
@@ -237,12 +312,21 @@ Beyond development, I like exploring new design trends, experimenting with motio
     text-shadow: 0 0 12px rgba(0, 255, 241, 0.4);
   }
 
-  .stat-label {
+  .about-stat-label {
     font-size: 0.7rem;
     opacity: 0.5;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--text);
+  }
+
+  /* Timelines under right column */
+  .about-timelines {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    flex-shrink: 0;
   }
 
   /* Image */
@@ -425,20 +509,11 @@ Beyond development, I like exploring new design trends, experimenting with motio
     font-size: 0.65rem;
   }
 
-  /* Timelines */
-  .about-timelines {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 100%;
-  }
-
-  /* Tablet+ */
+  /* Desktop */
   @media (min-width: 768px) {
-    .about-profile {
+    .about-main {
       flex-direction: row;
-      align-items: flex-start;
-      gap: 3rem;
+      gap: 4rem;
     }
   }
 
