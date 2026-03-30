@@ -5,7 +5,7 @@
 
   export let profileImage = "/images/profielfoto-zw.avif";
 
-  const introText = `I'm a recently graduated frontend developer with a strong foundation in both design and development. I focus on building accessible, performant, and visually engaging web experiences that feel intuitive and polished. With a background in web design, I have a keen eye for aesthetics and user experience, which I combine with my technical skills to create websites that not only look great but also function seamlessly. I'm passionate about pushing the boundaries of what's possible on the web and am always eager to learn new technologies and techniques. I'm currently seeking opportunities to contribute my skills and creativity to exciting projects, while continuing to grow as a developer. I'm excited about the possibilities that lie ahead and am eager to make a positive impact in the world of web development.`;
+  const introText = `I'm a recently graduated frontend developer with a strong foundation in both design and development. I focus on building accessible, performant, and visually engaging web experiences that feel intuitive and polished. With a background in web design, I have a keen eye for aesthetics and user experience, which I combine with my technical skills to create websites that not only look great but also function seamlessly. I'm passionate about pushing the boundaries of what's possible on the web and am always eager to learn new technologies and techniques.`;
 
   const focusAreas = [
     "Accessible & inclusive design",
@@ -283,7 +283,6 @@
     flex-direction: row;
     gap: 2.5rem;
     flex-wrap: wrap;
-    
   }
 
   .about-stat {
@@ -549,6 +548,73 @@
     }
     66% {
       filter: drop-shadow(0 0 14px rgba(255, 0, 170, 0.4));
+    }
+  }
+
+  @media (max-width: 22.5rem) {
+    .about-content {
+      padding: 1rem;
+      gap: 2rem;
+    }
+
+    .about-heading {
+      font-size: 2rem;
+      text-align: left;
+      letter-spacing: 2px;
+    }
+
+    .about-main {
+      gap: 2rem;
+    }
+
+    .about-left {
+      width: 100%;
+    }
+
+    .about-right {
+      width: 100%;
+    }
+
+    .profile-text {
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .profile-image-wrap {
+      width: 100%;
+      height: 260px;
+    }
+
+    .profile-image-corners,
+    .profile-image-outer {
+      width: 100%;
+      height: 260px;
+    }
+
+    .focus-card {
+      padding: 1rem;
+    }
+
+    .about-stats {
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 100%;
+
+    }
+
+    .about-stat {
+      padding: 0.75rem 1rem;
+      min-width: 180px;
+      gap: 0.5rem;
+    }
+
+    .about-stat-value {
+      font-size: 1.5rem;
+    }
+
+    .about-timelines {
+      gap: 1rem;
     }
   }
 </style>

@@ -15,9 +15,10 @@
   .timeline-item {
     position: relative;
     width: 100%;
-    margin: 4rem 0;
+    padding: 1rem 0;
     display: flex;
     align-items: flex-start;
+    
   }
 
   .timeline-item.left {
@@ -33,12 +34,14 @@
     height: 20px;
     background: var(--color);
     border: 4px solid #222;
+    border-radius: 50%;
     position: absolute;
     top: 0;
     left: 50%;
     right: 50%;
     transform: translate(-50%, -50%);
     z-index: 3;
+    margin: 0 0 0 -78px;
   }
 
   .timeline-content {
@@ -78,6 +81,19 @@
     font-size: 0.9rem;
   }
 
+  @media (min-width: 768px) {
+  .timeline-item {
+    margin: 2rem 5rem;
+  }
+
+  .timeline-node {
+    width: 24px;
+    height: 24px;
+    border-width: 5px;
+    margin: 0 0 0 -78px;
+  }
+}
+
   /* Mobile — all left */
   @media (max-width: 768px) {
     .timeline-item {
@@ -90,11 +106,22 @@
       margin: 0 0 0 3rem;
       text-align: left;
       max-width: 85%;
+      width: 100%;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--color);
+      color: var(--color);
     }
 
     .timeline-node {
       left: 0;
       transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      border-width: 3px;
     }
   }
 </style>

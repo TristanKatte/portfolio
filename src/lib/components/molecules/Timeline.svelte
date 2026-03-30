@@ -121,6 +121,7 @@
     font-weight: 100;
     z-index: 1;
     margin: 0 auto;
+    gap: 5rem;
   }
 
   .timeline-line {
@@ -166,6 +167,19 @@
     .timeline-progress {
       left: 20px;
       transform: translateX(0);
+    }
+  }
+
+  @media (max-width: 22.5rem) {
+    .timeline-heading {
+      font-size: 1.85rem;
+      text-align: center;
+    }
+
+    .timeline-line,
+    .timeline-progress {
+      left: 0;
+      transform: translateX(-50%);
     }
   }
 </style>

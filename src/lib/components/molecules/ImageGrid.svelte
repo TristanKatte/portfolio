@@ -118,4 +118,18 @@
       width: 35rem;
     }
   }
+
+  @media (min-width: 1200px) {
+    .image-grid {
+      width: 45rem;
+    }
+  }
+
+  @media(max-width: 22.5rem) {
+    .image-grid {
+      font-size: 1rem;
+      --grid-scale: 1;
+      display: none;
+    }
+  }
 </style>

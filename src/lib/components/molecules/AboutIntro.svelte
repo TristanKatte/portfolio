@@ -81,4 +81,23 @@
   :global(.scramble-char) {
     color: rgba(245, 245, 240, 0.65);
   }
+
+  @media (max-width: 22.5rem) {
+    .about-heading {
+      font-size: 2.5rem;
+      text-align: left;
+    }
+
+    .about-text {
+      font-size: 1.15rem;
+      line-height: 1.5;
+      margin: 0 auto 1rem auto;
+      max-width: 100%;
+      text-align: left;
+    }
+
+    .about-intro {
+      margin: -3rem auto 0 auto;
+    }
+  }
 </style>
