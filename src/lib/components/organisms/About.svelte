@@ -44,13 +44,18 @@
           text: "Gap year working, travelling, and starting at FDND.",
           color: "#00ffea",
         },
+        {
+          title: "2023-2026",
+          text: "Frontend development at FDND. Graduated in January 2026.",
+          color: "#1affd5",
+        },
       ],
     },
     {
       title: "Work Experience",
       items: [
         {
-          title: "Feb–Apr 2025: VRU",
+          title: "Feb–Apr 2025: Veiligheidsregio Utrecht (VRU)",
           text: "Internship building reports for the VRU.",
           color: "#ff6b6b",
         },
