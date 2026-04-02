@@ -139,7 +139,7 @@
     background-color: transparent;
     position: relative;
     overflow: hidden;
-    z-index: 1;
+    z-index: 5;
     gap: 2rem;
   }
 
