@@ -65,8 +65,8 @@
   <div class="skills-header">
     <span class="skills-label">02 / What I Know</span>
     <h2 class="skills-heading">
-      Tools of the<br />
-      <span class="skills-heading-accent">trade.</span>
+      What I bring to<br />
+      <span class="skills-heading-accent">the table.</span>
     </h2>
   </div>
 
@@ -83,6 +83,7 @@
     min-height: 100dvh;
     position: relative;
     padding: 4rem 1rem;
+    background: var(--main-bg-color);
     color: var(--text);
     overflow: hidden;
   }

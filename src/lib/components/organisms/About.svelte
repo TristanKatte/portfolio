@@ -6,7 +6,7 @@
   export let profileImage = "/images/profielfoto-zw.avif";
 
   const introText = [
-    "I'm a recently graduated frontend developer with a strong foundation in both design and development. I focus on building accessible, performant, and visually engaging web experiences that feel intuitive and polished. With a background in web design, I have a keen eye for aesthetics and user experience, which I combine with my technical skills to create websites that not only look great but also function seamlessly. I'm passionate about pushing the boundaries of what's possible on the web and am always eager to learn new technologies and techniques."
+    "I'm a recently graduated frontend developer with a strong foundation in both design and development. I focus on building accessible, performant, and visually engaging web experiences that feel intuitive and polished. With a background in web design, I have a keen eye for aesthetics and user experience, which I combine with my technical skills to create websites that not only look great but also function seamlessly. I'm passionate about pushing the boundaries of what's possible on the web and am always eager to learn new technologies and techniques.",
   ];
 
   const focusAreas = [
@@ -22,67 +22,30 @@
     { value: "8", label: "Technologies" },
   ];
 
-  const timelines = [
-    {
-      title: "My Education",
-      items: [
-        {
-          title: "2016-2018",
-          text: "Desktop publisher at the Grafisch Lyceum Utrecht.",
-          color: "#00ffea",
-        },
-        {
-          title: "2018-2022",
-          text: "Web Designer at the Grafisch Lyceum Utrecht.",
-          color: "#1affd5",
-        },
-        {
-          title: "2022",
-          text: "Communication and Multimedia design, before switching to Frontend.",
-          color: "#00ccaa",
-        },
-        {
-          title: "2023",
-          text: "Gap year working, travelling, and starting at FDND.",
-          color: "#00ffea",
-        },
-        {
-          title: "2023-2026",
-          text: "Frontend development at FDND. Graduated in January 2026.",
-          color: "#1affd5",
-        },
-      ],
-    },
-    {
-      title: "Work Experience",
-      items: [
-        {
-          title: "Feb–Apr 2025: Veiligheidsregio Utrecht (VRU)",
-          text: "Internship building reports for the VRU.",
-          color: "#ff6b6b",
-        },
-        {
-          title: "Aug 2021–Jan 2022: ArtDcom",
-          text: "Building and optimizing websites.",
-          color: "#ff8b8b",
-        },
-        {
-          title: "Feb–Jun 2021: Centix",
-          text: "Optimizing the Wordpress website for Centix.",
-          color: "#ff4c4c",
-        },
-        {
-          title: "2018–Present: VersAlert",
-          text: "Seasonal warehouse work — sorting, packing, cleaning.",
-          color: "#ff6b6b",
-        },
-      ],
-    },
-  ];
+  const educationTimeline = {
+  title: "My Education",
+  items: [
+    { title: "2016-2018", text: "Desktop publisher at the Grafisch Lyceum Utrecht.", color: "#00ffea" },
+    { title: "2018-2022", text: "Web Designer at the Grafisch Lyceum Utrecht.", color: "#1affd5" },
+    { title: "2022", text: "Communication and Multimedia design, before switching to Frontend.", color: "#00ccaa" },
+    { title: "2023", text: "Gap year working, travelling, and starting at FDND.", color: "#00ffea" },
+    { title: "2023-2026", text: "Frontend development at FDND. Graduated in January 2026.", color: "#1affd5" },
+  ],
+};
+
+const workTimeline = {
+  title: "Work Experience",
+  items: [
+    { title: "Feb–Apr 2025: VRU", text: "Internship building reports for the VRU.", color: "#ff6b6b" },
+    { title: "Aug 2021–Jan 2022: ArtDcom", text: "Building and optimizing websites.", color: "#ff8b8b" },
+    { title: "Feb–Jun 2021: Centix", text: "Optimizing the Wordpress website for Centix.", color: "#ff4c4c" },
+    { title: "2018–Present: VersAlert", text: "Seasonal warehouse work — sorting, packing, cleaning.", color: "#ff6b6b" },
+  ],
+};
 </script>
 
+<CyberHexBackground />
 <section id="about" class="about-me">
-  <CyberHexBackground />
   <div class="about-content">
     <!-- Header -->
     <div class="about-header">
@@ -127,6 +90,7 @@
             {/each}
           </ul>
         </div>
+        <Timeline title={workTimeline.title} items={workTimeline.items} />
       </div>
 
       <!-- Right column: text + stats + timelines -->
@@ -143,14 +107,11 @@
             </div>
           {/each}
         </div>
+        <Timeline title={educationTimeline.title} items={educationTimeline.items} />
       </div>
     </div>
 
-    <div class="about-timelines">
-      {#each timelines as timeline}
-        <Timeline title={timeline.title} items={timeline.items} />
-      {/each}
-    </div>
+
   </div>
 </section>
 
@@ -160,6 +121,7 @@
     min-height: 100dvh;
     position: relative;
     padding: 4rem 1rem;
+    background: var(--main-bg-color);
     color: var(--text);
     overflow: hidden;
   }
@@ -174,6 +136,10 @@
     display: flex;
     flex-direction: column;
     gap: 4rem;
+    background-color: rgba(17, 18, 19, .45);
+    border-radius: 1rem;
+     box-shadow: 0 0 20px rgba(0, 255, 241, 0.2);
+     border: 2px solid rgba(0, 255, 241, 0.2);
   }
 
   /* Header */
@@ -224,6 +190,7 @@
     gap: 1.5rem;
     flex-shrink: 0;
     width: 325px;
+    
   }
 
   /* Focus card */
@@ -281,6 +248,7 @@
     min-width: 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 3rem;
   }
 
@@ -290,6 +258,9 @@
     flex-direction: row;
     gap: 2.5rem;
     flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
   }
 
   .about-stat {
@@ -324,15 +295,6 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--text);
-  }
-
-  /* Timelines under right column */
-  .about-timelines {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 100%;
-    flex-shrink: 0;
   }
 
   /* Image */
@@ -607,7 +569,6 @@
       justify-content: center;
       flex-wrap: wrap;
       width: 100%;
-
     }
 
     .about-stat {
@@ -618,10 +579,6 @@
 
     .about-stat-value {
       font-size: 1.5rem;
-    }
-
-    .about-timelines {
-      gap: 1rem;
     }
   }
 </style>

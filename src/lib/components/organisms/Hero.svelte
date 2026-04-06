@@ -136,7 +136,7 @@
     scroll-snap-align: start;
     width: 100%;
     color: var(--text);
-    background-color: transparent;
+    background-color: var(--main-bg-color);
     position: relative;
     overflow: hidden;
     z-index: 5;

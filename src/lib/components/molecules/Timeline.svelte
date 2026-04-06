@@ -70,8 +70,8 @@
         cards[i],
         {
           autoAlpha: 0,
-          x: window.innerWidth > 768 ? (i % 2 === 0 ? -60 : 60) : 0,
-          y: window.innerWidth > 768 ? 0 : 30,
+          x: -40,
+          y: 0,
         },
         {
           autoAlpha: 1,
@@ -121,13 +121,15 @@
     font-weight: 100;
     z-index: 1;
     margin: 0 auto;
+    max-width: 800px;
+    width: 100%;
   }
 
   .timeline-line {
     position: absolute;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    transform: translateX(0);
     width: 4px;
     height: 100%;
     background: rgba(255, 255, 255, 0.2);
@@ -137,8 +139,8 @@
   .timeline-progress {
     position: absolute;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%) scaleY(0);
+    left: 0;
+    transform: translateX(0) scaleY(0);
     width: 4px;
     height: 100%;
     background: var(--color);

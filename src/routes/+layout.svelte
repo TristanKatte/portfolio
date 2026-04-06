@@ -3,6 +3,7 @@
   import { onNavigate } from "$app/navigation";
   import Header from "../lib/components/organisms/Header.svelte";
   import Footer from "../lib/components/organisms/Footer.svelte";
+  import CyberHexBackground from "../lib/components/molecules/CyberHexBackground.svelte";
 
 
   // Design libs
@@ -24,7 +25,7 @@
 </script>
 
 
-
+<CyberHexBackground />
 <div class="layout">
  
   
@@ -50,7 +51,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: var(--main-bg-color);
+    /* background-color: var(--main-bg-color); */
     overflow-x: hidden;
     z-index: 1;
   }
@@ -58,10 +59,6 @@
   :global(body) {
     position: relative;
   }
-
-  /* Make sure HexagonCanvas fills the full page */
-
-
 
   @media (min-width: 1440px) {
     .layout {

@@ -1,9 +1,10 @@
 <script>
   export let item;
-  export let i; // needed again for zigzag
+  // svelte-ignore export_let_unused
+    export let i; // needed again for zigzag
 </script>
 
-<div class="timeline-item {i % 2 === 0 ? 'left' : 'right'}">
+<div class="timeline-item">
   <span class="timeline-node" style="--color: {item.color}"></span>
   <article class="timeline-content" style="--color: {item.color};">
     <h3>{item.title}</h3>
@@ -20,14 +21,6 @@
     align-items: flex-start;
   }
 
-  .timeline-item.left {
-    justify-content: flex-end;
-  }
-
-  .timeline-item.right {
-    justify-content: flex-start;
-  }
-
   .timeline-node {
     width: 20px;
     height: 20px;
@@ -36,7 +29,7 @@
     border-radius: 50%;
     position: absolute;
     top: 0;
-    left: 50%;
+    left: 0;
     right: 50%;
     transform: translate(-50%, -50%);
     z-index: 3;
@@ -78,16 +71,6 @@
     z-index: 2;
   }
 
-  .timeline-item.left .timeline-content {
-    margin-right: 3rem;
-    text-align: right;
-  }
-
-  .timeline-item.right .timeline-content {
-    margin-left: 3rem;
-    text-align: left;
-  }
-
   h3 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
@@ -104,13 +87,6 @@
     .timeline-item {
       justify-content: flex-start !important;
       margin: 2rem 0;
-    }
-
-    .timeline-item.left .timeline-content,
-    .timeline-item.right .timeline-content {
-      margin: 0 0 0 3rem;
-      text-align: left;
-      max-width: 85%;
     }
 
     .timeline-node {

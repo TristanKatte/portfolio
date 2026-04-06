@@ -149,7 +149,7 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    opacity: 0.25;
+    opacity: 0.5;
     z-index: 0;
   }
 </style>

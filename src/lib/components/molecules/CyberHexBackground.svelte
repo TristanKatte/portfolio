@@ -6,7 +6,7 @@
   const HEX_GAP = 12;
   const COLORS = ['#00ccc9', '#0984e3', '#00fff1'];
   const PULSE_CHANCE = 0.0008;
-  const MAX_PULSES = 12;
+  const MAX_PULSES = 18;
 
   let canvas;
   let animId;
@@ -39,7 +39,7 @@
       for (let r = 0; r < rows; r++) {
         const x = c * COL_W;
         const y = r * ROW_H + (c % 2 ? ROW_H / 2 : 0);
-        hexes.push({ x, y, alpha: 0, base: 0.04 + Math.random() * 0.04 });
+        hexes.push({ x, y, alpha: 0, base: 0.08 + Math.random() * 0.08 });
       }
     }
   }
@@ -77,7 +77,7 @@
     for (const hex of hexes) {
       hexPath(hex.x, hex.y, HEX_RADIUS - HEX_GAP / 2);
       ctx.strokeStyle = `rgba(0, 204, 201, ${hex.base})`;
-      ctx.lineWidth = 1;
+      ctx.lineWidth = 1.5;
       ctx.stroke();
       drawDataStream(hex);
     }
@@ -108,9 +108,9 @@
         const dy = hex.y - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < p.radius + HEX_RADIUS * 2) {
-          hex.base = Math.min(0.3, hex.base + 0.02 * p.alpha);
+          hex.base = Math.min(0.4, hex.base + 0.04 * p.alpha);
         } else {
-          hex.base = Math.max(0.04, hex.base - 0.001);
+          hex.base = Math.max(0.12, hex.base - 0.001);
         }
       }
     }
@@ -134,10 +134,10 @@
 
   onDestroy(() => {
     if (typeof cancelAnimationFrame !== "undefined") {
-      cancelAnimationFrame(animationId);
+      cancelAnimationFrame(animId);
     }
     if (typeof window !== "undefined") {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", resize);
     }
   });
 </script>
@@ -151,7 +151,8 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    opacity: 0.6;
-    z-index: 0;
+    opacity: 1;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.15);
   }
 </style>
