@@ -2,8 +2,8 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
 
-  const HEX_RADIUS = 50;
-  const HEX_GAP = 12;
+  const HEX_RADIUS = 180;
+  const HEX_GAP = 48;
   const COLORS = ['#00ccc9', '#0984e3', '#00fff1'];
   const PULSE_CHANCE = 0.0008;
   const MAX_PULSES = 18;

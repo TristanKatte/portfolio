@@ -1,7 +1,7 @@
 <script>
   import AboutIntro from "../molecules/AboutIntro.svelte";
   import Timeline from "../molecules/Timeline.svelte";
-  import CyberHexBackground from "../molecules/CyberHexBackground.svelte";
+ 
 
   export let profileImage = "/images/profielfoto-zw.avif";
 
@@ -23,28 +23,64 @@
   ];
 
   const educationTimeline = {
-  title: "My Education",
-  items: [
-    { title: "2016-2018", text: "Desktop publisher at the Grafisch Lyceum Utrecht.", color: "#00ffea" },
-    { title: "2018-2022", text: "Web Designer at the Grafisch Lyceum Utrecht.", color: "#1affd5" },
-    { title: "2022", text: "Communication and Multimedia design, before switching to Frontend.", color: "#00ccaa" },
-    { title: "2023", text: "Gap year working, travelling, and starting at FDND.", color: "#00ffea" },
-    { title: "2023-2026", text: "Frontend development at FDND. Graduated in January 2026.", color: "#1affd5" },
-  ],
-};
+    title: "My Education",
+    items: [
+      {
+        title: "2016-2018",
+        text: "Desktop publisher at the Grafisch Lyceum Utrecht.",
+        color: "#00ffea",
+      },
+      {
+        title: "2018-2022",
+        text: "Web Designer at the Grafisch Lyceum Utrecht.",
+        color: "#1affd5",
+      },
+      {
+        title: "2022",
+        text: "Communication and Multimedia design, before switching to Frontend.",
+        color: "#00ccaa",
+      },
+      {
+        title: "2023",
+        text: "Gap year working, travelling, and starting at FDND.",
+        color: "#00ffea",
+      },
+      {
+        title: "2023-2026",
+        text: "Frontend development at FDND. Graduated in January 2026.",
+        color: "#1affd5",
+      },
+    ],
+  };
 
-const workTimeline = {
-  title: "Work Experience",
-  items: [
-    { title: "Feb–Apr 2025: VRU", text: "Internship building reports for the VRU.", color: "#ff6b6b" },
-    { title: "Aug 2021–Jan 2022: ArtDcom", text: "Building and optimizing websites.", color: "#ff8b8b" },
-    { title: "Feb–Jun 2021: Centix", text: "Optimizing the Wordpress website for Centix.", color: "#ff4c4c" },
-    { title: "2018–Present: VersAlert", text: "Seasonal warehouse work — sorting, packing, cleaning.", color: "#ff6b6b" },
-  ],
-};
+  const workTimeline = {
+    title: "Work Experience",
+    items: [
+      {
+        title: "Feb–Apr 2025: VRU",
+        text: "Internship building reports for the VRU.",
+        color: "#ff6b6b",
+      },
+      {
+        title: "Aug 2021–Jan 2022: ArtDcom",
+        text: "Building and optimizing websites.",
+        color: "#ff8b8b",
+      },
+      {
+        title: "Feb–Jun 2021: Centix",
+        text: "Optimizing the Wordpress website for Centix.",
+        color: "#ff4c4c",
+      },
+      {
+        title: "2018–Present: VersAlert",
+        text: "Seasonal warehouse work — sorting, packing, cleaning.",
+        color: "#ff6b6b",
+      },
+    ],
+  };
 </script>
 
-<CyberHexBackground />
+
 <section id="about" class="about-me">
   <div class="about-content">
     <!-- Header -->
@@ -90,7 +126,6 @@ const workTimeline = {
             {/each}
           </ul>
         </div>
-        <Timeline title={workTimeline.title} items={workTimeline.items} />
       </div>
 
       <!-- Right column: text + stats + timelines -->
@@ -107,11 +142,21 @@ const workTimeline = {
             </div>
           {/each}
         </div>
-        <Timeline title={educationTimeline.title} items={educationTimeline.items} />
       </div>
+      <!-- Timelines in their own always-aligned row -->
     </div>
 
-
+    <div class="about-timelines-row">
+      <div class="timeline-col">
+        <Timeline title={workTimeline.title} items={workTimeline.items} />
+      </div>
+      <div class="timeline-col">
+        <Timeline
+          title={educationTimeline.title}
+          items={educationTimeline.items}
+        />
+      </div>
+    </div>
   </div>
 </section>
 
@@ -136,10 +181,11 @@ const workTimeline = {
     display: flex;
     flex-direction: column;
     gap: 4rem;
-    background-color: rgba(17, 18, 19, .45);
+    background-color: rgba(5, 212, 212, 0.08);
+    backdrop-filter: blur(10px);
     border-radius: 1rem;
-     box-shadow: 0 0 20px rgba(0, 255, 241, 0.2);
-     border: 2px solid rgba(0, 255, 241, 0.2);
+    box-shadow: 0 0 20px rgba(0, 255, 241, 0.2);
+    border: 2px solid rgba(0, 255, 241, 0.2);
   }
 
   /* Header */
@@ -177,20 +223,21 @@ const workTimeline = {
 
   /* Main two-column layout */
   .about-main {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 325px 1fr;
+    grid-template-rows: auto auto 1fr; /* row 1: top content, row 2: stats/focus, row 3: timelines */
+    gap: 1.5rem 4rem;
+    align-items: start;
   }
 
   /* Left column */
   .about-left {
+    grid-column: 1;
+    grid-row: 1 / 4; /* spans all rows */
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    flex-shrink: 0;
-    width: 325px;
-    
+    height: 100%;
   }
 
   /* Focus card */
@@ -244,12 +291,12 @@ const workTimeline = {
 
   /* Right column */
   .about-right {
-    flex: 1;
-    min-width: 0;
+    grid-column: 2;
+    grid-row: 1 / 4;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 3rem;
+    gap: 2rem;
+    height: 100%;
   }
 
   /* Stats */
@@ -477,11 +524,27 @@ const workTimeline = {
     font-size: 0.65rem;
   }
 
+  .about-timelines-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+
+  .timeline-col {
+    width: 100%;
+  }
+
   /* Desktop */
   @media (min-width: 768px) {
     .about-main {
       flex-direction: row;
       gap: 4rem;
+      align-items: stretch;
     }
   }
 

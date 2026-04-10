@@ -40,7 +40,9 @@
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-    background-color: var(--surface);
+    background: rgba(12, 16, 22, 0.8);
+    color: var(--text);
+    backdrop-filter: blur(10px);
     padding: 1rem 1.5rem;
     border-radius: 1.5rem;
     border: 2px solid var(--border);

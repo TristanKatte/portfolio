@@ -33,17 +33,22 @@
     justify-content: center;
     align-items: center;
     height: 6rem;
-    max-width: 1500px;
+    background: rgba(12, 16, 22, 0.8);
+    backdrop-filter: blur(5px);
     margin: 0 auto;
-    margin-top: 1rem;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s ease;
     gap: 1rem;
     width: 100%;
-    padding: 1rem 2rem;
+    padding: 4rem 3rem;
   }
+
+  
 
   .container {
     max-width: 1500px;
     margin: 0 auto;
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;

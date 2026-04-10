@@ -176,6 +176,8 @@
     animation: shimmer 0.6s ease forwards;
   }
 
+
+
   @keyframes shimmer {
     0% {
       left: -100%;
@@ -191,7 +193,6 @@
     border-radius: 500px;
     transition: all 0.25s ease;
     pointer-events: none;
-    
   }
 
   .bubble.active {
@@ -227,9 +228,10 @@
       rgba(0, 204, 201, 0.05)
     );
     box-shadow: inset 0 2px 7px rgba(0, 255, 241, 0.1);
-      filter: blur(10px);
+    filter: blur(10px);
   }
 
+  
 
   /* Desktop — inline pill */
   @media (min-width: 768px) {

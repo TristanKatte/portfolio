@@ -2,7 +2,7 @@
 <script>
   import { onMount, onDestroy } from "svelte";
 
-  const HEXAGON_RADIUS = 50;
+  const HEXAGON_RADIUS = 180;
   const HEXAGON_MAX_SPEED = 0.05;
   const HEXAGON_SPACING = 10;
   const HEXAGON_LINE_WIDTH = 0.95;

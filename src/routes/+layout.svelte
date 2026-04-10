@@ -10,6 +10,7 @@
   import "open-props/style";
   import "open-props/normalize";
   import "open-props/buttons";
+    import HexagonCanvas from "../lib/components/molecules/HexagonCanvas.svelte";
 
   // View transitions
   onNavigate((navigation) => {
@@ -25,7 +26,7 @@
 </script>
 
 
-<CyberHexBackground />
+
 <div class="layout">
  
   
@@ -46,12 +47,12 @@
     width: 100%;
     max-width: 100vw;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     margin-inline: auto;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* background-color: var(--main-bg-color); */
+    background-color: var(--main-bg-color);
     overflow-x: hidden;
     z-index: 1;
   }
