@@ -76,4 +76,47 @@ p {
     font-style: normal;
 }
 
+/* Section gradient overlays */
+.section-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Hero — fades from bottom */
+#hero::before {
+  background: rgba(12, 16, 22, 0.8);
+}
+
+/* About — fades from left */
+/* #about::before {
+  background: rgba(12, 16, 22, 0.8);
+} */
+
+/* Skills — fades from top */
+#skills::before {
+ background: rgba(12, 16, 22, 0.8);
+}
+
+/* Projects — fades from right */
+#work::before {
+  background: linear-gradient(
+    to left,
+    rgba(7, 8, 14, 0.9) 0%,
+    rgba(7, 8, 14, 0.4) 50%,
+    transparent 100%
+  );
+}
+
+/* Contact — fades from bottom + slight tint */
+#contact::before {
+  background: linear-gradient(
+    to top,
+    rgba(4, 7, 11, 0.95) 0%,
+    rgba(4, 7, 11, 0.5) 40%,
+    transparent 100%
+  );
+}
 

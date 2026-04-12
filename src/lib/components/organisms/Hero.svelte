@@ -4,7 +4,6 @@
   import HeroStats from "$lib/components/molecules/HeroStats.svelte";
   import HeroButtons from "$lib/components/molecules/HeroButtons.svelte";
   import ImageGrid from "$lib/components/molecules/ImageGrid.svelte";
-  import HexagonCanvas from "../molecules/HexagonCanvas.svelte";
   import { onMount } from "svelte";
 
   const phrases = [
@@ -92,8 +91,8 @@
 
 <div class="boot-overlay" aria-hidden="true"></div>
 
-<section class="hero">
-  <HexagonCanvas />
+<section id="hero" class="hero">
+ 
   <div class="hero-fade" aria-hidden="true"></div>
 
   <div class="hero-content">
@@ -135,12 +134,11 @@
     padding: var(--size-7);
     scroll-snap-align: start;
     width: 100%;
-    color: var(--text);
-    background-color: var(--main-bg-color);
+    color: var(--text);    
     position: relative;
     overflow: hidden;
-    z-index: 5;
     gap: 2rem;
+     isolation: auto;
   }
 
   .hero-fade {
@@ -153,6 +151,7 @@
   );
   pointer-events: none;
   z-index: 1;
+  position: relative;
 }
 
   .hero-content {

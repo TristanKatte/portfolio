@@ -1,7 +1,10 @@
 <script>
   import AboutIntro from "../molecules/AboutIntro.svelte";
   import Timeline from "../molecules/Timeline.svelte";
- 
+  import ProfileImage from "../molecules/ProfileImage.svelte";
+  import FocusCard from "../molecules/FocusCard.svelte";
+  import AboutStats from "../molecules/AboutStats.svelte";
+  import HexagonCanvas from "../molecules/HexagonCanvas.svelte";
 
   export let profileImage = "/images/profielfoto-zw.avif";
 
@@ -80,10 +83,9 @@
   };
 </script>
 
-
 <section id="about" class="about-me">
+<!-- <HexagonCanvas /> -->
   <div class="about-content">
-    <!-- Header -->
     <div class="about-header">
       <span class="about-label">01 / Who I Am</span>
       <h2 class="about-heading">
@@ -92,58 +94,16 @@
       </h2>
     </div>
 
-    <!-- Main row: image-col left, content-col right -->
     <div class="about-main">
-      <!-- Left column: image + focus card -->
       <div class="about-left">
-        <div class="profile-image-corners">
-          <span class="corner corner-tr"></span>
-          <span class="corner corner-bl"></span>
-          <div class="profile-image-outer">
-            <div class="profile-image-wrap">
-              <img src={profileImage} alt="Tristan" class="profile-image" />
-              <div class="profile-fade"></div>
-              <div class="profile-hud">
-                <span class="hud-status">
-                  <span class="hud-dot"></span>STATUS: ONLINE
-                </span>
-                <span class="hud-clearance">CLEARANCE: LVL 3</span>
-                <span class="hud-id">ID: TRS-001 // FDND</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Focus areas card -->
-        <div class="focus-card">
-          <span class="focus-card-label">Focus Areas</span>
-          <ul class="focus-list">
-            {#each focusAreas as area}
-              <li class="focus-item">
-                <span class="focus-dot"></span>
-                {area}
-              </li>
-            {/each}
-          </ul>
-        </div>
+        <ProfileImage {profileImage} />
+        <FocusCard areas={focusAreas} />
       </div>
 
-      <!-- Right column: text + stats + timelines -->
       <div class="about-right">
-        <div class="profile-text">
-          <AboutIntro {introText} />
-        </div>
-
-        <div class="about-stats">
-          {#each stats as stat}
-            <div class="about-stat">
-              <span class="about-stat-value">{stat.value}</span>
-              <span class="about-stat-label">{stat.label}</span>
-            </div>
-          {/each}
-        </div>
+        <AboutIntro {introText} />
+        <AboutStats {stats} />
       </div>
-      <!-- Timelines in their own always-aligned row -->
     </div>
 
     <div class="about-timelines-row">
@@ -166,14 +126,13 @@
     min-height: 100dvh;
     position: relative;
     padding: 4rem 1rem;
-    background: var(--main-bg-color);
     color: var(--text);
     overflow: hidden;
   }
 
   .about-content {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
     position: relative;
     z-index: 1;
@@ -181,14 +140,8 @@
     display: flex;
     flex-direction: column;
     gap: 4rem;
-    background-color: rgba(5, 212, 212, 0.08);
-    backdrop-filter: blur(10px);
-    border-radius: 1rem;
-    box-shadow: 0 0 20px rgba(0, 255, 241, 0.2);
-    border: 2px solid rgba(0, 255, 241, 0.2);
   }
 
-  /* Header */
   .about-header {
     display: flex;
     flex-direction: column;
@@ -221,365 +174,46 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* Main two-column layout */
   .about-main {
     display: grid;
     grid-template-columns: 325px 1fr;
-    grid-template-rows: auto auto 1fr; /* row 1: top content, row 2: stats/focus, row 3: timelines */
-    gap: 1.5rem 4rem;
+    gap: 4rem;
     align-items: start;
   }
 
-  /* Left column */
   .about-left {
-    grid-column: 1;
-    grid-row: 1 / 4; /* spans all rows */
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    height: 100%;
   }
 
-  /* Focus card */
-  .focus-card {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(0, 206, 201, 0.2);
-    border-radius: 0.75rem;
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .focus-card-label {
-    font-family: "Azonix", monospace;
-    font-size: 0.65rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #00fff1;
-    opacity: 0.7;
-  }
-
-  .focus-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-
-  .focus-item {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    color: rgba(245, 245, 240, 0.75);
-    font-family: "Titillium Web", sans-serif;
-  }
-
-  .focus-dot {
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: #00fff1;
-    box-shadow: 0 0 6px #00fff1;
-    flex-shrink: 0;
-  }
-
-  /* Right column */
   .about-right {
-    grid-column: 2;
-    grid-row: 1 / 4;
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    height: 100%;
-  }
-
-  /* Stats */
-  .about-stats {
-    display: flex;
-    flex-direction: row;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: flex-start;
-    width: 100%;
-  }
-
-  .about-stat {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(0, 206, 201, 0.15);
-    border-radius: 1rem;
-    padding: 1rem 1.5rem;
-    text-align: center;
-    min-width: 100px;
-    transition: border-color 0.3s ease;
-  }
-
-  .about-stat:hover {
-    border-color: rgba(0, 206, 201, 0.4);
-  }
-
-  .about-stat-value {
-    font-family: "Azonix", sans-serif;
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 800;
-    color: #00fff1;
-    line-height: 1;
-    text-shadow: 0 0 12px rgba(0, 255, 241, 0.4);
-  }
-
-  .about-stat-label {
-    font-size: 0.7rem;
-    opacity: 0.5;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--text);
-  }
-
-  /* Image */
-  .profile-image-corners {
-    position: relative;
-    width: 325px;
-    height: 485px;
-    flex-shrink: 0;
-  }
-
-  .profile-image-corners::before {
-    content: "";
-    position: absolute;
-    top: -6px;
-    left: -6px;
-    width: 20px;
-    height: 20px;
-    border-top: 2px solid #00fff1;
-    border-left: 2px solid #00fff1;
-    box-shadow: -2px -2px 8px rgba(0, 255, 241, 0.4);
-    z-index: 10;
-  }
-
-  .profile-image-corners::after {
-    content: "";
-    position: absolute;
-    bottom: -6px;
-    right: -6px;
-    width: 20px;
-    height: 20px;
-    border-bottom: 2px solid #00fff1;
-    border-right: 2px solid #00fff1;
-    box-shadow: 2px 2px 8px rgba(0, 255, 241, 0.4);
-    z-index: 10;
-  }
-
-  .corner-tr {
-    position: absolute;
-    top: -6px;
-    right: -6px;
-    width: 20px;
-    height: 20px;
-    border-top: 2px solid #0984e3;
-    border-right: 2px solid #0984e3;
-    box-shadow: 2px -2px 8px rgba(9, 132, 227, 0.4);
-    z-index: 10;
-  }
-
-  .corner-bl {
-    position: absolute;
-    bottom: -6px;
-    left: -6px;
-    width: 20px;
-    height: 20px;
-    border-bottom: 2px solid #0984e3;
-    border-left: 2px solid #0984e3;
-    box-shadow: -2px 2px 8px rgba(9, 132, 227, 0.4);
-    z-index: 10;
-  }
-
-  .profile-image-outer {
-    width: 325px;
-    height: 485px;
-    position: relative;
-    animation: holo-shift 6s ease-in-out infinite;
-  }
-
-  .profile-image-wrap {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    z-index: 1;
-    border-radius: 0.5rem;
-  }
-
-  .profile-image-wrap::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(0, 255, 241, 0.08) 0%,
-      rgba(9, 132, 227, 0.12) 25%,
-      rgba(255, 0, 170, 0.06) 50%,
-      rgba(0, 255, 241, 0.1) 75%,
-      rgba(9, 132, 227, 0.08) 100%
-    );
-    background-size: 300% 300%;
-    animation: holo-gloss 4s ease-in-out infinite;
-    z-index: 2;
-    pointer-events: none;
-    mix-blend-mode: screen;
-  }
-
-  .profile-image-wrap::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      to bottom,
-      transparent 0px,
-      transparent 3px,
-      rgba(0, 204, 201, 0.03) 3px,
-      rgba(0, 204, 201, 0.03) 4px
-    );
-    z-index: 3;
-    pointer-events: none;
-  }
-
-  .profile-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .profile-fade {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 55%;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(12, 16, 22, 0.6) 50%,
-      rgba(12, 16, 22, 0.95) 100%
-    );
-    z-index: 4;
-    pointer-events: none;
-  }
-
-  .profile-hud {
-    position: absolute;
-    bottom: 1.25rem;
-    left: 1rem;
-    right: 1rem;
-    z-index: 5;
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-  }
-
-  .hud-status,
-  .hud-clearance,
-  .hud-id {
-    font-family: "Azonix", monospace;
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    display: block;
-  }
-
-  .hud-status {
-    color: #00fff1;
-    text-shadow: 0 0 8px rgba(0, 255, 241, 0.6);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .hud-dot {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #00fff1;
-    box-shadow: 0 0 6px #00fff1;
-    animation: dot-blink 1.5s ease-in-out infinite;
-    flex-shrink: 0;
-  }
-
-  .hud-clearance {
-    color: #0984e3;
-    text-shadow: 0 0 8px rgba(9, 132, 227, 0.5);
-  }
-
-  .hud-id {
-    color: rgba(245, 245, 240, 0.5);
-    font-size: 0.65rem;
+    max-width: 75ch;
   }
 
   .about-timelines-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-  width: 100%;
-  margin-top: 2rem;
-  padding: 0 1rem;
-}
-
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    width: 100%;
+  }
 
   .timeline-col {
     width: 100%;
   }
 
-  /* Desktop */
-  @media (min-width: 768px) {
+  @media (max-width: 768px) {
     .about-main {
-      flex-direction: row;
-      gap: 4rem;
-      align-items: stretch;
+      grid-template-columns: 1fr;
     }
-  }
 
-  @keyframes dot-blink {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.2;
-    }
-  }
-
-  @keyframes holo-gloss {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-  @keyframes holo-shift {
-    0%,
-    100% {
-      filter: drop-shadow(0 0 12px rgba(0, 206, 201, 0.5));
-    }
-    33% {
-      filter: drop-shadow(0 0 16px rgba(9, 132, 227, 0.6));
-    }
-    66% {
-      filter: drop-shadow(0 0 14px rgba(255, 0, 170, 0.4));
+    .about-timelines-row {
+      grid-template-columns: 1fr;
+      gap: 2rem;
     }
   }
 
@@ -591,57 +225,7 @@
 
     .about-heading {
       font-size: 2rem;
-      text-align: left;
       letter-spacing: 2px;
-    }
-
-    .about-main {
-      gap: 2rem;
-    }
-
-    .about-left {
-      width: 100%;
-    }
-
-    .about-right {
-      width: 100%;
-    }
-
-    .profile-text {
-      font-size: 0.9rem;
-      text-align: center;
-    }
-
-    .profile-image-wrap {
-      width: 100%;
-      height: 260px;
-    }
-
-    .profile-image-corners,
-    .profile-image-outer {
-      width: 100%;
-      height: 260px;
-    }
-
-    .focus-card {
-      padding: 1rem;
-    }
-
-    .about-stats {
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      width: 100%;
-    }
-
-    .about-stat {
-      padding: 0.75rem 1rem;
-      min-width: 180px;
-      gap: 0.5rem;
-    }
-
-    .about-stat-value {
-      font-size: 1.5rem;
     }
   }
 </style>

@@ -3,7 +3,7 @@
   import { onNavigate } from "$app/navigation";
   import Header from "../lib/components/organisms/Header.svelte";
   import Footer from "../lib/components/organisms/Footer.svelte";
-  import CyberHexBackground from "../lib/components/molecules/CyberHexBackground.svelte";
+ 
 
 
   // Design libs
@@ -26,13 +26,14 @@
 </script>
 
 
-
+<HexagonCanvas />
 <div class="layout">
  
   
   
 
   <Header />
+  
  
     <slot />
     <Transition />
@@ -52,14 +53,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: var(--main-bg-color);
+     background: rgba(15, 15, 15, 0.65);
     overflow-x: hidden;
-    z-index: 1;
   }
 
-  :global(body) {
-    position: relative;
-  }
 
   @media (min-width: 1440px) {
     .layout {
