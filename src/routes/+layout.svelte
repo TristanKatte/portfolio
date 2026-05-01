@@ -26,7 +26,6 @@
 </script>
 
 
-<HexagonCanvas />
 <div class="layout">
  
   
@@ -53,7 +52,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-     background: rgba(15, 15, 15, 0.65);
+     /* background: rgba(15, 15, 15, 0.65); */
     overflow-x: hidden;
   }
 

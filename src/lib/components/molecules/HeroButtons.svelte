@@ -16,6 +16,7 @@
     font-family: "Space Grotesk", sans-serif;
     margin-top: 2rem;
     width: 100%;
+    z-index: 3;
   }
 
   @media (min-width: 600px) {

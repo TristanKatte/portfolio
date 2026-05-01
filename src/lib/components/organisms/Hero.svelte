@@ -4,6 +4,7 @@
   import HeroStats from "$lib/components/molecules/HeroStats.svelte";
   import HeroButtons from "$lib/components/molecules/HeroButtons.svelte";
   import ImageGrid from "$lib/components/molecules/ImageGrid.svelte";
+  import GridBackground from "$lib/components/molecules/GridBackground.svelte";
   import { onMount } from "svelte";
 
   const phrases = [
@@ -92,7 +93,7 @@
 <div class="boot-overlay" aria-hidden="true"></div>
 
 <section id="hero" class="hero">
- 
+ <GridBackground gridColor="rgba(0, 204, 201, 0.75)" />
   <div class="hero-fade" aria-hidden="true"></div>
 
   <div class="hero-content">
@@ -138,20 +139,22 @@
     position: relative;
     overflow: hidden;
     gap: 2rem;
-     isolation: auto;
+    z-index: 0;
   }
 
   .hero-fade {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25%; /* only covers the bottom 25% */
+  /* background: linear-gradient(
     to bottom,
-    transparent 50%,
+    transparent 0%,
     var(--main-bg-color) 100%
-  );
+  ); */
   pointer-events: none;
-  z-index: 1;
-  position: relative;
+  z-index: 2;
 }
 
   .hero-content {
@@ -163,7 +166,7 @@
     max-width: 1500px;
     padding-top: var(--size-9);
     position: relative;
-    z-index: 1;
+    z-index: 3;
   }
 
   .hero-right {
@@ -189,6 +192,7 @@
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    z-index: 3;
   }
 
   .scroll-indicator {

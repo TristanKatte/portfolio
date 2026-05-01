@@ -3,32 +3,32 @@
   import SkillCategory from "../molecules/SkillCategory.svelte";
 
   const skills = {
-    Frontend: [
-      { name: "HTML",       image: "/images/html.svg"       },
-      { name: "CSS",        image: "/images/css.svg"        },
-      { name: "JavaScript", image: "/images/javascript.svg" },
-      { name: "Svelte",     image: "/images/svelte.svg"     },
-      { name: "Tailwind",   image: "/images/tailwind.svg"   },
-      { name: "Bootstrap",  image: "/images/bootstrap.svg"  },
-      { name: "GSAP",       image: "/images/greensock.svg"  },
-      { name: "Next.js",    image: "/images/next-js.svg"    },
-      { name: "React.js",   image: "/images/reactjs.svg"    },
-    ],
-    Backend: [
-      { name: "Express.js", image: "/images/express-js.svg" },
-      { name: "Node.js",    image: "/images/nodejs.svg"     },
-    ],
-    Design: [
-      { name: "Figma",               image: "/images/figma.svg"        },
-      { name: "Adobe Illustrator",   image: "/images/illustrator.svg"  },
-      { name: "Photoshop",           image: "/images/photoshop.svg"    },
-    ],
-    Tools: [
-      { name: "Git",     image: "/images/github.svg" },
-      { name: "VS Code", image: "/images/vscode.svg" },
-      { name: "NPM",     image: "/images/npm.svg"    },
-    ],
-  };
+  Frontend: [
+    { name: "HTML",       image: "/images/html.svg",       percentage: 95 },
+    { name: "CSS",        image: "/images/css.svg",        percentage: 90 },
+    { name: "JavaScript", image: "/images/javascript.svg", percentage: 80 },
+    { name: "Svelte",     image: "/images/svelte.svg",     percentage: 85 },
+    { name: "Tailwind",   image: "/images/tailwind.svg",   percentage: 75 },
+    { name: "Bootstrap",  image: "/images/bootstrap.svg",  percentage: 70 },
+    { name: "GSAP",       image: "/images/greensock.svg",  percentage: 65 },
+    { name: "Next.js",    image: "/images/next-js.svg",    percentage: 60 },
+    { name: "React.js",   image: "/images/reactjs.svg",    percentage: 60 },
+  ],
+  Backend: [
+    { name: "Express.js", image: "/images/express-js.svg", percentage: 55 },
+    { name: "Node.js",    image: "/images/nodejs.svg",     percentage: 55 },
+  ],
+  Design: [
+    { name: "Figma",             image: "/images/figma.svg",        percentage: 85 },
+    { name: "Adobe Illustrator", image: "/images/illustrator.svg",  percentage: 75 },
+    { name: "Photoshop",         image: "/images/photoshop.svg",    percentage: 70 },
+  ],
+  Tools: [
+    { name: "Git",     image: "/images/github.svg", percentage: 75 },
+    { name: "VS Code", image: "/images/vscode.svg", percentage: 90 },
+    { name: "NPM",     image: "/images/npm.svg",    percentage: 80 },
+  ],
+};
 
   onMount(async () => {
     const gsap = (await import("gsap")).default;

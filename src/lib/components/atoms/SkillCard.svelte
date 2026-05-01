@@ -1,5 +1,9 @@
 <script>
+  import { onMount } from "svelte";
+
   export let skill;
+
+  let cardEl;
 
   function handleMouseMove(e) {
     const card = e.currentTarget;
@@ -19,6 +23,29 @@
     card.style.setProperty('--glowX', '50%');
     card.style.setProperty('--glowY', '50%');
   }
+
+  onMount(async () => {
+    const gsap = (await import("gsap")).default;
+    const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const bar = cardEl.querySelector(".skill-bar-fill");
+    if (!bar) return;
+
+    gsap.fromTo(bar,
+      { width: "0%" },
+      {
+        width: `${skill.percentage}%`,
+        duration: 1.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: cardEl,
+          start: "top 85%",
+          once: true,
+        },
+      }
+    );
+  });
 </script>
 
 <div
@@ -26,12 +53,18 @@
   role="button"
   tabindex="0"
   aria-label="Skill: {skill.name}"
+  bind:this={cardEl}
   on:mousemove={handleMouseMove}
   on:mouseleave={handleMouseLeave}
 >
   <div class="card-inner">
     <img src={skill.image} alt={skill.name} />
     <p>{skill.name}</p>
+
+    <div class="skill-bar-wrap">
+      <div class="skill-bar-fill" data-percentage={skill.percentage}></div>
+    </div>
+    <span class="skill-percentage">{skill.percentage}%</span>
   </div>
 </div>
 
@@ -72,6 +105,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
     z-index: 1;
     overflow: hidden;
     transition: transform 0.3s ease;
@@ -97,9 +131,10 @@
   }
 
   .card-inner img {
-    max-width: 64px;
-    margin-bottom: 0.75rem;
+    max-width: 48px;
     filter: drop-shadow(0 0 6px #00fff7);
+    position: relative;
+    z-index: 1;
   }
 
   .card-inner p {
@@ -108,6 +143,37 @@
     font-weight: 500;
     letter-spacing: 2px;
     text-shadow: 0 0 6px rgba(0, 255, 247, 0.3);
+    position: relative;
+    z-index: 1;
+    margin: 0;
+  }
+
+  /* Bar */
+  .skill-bar-wrap {
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+
+  .skill-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #00ccc9, #0984e3);
+    border-radius: 999px;
+    box-shadow: 0 0 6px #00ccc9;
+  }
+
+  .skill-percentage {
+    font-family: "Azonix", monospace;
+    font-size: 0.65rem;
+    color: rgba(0, 255, 247, 0.5);
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1;
   }
 
   @keyframes glowing {
