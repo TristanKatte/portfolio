@@ -202,9 +202,13 @@
   });
 
   onDestroy(() => {
-    cancelAnimationFrame(animId);
-    window.removeEventListener('resize', resize);
-    if (canvas) canvas.removeEventListener('click', onClick);
+    if (typeof cancelAnimationFrame !== "undefined")
+      cancelAnimationFrame(animId);
+    if (typeof window !== "undefined")
+      window.removeEventListener('resize', resize);
+    if (interactive && canvas)      
+    canvas.removeEventListener('click', onClick);
+
   });
 </script>
 
