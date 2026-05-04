@@ -46,13 +46,14 @@
         align-items: center;
         gap: 0.75rem;
         margin-top: 3rem;
-        font-size: 1rem;
+        font-size: .75rem;
         color: var(--brand, #64ffda);
         cursor: pointer;
         background: none;
         border: none;
         padding: 0;
         transition: opacity 0.5s ease, transform 0.5s ease;
+        z-index: 10;
     }
 
     .scroll-indicator.hide {
@@ -64,12 +65,12 @@
     .scroll-text {
         font-family: "Nirequa", sans-serif;
         font-weight: 500;
-        font-size: 1.95rem;
+        font-size: 1.75rem;
         letter-spacing: 1px;
     }
 
     .scroll-arrow {
-        font-size: 2.15rem;
+        font-size: 1.65rem;
         animation: bounce 1.5s infinite;
         transform-origin: center;
     }

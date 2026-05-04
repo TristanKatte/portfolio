@@ -147,12 +147,12 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 25%; /* only covers the bottom 25% */
-  /* background: linear-gradient(
+  height: 40%; /* only covers the bottom 25% */
+  background: linear-gradient(
     to bottom,
     transparent 0%,
     var(--main-bg-color) 100%
-  ); */
+  );
   pointer-events: none;
   z-index: 2;
 }

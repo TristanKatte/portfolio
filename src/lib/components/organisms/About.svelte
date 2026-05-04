@@ -127,6 +127,7 @@
     position: relative;
     padding: 4rem 1rem;
     color: var(--text);
+    background-color: #0E151B;
     overflow: hidden;
   }
 

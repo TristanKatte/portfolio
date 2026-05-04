@@ -1,145 +1,223 @@
 <!-- GridBackground.svelte -->
 <script>
-  // Grid configuration — adjust these to customize
-  export let gridSize = 40;        // size of each grid cell in px
-  export let gridColor = "rgba(0, 204, 201, 0.95)"; // grid line color
-         // overall opacity of the grid
+  import { onMount, onDestroy } from 'svelte';
 
-  // Beam configuration — add/remove objects to control pulses
-export let beamsH = [
-  { top: "120px", width: "16rem", duration: "7s",  delay: "0s",  opacity: 1, blur: "25px", color: "#00ccc9" },
-  { top: "320px", width: "24rem", duration: "10s", delay: "2s",  opacity: 0.8, blur: "15px", color: "#00ccc9" },
-  { top: "60%",   width: "20rem", duration: "13s", delay: "4s",  opacity: 0.9, blur: "20px", color: "#0984e3" },
-];
+  // Config — adjust these to customize
+  export let gridSize       = 240;
+  export let particleCount  = 150;
+  export let trailLength    = 100;
+  export let speedMin       = 0.5;
+  export let speedMax       = 5;
+  export let rippleDuration = 4000;
+  export let rippleMaxRadius = 400;
+  export let interactive    = true; // set false to disable click ripples
 
-export let beamsV = [
-  { left: "80px", height: "16rem", duration: "15s", delay: "0.5s", opacity: 1,   blur: "20px", color: "#00ccc9" },
-  { left: "40%",  height: "20rem", duration: "12s", delay: "3s",   opacity: 0.9, blur: "15px", color: "#0984e3" },
-  { left: "70%",  height: "14rem", duration: "9s",  delay: "6s",   opacity: 0.8, blur: "10px", color: "#00fff1" },
-];
+  const GRID_COLOR      = '#00CCC9';
+  const BG_COLOR        = '#0E151B';
+  const PARTICLE_COLORS = ['#00fff7', '#00c2cb', '#94a1b2'];
+  const RIPPLE_COLOR    = '#00fff7';
+  const CHAR_COLOR      = '#00c2cb';
+  const CHARS           = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;':,./<>?";
+
+  let canvas;
+  let animId;
+  let ctx;
+  let particles = [];
+  let ripples   = [];
+
+  const occupiedLines = { horizontal: new Set(), vertical: new Set() };
+
+  function resize() {
+    if (!canvas) return;
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    occupiedLines.horizontal.clear();
+    occupiedLines.vertical.clear();
+    particles.forEach(p => p.reset());
+  }
+
+  function drawGrid() {
+    ctx.fillStyle = BG_COLOR;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    gradient.addColorStop(0, 'rgba(0, 204, 201, 0.2)');
+    gradient.addColorStop(1, 'rgba(0, 204, 201, 0.04)');
+    ctx.strokeStyle = gradient;
+    ctx.lineWidth = 0.5;
+
+    for (let y = 0; y < canvas.height; y += gridSize) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(canvas.width, y);
+      ctx.stroke();
+    }
+
+    for (let x = 0; x < canvas.width; x += gridSize) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, canvas.height);
+      ctx.stroke();
+    }
+  }
+
+  class Particle {
+    constructor() {
+      this.color = PARTICLE_COLORS[Math.floor(Math.random() * PARTICLE_COLORS.length)];
+      this.reset();
+    }
+
+    findAvailableLine() {
+      for (let i = 0; i < 100; i++) {
+        if (Math.random() > 0.5) {
+          const y = Math.round(Math.random() * canvas.height / gridSize) * gridSize;
+          if (!occupiedLines.horizontal.has(y)) {
+            this.direction = 'horizontal';
+            this.x = 0;
+            this.y = y;
+            occupiedLines.horizontal.add(y);
+            return true;
+          }
+        } else {
+          const x = Math.round(Math.random() * canvas.width / gridSize) * gridSize;
+          if (!occupiedLines.vertical.has(x)) {
+            this.direction = 'vertical';
+            this.x = x;
+            this.y = 0;
+            occupiedLines.vertical.add(x);
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    reset() {
+      if (this.findAvailableLine()) {
+        this.trail  = [];
+        this.active = true;
+        this.speed  = Math.random() * (speedMax - speedMin) + speedMin;
+      } else {
+        this.active = false;
+        this.trail  = [];
+      }
+    }
+
+    update() {
+      this.trail.push({ x: this.x, y: this.y });
+      if (this.trail.length > trailLength) this.trail.shift();
+
+      if (this.active) {
+        if (this.direction === 'horizontal') {
+          this.x += this.speed;
+          if (this.x > canvas.width) {
+            this.active = false;
+            occupiedLines.horizontal.delete(this.y);
+          }
+        } else {
+          this.y += this.speed;
+          if (this.y > canvas.height) {
+            this.active = false;
+            occupiedLines.vertical.delete(this.x);
+          }
+        }
+      } else {
+        const offScreen = this.trail.every(pt =>
+          (this.direction === 'horizontal' && pt.x > canvas.width) ||
+          (this.direction === 'vertical'   && pt.y > canvas.height)
+        );
+        if (offScreen) this.reset();
+      }
+    }
+
+    draw() {
+      for (let i = 0; i < this.trail.length; i++) {
+        const pt    = this.trail[i];
+        const alpha = i / this.trail.length;
+        ctx.fillStyle = this.color + Math.round(alpha * 255).toString(16).padStart(2, '0');
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, 0.8, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+  }
+
+  class Ripple {
+    constructor(x, y) {
+      this.x         = x;
+      this.y         = y;
+      this.radius    = 0;
+      this.startTime = Date.now();
+    }
+
+    update() {
+      const elapsed = Date.now() - this.startTime;
+      this.radius   = (elapsed / rippleDuration) * rippleMaxRadius;
+    }
+
+    draw() {
+      const alpha = 1 - this.radius / rippleMaxRadius;
+      ctx.strokeStyle = `rgba(0, 255, 247, ${alpha})`;
+      ctx.lineWidth   = 1;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.stroke();
+
+      if (Math.random() < 0.3) {
+        ctx.fillStyle = `rgba(0, 194, 203, ${alpha})`;
+        ctx.font      = "14px monospace";
+        const char    = CHARS[Math.floor(Math.random() * CHARS.length)];
+        ctx.fillText(
+          char,
+          this.x + (Math.random() - 0.5) * this.radius * 2,
+          this.y + (Math.random() - 0.5) * this.radius * 2
+        );
+      }
+    }
+
+    isDone() {
+      return this.radius >= rippleMaxRadius;
+    }
+  }
+
+  function loop() {
+    drawGrid();
+    particles.forEach(p => { p.update(); p.draw(); });
+    ripples = ripples.filter(r => !r.isDone());
+    ripples.forEach(r => { r.update(); r.draw(); });
+    animId = requestAnimationFrame(loop);
+  }
+
+  function onClick(e) {
+    ripples.push(new Ripple(e.clientX, e.clientY));
+  }
+
+  onMount(() => {
+    ctx = canvas.getContext('2d');
+    resize();
+    particles = Array.from({ length: particleCount }, () => new Particle());
+    loop();
+    window.addEventListener('resize', resize);
+    if (interactive) canvas.addEventListener('click', onClick);
+  });
+
+  onDestroy(() => {
+    cancelAnimationFrame(animId);
+    window.removeEventListener('resize', resize);
+    if (canvas) canvas.removeEventListener('click', onClick);
+  });
 </script>
 
-<div class="grid-bg">
-  <div class="grid-lines">
-    <div
-      class="grid-pattern"
-      style="
-        background-image:
-          linear-gradient(to right, {gridColor} 1px, transparent 1px),
-          linear-gradient(to bottom, {gridColor} 1px, transparent 1px);
-        background-size: {gridSize}px {gridSize}px;
-      "
-    ></div>
-    <div
-      class="grid-accent"
-      style="
-        background-image:
-          linear-gradient(to right, rgba(0, 204, 201, 0.5) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(0, 204, 201, 0.5) 1px, transparent 1px);
-        background-size: {gridSize * 4}px {gridSize * 4}px;
-      "
-    ></div>
-  </div>
-
-  <div class="beams">
-    {#each beamsH as beam}
-      <div
-        class="beam beam-h"
-        style="
-          top: {beam.top};
-          width: {beam.width};
-          animation-duration: {beam.duration};
-          animation-delay: {beam.delay};
-          --beam-opacity: {beam.opacity};
-          --beam-color: {beam.color};
-          --beam-blur: {beam.blur};
-        "
-      ></div>
-    {/each}
-
-    {#each beamsV as beam}
-      <div
-        class="beam beam-v"
-        style="
-          left: {beam.left};
-          height: {beam.height};
-          animation-duration: {beam.duration};
-          animation-delay: {beam.delay};
-          --beam-opacity: {beam.opacity};
-          --beam-color: {beam.color};
-          --beam-blur: {beam.blur};
-        "
-      ></div>
-    {/each}
-  </div>
-</div>
+<canvas bind:this={canvas}></canvas>
 
 <style>
-.grid-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.grid-lines {
-  position: absolute;
-  inset: 0;
-  /* no mix-blend-mode here */
-}
-
-.grid-pattern,
-.grid-accent {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
- 
-}
-
-.beams {
-  position: absolute;
-  inset: 0;
-  mix-blend-mode: screen; /* ← isolated to beams only */
-}
-
-.beam {
-  position: absolute;
-  opacity: 0;
-  will-change: transform, opacity;
-  /* no mix-blend-mode here — inherited from .beams */
-}
-
-.beam-h {
-  height: 2px;
-  left: 0;
-  background: linear-gradient(to right, transparent, var(--beam-color), transparent);
-  box-shadow: 0 0 var(--beam-blur) 6px var(--beam-color);
-  animation: beam-h linear infinite;
-}
-
-.beam-v {
-  width: 2px;
-  top: -100px;
-  background: linear-gradient(to bottom, transparent, var(--beam-color), transparent);
-  box-shadow: 0 0 var(--beam-blur) 6px var(--beam-color);
-  animation: beam-v linear infinite;
-}
-
-@keyframes beam-h {
-  0%   { transform: translateX(-100%); opacity: 0; }
-  10%  { opacity: var(--beam-opacity); }
-  90%  { opacity: var(--beam-opacity); }
-  100% { transform: translateX(100vw); opacity: 0; }
-}
-
-@keyframes beam-v {
-  0%   { transform: translateY(-100%); opacity: 0; }
-  10%  { opacity: var(--beam-opacity); }
-  90%  { opacity: var(--beam-opacity); }
-  100% { transform: translateY(100vh); opacity: 0; }
-}
+  canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto; /* needs to be auto for click ripples */
+    z-index: 0;
+    display: block;
+  }
 </style>
