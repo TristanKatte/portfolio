@@ -6,7 +6,7 @@
   import AboutStats from "../molecules/AboutStats.svelte";
   import HexagonCanvas from "../molecules/HexagonCanvas.svelte";
 
-  export let profileImage = "/images/profielfoto-zw.avif";
+  
 
   const introText = [
     "I'm a recently graduated frontend developer with a strong foundation in both design and development. I focus on building accessible, performant, and visually engaging web experiences that feel intuitive and polished. With a background in web design, I have a keen eye for aesthetics and user experience, which I combine with my technical skills to create websites that not only look great but also function seamlessly. I'm passionate about pushing the boundaries of what's possible on the web and am always eager to learn new technologies and techniques.",
@@ -84,7 +84,7 @@
 </script>
 
 <section id="about" class="about-me">
-<!-- <HexagonCanvas /> -->
+  <!-- <HexagonCanvas /> -->
   <div class="about-content">
     <div class="about-header">
       <span class="about-label">01 / Who I Am</span>
@@ -96,7 +96,7 @@
 
     <div class="about-main">
       <div class="about-left">
-        <ProfileImage {profileImage} />
+        <div class="profile-placeholder"></div>
         <FocusCard areas={focusAreas} />
       </div>
 
@@ -127,8 +127,9 @@
     position: relative;
     padding: 4rem 1rem;
     color: var(--text);
-    background-color: #0E151B;
+    /* background-color: var(--main-bg-color); */
     overflow: hidden;
+    z-index: 0;
   }
 
   .about-content {
@@ -187,6 +188,13 @@
     flex-direction: column;
     gap: 1.5rem;
   }
+
+  .profile-placeholder {
+  width: 325px;
+  height: 485px;
+  flex-shrink: 0;
+  border:#00fff1 1px solid;
+}
 
   .about-right {
     display: flex;

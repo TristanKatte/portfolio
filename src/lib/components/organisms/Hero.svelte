@@ -40,10 +40,16 @@
   ];
 
   const images = {
-    1: "/images/tech-image-1.jpg",
-    2: "/images/tech-image-2.jpg",
-    3: "/images/tech-image-3.jpg",
-  };
+  1: "/images/tech-image-1.jpg",
+  2: "/images/tech-image-2.jpg",
+  3: "/images/tech-image-3.jpg",
+  4: "/images/tech-image-4.jpg",
+  5: "/images/tech-image-5.jpg",
+  6: "/images/tech-image-6.jpg",
+  7: "/images/tech-image-7.jpg",
+  8: "/images/tech-image-8.jpg",
+  9: "/images/tech-image-9.jpg",
+};
 
   onMount(async () => {
     const gsap = (await import("gsap")).default;
@@ -100,7 +106,7 @@
     <HeroText {phrases} />
 
     <div class="hero-right">
-      <ImageGrid {columns} {images} />
+      <ImageGrid {images} profileImage="/images/profielfoto-zw.avif" />
     </div>
   </div>
 
