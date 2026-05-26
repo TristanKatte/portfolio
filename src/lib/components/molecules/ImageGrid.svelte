@@ -1,8 +1,11 @@
 <script>
-  import { onMount } from "svelte";
+  import { onMount, onDestroy } from "svelte";
 
   export let images = {};
   export let profileImage = "/images/profielfoto-zw.avif";
+
+  let wrapEl;
+  let gridEl;
 
   const cells = [
     { img: images[1], col: 1, row: 1 },
@@ -16,12 +19,10 @@
     { img: images[9], col: 3, row: 3 },
   ];
 
-  let gridEl;
-  let wrapEl;
-  let isFixed = false;
-  let isDone = false;
-
   onMount(async () => {
+    // Move the grid to body so it escapes all stacking contexts
+    document.body.appendChild(wrapEl);
+
     const gsap = (await import("gsap")).default;
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
     gsap.registerPlugin(ScrollTrigger);
@@ -29,9 +30,19 @@
     const cellEls = gridEl.querySelectorAll(".grid-cell:not(.center)");
     const centerCell = gridEl.querySelector(".grid-cell.center");
     const profileReveal = gridEl.querySelector(".profile-reveal");
-
-    // Get the about section's profile placeholder position
     const placeholder = document.querySelector(".profile-placeholder");
+
+    // Get initial hero position
+    const heroRight = document.querySelector(".hero-right");
+    const heroRect = heroRight?.getBoundingClientRect();
+
+    // Set initial position matching hero-right
+    gsap.set(wrapEl, {
+      position: "fixed",
+      top: heroRect?.top ?? "10vh",
+      left: heroRect?.left ?? "60vw",
+      width: heroRect?.width ?? "35rem",
+    });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -39,62 +50,15 @@
         start: "top bottom",
         end: "top top",
         scrub: 1.5,
-        onEnter: () => {
-          // Switch to fixed so it can travel across sections
-          const rect = wrapEl.getBoundingClientRect();
-          gsap.set(wrapEl, {
-            position: "fixed",
-            top: rect.top,
-            left: rect.left,
-            width: rect.width,
-            height: rect.height,
-            margin: 0,
-          });
-          isFixed = true;
-        },
-        onLeave: () => {
-          // Snap into the about section placeholder
-          if (!placeholder) return;
-          const rect = placeholder.getBoundingClientRect();
-          gsap.set(wrapEl, {
-            position: "absolute",
-            top: placeholder.offsetTop,
-            left: placeholder.offsetLeft,
-            width: "325px",
-            height: "485px",
-          });
-          isDone = true;
-        },
-        onEnterBack: () => {
-          // Re-enable fixed when scrolling back up
-          const rect = wrapEl.getBoundingClientRect();
-          gsap.set(wrapEl, {
-            position: "fixed",
-            top: rect.top,
-            left: rect.left,
-          });
-          isDone = false;
-          isFixed = true;
-        },
-        onLeaveBack: () => {
-          // Back in hero — restore relative positioning
-          gsap.set(wrapEl, {
-            position: "relative",
-            top: "auto",
-            left: "auto",
-            clearProps: "width,height,margin",
-          });
-          isFixed = false;
-        },
       }
     });
 
-    // 1. Slide from hero right to about left
+    // 1. Slide to placeholder position
     tl.to(wrapEl, {
       x: () => {
         const target = placeholder?.getBoundingClientRect();
         const current = wrapEl.getBoundingClientRect();
-        return target ? target.left - current.left : -window.innerWidth * 0.5;
+        return target ? target.left - current.left : 0;
       },
       y: () => {
         const target = placeholder?.getBoundingClientRect();
@@ -119,7 +83,7 @@
       }, 0.2);
     });
 
-    // 3. Grid resizes to profile dimensions
+    // 3. Resize to profile dimensions
     tl.to(gridEl, {
       width: "325px",
       height: "485px",
@@ -127,12 +91,19 @@
       ease: "power2.inOut",
     }, 0.5);
 
-    // 4. Profile image fades in
+    // 4. Profile fades in
     tl.fromTo(profileReveal,
       { opacity: 0, scale: 0.95 },
       { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" },
       0.7
     );
+  });
+
+  onDestroy(() => {
+    // Clean up — move back or remove
+    if (wrapEl && wrapEl.parentNode === document.body) {
+      document.body.removeChild(wrapEl);
+    }
   });
 </script>
 
@@ -156,9 +127,10 @@
 
 <style>
   .grid-wrap {
-    position: relative;
+    position: fixed;
+    z-index: 9999;
     will-change: transform;
-    z-index: 50;
+    pointer-events: none;
   }
 
   .image-grid {
@@ -195,7 +167,6 @@
     will-change: transform, opacity;
     border-radius: 0.5rem;
     overflow: hidden;
-    pointer-events: none;
     z-index: 2;
   }
 

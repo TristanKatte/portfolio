@@ -127,10 +127,16 @@
     position: relative;
     padding: 4rem 1rem;
     color: var(--text);
-    /* background-color: var(--main-bg-color); */
-    overflow: hidden;
-    z-index: 0;
   }
+
+  .about-me::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--main-bg-color);
+  z-index: -1; /* behind everything in this section */
+  pointer-events: none;
+}
 
   .about-content {
     width: 100%;
@@ -142,6 +148,7 @@
     display: flex;
     flex-direction: column;
     gap: 4rem;
+    overflow: clip;
   }
 
   .about-header {
