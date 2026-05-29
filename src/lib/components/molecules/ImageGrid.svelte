@@ -58,7 +58,8 @@ onMount(async () => {
 
   const DUR = 1;
 
-  // Capture positions once when animation starts
+// Capture positions once when animation starts
+
 let startTop, startLeft, startWidth, endTop, endLeft;
 
 function capturePositions() {
