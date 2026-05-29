@@ -1,10 +1,8 @@
 <script>
   import AboutIntro from "../molecules/AboutIntro.svelte";
   import Timeline from "../molecules/Timeline.svelte";
-  import ProfileImage from "../molecules/ProfileImage.svelte";
   import FocusCard from "../molecules/FocusCard.svelte";
   import AboutStats from "../molecules/AboutStats.svelte";
-  import HexagonCanvas from "../molecules/HexagonCanvas.svelte";
 
   
 
@@ -84,7 +82,7 @@
 </script>
 
 <section id="about" class="about-me">
-  <!-- <HexagonCanvas /> -->
+
   <div class="about-content">
     <div class="about-header">
       <span class="about-label">01 / Who I Am</span>
@@ -200,7 +198,9 @@
   width: 325px;
   height: 485px;
   flex-shrink: 0;
-  border:#00fff1 1px solid;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 206, 201, 0.2);
+  border-radius: 0.5rem;
 }
 
   .about-right {
