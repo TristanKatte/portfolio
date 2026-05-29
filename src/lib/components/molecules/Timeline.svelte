@@ -12,78 +12,22 @@
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
     gsap.registerPlugin(ScrollTrigger);
 
-    const nodes = gsap.utils.toArray(
-      timelineEl.querySelectorAll(".timeline-node"),
-    );
-    const cards = gsap.utils.toArray(
-      timelineEl.querySelectorAll(".timeline-content"),
-    );
-    const progressLine = timelineEl.querySelector(".timeline-progress");
-
-    // Progress line
-    gsap.fromTo(
-      progressLine,
-      { scaleY: 0 },
-      {
-        scaleY: 1,
-        transformOrigin: "top",
-        scrollTrigger: {
-          trigger: timelineEl,
-          start: "top center",
-          end: "bottom center",
-          scrub: 0.5,
-        },
-      },
+    const itemEls = gsap.utils.toArray(
+      timelineEl.querySelectorAll(".timeline-item"),
     );
 
-    // Nodes and cards
-    nodes.forEach((node, i) => {
-      const color = node.style.getPropertyValue("--color");
-
-      ScrollTrigger.create({
-        trigger: node,
-        start: "top center",
-        onEnter: () => {
-          gsap.to(node, {
-            scale: 1.2,
-            opacity: 1,
-            boxShadow: `0 0 15px ${color}, 0 0 25px ${color}`,
-            duration: 0.5,
-          });
-          gsap.to(cards[i], {
-            boxShadow: `0 0 20px ${color}, 0 0 40px ${color}`,
-            duration: 0.5,
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(node, {
-            scale: 1,
-            opacity: 1,
-            boxShadow: "none",
-            duration: 0.3,
-          });
-          gsap.to(cards[i], { boxShadow: "none", duration: 0.3 });
-        },
-      });
-
+    itemEls.forEach((el) => {
       gsap.fromTo(
-        cards[i],
-        {
-          autoAlpha: 0,
-          x: -40,
-          y: 0,
-        },
+        el,
+        { autoAlpha: 0, y: 16 },
         {
           autoAlpha: 1,
-          x: 0,
           y: 0,
-          duration: 1,
+          duration: 0.5,
           ease: "power2.out",
           scrollTrigger: {
-            trigger: cards[i],
-            start: "top 90%",
-            end: "bottom 60%",
-            scrub: 0.5,
+            trigger: el,
+            start: "top 88%",
           },
         },
       );
@@ -92,82 +36,26 @@
 </script>
 
 <section aria-labelledby={title} class="timeline-section">
-  <header>
-    <h2 id={title} class="timeline-heading" style="color: {items[0].color}">
-      {title}
-    </h2>
-  </header>
-
+  <h2 id={title} class="timeline-heading">{title}</h2>
   <div class="timeline" bind:this={timelineEl}>
-    <div class="timeline-line"></div>
-    <div class="timeline-progress" style="--color: {items[0].color}"></div>
-
-    {#each items as item, i}
-      <TimelineItem {item} {i} />
+    {#each items as item}
+      <TimelineItem {item} />
     {/each}
   </div>
 </section>
 
 <style>
   .timeline-heading {
-    font-size: 2rem;
-    margin: 3rem 0 2rem;
-    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #00fff1;
+    font-family: "Azonix", monospace;
+    margin: 0 0 0.5rem 0;
   }
 
   .timeline {
-    position: relative;
-    margin-bottom: 6rem;
-    font-weight: 100;
-    z-index: 1;
-    margin: 0 auto;
-    max-width: 800px;
     width: 100%;
-  }
-
-  .timeline-line {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateX(0);
-    width: 4px;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    z-index: 1;
-  }
-
-  .timeline-progress {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateX(0) scaleY(0);
-    width: 4px;
-    height: 100%;
-    background: var(--color);
-    box-shadow:
-      0 0 10px var(--color),
-      0 0 20px var(--color),
-      0 0 30px var(--color);
-    transform-origin: top;
-    z-index: 2;
-  }
-
-  .timeline-heading {
-    font-size: 2rem;
-    margin: 3rem 0 2rem;
-    text-align: left;
-    color: var(--highlight);
-    font-family: "Space Grotesk", sans-serif;
-    letter-spacing: 3px;
-    font-weight: 700;
-    font-size: 3rem;
-  }
-
-  @media (max-width: 768px) {
-    .timeline-line,
-    .timeline-progress {
-      left: 20px;
-      transform: translateX(0);
-    }
   }
 </style>

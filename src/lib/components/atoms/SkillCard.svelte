@@ -72,7 +72,6 @@
   .skill-card {
     position: relative;
     width: 100%;
-    max-width: 350px;
     border-radius: 1rem;
     padding: 2px;
     perspective: 1000px;
@@ -182,9 +181,4 @@
     100% { background-position: 0% 50%;   }
   }
 
-  @media (min-width: 600px) {
-    .skill-card {
-      flex: 1 1 150px;
-    }
-  }
 </style>

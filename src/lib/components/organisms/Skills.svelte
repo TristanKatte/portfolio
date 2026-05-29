@@ -3,77 +3,68 @@
   import SkillCategory from "../molecules/SkillCategory.svelte";
 
   const skills = {
-  Frontend: [
-    { name: "HTML",       image: "/images/html.svg",       percentage: 95 },
-    { name: "CSS",        image: "/images/css.svg",        percentage: 90 },
-    { name: "JavaScript", image: "/images/javascript.svg", percentage: 80 },
-    { name: "Svelte",     image: "/images/svelte.svg",     percentage: 85 },
-    { name: "Tailwind",   image: "/images/tailwind.svg",   percentage: 75 },
-    { name: "Bootstrap",  image: "/images/bootstrap.svg",  percentage: 70 },
-    { name: "GSAP",       image: "/images/greensock.svg",  percentage: 65 },
-    { name: "Next.js",    image: "/images/next-js.svg",    percentage: 60 },
-    { name: "React.js",   image: "/images/reactjs.svg",    percentage: 60 },
-  ],
-  Backend: [
-    { name: "Express.js", image: "/images/express-js.svg", percentage: 55 },
-    { name: "Node.js",    image: "/images/nodejs.svg",     percentage: 55 },
-  ],
-  Design: [
-    { name: "Figma",             image: "/images/figma.svg",        percentage: 85 },
-    { name: "Adobe Illustrator", image: "/images/illustrator.svg",  percentage: 75 },
-    { name: "Photoshop",         image: "/images/photoshop.svg",    percentage: 70 },
-  ],
-  Tools: [
-    { name: "Git",     image: "/images/github.svg", percentage: 75 },
-    { name: "VS Code", image: "/images/vscode.svg", percentage: 90 },
-    { name: "NPM",     image: "/images/npm.svg",    percentage: 80 },
-  ],
-};
+    Frontend: [
+      { name: "HTML",       image: "/images/html.svg",       percentage: 95 },
+      { name: "CSS",        image: "/images/css.svg",        percentage: 90 },
+      { name: "JavaScript", image: "/images/javascript.svg", percentage: 80 },
+      { name: "Svelte",     image: "/images/svelte.svg",     percentage: 85 },
+      { name: "Tailwind",   image: "/images/tailwind.svg",   percentage: 75 },
+      { name: "Bootstrap",  image: "/images/bootstrap.svg",  percentage: 70 },
+      { name: "GSAP",       image: "/images/greensock.svg",  percentage: 65 },
+      { name: "Next.js",    image: "/images/next-js.svg",    percentage: 60 },
+      { name: "React.js",   image: "/images/reactjs.svg",    percentage: 60 },
+    ],
+    Backend: [
+      { name: "Express.js", image: "/images/express-js.svg", percentage: 55 },
+      { name: "Node.js",    image: "/images/nodejs.svg",     percentage: 55 },
+    ],
+    Design: [
+      { name: "Figma",             image: "/images/figma.svg",        percentage: 85 },
+      { name: "Adobe Illustrator", image: "/images/illustrator.svg",  percentage: 75 },
+      { name: "Photoshop",         image: "/images/photoshop.svg",    percentage: 70 },
+    ],
+    Tools: [
+      { name: "Git",     image: "/images/github.svg", percentage: 75 },
+      { name: "VS Code", image: "/images/vscode.svg", percentage: 90 },
+      { name: "NPM",     image: "/images/npm.svg",    percentage: 80 },
+    ],
+  };
 
   onMount(async () => {
     const gsap = (await import("gsap")).default;
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.utils.toArray(".category-block").forEach((block, i) => {
-      const fromX = i % 2 === 0 ? -100 : 100;
-
+    gsap.utils.toArray(".category-block").forEach((block) => {
       gsap.from(block, {
         scrollTrigger: {
           trigger: block,
-          start: "top 80%",
+          start: "top 85%",
         },
         opacity: 0,
-        x: fromX,
-        duration: 1,
-        ease: "power3.out",
-        onComplete: () => {
-          gsap.from(block.querySelectorAll(".skill-card"), {
-            opacity: 0,
-            y: 30,
-            stagger: 0.15,
-            duration: 0.8,
-            ease: "power2.out",
-          });
-        },
+        y: 24,
+        duration: 0.6,
+        ease: "power2.out",
       });
     });
   });
 </script>
 
 <section id="skills" class="skills-section">
-  <div class="skills-header">
-    <span class="skills-label">02 / What I Know</span>
-    <h2 class="skills-heading">
-      What I bring to<br />
-      <span class="skills-heading-accent">the table.</span>
-    </h2>
-  </div>
-
   <div class="skills-content">
-    {#each Object.entries(skills) as [category, items]}
-      <SkillCategory {category} {items} />
-    {/each}
+    <div class="skills-header">
+      <span class="skills-label">02 / What I Know</span>
+      <h2 class="skills-heading">
+        What I bring to<br />
+        <span class="skills-heading-accent">the table.</span>
+      </h2>
+    </div>
+
+    <div class="skills-bento">
+      {#each Object.entries(skills) as [category, items]}
+        <SkillCategory {category} {items} />
+      {/each}
+    </div>
   </div>
 </section>
 
@@ -83,30 +74,34 @@
     min-height: 100dvh;
     position: relative;
     padding: 4rem 1rem;
-    background-color: var(--main-bg-color);
     color: var(--text);
-    overflow: hidden;
+  }
+
+  .skills-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--main-bg-color);
+    z-index: -1;
+    pointer-events: none;
   }
 
   .skills-content {
-    max-width: 900px;
+    width: 100%;
+    max-width: 1500px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
     position: relative;
     z-index: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
   }
 
   .skills-header {
-    max-width: 900px;
-    margin: 0 auto 3rem;
-    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    position: relative;
-    z-index: 1;
   }
 
   .skills-label {
@@ -133,5 +128,36 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  /* Mobile-first: single column */
+  .skills-bento {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  /* Tablet: 2 equal columns */
+  @media (min-width: 640px) {
+    .skills-bento {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Desktop: 3-column bento
+     Row 1: Frontend (span 2) | Backend
+     Row 2: Design             | Tools (span 2) */
+  @media (min-width: 1024px) {
+    .skills-bento {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .skills-bento :global(.category-block:nth-child(1)) {
+      grid-column: span 2;
+    }
+
+    .skills-bento :global(.category-block:nth-child(4)) {
+      grid-column: span 2;
+    }
   }
 </style>

@@ -1,97 +1,70 @@
 <script>
   export let item;
-  // svelte-ignore export_let_unused
-    export let i; // needed again for zigzag
 </script>
 
 <div class="timeline-item">
-  <span class="timeline-node" style="--color: {item.color}"></span>
-  <article class="timeline-content" style="--color: {item.color};">
-    <h3>{item.title}</h3>
-    <p>{item.text}</p>
-  </article>
+  <div class="item-meta">
+    <span class="dot" style="background: {item.color}; box-shadow: 0 0 6px {item.color}66"></span>
+    <span class="date">{item.date}</span>
+  </div>
+  <h3 class="role">{item.role}</h3>
+  {#if item.text}
+    <p class="description">{item.text}</p>
+  {/if}
+  <hr class="separator" />
 </div>
 
 <style>
   .timeline-item {
-    position: relative;
-    width: 100%;
-    margin: 4rem 0;
+    padding: 1.25rem 0;
+  }
+
+  .item-meta {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    gap: 0.625rem;
+    margin-bottom: 0.6rem;
   }
 
-  .timeline-node {
-    width: 20px;
-    height: 20px;
-    background: var(--color);
-    border: 4px solid #222;
+  .dot {
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
+    flex-shrink: 0;
   }
 
-/* Pulse ring */
-.timeline-node::before,
-.timeline-node::after {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 2px solid var(--color);
-  animation: node-pulse 2s ease-out infinite;
-}
-
-.timeline-node::after {
-  animation-delay: 1s; /* offset for double pulse */
-}
-
-@keyframes node-pulse {
-  0%   { transform: scale(1);   opacity: 0.8; }
-  100% { transform: scale(2.5); opacity: 0;   }
-}
-
-  .timeline-content {
-    max-width: 45ch;
-    margin: 0 1rem;
-    width: 100%;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    line-height: 1.7;
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--color);
-    color: var(--color);
-    position: relative;
-    z-index: 2;
+  .date {
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    font-family: "Azonix", monospace;
   }
 
-  h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    letter-spacing: 1px;
+  .role {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text, #fff);
+    margin: 0 0 0.4rem 0;
+    font-family: "Space Grotesk", sans-serif;
+    line-height: 1.5;
   }
 
-  p {
-    letter-spacing: 2px;
-    font-size: 0.9rem;
+  .description {
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+    line-height: 1.6;
   }
 
-  /* Mobile — all left */
-  @media (max-width: 768px) {
-    .timeline-item {
-      justify-content: flex-start !important;
-      margin: 2rem 0;
-    }
-
-    .timeline-node {
-      left: 0;
-      transform: translate(-50%, -50%);
-    }
+  .separator {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 1.25rem;
+    margin-bottom: 0;
   }
 </style>

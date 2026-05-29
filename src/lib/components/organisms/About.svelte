@@ -23,59 +23,62 @@
     { value: "8", label: "Technologies" },
   ];
 
-  const educationTimeline = {
-    title: "My Education",
-    items: [
-      {
-        title: "2016-2018",
-        text: "Desktop publisher at the Grafisch Lyceum Utrecht.",
-        color: "#00ffea",
-      },
-      {
-        title: "2018-2022",
-        text: "Web Designer at the Grafisch Lyceum Utrecht.",
-        color: "#1affd5",
-      },
-      {
-        title: "2022",
-        text: "Communication and Multimedia design, before switching to Frontend.",
-        color: "#00ccaa",
-      },
-      {
-        title: "2023",
-        text: "Gap year working, travelling, and starting at FDND.",
-        color: "#00ffea",
-      },
-      {
-        title: "2023-2026",
-        text: "Frontend development at FDND. Graduated in January 2026.",
-        color: "#1affd5",
-      },
-    ],
-  };
-
   const workTimeline = {
     title: "Work Experience",
     items: [
       {
-        title: "Feb–Apr 2025: VRU",
-        text: "Internship building reports for the VRU.",
+        date: "Feb 2025 — Apr 2025",
+        role: "Internship at the Veiligheidsregio Utrecht (VRU)",
+        text: "Helped building reports for the VRU.",
         color: "#ff6b6b",
       },
       {
-        title: "Aug 2021–Jan 2022: ArtDcom",
-        text: "Building and optimizing websites.",
+        date: "Aug 2021 — Jan 2022",
+        role: "Internship at ArtDcom",
+        text: "Helped building websites and optimizing them.",
         color: "#ff8b8b",
       },
       {
-        title: "Feb–Jun 2021: Centix",
-        text: "Optimizing the Wordpress website for Centix.",
+        date: "Feb 2021 — Jun 2021",
+        role: "Internship at Centix",
+        text: "Helped building and optimizing the WordPress website for Centix.",
         color: "#ff4c4c",
       },
       {
-        title: "2018–Present: VersAlert",
-        text: "Seasonal warehouse work — sorting, packing, cleaning.",
+        date: "Jul 2018 — Present",
+        role: "Warehouse Employee",
+        text: "Seasonal job at VersAlert, handling sorting, packing and cleaning.",
         color: "#ff6b6b",
+      },
+    ],
+  };
+
+  const educationTimeline = {
+    title: "Educations",
+    items: [
+      {
+        date: "Sep 2023 — Jan 2026",
+        role: "Frontend Design & Development at the Amsterdam University of Applied Sciences",
+        text: "Associated degree program focused on frontend development, design, and user experience.",
+        color: "#00ffea",
+      },
+      {
+        date: "Sep 2022 — Dec 2022",
+        role: "Communication & Multimedia Design at the Amsterdam University of Applied Sciences",
+        text: "Program focused on communication and multimedia design principles.",
+        color: "#1affd5",
+      },
+      {
+        date: "Sep 2018 — Sep 2022",
+        role: "Webdesign at the Grafisch Lyceum Utrecht",
+        text: "Studies focused on web design and development.",
+        color: "#00ccaa",
+      },
+      {
+        date: "Aug 2016 — Jul 2018",
+        role: "Allround Desktoppublisher Studies at the Grafisch Lyceum Utrecht",
+        text: "Studies focused on desktop publishing and design.",
+        color: "#00ffea",
       },
     ],
   };
@@ -102,6 +105,14 @@
         <AboutIntro {introText} />
         <AboutStats {stats} />
       </div>
+    </div>
+
+    <div class="experience-header">
+      <span class="experience-label">Experience</span>
+      <h2 class="experience-heading">
+        Shaped by learning,<br />
+        <span class="experience-heading-accent">refined through experience.</span>
+      </h2>
     </div>
 
     <div class="about-timelines-row">
@@ -183,8 +194,8 @@
 
   .about-main {
     display: grid;
-    grid-template-columns: 325px 1fr;
-    gap: 4rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
     align-items: start;
   }
 
@@ -210,10 +221,42 @@
     max-width: 75ch;
   }
 
+  .experience-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .experience-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #00fff1;
+    font-family: "Azonix", monospace;
+  }
+
+  .experience-heading {
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-family: "Neofolia", sans-serif;
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -1px;
+    color: var(--text);
+    margin: 0;
+  }
+
+  .experience-heading-accent {
+    background: linear-gradient(90deg, #00fff1, #0984e3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   .about-timelines-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1fr;
+    gap: 3rem;
     align-items: start;
     width: 100%;
   }
@@ -222,14 +265,14 @@
     width: 100%;
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 768px) {
     .about-main {
-      grid-template-columns: 1fr;
+      grid-template-columns: 325px 1fr;
     }
 
     .about-timelines-row {
-      grid-template-columns: 1fr;
-      gap: 2rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
     }
   }
 

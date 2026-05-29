@@ -16,42 +16,25 @@
 
 <style>
   .category-block {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 206, 201, 0.15);
+    border-radius: 1rem;
     padding: 1.5rem;
-    border-radius: 1.5rem;
-    background: rgba(10, 10, 20, 0.3);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 30px rgba(0, 255, 247, 0.1);
-    text-align: center;
   }
 
   .category-heading {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    text-transform: capitalize;
-    color: #00fff7;
-    letter-spacing: 3px;
-    font-family: "Azonix", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #00fff1;
+    font-family: "Azonix", monospace;
+    margin: 0 0 1.25rem 0;
   }
 
   .skills-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
-  }
-
-  @media (min-width: 600px) {
-    .skills-grid {
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-    }
-  }
-
-  @media (min-width: 900px) {
-    .skills-grid {
-      gap: 2.5rem;
-    }
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 1rem;
   }
 </style>
