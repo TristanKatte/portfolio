@@ -8,30 +8,33 @@
   onMount(async () => {
     const gsap = (await import("gsap")).default;
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
-    const ScrambleTextPlugin = (await import("gsap/ScrambleTextPlugin")).default;
-    gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
+    gsap.registerPlugin(ScrollTrigger);
 
-    // Scoped heading scramble
+    // Heading: same word-by-word color fill as paragraph
     const heading = container.querySelector(".about-heading");
-    ScrollTrigger.create({
-      trigger: heading,
-      start: "top 80%",
-      once: true,
-      onEnter: () => {
-        gsap.to(heading, {
-          duration: 2,
-          scrambleText: {
-            text: "About Me",
-            chars: "01アイウエOカキクケCO!@#$%",
-            revealDelay: 0.2,
-            speed: 0.6,
-          },
-          ease: "none",
-        });
-      },
-    });
+    heading.innerHTML = "About Me"
+      .split(" ")
+      .map((word) => `<span class="word">${word}</span>`)
+      .join(" ");
 
-    // Scoped paragraph word reveal
+    gsap.fromTo(
+      heading.querySelectorAll(".word"),
+      { color: "rgba(0, 255, 241, 0.1)" },
+      {
+        color: "#00fff1",
+        duration: 1,
+        stagger: 0.15,
+        ease: "none",
+        scrollTrigger: {
+          trigger: heading,
+          start: "top 80%",
+          end: "bottom 20%",
+          scrub: 1,
+        },
+      }
+    );
+
+    // Paragraph: fill color word-by-word as user scrolls
     const paragraphs = container.querySelectorAll(".about-text");
     paragraphs.forEach((el, i) => {
       const text = introText[i];
@@ -42,19 +45,21 @@
         .map((word) => `<span class="word">${word}</span>`)
         .join(" ");
 
+      const words = el.querySelectorAll(".word");
+
       gsap.fromTo(
-        el.querySelectorAll(".word"),
-        { opacity: 0, y: 10 },
+        words,
+        { color: "rgba(245, 245, 240, 0.1)" },
         {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          ease: "power2.out",
-          stagger: 0.04,
+          color: "rgba(245, 245, 240, 0.9)",
+          duration: 1,
+          stagger: 0.05,
+          ease: "none",
           scrollTrigger: {
             trigger: el,
-            start: "top 85%",
-            once: true,
+            start: "top 80%",
+            end: "bottom 20%",
+            scrub: 1,
           },
         }
       );
@@ -77,7 +82,6 @@
     color: var(--highlight);
     font-family: "Azonix", sans-serif;
     letter-spacing: 3px;
-    min-height: 1.2em;
   }
 
   .about-text {

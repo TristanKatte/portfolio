@@ -87,12 +87,11 @@
         onLeave() {
           // At trigger end, top of #about is at viewport top so placeholder's
           // getBoundingClientRect gives the exact position to snap to.
-          const phCur = placeholder.getBoundingClientRect();
           aboutSection.appendChild(wrapEl);
           gsap.set(wrapEl, {
             position: "absolute",
-            top: phCur.top,
-            left: phCur.left,
+            top: endTop,
+            left: endLeft,
             width: "325px",
             height: "485px",
             x: 0,

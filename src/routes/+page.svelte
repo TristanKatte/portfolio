@@ -1,9 +1,10 @@
 <script>
   import Hero from '$lib/components/organisms/Hero.svelte';
   import About from '$lib/components/organisms/About.svelte';
-  import Skills from '$lib/components/organisms/Skills.svelte';
   import Work from '$lib/components/organisms/Work.svelte';
   import Contact from '$lib/components/organisms/Contact.svelte';
+  import SectionTransition from '$lib/components/molecules/SectionTransition.svelte';
+  import NavTransition from '$lib/components/molecules/NavTransition.svelte';
 
   import { onMount } from 'svelte';
   import gsap from 'gsap';
@@ -54,20 +55,15 @@
   </script>
 </svelte:head>
 
+  <NavTransition />
   <Hero />
 
-
-
+  <!-- <SectionTransition outgoing="#hero" label="About" /> -->
   <About />
 
-
-  <Skills />
-
-
-
+  <SectionTransition outgoing="#about" label="Work" />
   <Work />
 
-
-
+  <SectionTransition outgoing="#work" label="Contact" />
   <Contact />
 

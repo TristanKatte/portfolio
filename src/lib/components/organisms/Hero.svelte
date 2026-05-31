@@ -13,6 +13,8 @@
     "Web Designer",
     "Fulltime Nerd",
     "SvelteKit Enthusiast",
+    "GSAP Enthusiast",
+
   ];
 
   const stats = [
@@ -40,18 +42,21 @@
   ];
 
   const images = {
-  1: "/images/tech-image-1.jpg",
-  2: "/images/tech-image-2.jpg",
-  3: "/images/tech-image-3.jpg",
-  4: "/images/tech-image-4.jpg",
-  5: "/images/tech-image-5.jpg",
-  6: "/images/tech-image-6.jpg",
-  7: "/images/tech-image-7.jpg",
-  8: "/images/tech-image-8.jpg",
-  9: "/images/tech-image-9.jpg",
-};
+    1: "/images/tech-image-1.jpg",
+    2: "/images/tech-image-2.jpg",
+    3: "/images/tech-image-3.jpg",
+    4: "/images/grid-image-4.jpg",
+    5: "/images/grid-image-5.jpg",
+    6: "/images/grid-image-6.jpg",
+    7: "/images/grid-image-7.jpg",
+    8: "/images/grid-image-8.jpg",
+    9: "/images/grid-image-9.jpg",
+  };
+
+  let showGrid = false;
 
   onMount(async () => {
+    showGrid = window.matchMedia("(min-width: 768px)").matches;
     const gsap = (await import("gsap")).default;
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
     gsap.registerPlugin(ScrollTrigger);
@@ -106,7 +111,9 @@
     <HeroText {phrases} />
 
     <div class="hero-right">
-      <ImageGrid {images} profileImage="/images/profielfoto-zw.avif" />
+      {#if showGrid}
+        <ImageGrid {images} profileImage="/images/profielfoto-zw.avif" />
+      {/if}
     </div>
   </div>
 
@@ -153,7 +160,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 40%; /* only covers the bottom 25% */
+  height: 5%; /* only covers the bottom 25% */
   background: linear-gradient(
     to bottom,
     transparent 0%,

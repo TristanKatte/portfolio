@@ -3,7 +3,7 @@
 
   export let phrases = [];
 
-  const titleText = "Hi, I'm Tristan";
+  const titleText = "Tristan Katte";
   const titleSub = "Creative Developer";
 
   onMount(async () => {
