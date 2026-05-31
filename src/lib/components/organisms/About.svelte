@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import ScrollIndicator from "../atoms/ScrollIndicator.svelte";
   import AboutIntro from "../molecules/AboutIntro.svelte";
   import Timeline from "../molecules/Timeline.svelte";
   import FocusCard from "../molecules/FocusCard.svelte";
@@ -209,6 +210,10 @@
       </div>
     </div>
   </div>
+
+  <div class="scroll-indicator-wrap">
+    <ScrollIndicator ariaLabel="Scroll to work section" />
+  </div>
 </section>
 
 <style>
@@ -218,6 +223,14 @@
     position: relative;
     padding: 4rem 1rem;
     color: var(--text);
+  }
+
+  .scroll-indicator-wrap {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
   }
 
   .about-me::after {
