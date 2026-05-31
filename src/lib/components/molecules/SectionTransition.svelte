@@ -60,6 +60,8 @@
     background: rgba(8, 8, 14, 0.55);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
   }
 
   .transition-label {
