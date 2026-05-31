@@ -165,7 +165,9 @@
           <span class="project-number">{project.number}</span>
           <div
             class="project-text"
-           
+            role="group"
+            on:mouseenter={(e) => handleMouseEnter(project, e)}
+            on:mouseleave={handleMouseLeave}
           >
             <h3 class="project-title">{project.title}</h3>
             <p class="project-desc">{project.description}</p>
