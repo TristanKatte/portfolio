@@ -61,7 +61,6 @@
   <!-- <SectionTransition outgoing="#hero" label="About" /> -->
   <About />
 
-  <SectionTransition outgoing="#about" label="Work" />
   <Work />
 
   <SectionTransition outgoing="#work" label="Contact" />

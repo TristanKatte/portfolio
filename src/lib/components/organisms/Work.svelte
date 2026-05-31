@@ -123,7 +123,7 @@
   function handleMouseEnter(project, e) {
     previewImage = project.image;
     if (gsapInstance && previewEl) {
-      gsapInstance.set(previewEl, { x: e.clientX, y: e.clientY });
+      gsapInstance.set(previewEl, { x: e.clientX + 16, y: e.clientY + 16 });
       gsapInstance.to(previewEl, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" });
     }
   }
@@ -137,8 +137,8 @@
   function handleMouseMove(e) {
     if (gsapInstance && previewEl) {
       gsapInstance.to(previewEl, {
-        x: e.clientX,
-        y: e.clientY - 110,
+        x: e.clientX + 16,
+        y: e.clientY + 16,
         duration: 0.12,
         ease: "power1.out",
       });
@@ -161,13 +161,12 @@
 
     <ul class="projects-list">
       {#each projects as project}
-        <li
-          class="project-row"
-          on:mouseenter={(e) => handleMouseEnter(project, e)}
-          on:mouseleave={handleMouseLeave}
-        >
+        <li class="project-row">
           <span class="project-number">{project.number}</span>
-          <div class="project-text">
+          <div
+            class="project-text"
+           
+          >
             <h3 class="project-title">{project.title}</h3>
             <p class="project-desc">{project.description}</p>
           </div>
@@ -296,9 +295,6 @@
     -webkit-text-fill-color: transparent;
   }
 
-  .project-row:hover .project-view {
-    color: #00fff1;
-  }
 
   .project-number {
     font-size: 0.75rem;
