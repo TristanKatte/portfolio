@@ -1,10 +1,10 @@
 <script>
   import ScrollIndicator from "$lib/components/atoms/ScrollIndicator.svelte";
-  import HexagonCanvas from "$lib/components/molecules/HexagonCanvas.svelte";
   import HeroText from "$lib/components/molecules/HeroText.svelte";
   import HeroStats from "$lib/components/molecules/HeroStats.svelte";
   import HeroButtons from "$lib/components/molecules/HeroButtons.svelte";
   import ImageGrid from "$lib/components/molecules/ImageGrid.svelte";
+  import GridBackground from "$lib/components/molecules/GridBackground.svelte";
   import { onMount } from "svelte";
 
   const phrases = [
@@ -13,6 +13,8 @@
     "Web Designer",
     "Fulltime Nerd",
     "SvelteKit Enthusiast",
+    "GSAP Enthusiast",
+
   ];
 
   const stats = [
@@ -43,9 +45,18 @@
     1: "/images/tech-image-1.jpg",
     2: "/images/tech-image-2.jpg",
     3: "/images/tech-image-3.jpg",
+    4: "/images/grid-image-4.jpg",
+    5: "/images/grid-image-5.jpg",
+    6: "/images/grid-image-6.jpg",
+    7: "/images/grid-image-7.jpg",
+    8: "/images/grid-image-8.jpg",
+    9: "/images/grid-image-9.jpg",
   };
 
+  let showGrid = false;
+
   onMount(async () => {
+    showGrid = window.matchMedia("(min-width: 768px)").matches;
     const gsap = (await import("gsap")).default;
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
     gsap.registerPlugin(ScrollTrigger);
@@ -92,14 +103,17 @@
 
 <div class="boot-overlay" aria-hidden="true"></div>
 
-<section class="hero">
-  <HexagonCanvas />
+<section id="hero" class="hero">
+ <GridBackground gridColor="rgba(0, 204, 201, 0.75)" />
+  <div class="hero-fade" aria-hidden="true"></div>
 
   <div class="hero-content">
     <HeroText {phrases} />
 
     <div class="hero-right">
-      <ImageGrid {columns} {images} />
+      {#if showGrid}
+        <ImageGrid {images} profileImage="/images/profielfoto-zw.avif" />
+      {/if}
     </div>
   </div>
 
@@ -134,13 +148,27 @@
     padding: var(--size-7);
     scroll-snap-align: start;
     width: 100%;
-    color: var(--text);
-    background-color: var(--main-bg-color);
+    color: var(--text);    
     position: relative;
     overflow: hidden;
-    z-index: 1;
     gap: 2rem;
+    z-index: 0;
   }
+
+  .hero-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5%; /* only covers the bottom 25% */
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--main-bg-color) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
 
   .hero-content {
     display: flex;
@@ -151,7 +179,7 @@
     max-width: 1500px;
     padding-top: var(--size-9);
     position: relative;
-    z-index: 1;
+    z-index: 3;
   }
 
   .hero-right {
@@ -177,6 +205,7 @@
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    z-index: 3;
   }
 
   .scroll-indicator {

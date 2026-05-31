@@ -1,400 +1,459 @@
 <script>
   import { onMount } from "svelte";
-  import HexagonCanvas from "../molecules/HexagonCanvas.svelte";  
+  import AboutIntro from "../molecules/AboutIntro.svelte";
+  import Timeline from "../molecules/Timeline.svelte";
+  import FocusCard from "../molecules/FocusCard.svelte";
+  import AboutStats from "../molecules/AboutStats.svelte";
 
-  const introText = `I’m a passionate frontend developer with a background in both design and development.
-  My journey started in graphic design, evolved through web design, and finally led me to frontend development.
-  I love building creative, accessible, and performant experiences that bring ideas to life.
-  Beyond coding, I enjoy exploring new design trends, experimenting with animations, and learning the latest technologies
-  that help me craft engaging digital experiences.`;
-
-  const educationItems = [
-    {
-      title: "2016-2018",
-      text: "Completed my 1st study as a Desktop publisher at the Grafisch Lyceum Utrecht.",
-      color: "#00ffea",
-    },
-    {
-      title: "2018-2022",
-      text: "Completed my 2nd study as a Web Designer at the Grafisch Lyceum Utrecht.",
-      color: "#1affd5",
-    },
-    {
-      title: "2022",
-      text: "Studied Communication and Multimedia design for a while, before switching to Frontend development.",
-      color: "#00ccaa",
-    },
-    {
-      title: "2023",
-      text: "Gap year working, travelling, and starting my studies at FDND.",
-      color: "#00ffea",
-    },
-  ];
-
-  const jobItems = [
-    {
-      title: "Feb 2025 - Apr 2025: Internship at the VRU",
-      text: "Helped building reports for the VRU.",
-      color: "#ff6b6b",
-    },
-    {
-      title: "Aug 2021 - Jan 2022: Internship at ArtDcom",
-      text: "Helped building websites and optimizing them.",
-      color: "#ff8b8b",
-    },
-    {
-      title: "Feb 2021 - Jun 2021: Internship at Centix",
-      text: "Helped building and optimizing the Wordpress website for Centix.",
-      color: "#ff4c4c",
-    },
-    {
-      title: "2018 - Present: Warehouse worker",
-      text: "Seasonal job at VersAlert, handling sorting, packing and cleaning.",
-      color: "#ff6b6b",
-    },
-  ];
-
-  const timelines = [
-    { title: "My Education", items: educationItems },
-    { title: "Work Experience", items: jobItems },
-  ];
+  let aboutHeadingEl;
+  let expHeadingEl;
 
   onMount(async () => {
     const gsap = (await import("gsap")).default;
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
-    gsap.registerPlugin(ScrollTrigger);
+    const ScrambleTextPlugin = (await import("gsap/ScrambleTextPlugin")).default;
+    gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
 
-    // ----------------------------
-    // Animate about text
-    // ----------------------------
-const aboutTextEl = document.querySelector(".about-text");
-const words = aboutTextEl.textContent.trim().split(" ");
-aboutTextEl.innerHTML = words
-  .map((word) => `<span class="word">${word}</span>`)
-  .join(" ");
-// Animate words with a bounce-in effect
-gsap.fromTo(
-  ".about-text .word",
-  {
-    opacity: 0,
-    y: 60, // More lift = more bounce
-  },
-  {
-    opacity: 1,
-    y: 0,
-    duration: 1.2,
-    ease: "bounce.out",
-    stagger: {
-      each: 0.1, // delay between individual words
-      from: "start", // can be "center" or "edges" for different effects
-    },
-    scrollTrigger: {
-      trigger: aboutTextEl,
-      start: "top 80%",
-    },
-  }
-);
+    const chars = "01アイウエOカキクケCO!@#$%";
 
-    // ----------------------------
-    // Timeline animations
-    // ----------------------------
-    document.querySelectorAll(".timeline").forEach((timeline) => {
-      const nodes = gsap.utils.toArray(
-        timeline.querySelectorAll(".timeline-node")
-      );
-      const items = gsap.utils.toArray(
-        timeline.querySelectorAll(".timeline-content")
-      );
-      const progressLine = timeline.querySelector(".timeline-progress");
-
-      // Animate progress line
-      gsap.fromTo(
-        progressLine,
-        { scaleY: 0 },
-        {
-          scaleY: 1,
-          transformOrigin: "top",
-          scrollTrigger: {
-            trigger: timeline,
-            start: "top center",
-            end: "bottom center",
-            scrub: 0.5,
-          },
-        }
-      );
-
-      // Animate nodes and items individually
-      nodes.forEach((node, i) => {
-        const color = node.style.getPropertyValue("--color");
-
-        ScrollTrigger.create({
-          trigger: node,
-          start: "top center",
-          onEnter: () => {
-            gsap.to(node, {
-              scale: 1.2,
-              opacity: 1,
-              boxShadow: `0 0 15px ${color}, 0 0 25px ${color}`,
-              duration: 0.5,
-            });
-            gsap.to(items[i], {
-              boxShadow: `0 0 20px ${color}, 0 0 40px ${color}`,
-              duration: 0.5,
-            });
-          },
-          onLeaveBack: () => {
-            gsap.to(node, {
-              scale: 1,
-              opacity: 1,
-              boxShadow: "none",
-              duration: 0.3,
-            });
-            gsap.to(items[i], { boxShadow: "none", duration: 0.3 });
-          },
-        });
-
-        // Curved slide & fade for items
-        const desktopX = i % 2 === 0 ? -60 : 60;
-        const desktopY = -30 + Math.random() * 20;
-        const mobileX = 0;
-        const mobileY = 30;
-
-        gsap.fromTo(
-          items[i],
-          {
-            autoAlpha: 0,
-            x: window.innerWidth > 768 ? desktopX : mobileX,
-            y: window.innerWidth > 768 ? desktopY : mobileY,
-          },
-          {
-            autoAlpha: 1,
-            x: 0,
-            y: 0,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: items[i],
-              start: "top 90%",
-              end: "bottom 60%",
-              scrub: 0.5,
-            },
-          }
-        );
+    function scrambleHeading(el, line1Text, line2Text) {
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 80%",
+        once: true,
+        onEnter() {
+          const [plain, accent] = el.querySelectorAll("span");
+          gsap.to(plain, {
+            duration: 1.5,
+            scrambleText: { text: line1Text, chars, revealDelay: 0.2, speed: 0.5 },
+            ease: "none",
+          });
+          gsap.to(accent, {
+            duration: 1.5,
+            delay: 0.4,
+            scrambleText: { text: line2Text, chars, revealDelay: 0.2, speed: 0.5 },
+            ease: "none",
+          });
+        },
       });
-    });
+    }
 
-    // ----------------------------
-    // Optional: continuous gradient shift on about text
-    // ----------------------------
-    gsap.to(".about-text", {
-      backgroundPosition: "200% 0",
-      duration: 10,
-      ease: "linear",
-      repeat: -1,
-    });
+    scrambleHeading(aboutHeadingEl, "Building the web", "one pixel at a time.");
+    scrambleHeading(expHeadingEl, "Shaped by learning,", "refined through experience.");
   });
+
+  
+
+  const introText = [
+    "I'm a recently graduated frontend developer with a strong foundation in both design and development. I focus on building accessible, performant, and visually engaging web experiences that feel intuitive and polished. With a background in web design, I have a keen eye for aesthetics and user experience, which I combine with my technical skills to create websites that not only look great but also function seamlessly. I'm passionate about pushing the boundaries of what's possible on the web and am always eager to learn new technologies and techniques.",
+  ];
+
+  const focusAreas = [
+    "Accessible & inclusive design",
+    "Progressive enhancement",
+    "Performance & optimization",
+    "Creative frontend development",
+  ];
+
+  const stats = [
+    { value: "3+", label: "Years experience" },
+    { value: "24", label: "Projects shipped" },
+    { value: "8", label: "Technologies" },
+    { value: "100%", label: "Accessible mindset" },
+  ];
+
+  const skillTags = {
+    Frontend: ["HTML", "CSS", "JavaScript", "GSAP", "React", "SvelteKit", "Next.js", "Tailwind", "Bootstrap"],
+    Backend: ["Node.js", "Express.js"],
+    Design: ["Figma", "Adobe Illustrator", "Photoshop"],
+    Tools: ["Git", "VS Code", "NPM"],
+  };
+
+  function handleTagMove(e) {
+    const el = e.currentTarget;
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    el.style.setProperty("--rotateX", `${-((y / rect.height) - 0.5) * 15}deg`);
+    el.style.setProperty("--rotateY", `${((x / rect.width) - 0.5) * 15}deg`);
+    el.style.setProperty("--glowX", `${x}px`);
+    el.style.setProperty("--glowY", `${y}px`);
+  }
+
+  function handleTagLeave(e) {
+    const el = e.currentTarget;
+    el.style.setProperty("--rotateX", "0deg");
+    el.style.setProperty("--rotateY", "0deg");
+    el.style.setProperty("--glowX", "50%");
+    el.style.setProperty("--glowY", "50%");
+  }
+
+  const workTimeline = {
+    title: "Work Experience",
+    items: [
+      {
+        date: "Feb 2025 — Apr 2025",
+        role: "Internship at the Veiligheidsregio Utrecht (VRU)",
+        text: "Helped building reports for the VRU.",
+        color: "#ff6b6b",
+      },
+      {
+        date: "Aug 2021 — Jan 2022",
+        role: "Internship at ArtDcom",
+        text: "Helped building websites and optimizing them.",
+        color: "#ff8b8b",
+      },
+      {
+        date: "Feb 2021 — Jun 2021",
+        role: "Internship at Centix",
+        text: "Helped building and optimizing the WordPress website for Centix.",
+        color: "#ff4c4c",
+      },
+      {
+        date: "Jul 2018 — Present",
+        role: "Warehouse Employee",
+        text: "Seasonal job at VersAlert, handling sorting, packing and cleaning.",
+        color: "#ff6b6b",
+      },
+    ],
+  };
+
+  const educationTimeline = {
+    title: "Educations",
+    items: [
+      {
+        date: "Sep 2023 — Jan 2026",
+        role: "Frontend Design & Development at the Amsterdam University of Applied Sciences",
+        text: "Associated degree program focused on frontend development, design, and user experience.",
+        color: "#00ffea",
+      },
+      {
+        date: "Sep 2022 — Dec 2022",
+        role: "Communication & Multimedia Design at the Amsterdam University of Applied Sciences",
+        text: "Program focused on communication and multimedia design principles.",
+        color: "#1affd5",
+      },
+      {
+        date: "Sep 2018 — Sep 2022",
+        role: "Webdesign at the Grafisch Lyceum Utrecht",
+        text: "Studies focused on web design and development.",
+        color: "#00ccaa",
+      },
+      {
+        date: "Aug 2016 — Jul 2018",
+        role: "Allround Desktoppublisher Studies at the Grafisch Lyceum Utrecht",
+        text: "Studies focused on desktop publishing and design.",
+        color: "#00ffea",
+      },
+    ],
+  };
 </script>
 
 <section id="about" class="about-me">
-  <HexagonCanvas />
-  <h2 class="about-heading">About Me</h2>
-  <p class="about-text">{introText}</p>
 
-  {#each timelines as timeline}
-    <section aria-labelledby={timeline.title} class="timeline-section">
-      <header>
-        <h2
-          id={timeline.title}
-          class="timeline-heading"
-          style="color: {timeline.items[0].color}"
-        >
-          {timeline.title}
-        </h2>
-      </header>
+  <div class="about-content">
+    <div class="about-header">
+      <span class="about-label">01 / Who I Am</span>
+      <h2 class="about-heading" bind:this={aboutHeadingEl}>
+        <span>Building the web</span><br />
+        <span class="about-heading-accent">one pixel at a time.</span>
+      </h2>
+    </div>
 
-      <div class="timeline">
-        <div class="timeline-line"></div>
-        <div
-          class="timeline-progress"
-          style="--color: {timeline.items[0].color}"
-        ></div>
-
-        {#each timeline.items as item, i}
-          <div class="timeline-item {i % 2 === 0 ? 'left' : 'right'}">
-            <span class="timeline-node" style="--color: {item.color}"></span>
-            <article
-              class="timeline-content"
-              style="--color: {item.color}; color: {item.color}"
-            >
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
-            </article>
-          </div>
-        {/each}
+    <div class="about-main">
+      <div class="about-left">
+        <div class="profile-placeholder">
+          <img class="profile-static" src="/images/profielfoto-zw.avif" alt="Tristan" />
+        </div>
+        <FocusCard areas={focusAreas} />
       </div>
-    </section>
-  {/each}
+
+      <div class="about-right">
+        <AboutIntro {introText} />
+
+        <div class="skill-tags">
+          {#each Object.entries(skillTags) as [category, tags]}
+            <div class="skill-group">
+              <div class="skill-separator"></div>
+              <span class="skill-category-label">{category}</span>
+              <div class="tags-row">
+                {#each tags as tag}
+                  <span class="tag" role="img" aria-label={tag} on:mousemove={handleTagMove} on:mouseleave={handleTagLeave}>{tag}</span>
+                {/each}
+              </div>
+            </div>
+          {/each}
+        </div>
+
+        <AboutStats {stats} />
+      </div>
+    </div>
+
+    <div class="experience-header">
+      <span class="experience-label">Experience</span>
+      <h2 class="experience-heading" bind:this={expHeadingEl}>
+        <span>Shaped by learning,</span><br />
+        <span class="experience-heading-accent">refined through experience.</span>
+      </h2>
+    </div>
+
+    <div class="about-timelines-row">
+      <div class="timeline-col">
+        <Timeline title={workTimeline.title} items={workTimeline.items} />
+      </div>
+      <div class="timeline-col">
+        <Timeline
+          title={educationTimeline.title}
+          items={educationTimeline.items}
+        />
+      </div>
+    </div>
+  </div>
 </section>
 
 <style>
-
-  section.about-me {
-    max-width: 90ch;
+  .about-me {
     width: 100%;
-    margin: 0 auto;
+    min-height: 100dvh;
+    position: relative;
     padding: 4rem 1rem;
-    text-align: center;
+    color: var(--text);
   }
 
-  .about-text {
-    font-size: 1.25rem;
-    letter-spacing: 2px;
-    line-height: 1.7;
-    max-width: 750px;
-    margin: 0 auto 3rem auto;
-    text-align: left;
-    background: linear-gradient(
-      270deg,
-      #00ffe5,
-      #29ffd3,
-      #7df9ff,
-      #ff4fe2,
-      #ff00c8,
-      #ff5bbd,
-      #00ffe5
-    );
-    background-size: 400% auto;
+  .about-me::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--main-bg-color);
+  z-index: -1; /* behind everything in this section */
+  pointer-events: none;
+}
+
+  .about-content {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    overflow: clip;
+  }
+
+  .about-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .about-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #00fff1;
+    font-family: "Azonix", monospace;
+  }
+
+  .about-heading {
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-family: "Neofolia", sans-serif;
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -1px;
+    color: var(--text);
+    margin: 0;
+  }
+
+  .about-heading-accent {
+    background: linear-gradient(90deg, #00fff1, #0984e3);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow:
-      0 0 8px rgba(0, 0, 0, 0.6),
-      0 0 12px rgba(255, 0, 200, 0.3);
   }
 
-  .about-heading,
-  .timeline-heading {
-    font-size: 2rem;
-    margin: 3rem 0 2rem;
-    text-align: left;
-    color: var(--highlight);
+  .about-main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
   }
 
-  h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    letter-spacing: 1px;
-  }
-
-  p {
-    letter-spacing: 2px;
-  }
-
-  .timeline {
-    position: relative;
-    margin-bottom: 6rem;
-    font-weight: 100;
-  }
-
-  .timeline-line {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    z-index: 1;
-  }
-
-  .timeline-progress {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%) scaleY(0);
-    width: 4px;
-    height: 100%;
-    background: var(--color);
-    box-shadow:
-      0 0 10px var(--color),
-      0 0 20px var(--color),
-      0 0 30px var(--color);
-    transform-origin: top;
-    z-index: 2;
-  }
-
-  .timeline-item {
-    position: relative;
-    width: 100%;
-    margin: 4rem 0;
+  .about-left {
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
-  .timeline-item.left {
-    justify-content: flex-end;
+  .profile-placeholder {
+    width: 325px;
+    height: 485px;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 206, 201, 0.2);
+    border-radius: 0.5rem;
+    overflow: hidden;
   }
 
-  .timeline-item.right {
-    justify-content: flex-start;
+  .profile-static {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
-  .timeline-node {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--color);
-    border: 4px solid #222;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
+  @media (min-width: 768px) {
+    .profile-static {
+      display: none;
+    }
   }
 
-  .timeline-content {
-    max-width: 300px;
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--color);
-    color: var(--color);
+  .about-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 75ch;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .skill-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .skill-separator {
+    width: 100%;
+    height: 1px;
+    background: #00fff1;
+  }
+
+  .skill-category-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.35);
+    font-family: "Azonix", monospace;
+  }
+
+  .tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.75rem;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text, #fff);
+    font-family: "Space Grotesk", sans-serif;
+    white-space: nowrap;
     position: relative;
-    z-index: 2;
+    overflow: hidden;
+    cursor: default;
+    transform: perspective(200px) rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg));
+    transition: transform 0.2s ease, border-color 0.2s ease;
   }
 
-  .timeline-item.left .timeline-content {
-    margin-right: 3rem;
-    text-align: right;
+  .tag::before {
+    content: "";
+    position: absolute;
+    top: var(--glowY, 50%);
+    left: var(--glowX, 50%);
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle closest-side, rgba(0, 255, 247, 0.18), transparent);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    border-radius: 50%;
+    transition: top 0.05s, left 0.05s;
   }
 
-  .timeline-item.right .timeline-content {
-    margin-left: 3rem;
-    text-align: left;
+  .tag:hover {
+    transform: perspective(200px) rotateX(var(--rotateX, 0deg)) rotateY(var(--rotateY, 0deg)) scale(1.08);
+    border-color: rgba(0, 255, 247, 0.3);
   }
 
-  /* Mobile layout */
-  @media (max-width: 768px) {
-    .timeline-line,
-    .timeline-progress {
-      left: 20px;
-      transform: translateX(0);
+  .experience-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .experience-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #00fff1;
+    font-family: "Azonix", monospace;
+  }
+
+  .experience-heading {
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-family: "Neofolia", sans-serif;
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -1px;
+    color: var(--text);
+    margin: 0;
+  }
+
+  .experience-heading-accent {
+    background: linear-gradient(90deg, #00fff1, #0984e3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .about-timelines-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: start;
+    width: 100%;
+  }
+
+  .timeline-col {
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .about-main {
+      grid-template-columns: 325px 1fr;
     }
 
-    .timeline-item {
-      flex-direction: row;
-      justify-content: flex-start !important;
-      margin: 2rem 0;
+    .about-timelines-row {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+  }
+
+  @media (max-width: 22.5rem) {
+    .about-content {
+      padding: 1rem;
+      gap: 2rem;
     }
 
-    .timeline-item.left .timeline-content,
-    .timeline-item.right .timeline-content {
-      margin: 0 0 0 3rem;
-      text-align: left;
-    }
-
-    .timeline-node {
-      left: 20px;
+    .about-heading {
+      font-size: 2rem;
+      letter-spacing: 2px;
     }
   }
 </style>

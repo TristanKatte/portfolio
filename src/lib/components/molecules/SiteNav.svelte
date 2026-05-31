@@ -35,6 +35,16 @@
     if (rect) bubbleActive = rect;
   }
 
+  function handleNavClick(e, link) {
+    if (!link.href.startsWith("#")) return;
+    e.preventDefault();
+    window.dispatchEvent(
+      new CustomEvent("nav-transition", {
+        detail: { label: link.label, target: link.href },
+      }),
+    );
+  }
+
   function onMouseEnter(index) {
     hoverIndex = index;
     const rect = getItemRect(index);
@@ -46,9 +56,30 @@
   }
 
   onMount(() => {
-    // Set initial active bubble position
     const rect = getItemRect(activeIndex);
     if (rect) bubbleActive = rect;
+
+    const sections = [
+      { id: "hero",    index: 0 },
+      { id: "about",   index: 1 },
+      { id: "work",    index: 2 },
+      { id: "contact", index: 3 },
+    ];
+
+    function updateActive() {
+      const threshold = window.scrollY + window.innerHeight * 0.4;
+      let current = 0;
+      for (const { id, index } of sections) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= threshold) current = index;
+      }
+      if (current !== activeIndex) setActive(current);
+    }
+
+    window.addEventListener("scroll", updateActive, { passive: true });
+    updateActive();
+
+    return () => window.removeEventListener("scroll", updateActive);
   });
 </script>
 
@@ -82,7 +113,7 @@
       <a
         href={link.href}
         class:active={i === activeIndex}
-        on:click={() => setActive(i)}
+        on:click={(e) => { handleNavClick(e, link); setActive(i); }}
         on:mouseenter={() => onMouseEnter(i)}
         on:mouseleave={onMouseLeave}
       >
@@ -175,6 +206,8 @@
     animation: shimmer 0.6s ease forwards;
   }
 
+
+
   @keyframes shimmer {
     0% {
       left: -100%;
@@ -190,7 +223,6 @@
     border-radius: 500px;
     transition: all 0.25s ease;
     pointer-events: none;
-    
   }
 
   .bubble.active {
@@ -226,9 +258,10 @@
       rgba(0, 204, 201, 0.05)
     );
     box-shadow: inset 0 2px 7px rgba(0, 255, 241, 0.1);
-      filter: blur(10px);
+    filter: blur(10px);
   }
 
+  
 
   /* Desktop — inline pill */
   @media (min-width: 768px) {

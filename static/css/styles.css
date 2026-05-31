@@ -5,7 +5,7 @@
 
 :root {
     /* colors */
-    --main-bg-color: #101A21;
+    --main-bg-color: #0E151B;
     --surface: #525252ff;
     --brand: #00c2cb;
     --brand-soft: #004e50;
@@ -75,5 +75,6 @@ p {
     font-weight: 400;
     font-style: normal;
 }
+
 
 

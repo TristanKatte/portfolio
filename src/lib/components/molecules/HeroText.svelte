@@ -3,7 +3,7 @@
 
   export let phrases = [];
 
-  const titleText = "Hi, I'm Tristan";
+  const titleText = "Tristan Katte";
   const titleSub = "Creative Developer";
 
   onMount(async () => {
@@ -96,7 +96,7 @@
   .text {
     flex: 1 1 300px;
     text-align: center;
-    font-family: "Inter", sans-serif;
+    
   }
 
   .hero-title {
@@ -108,12 +108,6 @@
     color: var(--brand);
     min-height: 1.2em;
   }
-
-  /* .hero-title .char,
-  .hero-title-sub .char {
-    position: relative;
-    transition: text-shadow 0.3s ease-out;
-  } */
 
   .hero-title-sub {
     font-size: clamp(1rem, 2.8vw, 2.5rem);

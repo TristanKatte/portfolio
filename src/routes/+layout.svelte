@@ -3,12 +3,14 @@
   import { onNavigate } from "$app/navigation";
   import Header from "../lib/components/organisms/Header.svelte";
   import Footer from "../lib/components/organisms/Footer.svelte";
-  import HexagonCanvas from "../lib/components/molecules/HexagonCanvas.svelte";
+ 
+
 
   // Design libs
   import "open-props/style";
   import "open-props/normalize";
   import "open-props/buttons";
+    import HexagonCanvas from "../lib/components/molecules/HexagonCanvas.svelte";
 
   // View transitions
   onNavigate((navigation) => {
@@ -24,19 +26,20 @@
 </script>
 
 
-
 <div class="layout">
  
-  <!-- <HexagonCanvas /> -->
+  
   
 
   <Header />
   
+ 
     <slot />
     <Transition />
   
   <Footer />
 </div>
+
 
 <style>
   .layout {
@@ -45,15 +48,14 @@
     width: 100%;
     max-width: 100vw;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     margin-inline: auto;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: var(--main-bg-color);
+     /* background: rgba(15, 15, 15, 0.65); */
     overflow-x: hidden;
   }
-
 
 
   @media (min-width: 1440px) {
