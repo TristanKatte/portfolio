@@ -32,6 +32,6 @@
     align-items: center;
     justify-content: center;
     scroll-snap-align: start;
-    text-align: center;
+    background-color: var(--main-bg-color);
   }
 </style>
