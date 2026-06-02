@@ -13,7 +13,7 @@
 <style>
   .site-footer {
     padding: 2rem;
-    background-color: var(--bg);
+    background: rgba(12, 16, 22, 0.8);
     color: var(--text);
     box-shadow: 0 4px 12px rgba(0, 255, 255, 0.05);
     backdrop-filter: blur(10px);
