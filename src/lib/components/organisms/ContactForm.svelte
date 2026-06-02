@@ -248,12 +248,11 @@
   }
 
   .contact-desc {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     line-height: 1.75;
     color: var(--text);
     margin-bottom: 3rem;
     max-width: 44ch;
-    letter-spacing: 0.02em;
   }
 
   .contact-links {
