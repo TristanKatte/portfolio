@@ -245,7 +245,9 @@
     }
 
     .hero-right {
-      width: auto;
+      width: clamp(22rem, 35vw, 35rem);
+      height: clamp(22rem, 35vw, 35rem);
+      flex-shrink: 0;
     }
 
     .hero-bottom {

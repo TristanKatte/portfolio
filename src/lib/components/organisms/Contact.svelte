@@ -27,11 +27,17 @@
 <style>
   .contact {
     min-height: 100dvh;
-    padding: var(--size-7);
+    padding: 2rem 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     scroll-snap-align: start;
     background-color: var(--main-bg-color);
+  }
+
+  @media (min-width: 600px) {
+    .contact {
+      padding: var(--size-7);
+    }
   }
 </style>

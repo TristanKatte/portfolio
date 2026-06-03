@@ -205,7 +205,7 @@
     width: 100%;
     min-height: 100dvh;
     position: relative;
-    padding: 4rem 1rem;
+    padding: 4rem 1rem 7rem;
     scroll-snap-align: start;
   }
 
@@ -407,6 +407,11 @@
   }
 
   @media (max-width: 400px) {
-    .project-view { display: none; }
+    .work-content { padding: 1rem; }
+    .project-row { gap: 0.5rem; padding: 1.25rem 0; }
+    .project-title { font-size: 1.1rem; }
+    .project-number { display: none; }
+    .project-actions { gap: 0.75rem; }
+    .project-view { font-size: 0.6rem; letter-spacing: 1px; }
   }
 </style>

@@ -32,7 +32,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 6rem;
+    height: 4rem;
     background: rgba(12, 16, 22, 0.8);
     backdrop-filter: blur(5px);
     margin: 0 auto;
@@ -40,7 +40,22 @@
     transition: background 0.3s ease;
     gap: 1rem;
     width: 100%;
-    padding: 4rem 3rem;
+    padding: 0 1rem;
+  }
+  
+
+  @media (min-width: 480px) {
+    .site-header {
+      height: 4.5rem;
+      padding: 0 1.5rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .site-header {
+      height: 5rem;
+      padding: 0 2.5rem;
+    }
   }
 
   
@@ -48,16 +63,19 @@
   .container {
     max-width: 1500px;
     margin: 0 auto;
-    padding: 1rem 2rem;
+    padding: 0 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
     width: 100%;
+    height: 100%;
   }
 
   .logo-link {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    height: 100%;
     transition: transform 0.3s ease;
   }
 
@@ -67,9 +85,17 @@
   }
 
   .logo-image {
-    max-width: 120px;
-    height: auto;
+    height: 2rem;
+    width: auto;
     display: block;
+  }
+
+  @media (min-width: 480px) {
+    .logo-image { height: 2.25rem; }
+  }
+
+  @media (min-width: 768px) {
+    .logo-image { height: 2.5rem; }
   }
 
   .nav-toggle {

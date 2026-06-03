@@ -288,6 +288,8 @@
     color: #6a7f90;
     text-decoration: none;
     text-transform: uppercase;
+    word-break: break-all;
+    min-width: 0;
   }
 
   .link-arrow {

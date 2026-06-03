@@ -31,9 +31,11 @@
 <style>
   .stats {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem;
     align-items: center;
+    justify-content: center;
   }
 
   .stat {
@@ -43,22 +45,24 @@
     background: rgba(12, 16, 22, 0.8);
     color: var(--text);
     backdrop-filter: blur(10px);
-    padding: 1rem 1.5rem;
-    border-radius: 1.5rem;
+    padding: 0.75rem 1.1rem;
+    border-radius: 1rem;
     border: 2px solid var(--border);
     text-align: center;
     font-family: "Space Grotesk", sans-serif;
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .stat-value {
-    font-size: clamp(2rem, 3vw, 3rem);
+    font-size: clamp(1.5rem, 3vw, 3rem);
     font-weight: 800;
     color: var(--brand);
     line-height: 1;
   }
 
   .stat-label {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     opacity: 0.5;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -67,8 +71,19 @@
 
   @media (min-width: 600px) {
     .stats {
-      flex-direction: row;
+      flex-wrap: nowrap;
       align-items: flex-start;
+      gap: 1rem;
+    }
+    .stat {
+      padding: 1rem 1.5rem;
+      border-radius: 1.5rem;
+    }
+    .stat-value {
+      font-size: clamp(2rem, 3vw, 3rem);
+    }
+    .stat-label {
+      font-size: 0.85rem;
     }
   }
 </style>

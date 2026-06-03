@@ -221,7 +221,7 @@
     width: 100%;
     min-height: 100dvh;
     position: relative;
-    padding: 4rem 1rem;
+    padding: 4rem 1rem 7rem;
     color: var(--text);
   }
 
@@ -301,8 +301,9 @@
   }
 
   .profile-placeholder {
-    width: 325px;
-    height: 485px;
+    width: min(325px, 100%);
+    aspect-ratio: 325 / 485;
+    height: auto;
     flex-shrink: 0;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(0, 206, 201, 0.2);

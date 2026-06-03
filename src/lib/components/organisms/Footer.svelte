@@ -18,7 +18,7 @@
     box-shadow: 0 4px 12px rgba(0, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     border-top: 1px solid var(--border);
-    width: 100vw;
+    width: 100%;
   }
 
   .container {
@@ -36,6 +36,8 @@
   .socials {
     display: flex;
     gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .socials a {

@@ -18,6 +18,46 @@
 
   let gridEl;
   let wrapEl;
+  let swapTimeout = null;
+  let swapActive = false;
+
+  function pickTwo() {
+    const a = Math.floor(Math.random() * 9);
+    let b;
+    do { b = Math.floor(Math.random() * 9); } while (b === a);
+    return [a, b];
+  }
+
+  function scheduleSwap(gsap) {
+    clearTimeout(swapTimeout);
+    swapTimeout = setTimeout(() => doSwap(gsap), 1000 + Math.random() * 1500);
+  }
+
+  function doSwap(gsap) {
+    if (!swapActive || !gridEl) return;
+    const imgEls = Array.from(gridEl.querySelectorAll(".grid-cell img"));
+    if (imgEls.length < 9) return;
+
+    const [a, b] = pickTwo();
+    gsap.to([imgEls[a], imgEls[b]], {
+      opacity: 0,
+      scale: 0.82,
+      duration: 0.28,
+      ease: "power2.in",
+      onComplete() {
+        const tmp = imgEls[a].src;
+        imgEls[a].src = imgEls[b].src;
+        imgEls[b].src = tmp;
+        gsap.to([imgEls[a], imgEls[b]], {
+          opacity: 1,
+          scale: 1,
+          duration: 0.38,
+          ease: "power2.out",
+          onComplete: () => scheduleSwap(gsap),
+        });
+      },
+    });
+  }
 
   onMount(async () => {
     document.body.appendChild(wrapEl);
@@ -54,9 +94,6 @@
 
     const DUR = 1;
 
-    // The trigger ends when top of #about reaches top of viewport (scrollY = aboutSection.offsetTop).
-    // At that moment, placeholder viewport top = placeholder_doc_top - aboutSection_doc_top.
-    // Measured at page load (scrollY=0): doc_top equals getBoundingClientRect().top.
     const phInitRect = placeholder.getBoundingClientRect();
     const aboutInitRect = aboutSection.getBoundingClientRect();
     const endTop = phInitRect.top - aboutInitRect.top;
@@ -71,6 +108,8 @@
         end: "top top",
         scrub: 1.5,
         onEnter() {
+          swapActive = false;
+          clearTimeout(swapTimeout);
           const h = getHeroPos();
           startTop = h.top;
           startLeft = h.left;
@@ -85,8 +124,6 @@
           });
         },
         onLeave() {
-          // At trigger end, top of #about is at viewport top so placeholder's
-          // getBoundingClientRect gives the exact position to snap to.
           aboutSection.appendChild(wrapEl);
           gsap.set(wrapEl, {
             position: "absolute",
@@ -114,47 +151,26 @@
         onLeaveBack() {
           document.body.appendChild(wrapEl);
           setInitialPos();
+          swapActive = true;
+          scheduleSwap(gsap);
         },
       },
     });
 
-    tl.to(
-      wrapEl,
-      {
-        top: endTop,
-        left: endLeft,
-        ease: "none",
-        duration: DUR,
-      },
-      0,
-    );
-
-    tl.to(
-      gridEl,
-      {
-        width: "325px",
-        height: "485px",
-        ease: "power2.inOut",
-        duration: DUR,
-      },
-      0,
-    );
+    tl.to(wrapEl, { top: endTop, left: endLeft, ease: "none", duration: DUR }, 0);
+    tl.to(gridEl, { width: "325px", height: "485px", ease: "power2.inOut", duration: DUR }, 0);
 
     cellEls.forEach((cell) => {
       const col = +cell.dataset.col;
       const row = +cell.dataset.row;
-      tl.to(
-        cell,
-        {
-          x: `${(2 - col) * 100}%`,
-          y: `${(2 - row) * 100}%`,
-          opacity: 0,
-          scale: 0.8,
-          ease: "power2.in",
-          duration: DUR,
-        },
-        0,
-      );
+      tl.to(cell, {
+        x: `${(2 - col) * 100}%`,
+        y: `${(2 - row) * 100}%`,
+        opacity: 0,
+        scale: 0.8,
+        ease: "power2.in",
+        duration: DUR,
+      }, 0);
     });
 
     tl.fromTo(
@@ -166,9 +182,13 @@
 
     await new Promise((r) => setTimeout(r, 150));
     ScrollTrigger.refresh();
+
+    swapActive = true;
+    scheduleSwap(gsap);
   });
 
   onDestroy(() => {
+    clearTimeout(swapTimeout);
     if (wrapEl && wrapEl.parentNode === document.body) {
       document.body.removeChild(wrapEl);
     }
@@ -207,8 +227,8 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     gap: 0.5rem;
-    width: 35rem;
-    height: 35rem; /* ← explicit height instead of aspect-ratio */
+    width: clamp(22rem, 35vw, 35rem);
+    height: clamp(22rem, 35vw, 35rem);
     overflow: hidden;
     will-change: width, height;
   }

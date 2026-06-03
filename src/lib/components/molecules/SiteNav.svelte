@@ -268,6 +268,8 @@
     .nav-wrap {
       display: block;
       position: relative;
+      top: auto;
+      right: auto;
       border-radius: 500px;
       background: linear-gradient(0deg, #0c1016, #111a22);
       box-shadow:
