@@ -66,6 +66,15 @@
       liveUrl: "https://i-love-web-amber.vercel.app/",
       tags: ["SVELTEKIT", "MARKDOWN"],
     },
+    {
+      number: "08",
+      slug: "De-Koperen-Kat",
+      title: "DE KOPEREN KAT",
+      description: "A website for a local brewery, made as a final project at FDND",
+      image: "/images/de-koperen-kat.png",
+      liveUrl: "https://stadsbrouwerij-dekoperenkat.netlify.app/",
+      tags: ["SVELTEKIT", "GSAP", "Supabase"],
+    },
   ];
 
   let previewImage = projects[0].image;

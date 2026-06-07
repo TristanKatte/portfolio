@@ -11,6 +11,7 @@
     "squadpage",
     "visitekaartje",
     "I-Love-Web",
+    "De-Koperen-Kat",
   ];
 
   const projectData = {
@@ -170,6 +171,29 @@
         { date: "Sprint 5", role: "Testing & Handover", text: "Cross-browser testing, copy review, and final client presentation.", color: "#0984e3" },
       ],
       reflection: "My first client project raised the stakes in a way no classroom assignment can. I learned to ask better questions upfront and to show work in progress early rather than revealing a finished product that misses the mark. Real clients need to be involved — not surprised.",
+    },
+    "De-Koperen-Kat": {
+      title: "De Koperen Kat",
+      label: "Client Project",
+      tagline: "A website for a local brewery, made as a final project at FDND.",
+      tags: ["SVELTEKIT", "GSAP", "Supabase"],
+      image: "/images/de-koperen-kat.png",
+      LiveUrl: "https://stadsbrouwerij-dekoperenkat.netlify.app/",
+      year: "2025-2026",
+      duration: "5 sprints",
+      role: "Designer & Developer",
+      stack: "SvelteKit · GSAP · JavaScript",
+      summary: "Built across the final sprints of my retake of my fourth semester at FDND, this website for the Koperen Kat helps users find out more about the brewery and its offerings.",
+      challenge: "The old website of the brewery had a difficult navigation, and the new website needed to be simple and easy to use.",
+      solution: "A clear layout made it easy to find what the user was looking for. A mobile-first approach ensured the site works beautifully on any device a user might use.",
+      images: ["/images/de-koperen-kat.png"],
+      timeline: [
+        { date: "Sprint 2", role: "Client Brief", text: "Met the owner of the brewery, understood their audience, and sketched the site structure.", color: "#00fff1" },
+        { date: "Sprint 3", role: "Design", text: "Established the visual identity, colour scheme, and responsive layout system.", color: "#0984e3" },
+        { date: "Sprint 4", role: "Development", text: "Built the HTML structure, CSS animations, and JavaScript micro-interactions.", color: "#00fff1" },
+        { date: "Sprint 5", role: "Testing & Handover", text: "Cross-browser testing, user testing, copy review, and final client presentation.", color: "#0984e3" },
+      ],
+      reflection: "My final, individual project was a bit more complex, but I learned to ask better questions and to show work in progress early rather than revealing a finished product that misses the mark.",
     },
   };
 
