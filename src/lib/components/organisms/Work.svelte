@@ -331,7 +331,7 @@
 
   .project-desc {
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--muted-text);
     margin: 0;
     letter-spacing: 0.02em;
     font-family: "Titillium Web", sans-serif;

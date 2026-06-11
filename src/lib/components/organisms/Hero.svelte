@@ -133,7 +133,7 @@
   .boot-overlay {
     position: fixed;
     inset: 0;
-    background: #0c1016;
+    background: var(--main-bg-color);
     transform-origin: top;
     z-index: 100;
     pointer-events: none;

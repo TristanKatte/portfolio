@@ -354,8 +354,9 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 3px;
-    color: rgba(255, 255, 255, 0.35);
+    color: var(--highlight);
     font-family: "Azonix", monospace;
+    margin-bottom: 0.5rem;
   }
 
   .tags-row {
@@ -415,7 +416,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 4px;
-    color: #00fff1;
+    color: var(--highlight);
     font-family: "Azonix", monospace;
   }
 
@@ -430,7 +431,7 @@
   }
 
   .experience-heading-accent {
-    background: linear-gradient(90deg, #00fff1, #0984e3);
+    background: linear-gradient(90deg, var(--highlight), var(--brand));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

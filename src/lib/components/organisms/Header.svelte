@@ -1,7 +1,48 @@
 <script>
   import SiteNav from "$lib/components/molecules/SiteNav.svelte";
+  import { onMount } from "svelte";
 
   let isOpen = false;
+  let theme = "dark";
+
+  const storageKey = "theme";
+
+  function applyTheme(nextTheme) {
+    if (typeof document === "undefined") return;
+
+    document.documentElement.dataset.theme = nextTheme;
+    document.documentElement.style.colorScheme = nextTheme;
+  }
+
+  function setTheme(nextTheme) {
+    theme = nextTheme;
+    applyTheme(nextTheme);
+
+    try {
+      localStorage.setItem(storageKey, nextTheme);
+    } catch {
+      // Ignore storage failures in private mode or restricted environments.
+    }
+  }
+
+  function toggleTheme() {
+    setTheme(theme === "dark" ? "light" : "dark");
+  }
+
+  onMount(() => {
+    let storedTheme = null;
+
+    try {
+      storedTheme = localStorage.getItem(storageKey);
+    } catch {
+      storedTheme = null;
+    }
+
+    const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+    const initialTheme = storedTheme ?? (prefersLight ? "light" : "dark");
+
+    setTheme(initialTheme);
+  });
 </script>
 
 <header class="site-header">
@@ -9,16 +50,35 @@
     <a href="/" class="logo-link">
       <img src="/images/logo_groen.png" alt="Logo" class="logo-image" />
     </a>
-    <SiteNav {isOpen} />
+    <div class="actions">
+      <button
+        class="theme-toggle"
+        type="button"
+        aria-label={theme === "dark" ? "Schakel naar licht thema" : "Schakel naar donker thema"}
+        aria-pressed={theme === "light"}
+        on:click={toggleTheme}
+      >
+        {#if theme === "dark"}
+          <span class="theme-toggle__icon" aria-hidden="true">☀</span>
+          <span>Light mode</span>
+        {:else}
+          <span class="theme-toggle__icon" aria-hidden="true">☾</span>
+          <span>Dark mode</span>
+        {/if}
+      </button>
 
-    <button
-      class="nav-toggle"
-      aria-label={isOpen ? "Sluit menu" : "Open menu"}
-      aria-expanded={isOpen}
-      on:click={() => (isOpen = !isOpen)}
-    >
-      {#if isOpen}✕{:else}☰{/if}
-    </button>
+      <SiteNav {isOpen} />
+
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label={isOpen ? "Sluit menu" : "Open menu"}
+        aria-expanded={isOpen}
+        on:click={() => (isOpen = !isOpen)}
+      >
+        {#if isOpen}✕{:else}☰{/if}
+      </button>
+    </div>
   </div>
 </header>
 
@@ -33,7 +93,7 @@
     justify-content: center;
     align-items: center;
     height: 4rem;
-    background: rgba(12, 16, 22, 0.8);
+    background: var(--header-bg);
     backdrop-filter: blur(5px);
     margin: 0 auto;
     border-bottom: 1px solid var(--border);
@@ -70,6 +130,12 @@
     gap: 2rem;
     width: 100%;
     height: 100%;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
   }
 
   .logo-link {
@@ -115,6 +181,34 @@
 
   .nav-toggle:hover {
     border-color: var(--highlight);
+  }
+
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    min-height: 2.75rem;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .theme-toggle__icon {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .theme-toggle:hover {
+    border-color: var(--highlight);
+    transform: translateY(-1px);
   }
 
   /* Hide toggle on desktop */

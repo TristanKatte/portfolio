@@ -4,6 +4,20 @@
 		<meta charset="utf-8" />		
 		<link rel="icon" href="%sveltekit.assets%/logo_groen.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script>
+			(() => {
+				try {
+					const storedTheme = localStorage.getItem('theme');
+					const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+					const theme = storedTheme ?? (prefersLight ? 'light' : 'dark');
+					document.documentElement.dataset.theme = theme;
+					document.documentElement.style.colorScheme = theme;
+				} catch {
+					document.documentElement.dataset.theme = 'dark';
+					document.documentElement.style.colorScheme = 'dark';
+				}
+			})();
+		</script>
 		%sveltekit.head%
 		<link rel="stylesheet" href="%sveltekit.assets%/css/styles.css">
 		

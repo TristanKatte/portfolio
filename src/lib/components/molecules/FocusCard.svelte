@@ -17,8 +17,8 @@
 <style>
   .focus-card {
     width: 100%;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(0, 206, 201, 0.2);
+    background: color-mix(in srgb, var(--surface) 35%, transparent);
+    border: 1px solid color-mix(in srgb, var(--border) 35%, transparent);
     border-radius: 0.75rem;
     padding: 1.25rem 1.5rem;
     display: flex;
@@ -50,7 +50,7 @@
     gap: 0.6rem;
     font-size: 0.8rem;
     letter-spacing: 1px;
-    color: rgba(245, 245, 240, 0.75);
+    color: var(--text);
     font-family: "Titillium Web", sans-serif;
   }
 

@@ -27,7 +27,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 4px;
-    color: #00fff1;
+    color: var(--highlight);
     font-family: "Azonix", monospace;
     margin: 0 0 1.25rem 0;
   }

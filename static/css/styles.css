@@ -15,6 +15,16 @@
     --highlight: #00fff7;
     --danger: #ff0066;
 
+    --header-bg: rgba(12, 16, 22, 0.8);
+    --nav-bg-start: #0c1016;
+    --nav-bg-end: #111a22;
+    --nav-shadow: rgba(0, 0, 0, 0.5);
+    --nav-active-bg-start: #00fff1;
+    --nav-active-bg-end: #00ccc9;
+    --nav-active-text: #0c1016;
+    --nav-hover-bg-start: rgba(0, 255, 241, 0.1);
+    --nav-hover-bg-end: rgba(0, 204, 201, 0.05);
+
     /* headings */
     --heading-large: 4.5em;
 
@@ -31,6 +41,29 @@
     --image-1: url('/images/tech-image-1.jpg');
     --image-2: url('/images/tech-image-2.jpg');
     --image-3: url('/images/tech-image-3.jpg');
+}
+
+:root[data-theme='light'] {
+    --main-bg-color: #f5f7fb;
+    --surface: #e8edf3;
+    --brand: #0b5d68;
+    --brand-soft: #1b6e79;
+    --text: #10202a;
+    --muted-text: #5d6b78;
+    --border: #9fcfd3;
+    --highlight: #096d77;
+    --danger: #c0265d;
+    
+    /* light theme */
+    --header-bg: #F5F7FBD1;
+    --nav-bg-start: #ffffff;
+    --nav-bg-end: #e9eef4;
+    --nav-shadow: #0F172A1F;
+    --nav-active-bg-start: #12a8b1;
+    --nav-active-bg-end: #8fe4ea;
+    --nav-active-text: #f5f7fb;
+    --nav-hover-bg-start: #12A8B11F;
+    --nav-hover-bg-end: #12A8B10A;
 }
 
 @font-face {
@@ -67,6 +100,8 @@
 
 html, body {
     background-color: var(--main-bg-color);
+    color: var(--text);
+    transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 
