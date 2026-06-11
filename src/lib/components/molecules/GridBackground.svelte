@@ -12,11 +12,6 @@
   export let rippleMaxRadius = 400;
   export let interactive    = true; // set false to disable click ripples
 
-  const GRID_COLOR      = '#00CCC9';
-  const BG_COLOR        = '#0E151B';
-  const PARTICLE_COLORS = ['#00fff7', '#00c2cb', '#94a1b2'];
-  const RIPPLE_COLOR    = '#00fff7';
-  const CHAR_COLOR      = '#00c2cb';
   const CHARS           = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;':,./<>?";
 
   let canvas;
@@ -24,8 +19,34 @@
   let ctx;
   let particles = [];
   let ripples   = [];
+  let palette = {
+    grid: '#00CCC9',
+    background: '#0E151B',
+    particles: ['#00fff7', '#00c2cb', '#94a1b2'],
+    ripple: '#00fff7',
+    chars: '#00c2cb',
+  };
 
   const occupiedLines = { horizontal: new Set(), vertical: new Set() };
+
+  function readPalette() {
+    if (typeof document === 'undefined') return palette;
+
+    const styles = getComputedStyle(document.documentElement);
+    const background = styles.getPropertyValue('--main-bg-color').trim() || '#0E151B';
+    const brand = styles.getPropertyValue('--brand').trim() || '#00c2cb';
+    const highlight = styles.getPropertyValue('--highlight').trim() || '#00fff7';
+    const muted = styles.getPropertyValue('--muted-text').trim() || '#94a1b2';
+    const border = styles.getPropertyValue('--border').trim() || '#00CCC9';
+
+    return {
+      grid: border,
+      background,
+      particles: [highlight, brand, muted],
+      ripple: highlight,
+      chars: brand,
+    };
+  }
 
   function resize() {
     if (!canvas) return;
@@ -37,14 +58,14 @@
   }
 
   function drawGrid() {
-    ctx.fillStyle = BG_COLOR;
+    ctx.fillStyle = palette.background;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    gradient.addColorStop(0, 'rgba(0, 204, 201, 0.2)');
-    gradient.addColorStop(1, 'rgba(0, 204, 201, 0.04)');
+    gradient.addColorStop(0, `${palette.grid}7a`);
+    gradient.addColorStop(1, `${palette.grid}26`);
     ctx.strokeStyle = gradient;
-    ctx.lineWidth = 0.5;
+    ctx.lineWidth = 1;
 
     for (let y = 0; y < canvas.height; y += gridSize) {
       ctx.beginPath();
@@ -63,7 +84,7 @@
 
   class Particle {
     constructor() {
-      this.color = PARTICLE_COLORS[Math.floor(Math.random() * PARTICLE_COLORS.length)];
+      this.color = palette.particles[Math.floor(Math.random() * palette.particles.length)];
       this.reset();
     }
 
@@ -157,14 +178,14 @@
 
     draw() {
       const alpha = 1 - this.radius / rippleMaxRadius;
-      ctx.strokeStyle = `rgba(0, 255, 247, ${alpha})`;
+      ctx.strokeStyle = `${palette.ripple}${Math.round(alpha * 255).toString(16).padStart(2, '0')}`;
       ctx.lineWidth   = 1;
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       ctx.stroke();
 
       if (Math.random() < 0.3) {
-        ctx.fillStyle = `rgba(0, 194, 203, ${alpha})`;
+        ctx.fillStyle = `${palette.chars}${Math.round(alpha * 255).toString(16).padStart(2, '0')}`;
         ctx.font      = "14px monospace";
         const char    = CHARS[Math.floor(Math.random() * CHARS.length)];
         ctx.fillText(
@@ -189,16 +210,36 @@
   }
 
   function onClick(e) {
-    ripples.push(new Ripple(e.clientX, e.clientY));
+    const rect = canvas.getBoundingClientRect();
+    ripples.push(new Ripple(e.clientX - rect.left, e.clientY - rect.top));
   }
 
   onMount(() => {
     ctx = canvas.getContext('2d');
+    palette = readPalette();
     resize();
     particles = Array.from({ length: particleCount }, () => new Particle());
     loop();
     window.addEventListener('resize', resize);
     if (interactive) canvas.addEventListener('click', onClick);
+
+    const themeObserver = new MutationObserver((mutations) => {
+      if (mutations.some((mutation) => mutation.attributeName === 'data-theme')) {
+        palette = readPalette();
+        particles.forEach((particle) => {
+          particle.color = palette.particles[Math.floor(Math.random() * palette.particles.length)];
+        });
+      }
+    });
+
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
+
+    onDestroy(() => {
+      themeObserver.disconnect();
+    });
   });
 
   onDestroy(() => {

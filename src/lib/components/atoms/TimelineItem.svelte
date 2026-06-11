@@ -56,7 +56,7 @@
     font-size: 0.7rem;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--muted-text);
     margin: 0;
     line-height: 1.6;
   }

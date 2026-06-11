@@ -237,7 +237,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 0.5rem;
-    border: 1px solid rgba(0, 206, 201, 0.2);
+    border: 1px solid color-mix(in srgb, var(--border) 35%, transparent);
     will-change: transform, opacity;
   }
 

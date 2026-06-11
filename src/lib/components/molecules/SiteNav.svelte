@@ -129,9 +129,9 @@
     width: fit-content;
     border-radius: 500px;
     position: relative;
-    background: linear-gradient(0deg, #0c1016, #111a22);
+    background: linear-gradient(0deg, var(--nav-bg-start), var(--nav-bg-end));
     box-shadow:
-      inset 10px 0 10px rgba(0, 0, 0, 0.5),
+      inset 10px 0 10px var(--nav-shadow),
       0 0 20px rgba(0, 204, 201, 0.05);
     transition: all 0.3s ease;
     display: none;
@@ -150,7 +150,7 @@
     display: block;
     position: absolute;
     inset: -2px;
-    background: linear-gradient(180deg, var(--border), #0c1016);
+    background: linear-gradient(180deg, var(--border), var(--nav-bg-start));
     border-radius: 500px;
     z-index: -1;
   }
@@ -181,7 +181,7 @@
   }
 
   .nav a.active {
-    color: #0c1016;
+    color: var(--nav-active-text);
   }
 
   /* Shimmer on hover for non-active links */
@@ -227,7 +227,7 @@
 
   .bubble.active {
     z-index: 2;
-    background: linear-gradient(180deg, #00fff1, #00ccc9);
+    background: linear-gradient(180deg, var(--nav-active-bg-start), var(--nav-active-bg-end));
     box-shadow:
       inset 0 2px 7px rgba(255, 255, 255, 0.4),
       0 0 12px rgba(0, 204, 201, 0.4);
@@ -254,8 +254,8 @@
     z-index: 1;
     background: linear-gradient(
       180deg,
-      rgba(0, 255, 241, 0.1),
-      rgba(0, 204, 201, 0.05)
+      var(--nav-hover-bg-start),
+      var(--nav-hover-bg-end)
     );
     box-shadow: inset 0 2px 7px rgba(0, 255, 241, 0.1);
     filter: blur(10px);
@@ -271,9 +271,9 @@
       top: auto;
       right: auto;
       border-radius: 500px;
-      background: linear-gradient(0deg, #0c1016, #111a22);
+      background: linear-gradient(0deg, var(--nav-bg-start), var(--nav-bg-end));
       box-shadow:
-        inset 10px 0 10px rgba(0, 0, 0, 0.5),
+        inset 10px 0 10px var(--nav-shadow),
         0 0 20px rgba(0, 204, 201, 0.05);
       overflow: hidden;
       margin: 6px;

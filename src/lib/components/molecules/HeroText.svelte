@@ -1,17 +1,44 @@
 <script>
-  import { onMount } from "svelte";
+  import { onDestroy, onMount } from "svelte";
 
   export let phrases = [];
 
   const titleText = "Tristan Katte";
   const titleSub = "Creative Developer";
 
-  onMount(async () => {
-    const gsap = (await import("gsap")).default;
-    const tl = gsap.timeline();
+  let cleanupAnimations = () => {};
 
-    // Title character reveal
+  function getThemeColors() {
+    if (typeof document === "undefined") {
+      return {
+        accent: "#00ccc9",
+        accentSoft: "rgba(0, 204, 201, 0.3)",
+        accentGlow: "#00ccc9",
+        titleGlow: "#00ccc9",
+      };
+    }
+
+    const styles = getComputedStyle(document.documentElement);
+    const highlight = styles.getPropertyValue("--highlight").trim() || "#00ccc9";
+    const brand = styles.getPropertyValue("--brand").trim() || "#00c2cb";
+    const headerBg = styles.getPropertyValue("--header-bg").trim() || "rgba(12, 16, 22, 0.8)";
+
+    return {
+      accent: highlight,
+      accentSoft: `${highlight}4d`,
+      accentGlow: brand,
+      titleGlow: headerBg.includes("245") ? brand : highlight,
+    };
+  }
+
+  function setupAnimations(gsap) {
+    cleanupAnimations();
+
+    const { accent, accentSoft, accentGlow, titleGlow } = getThemeColors();
+    const cleanups = [];
+
     const titleEl = document.querySelector(".hero-title");
+    titleEl.textContent = titleText;
     titleEl.innerHTML = titleText
       .split("")
       .map((char) =>
@@ -21,10 +48,13 @@
       )
       .join("");
 
+    const tl = gsap.timeline();
+
+    // Title character reveal
     tl.staggerFromTo(
       ".hero-title .char", 0.5,
-      { visibility: "hidden", background: "rgba(0, 204, 201, 0.3)", textShadow: "0 0 0 #00ccc9" },
-      { visibility: "visible", background: "rgba(0, 204, 201, 0)", textShadow: "0 0 60px #00ccc9", ease: "sine.out" },
+      { visibility: "hidden", background: accentSoft, textShadow: `0 0 0 ${accentGlow}` },
+      { visibility: "visible", background: "rgba(0, 204, 201, 0)", textShadow: `0 0 60px ${accentGlow}`, ease: "sine.out" },
       0.05, "+=0.8"
     );
 
@@ -41,8 +71,8 @@
 
     tl.staggerFromTo(
       ".hero-title-sub .char", 0.5,
-      { visibility: "hidden", background: "rgba(0, 204, 201, 0.3)", textShadow: "0 0 0 #00ccc9" },
-      { visibility: "visible", background: "rgba(0, 204, 201, 0)", textShadow: "0 0 60px #00ccc9", ease: "sine.out" },
+      { visibility: "hidden", background: accentSoft, textShadow: `0 0 0 ${accentGlow}` },
+      { visibility: "visible", background: "rgba(0, 204, 201, 0)", textShadow: `0 0 60px ${accentGlow}`, ease: "sine.out" },
       0.05, "+=0.05"
     );
 
@@ -79,6 +109,34 @@
 
       animatePhrase();
     });
+
+    cleanupAnimations = () => {
+      tl.kill();
+      cleanups.forEach((cleanup) => cleanup());
+      cleanupAnimations = () => {};
+    };
+
+    const themeObserver = new MutationObserver((mutations) => {
+      if (mutations.some((mutation) => mutation.attributeName === "data-theme")) {
+        setupAnimations(gsap);
+      }
+    });
+
+    themeObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["data-theme"],
+    });
+
+    cleanups.push(() => themeObserver.disconnect());
+  }
+
+  onMount(async () => {
+    const gsap = (await import("gsap")).default;
+    setupAnimations(gsap);
+  });
+
+  onDestroy(() => {
+    cleanupAnimations();
   });
 </script>
 

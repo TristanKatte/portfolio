@@ -15,7 +15,7 @@
   .about-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border: 1px solid rgba(0, 206, 201, 0.25);
+    border: 1px solid color-mix(in srgb, var(--border) 35%, transparent);
     border-radius: 0.75rem;
     overflow: hidden;
     width: 100%;
@@ -26,10 +26,10 @@
     flex-direction: column;
     gap: 0.5rem;
     padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.02);
+    background: color-mix(in srgb, var(--surface) 25%, transparent);
     text-align: left;
-    border-right: 1px solid rgba(0, 206, 201, 0.25);
-    border-bottom: 1px solid rgba(0, 206, 201, 0.25);
+    border-right: 1px solid color-mix(in srgb, var(--border) 35%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--border) 35%, transparent);
   }
 
   .about-stat:nth-child(even) {
@@ -53,7 +53,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--muted-text);
     font-family: "Space Grotesk", sans-serif;
   }
 </style>

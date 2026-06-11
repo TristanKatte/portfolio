@@ -42,7 +42,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-    background: rgba(12, 16, 22, 0.8);
+    background: var(--header-bg);
     color: var(--text);
     backdrop-filter: blur(10px);
     padding: 0.75rem 1.1rem;
@@ -52,6 +52,7 @@
     font-family: "Space Grotesk", sans-serif;
     flex: 1 1 auto;
     min-width: 0;
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
   }
 
   .stat-value {
