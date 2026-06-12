@@ -266,7 +266,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 4px;
-    color: #00fff1;
+    color: var(--highlight);
     font-family: "Azonix", monospace;
   }
 
@@ -346,7 +346,7 @@
   .skill-separator {
     width: 100%;
     height: 1px;
-    background: #00fff1;
+    background: var(--border);
   }
 
   .skill-category-label {

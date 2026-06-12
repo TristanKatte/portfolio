@@ -260,7 +260,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 4px;
-    color: #00fff1;
+    color: var(--text);
     font-family: "Azonix", monospace;
   }
 
@@ -309,7 +309,7 @@
 
   .project-number {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.35);
+    color: var(--muted-text);
     font-family: "Azonix", monospace;
     min-width: 2rem;
     flex-shrink: 0;
@@ -343,6 +343,7 @@
     flex-wrap: wrap;
     justify-content: flex-end;
     flex-shrink: 0;
+      
   }
 
   .tag {
@@ -351,12 +352,12 @@
     font-family: "Azonix", monospace;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--muted-text);
+    border: 1px solid var(--border);
     padding: 0.25rem 0.65rem;
     border-radius: 4px;
     white-space: nowrap;
-    background: rgba(0, 0, 0, 0.3);
+    background: var(--main-bg-color);
   }
 
   .project-actions {
@@ -370,7 +371,7 @@
     font-size: 0.75rem;
     font-family: "Azonix", monospace;
     letter-spacing: 2px;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--muted-text);
     display: flex;
     align-items: center;
     gap: 0.3rem;

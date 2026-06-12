@@ -44,7 +44,7 @@
     font-family: "Azonix", sans-serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 800;
-    color: #00fff1;
+    color: var(--highlight);
     line-height: 1;
   }
 

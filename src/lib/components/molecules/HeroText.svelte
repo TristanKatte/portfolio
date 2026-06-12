@@ -8,34 +8,21 @@
 
   let cleanupAnimations = () => {};
 
-  function getThemeColors() {
+  function getAccentSoft() {
     if (typeof document === "undefined") {
-      return {
-        accent: "#00ccc9",
-        accentSoft: "rgba(0, 204, 201, 0.3)",
-        accentGlow: "#00ccc9",
-        titleGlow: "#00ccc9",
-      };
+      return "rgba(0, 204, 201, 0.3)";
     }
 
     const styles = getComputedStyle(document.documentElement);
     const highlight = styles.getPropertyValue("--highlight").trim() || "#00ccc9";
-    const brand = styles.getPropertyValue("--brand").trim() || "#00c2cb";
-    const headerBg = styles.getPropertyValue("--header-bg").trim() || "rgba(12, 16, 22, 0.8)";
 
-    return {
-      accent: highlight,
-      accentSoft: `${highlight}4d`,
-      accentGlow: brand,
-      titleGlow: headerBg.includes("245") ? brand : highlight,
-    };
+    return `${highlight}4d`;
   }
 
   function setupAnimations(gsap) {
     cleanupAnimations();
 
-    const { accent, accentSoft, accentGlow, titleGlow } = getThemeColors();
-    const cleanups = [];
+    const accentSoft = getAccentSoft();
 
     const titleEl = document.querySelector(".hero-title");
     titleEl.textContent = titleText;
@@ -53,8 +40,8 @@
     // Title character reveal
     tl.staggerFromTo(
       ".hero-title .char", 0.5,
-      { visibility: "hidden", background: accentSoft, textShadow: `0 0 0 ${accentGlow}` },
-      { visibility: "visible", background: "rgba(0, 204, 201, 0)", textShadow: `0 0 60px ${accentGlow}`, ease: "sine.out" },
+      { visibility: "hidden", background: accentSoft, textShadow: "0 0 0 var(--highlight)" },
+      { visibility: "visible", background: "rgba(0, 204, 201, 0)", textShadow: "0 0 60px var(--highlight)", ease: "sine.out" },
       0.05, "+=0.8"
     );
 
@@ -71,8 +58,8 @@
 
     tl.staggerFromTo(
       ".hero-title-sub .char", 0.5,
-      { visibility: "hidden", background: accentSoft, textShadow: `0 0 0 ${accentGlow}` },
-      { visibility: "visible", background: "rgba(0, 204, 201, 0)", textShadow: `0 0 60px ${accentGlow}`, ease: "sine.out" },
+      { visibility: "hidden", background: accentSoft, textShadow: "0 0 0 var(--brand)" },
+      { visibility: "visible", background: "rgba(0, 204, 201, 0)", textShadow: "0 0 60px var(--brand)", ease: "sine.out" },
       0.05, "+=0.05"
     );
 
@@ -112,22 +99,8 @@
 
     cleanupAnimations = () => {
       tl.kill();
-      cleanups.forEach((cleanup) => cleanup());
       cleanupAnimations = () => {};
     };
-
-    const themeObserver = new MutationObserver((mutations) => {
-      if (mutations.some((mutation) => mutation.attributeName === "data-theme")) {
-        setupAnimations(gsap);
-      }
-    });
-
-    themeObserver.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
-    });
-
-    cleanups.push(() => themeObserver.disconnect());
   }
 
   onMount(async () => {

@@ -437,7 +437,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 4px;
-    color: #00fff1;
+    color: var(--highlight);
     font-family: "Azonix", monospace;
     margin-bottom: 2rem;
   }
@@ -454,7 +454,7 @@
   .body-text {
     font-size: 1rem;
     line-height: 1.9;
-    color: rgba(255, 255, 255, 0.65);
+    color: var(--text);
     font-family: "Titillium Web", sans-serif;
     letter-spacing: 0.4px;
     margin: 0;
@@ -466,11 +466,11 @@
     font-family: "Azonix", monospace;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: var(--text);
+    border: 1px solid var(--border);
     padding: 0.2rem 0.6rem;
     border-radius: 4px;
-    background: rgba(0, 0, 0, 0.3);
+    background: var(--main-bg-color);
   }
 
   /* ─── Hero ─── */
@@ -504,7 +504,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 4px;
-    color: #00fff1;
+    color: var(--highlight);
     font-family: "Azonix", monospace;
   }
 
@@ -514,7 +514,8 @@
     font-weight: 300;
     line-height: 1;
     margin: 0;
-    background: linear-gradient(100deg, #fff 50%, #00fff1);
+    color: var(--text);
+    background: linear-gradient(90deg, #00fff1, #0984e3);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -523,7 +524,7 @@
   .hero-tagline {
     font-size: 1rem;
     line-height: 1.75;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--muted-text);
     font-family: "Titillium Web", sans-serif;
     letter-spacing: 0.4px;
     margin: 0;
@@ -558,7 +559,7 @@
     position: relative;
     border-radius: 8px;
     overflow: hidden;
-    border: 1px solid rgba(0, 255, 241, 0.2);
+    border: 1px solid var(--border);
     box-shadow:
       0 0 40px rgba(0, 255, 241, 0.07),
       0 0 80px rgba(9, 132, 227, 0.05),
@@ -577,7 +578,7 @@
     position: absolute;
     width: 18px;
     height: 18px;
-    border-color: #00fff1;
+    border-color: var(--border);
     border-style: solid;
     pointer-events: none;
   }
@@ -600,7 +601,7 @@
     font-size: 0.6rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.25);
+    color: var(--muted-text);
     font-family: "Azonix", monospace;
     animation: bounce 2.2s ease-in-out infinite;
   }
@@ -643,7 +644,7 @@
     font-size: 0.58rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: #00fff1;
+    color: var(--muted-text);
     font-family: "Azonix", monospace;
   }
 
@@ -697,8 +698,8 @@
     margin-bottom: 1rem;
   }
 
-  .cs-card--challenge .cs-card-label { color: rgba(255, 100, 80, 0.9); }
-  .cs-card--solution  .cs-card-label { color: #00fff1; }
+  .cs-card--challenge .cs-card-label { color: var(--danger); }
+  .cs-card--solution  .cs-card-label { color: var(--highlight); }
 
   /* ─── Visual Showcase ─── */
   .showcase-section {
@@ -774,7 +775,7 @@
     font-size: 0.6rem;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.3);
+    color: var(--muted-text);
     font-family: "Azonix", monospace;
   }
 
@@ -791,12 +792,13 @@
     flex-shrink: 0;
     margin-top: 0.05rem;
     z-index: 1;
+    
   }
 
   .tl-line {
     flex: 1;
     width: 1px;
-    background: rgba(255, 255, 255, 0.09);
+    background: var(--muted-text);
     margin: 4px 0;
     min-height: 2rem;
   }
@@ -818,7 +820,7 @@
 
   .tl-text {
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.45);
+    color: var(--muted-text);
     font-family: "Titillium Web", sans-serif;
     letter-spacing: 0.4px;
     line-height: 1.65;
@@ -830,7 +832,8 @@
     max-width: 72ch;
     position: relative;
     padding: 1.5rem 2rem 1.5rem 3.5rem;
-    border-left: 2px solid rgba(0, 255, 241, 0.25);
+    border-left: 2px solid var(--border);
+    margin: 2rem 0;
   }
 
   .reflection-mark {
@@ -839,7 +842,7 @@
     left: 2rem;
     font-size: 7rem;
     line-height: 1;
-    color: rgba(0, 255, 241, 0.1);
+    color: var(--highlight);
     font-family: Georgia, serif;
     pointer-events: none;
     user-select: none;
@@ -848,7 +851,7 @@
   .reflection-text {
     font-size: 1.05rem;
     line-height: 1.9;
-    color: rgba(255, 255, 255, 0.72);
+    color: var(--text);
     font-family: "Titillium Web", sans-serif;
     letter-spacing: 0.4px;
     margin: 0;
@@ -860,7 +863,7 @@
   .project-nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    border-top: 1px solid var(--border);
   }
 
   .nav-half {
@@ -869,7 +872,7 @@
 
   .nav-half--right {
     justify-content: flex-end;
-    border-left: 1px solid rgba(255, 255, 255, 0.07);
+    border-left: 1px solid var(--border);
   }
 
   .nav-item {
@@ -894,7 +897,7 @@
     font-size: 0.62rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: #00fff1;
+    color: var(--muted-text);
     font-family: "Azonix", monospace;
   }
 

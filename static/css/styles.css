@@ -6,14 +6,14 @@
 :root {
     /* colors */
     --main-bg-color: #0E151B;
-    --surface: #525252ff;
+    --surface: #1a242e;
     --brand: #00c2cb;
     --brand-soft: #004e50;
     --text: #e0ffff;
-    --muted-text: #94a1b2;
+    --muted-text: #a9b5c5;
     --border: #00CCC9;
     --highlight: #00fff7;
-    --danger: #ff0066;
+    --danger: #ff7aa4;
 
     --header-bg: rgba(12, 16, 22, 0.8);
     --nav-bg-start: #0c1016;
@@ -44,24 +44,24 @@
 }
 
 :root[data-theme='light'] {
-    --main-bg-color: #f5f7fb;
+    --main-bg-color: #e0e7ff;
     --surface: #e8edf3;
     --brand: #0b5d68;
     --brand-soft: #1b6e79;
     --text: #10202a;
-    --muted-text: #5d6b78;
-    --border: #9fcfd3;
-    --highlight: #096d77;
-    --danger: #c0265d;
+    --muted-text: #3f4a55;
+    --border: #4e98a0;
+    --highlight: #07565e;
+    --danger: #9e1e4c;
     
     /* light theme */
     --header-bg: #F5F7FBD1;
     --nav-bg-start: #ffffff;
     --nav-bg-end: #e9eef4;
     --nav-shadow: #0F172A1F;
-    --nav-active-bg-start: #12a8b1;
+    --nav-active-bg-start: #2fc6ce;
     --nav-active-bg-end: #8fe4ea;
-    --nav-active-text: #f5f7fb;
+    --nav-active-text: #10202a;
     --nav-hover-bg-start: #12A8B11F;
     --nav-hover-bg-end: #12A8B10A;
 }

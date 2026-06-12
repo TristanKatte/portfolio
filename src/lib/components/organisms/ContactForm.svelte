@@ -226,7 +226,7 @@
     font-family: 'Azonix', 'Orbitron Variable', monospace;
     font-size: 0.65rem;
     letter-spacing: 0.2em;
-    color: #00c8c8;
+    color: var(--text);
     text-transform: uppercase;
     display: block;
     margin-bottom: 1.5rem;
@@ -239,12 +239,12 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     line-height: 1.15;
-    color: #d8e8f0;
+    color: var(--text);
     margin: 0 0 2rem;
   }
 
   .heading-accent {
-    color: #00d4d4;
+    color: var(--highlight);
   }
 
   .contact-desc {

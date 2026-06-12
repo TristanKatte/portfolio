@@ -31,7 +31,7 @@
     font-size: 0.65rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: #00fff1;
+    color: var(--text);
     opacity: 0.7;
   }
 
@@ -58,8 +58,8 @@
     width: 4px;
     height: 4px;
     border-radius: 50%;
-    background: #00fff1;
-    box-shadow: 0 0 6px #00fff1;
+    background: var(--highlight);
+    box-shadow: 0 0 6px var(--highlight);
     flex-shrink: 0;
   }
 </style>
