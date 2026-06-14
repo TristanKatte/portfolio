@@ -14,7 +14,8 @@
     }
 
     const styles = getComputedStyle(document.documentElement);
-    const highlight = styles.getPropertyValue("--highlight").trim() || "#00ccc9";
+    const highlight =
+      styles.getPropertyValue("--highlight").trim() || "#00ccc9";
 
     return `${highlight}4d`;
   }
@@ -31,7 +32,7 @@
       .map((char) =>
         char === " "
           ? `<span class="char" style="display:inline-block;">&nbsp;</span>`
-          : `<span class="char" style="display:inline-block;">${char}</span>`
+          : `<span class="char" style="display:inline-block;">${char}</span>`,
       )
       .join("");
 
@@ -39,10 +40,21 @@
 
     // Title character reveal
     tl.staggerFromTo(
-      ".hero-title .char", 0.5,
-      { visibility: "hidden", background: accentSoft, textShadow: "0 0 0 var(--highlight)" },
-      { visibility: "visible", background: "rgba(0, 204, 201, 0)", textShadow: "0 0 60px var(--highlight)", ease: "sine.out" },
-      0.05, "+=0.8"
+      ".hero-title .char",
+      0.5,
+      {
+        visibility: "hidden",
+        background: accentSoft,
+        textShadow: "0 0 0 var(--highlight)",
+      },
+      {
+        visibility: "visible",
+        background: "rgba(0, 204, 201, 0)",
+        textShadow: "0 0 60px var(--highlight)",
+        ease: "sine.out",
+      },
+      0.05,
+      "+=0.8",
     );
 
     // Subtitle character reveal
@@ -52,22 +64,34 @@
       .map((char) =>
         char === " "
           ? `<span class="char" style="display:inline-block;">&nbsp;</span>`
-          : `<span class="char" style="display:inline-block;">${char}</span>`
+          : `<span class="char" style="display:inline-block;">${char}</span>`,
       )
       .join("");
 
     tl.staggerFromTo(
-      ".hero-title-sub .char", 0.5,
-      { visibility: "hidden", background: accentSoft, textShadow: "0 0 0 var(--brand)" },
-      { visibility: "visible", background: "rgba(0, 204, 201, 0)", textShadow: "0 0 60px var(--brand)", ease: "sine.out" },
-      0.05, "+=0.05"
+      ".hero-title-sub .char",
+      0.5,
+      {
+        visibility: "hidden",
+        background: accentSoft,
+        textShadow: "0 0 0 var(--brand)",
+      },
+      {
+        visibility: "visible",
+        background: "rgba(0, 204, 201, 0)",
+        textShadow: "0 0 60px var(--brand)",
+        ease: "sine.out",
+      },
+      0.05,
+      "+=0.05",
     );
 
     // Subtitle flicker in
-    tl.fromTo(".hero-sub",
+    tl.fromTo(
+      ".hero-sub",
       { opacity: 0, filter: "blur(6px)" },
       { opacity: 0.85, filter: "blur(0px)", duration: 0.6, ease: "power2.out" },
-      "+=0.05"
+      "+=0.05",
     );
 
     // Rotating text
@@ -77,20 +101,28 @@
 
       function animatePhrase() {
         rotEl.textContent = phrases[i];
-        gsap.fromTo(rotEl,
+        gsap.fromTo(
+          rotEl,
           { opacity: 0, y: 20 },
           {
-            opacity: 1, y: 0, duration: 0.8, ease: "power2.out",
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
             onComplete: () => {
               gsap.to(rotEl, {
-                opacity: 0, y: -20, delay: 2, duration: 0.8, ease: "power2.in",
+                opacity: 0,
+                y: -20,
+                delay: 2,
+                duration: 0.8,
+                ease: "power2.in",
                 onComplete: () => {
                   i = (i + 1) % phrases.length;
                   animatePhrase();
                 },
               });
             },
-          }
+          },
         );
       }
 
@@ -114,12 +146,11 @@
 </script>
 
 <div class="text">
-  <h1 class="hero-title"> {titleText} </h1>
-  <h2 class="hero-title-sub"> {titleSub} </h2>
+  <h1 class="hero-title">{titleText}</h1>
+  <h2 class="hero-title-sub">{titleSub}</h2>
   <p class="hero-sub">
-    I'm a <span class="rotating-text highlight"></span> who loves crafting
-    beautiful, functional, and accessible web experiences, with a strong focus
-    on performance and progressive enhancement.
+    I'm a <span class="rotating-text highlight"></span> who combines design thinking
+    and development to create accessible, performant and engaging web experiences.
   </p>
 </div>
 
@@ -127,7 +158,6 @@
   .text {
     flex: 1 1 300px;
     text-align: center;
-    
   }
 
   .hero-title {

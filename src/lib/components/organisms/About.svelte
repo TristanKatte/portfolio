@@ -39,27 +39,29 @@
       });
     }
 
-    scrambleHeading(aboutHeadingEl, "Building the web", "one pixel at a time.");
-    scrambleHeading(expHeadingEl, "Shaped by learning,", "refined through experience.");
+    scrambleHeading(aboutHeadingEl, "Bridging design & development", "to create accessible, intuitive and engaging user experiences.");
+    scrambleHeading(expHeadingEl, "From design foundations ", "to frontend development.");
   });
 
   
 
   const introText = [
-    "I'm a recently graduated frontend developer with a strong foundation in both design and development. I focus on building accessible, performant, and visually engaging web experiences that feel intuitive and polished. With a background in web design, I have a keen eye for aesthetics and user experience, which I combine with my technical skills to create websites that not only look great but also function seamlessly. I'm passionate about pushing the boundaries of what's possible on the web and am always eager to learn new technologies and techniques.",
+    "I'm a recently graduated frontend developer with a background in both web design and development. By combining design thinking with technical expertise, I create accessible, performant and engaging digital experiences that put users first.",
+    "My background in web design gives me a strong understanding of visual communication, user experience and interaction design, while my development skills allow me to bring those ideas to life through modern web technologies. I enjoy bridging the gap between design and development, ensuring that products are not only visually appealing but also intuitive, accessible and technically robust.",
+    "I'm passionate about crafting meaningful user experiences, continuously improving my skills, and exploring new technologies that help create better experiences on the web.",
   ];
 
   const focusAreas = [
-    "Accessible & inclusive design",
-    "Progressive enhancement",
-    "Performance & optimization",
-    "Creative frontend development",
+    "Design Thinking",
+    "Accessibility First",
+    "User-Focused UX",
+    "Creative Development",
   ];
 
   const stats = [
-    { value: "3+", label: "Years experience" },
-    { value: "24", label: "Projects shipped" },
-    { value: "8", label: "Technologies" },
+    { value: "4+", label: "Years Designing for the Web" },
+    { value: "24", label: "Projects built" },
+    { value: "8+", label: "Technologies used" },
     { value: "100%", label: "Accessible mindset" },
   ];
 
@@ -95,25 +97,25 @@
       {
         date: "Feb 2025 — Apr 2025",
         role: "Internship at the Veiligheidsregio Utrecht (VRU)",
-        text: "Helped building reports for the VRU.",
+        text: "Developed interactive reports and dashboards for the VRU with Power BI.",
         color: "#ff6b6b",
       },
       {
         date: "Aug 2021 — Jan 2022",
         role: "Internship at ArtDcom",
-        text: "Helped building websites and optimizing them.",
+        text: "Developed client websites and contributed to performance optimizations.",
         color: "#ff8b8b",
       },
       {
         date: "Feb 2021 — Jun 2021",
         role: "Internship at Centix",
-        text: "Helped building and optimizing the WordPress website for Centix.",
+        text: "Contributed to the development and optimization of a WordPress platform.",
         color: "#ff4c4c",
       },
       {
         date: "Jul 2018 — Present",
         role: "Warehouse Employee",
-        text: "Seasonal job at VersAlert, handling sorting, packing and cleaning.",
+        text: "Seasonal role focused on logistics, order processing and warehouse operations.",
         color: "#ff6b6b",
       },
     ],
@@ -125,25 +127,25 @@
       {
         date: "Sep 2023 — Jan 2026",
         role: "Frontend Design & Development at the Amsterdam University of Applied Sciences",
-        text: "Associated degree program focused on frontend development, design, and user experience.",
+        text: "Specialized in frontend development, accessibility and user-centered design.",
         color: "#00ffea",
       },
       {
         date: "Sep 2022 — Dec 2022",
         role: "Communication & Multimedia Design at the Amsterdam University of Applied Sciences",
-        text: "Program focused on communication and multimedia design principles.",
-        color: "#1affd5",
+        text: "Explored UX and digital design before transitioning to Frontend Design & Development.",
+        color: "#00ccaa",
       },
       {
         date: "Sep 2018 — Sep 2022",
         role: "Webdesign at the Grafisch Lyceum Utrecht",
-        text: "Studies focused on web design and development.",
+        text: "Developed a foundation in web design, frontend development and digital media.",
         color: "#00ccaa",
       },
       {
         date: "Aug 2016 — Jul 2018",
         role: "Allround Desktoppublisher Studies at the Grafisch Lyceum Utrecht",
-        text: "Studies focused on desktop publishing and design.",
+        text: "Learned visual design, branding and digital production fundamentals.",
         color: "#00ffea",
       },
     ],
@@ -156,8 +158,8 @@
     <div class="about-header">
       <span class="about-label">01 / Who I Am</span>
       <h2 class="about-heading" bind:this={aboutHeadingEl}>
-        <span>Building the web</span><br />
-        <span class="about-heading-accent">one pixel at a time.</span>
+        <span>Bridging design & development</span><br />
+        <span class="about-heading-accent">to create accessible, intuitive and engaging user experiences.</span>
       </h2>
     </div>
 
@@ -193,8 +195,8 @@
     <div class="experience-header">
       <span class="experience-label">Experience</span>
       <h2 class="experience-heading" bind:this={expHeadingEl}>
-        <span>Shaped by learning,</span><br />
-        <span class="experience-heading-accent">refined through experience.</span>
+        <span>From design foundations</span><br />
+        <span class="experience-heading-accent">to frontend development.</span>
       </h2>
     </div>
 
@@ -285,6 +287,8 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-style: italic;
   }
 
   .about-main {

@@ -58,7 +58,8 @@
     cleanups.push(() => headingTween.kill());
     cleanups.push(() => headingTween.scrollTrigger?.kill());
 
-    const paragraphs = container.querySelectorAll(".about-text");
+    const textBlock = container.querySelector(".about-text-block");
+    const paragraphs = textBlock.querySelectorAll(".about-text");
     paragraphs.forEach((el, i) => {
       const textValue = introText[i];
       if (!textValue) return;
@@ -68,28 +69,28 @@
         .split(" ")
         .map((word) => `<span class="word">${word}</span>`)
         .join(" ");
-
-      const words = el.querySelectorAll(".word");
-      const paragraphTween = gsap.fromTo(
-        words,
-        { color: mutedText },
-        {
-          color: text,
-          duration: 1,
-          stagger: 0.05,
-          ease: "none",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 80%",
-            end: "bottom 20%",
-            scrub: 1,
-          },
-        },
-      );
-
-      cleanups.push(() => paragraphTween.kill());
-      cleanups.push(() => paragraphTween.scrollTrigger?.kill());
     });
+
+    const words = textBlock.querySelectorAll(".word");
+    const textTween = gsap.fromTo(
+      words,
+      { color: mutedText },
+      {
+        color: text,
+        duration: 1,
+        stagger: 0.05,
+        ease: "none",
+        scrollTrigger: {
+          trigger: textBlock,
+          start: "top 80%",
+          end: "bottom 20%",
+          scrub: 1,
+        },
+      },
+    );
+
+    cleanups.push(() => textTween.kill());
+    cleanups.push(() => textTween.scrollTrigger?.kill());
 
     cleanupAnimations = () => {
       cleanups.forEach((cleanup) => cleanup());
@@ -127,9 +128,11 @@
 
 <div class="about-intro" bind:this={container}>
   <h3 class="about-heading">About Me</h3>
-  {#each introText as _}
-    <p class="about-text"></p>
-  {/each}
+  <div class="about-text-block">
+    {#each introText as _}
+      <p class="about-text"></p>
+    {/each}
+  </div>
 </div>
 
 <style>

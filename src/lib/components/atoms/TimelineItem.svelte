@@ -37,7 +37,7 @@
     font-size: 0.65rem;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--muted-text);
     font-family: "Azonix", monospace;
   }
 

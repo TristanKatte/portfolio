@@ -8,12 +8,20 @@
 
     document.querySelectorAll(".stat-value").forEach((el) => {
       const target = +el.dataset.value;
-      gsap.to(el, {
-        innerText: target,
+      const suffix = el.dataset.suffix || "";
+      const decimals = (el.dataset.value.split(".")[1] || "").length;
+      const counter = { val: 0 };
+      gsap.to(counter, {
+        val: target,
         duration: 1.2,
         delay: 1.5,
-        snap: { innerText: 1 },
         ease: "power1.out",
+        onUpdate: () => {
+          const num = decimals
+            ? counter.val.toFixed(decimals)
+            : Math.round(counter.val);
+          el.innerText = num + suffix;
+        },
       });
     });
   });
@@ -22,7 +30,7 @@
 <section class="stats">
   {#each stats as stat}
     <div class="stat">
-      <span class="stat-value" data-value={stat.value}>0</span>
+      <span class="stat-value" data-value={stat.value} data-suffix={stat.suffix ?? ""}>0</span>
       <span class="stat-label">{stat.label}</span>
     </div>
   {/each}
@@ -68,6 +76,7 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--text);
+    white-space: pre-line;
   }
 
   @media (min-width: 600px) {

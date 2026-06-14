@@ -8,19 +8,20 @@
   import { onMount } from "svelte";
 
   const phrases = [
-    "Creative Developer",
-    "Frontend Developer",
-    "Web Designer",
-    "Fulltime Nerd",
+    "Creative Frontend Developer",
+    "UX-Focused Developer",
+    "Accessibility Advocate",
+    "Problem Solver",
     "SvelteKit Enthusiast",
-    "GSAP Enthusiast",
+    "Future Full Stack Developer",
+    "Fulltime Nerd",
 
   ];
 
   const stats = [
-    { value: 3, label: "Years experience" },
-    { value: 24, label: "Projects shipped" },
-    { value: 8, label: "Technologies" },
+    { value: 8, suffix: "+", label: "Projects Built" },
+    { value: 5, suffix: "+", label: "Years Building the Web" },
+    { value: 8, suffix: "+", label: "Technologies Used" },
   ];
 
   const columns = [
