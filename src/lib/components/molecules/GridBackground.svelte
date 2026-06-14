@@ -253,7 +253,7 @@
   });
 </script>
 
-<canvas bind:this={canvas}></canvas>
+<canvas bind:this={canvas} aria-hidden="true"></canvas>
 
 <style>
   canvas {

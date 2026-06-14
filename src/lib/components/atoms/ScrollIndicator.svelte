@@ -1,6 +1,8 @@
 <script>
     import { onMount } from "svelte";
 
+    export let ariaLabel = "Scroll to next section";
+
     let isVisible = true;
 
     function scrollToNextSection() {
@@ -34,7 +36,7 @@
     class="scroll-indicator"
     class:hide={!isVisible}
     on:click={scrollToNextSection}
-    aria-label="Scroll to next section"
+    aria-label={ariaLabel}
 >
     <span class="scroll-arrow">↓</span>
     <span class="scroll-text">Scroll down</span>

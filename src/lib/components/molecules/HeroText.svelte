@@ -25,8 +25,7 @@
 
     const accentSoft = getAccentSoft();
 
-    const titleEl = document.querySelector(".hero-title");
-    titleEl.textContent = titleText;
+    const titleEl = document.querySelector(".hero-title-inner");
     titleEl.innerHTML = titleText
       .split("")
       .map((char) =>
@@ -40,7 +39,7 @@
 
     // Title character reveal
     tl.staggerFromTo(
-      ".hero-title .char",
+      ".hero-title-inner .char",
       0.5,
       {
         visibility: "hidden",
@@ -58,7 +57,7 @@
     );
 
     // Subtitle character reveal
-    const subEl = document.querySelector(".hero-title-sub");
+    const subEl = document.querySelector(".hero-title-sub-inner");
     subEl.innerHTML = titleSub
       .split("")
       .map((char) =>
@@ -146,8 +145,8 @@
 </script>
 
 <div class="text">
-  <h1 class="hero-title">{titleText}</h1>
-  <h2 class="hero-title-sub">{titleSub}</h2>
+  <h1 class="hero-title" aria-label={titleText}><span class="hero-title-inner" aria-hidden="true"></span></h1>
+  <h2 class="hero-title-sub" aria-label={titleSub}><span class="hero-title-sub-inner" aria-hidden="true"></span></h2>
   <p class="hero-sub">
     I'm a <span class="rotating-text highlight"></span> who combines design thinking
     and development to create accessible, performant and engaging web experiences.

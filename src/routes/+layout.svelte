@@ -32,16 +32,21 @@
   
 
   <Header />
-  
- 
+
+  <main>
     <slot />
     <Transition />
-  
+  </main>
+
   <Footer />
 </div>
 
 
 <style>
+  main {
+    display: contents;
+  }
+
   .layout {
     position: relative; /* needed to stack relative children */
     height: 100%;

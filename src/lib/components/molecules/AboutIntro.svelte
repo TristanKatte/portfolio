@@ -33,14 +33,14 @@
     const { highlight, text, mutedText } = getThemeColors();
 
     const heading = container.querySelector(".about-heading");
-    heading.textContent = "About Me";
-    heading.innerHTML = "About Me"
+    const headingInner = heading.querySelector(".about-heading-inner");
+    headingInner.innerHTML = "About Me"
       .split(" ")
       .map((word) => `<span class="word">${word}</span>`)
       .join(" ");
 
     const headingTween = gsap.fromTo(
-      heading.querySelectorAll(".word"),
+      headingInner.querySelectorAll(".word"),
       { color: mutedText },
       {
         color: highlight,
@@ -64,8 +64,8 @@
       const textValue = introText[i];
       if (!textValue) return;
 
-      el.textContent = textValue;
-      el.innerHTML = textValue
+      const inner = el.querySelector(".about-text-inner");
+      inner.innerHTML = textValue
         .split(" ")
         .map((word) => `<span class="word">${word}</span>`)
         .join(" ");
@@ -127,10 +127,10 @@
 </script>
 
 <div class="about-intro" bind:this={container}>
-  <h3 class="about-heading">About Me</h3>
+  <h3 class="about-heading" aria-label="About Me"><span class="about-heading-inner" aria-hidden="true"></span></h3>
   <div class="about-text-block">
-    {#each introText as _}
-      <p class="about-text"></p>
+    {#each introText as text}
+      <p class="about-text" aria-label={text}><span class="about-text-inner" aria-hidden="true"></span></p>
     {/each}
   </div>
 </div>

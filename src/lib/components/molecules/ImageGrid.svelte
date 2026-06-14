@@ -197,13 +197,13 @@
 
 <div class="grid-wrap" bind:this={wrapEl}>
   <div class="image-grid" bind:this={gridEl}>
-    {#each cells as cell, i}
+    {#each cells as cell}
       <div
         class="grid-cell {cell.col === 2 && cell.row === 2 ? 'center' : ''}"
         data-col={cell.col}
         data-row={cell.row}
       >
-        <img src={cell.img} alt="Grid image {i + 1}" />
+        <img src={cell.img} alt="" />
       </div>
     {/each}
 

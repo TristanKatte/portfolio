@@ -181,7 +181,8 @@
               <span class="skill-category-label">{category}</span>
               <div class="tags-row">
                 {#each tags as tag}
-                  <span class="tag" role="img" aria-label={tag} on:mousemove={handleTagMove} on:mouseleave={handleTagLeave}>{tag}</span>
+                  <!-- svelte-ignore a11y_no_static_element_interactions -->
+                  <span class="tag" on:mousemove={handleTagMove} on:mouseleave={handleTagLeave}>{tag}</span>
                 {/each}
               </div>
             </div>

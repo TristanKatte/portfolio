@@ -135,7 +135,7 @@
   <!-- Left Column -->
   <div class="contact-left">
     <span class="section-label">CONTACT</span>
-    <h2 class="contact-heading">
+    <h2 class="contact-heading" id="contact-heading">
       LET'S BUILD SOMETHING<br />
       <span class="heading-accent">TOGETHER</span>
     </h2>
@@ -208,7 +208,7 @@
     </form>
 
     {#if feedback}
-      <p class="feedback">{feedback}</p>
+      <p class="feedback" role="status" aria-live="polite">{feedback}</p>
     {/if}
   </div>
 </div>

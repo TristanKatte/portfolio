@@ -5,6 +5,8 @@
   export let title = "";
   export let items = [];
 
+  $: headingId = `timeline-heading-${title.toLowerCase().replace(/\s+/g, "-")}`;
+
   let timelineEl;
 
   onMount(async () => {
@@ -35,8 +37,8 @@
   });
 </script>
 
-<section aria-labelledby={title} class="timeline-section">
-  <h2 id={title} class="timeline-heading">{title}</h2>
+<section aria-labelledby={headingId} class="timeline-section">
+  <h2 id={headingId} class="timeline-heading">{title}</h2>
   <div class="timeline" bind:this={timelineEl}>
     {#each items as item}
       <TimelineItem {item} />
