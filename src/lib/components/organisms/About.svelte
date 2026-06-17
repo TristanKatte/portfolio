@@ -166,7 +166,7 @@
     <div class="about-main">
       <div class="about-left">
         <div class="profile-placeholder">
-          <img class="profile-static" src="/images/profielfoto-zw.avif" alt="Tristan" />
+          <img class="profile-static" src="/images/profielfoto-zw.avif" alt="Tristan" loading="lazy" decoding="async" />
         </div>
         <FocusCard areas={focusAreas} />
       </div>

@@ -272,7 +272,7 @@
 
       <div class="hero-right anim">
         <div class="screenshot-frame">
-          <img src={project.image} alt="{project.title} screenshot" class="screenshot" />
+          <img src={project.image} alt="{project.title} screenshot" class="screenshot" decoding="async" />
           <div class="frame-corner frame-tl"></div>
           <div class="frame-corner frame-tr"></div>
           <div class="frame-corner frame-bl"></div>
@@ -349,7 +349,7 @@
             <span class="browser-dot browser-dot--green"></span>
             <span class="browser-url">{project.LiveUrl}</span>
           </div>
-          <img src={project.image} alt="{project.title} full view" class="showcase-img" />
+          <img src={project.image} alt="{project.title} full view" class="showcase-img" loading="lazy" decoding="async" />
         </div>
       </div>
     </div>

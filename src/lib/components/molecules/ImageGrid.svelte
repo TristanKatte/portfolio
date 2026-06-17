@@ -203,7 +203,7 @@
         data-col={cell.col}
         data-row={cell.row}
       >
-        <img src={cell.img} alt="" />
+        <img src={cell.img} alt="" decoding="async" />
       </div>
     {/each}
 

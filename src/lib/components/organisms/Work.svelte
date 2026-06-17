@@ -201,7 +201,7 @@
   </div>
 
   <div class="preview-image" bind:this={previewEl} aria-hidden="true">
-    <img src={previewImage} alt="" />
+    <img src={previewImage} alt="" loading="lazy" decoding="async" />
   </div>
 
   <div class="scroll-indicator-wrap">
