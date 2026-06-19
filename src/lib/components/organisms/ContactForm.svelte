@@ -45,6 +45,8 @@
   }
 
   onMount(async () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const gsap = (await import('gsap')).default;
     const { ScrollTrigger } = await import('gsap/ScrollTrigger');
     gsap.registerPlugin(ScrollTrigger);
@@ -292,6 +294,12 @@
     min-width: 0;
   }
 
+  .link-value:focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
   .link-arrow {
     font-size: 1rem;
     color: #6a7f90;
@@ -361,6 +369,13 @@
     box-sizing: border-box;
   }
 
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
   input::placeholder,
   textarea::placeholder {
     color: #2e3f50;
@@ -389,6 +404,11 @@
     background: #122030;
     border-color: #00c8c8;
     color: #00d4d4;
+  }
+
+  button:focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: 2px;
   }
 
   button:disabled {

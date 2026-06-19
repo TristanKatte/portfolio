@@ -213,6 +213,10 @@
 
     if (!project) return;
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return () => { html.style.scrollSnapType = ""; };
+    }
+
     const gsap = (await import("gsap")).default;
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
     gsap.registerPlugin(ScrollTrigger);
@@ -249,6 +253,7 @@
 </script>
 
 {#if project}
+  {@const webpSrc = project.image.replace(/\.png$/, '.webp')}
 
   <!-- ─── HERO ─── -->
   <section class="hero" bind:this={heroEl}>
@@ -272,7 +277,10 @@
 
       <div class="hero-right anim">
         <div class="screenshot-frame">
-          <img src={project.image} alt="{project.title} screenshot" class="screenshot" decoding="async" />
+          <picture>
+            <source srcset={webpSrc} type="image/webp" />
+            <img src={project.image} alt="{project.title} screenshot" class="screenshot" decoding="async" width="1600" height="1000" />
+          </picture>
           <div class="frame-corner frame-tl"></div>
           <div class="frame-corner frame-tr"></div>
           <div class="frame-corner frame-bl"></div>
@@ -349,7 +357,10 @@
             <span class="browser-dot browser-dot--green"></span>
             <span class="browser-url">{project.LiveUrl}</span>
           </div>
-          <img src={project.image} alt="{project.title} full view" class="showcase-img" loading="lazy" decoding="async" />
+          <picture>
+            <source srcset={webpSrc} type="image/webp" />
+            <img src={project.image} alt="{project.title} full view" class="showcase-img" loading="lazy" decoding="async" width="1600" height="1000" />
+          </picture>
         </div>
       </div>
     </div>
@@ -914,6 +925,11 @@
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  .nav-item:focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: -2px;
   }
 
   /* ─── Not found ─── */

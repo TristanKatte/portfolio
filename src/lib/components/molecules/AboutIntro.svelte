@@ -39,6 +39,25 @@
       .map((word) => `<span class="word">${word}</span>`)
       .join(" ");
 
+    const textBlock = container.querySelector(".about-text-block");
+    const paragraphs = textBlock.querySelectorAll(".about-text");
+    paragraphs.forEach((el, i) => {
+      const textValue = introText[i];
+      if (!textValue) return;
+
+      const inner = el.querySelector(".about-text-inner");
+      inner.innerHTML = textValue
+        .split(" ")
+        .map((word) => `<span class="word">${word}</span>`)
+        .join(" ");
+    });
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      headingInner.querySelectorAll(".word").forEach(w => { w.style.color = highlight; });
+      textBlock.querySelectorAll(".word").forEach(w => { w.style.color = text; });
+      return;
+    }
+
     const headingTween = gsap.fromTo(
       headingInner.querySelectorAll(".word"),
       { color: mutedText },
@@ -57,19 +76,6 @@
     );
     cleanups.push(() => headingTween.kill());
     cleanups.push(() => headingTween.scrollTrigger?.kill());
-
-    const textBlock = container.querySelector(".about-text-block");
-    const paragraphs = textBlock.querySelectorAll(".about-text");
-    paragraphs.forEach((el, i) => {
-      const textValue = introText[i];
-      if (!textValue) return;
-
-      const inner = el.querySelector(".about-text-inner");
-      inner.innerHTML = textValue
-        .split(" ")
-        .map((word) => `<span class="word">${word}</span>`)
-        .join(" ");
-    });
 
     const words = textBlock.querySelectorAll(".word");
     const textTween = gsap.fromTo(
@@ -127,10 +133,10 @@
 </script>
 
 <div class="about-intro" bind:this={container}>
-  <h3 class="about-heading" aria-label="About Me"><span class="about-heading-inner" aria-hidden="true"></span></h3>
+  <h3 class="about-heading" aria-label="About Me"><span class="about-heading-inner" aria-hidden="true">About Me</span></h3>
   <div class="about-text-block">
     {#each introText as text}
-      <p class="about-text" aria-label={text}><span class="about-text-inner" aria-hidden="true"></span></p>
+      <p class="about-text" aria-label={text}><span class="about-text-inner" aria-hidden="true">{text}</span></p>
     {/each}
   </div>
 </div>

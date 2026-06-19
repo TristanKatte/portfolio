@@ -19,6 +19,7 @@
   let ctx;
   let particles = [];
   let ripples   = [];
+  let reducedMotion = false;
   let palette = {
     grid: '#00CCC9',
     background: '#0E151B',
@@ -55,6 +56,7 @@
     occupiedLines.horizontal.clear();
     occupiedLines.vertical.clear();
     particles.forEach(p => p.reset());
+    if (reducedMotion) drawGrid();
   }
 
   function drawGrid() {
@@ -217,11 +219,18 @@
   onMount(() => {
     ctx = canvas.getContext('2d');
     palette = readPalette();
+    reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     resize();
-    particles = Array.from({ length: particleCount }, () => new Particle());
-    loop();
+
+    if (reducedMotion) {
+      drawGrid();
+    } else {
+      particles = Array.from({ length: particleCount }, () => new Particle());
+      loop();
+      if (interactive) canvas.addEventListener('click', onClick);
+    }
+
     window.addEventListener('resize', resize);
-    if (interactive) canvas.addEventListener('click', onClick);
 
     const themeObserver = new MutationObserver((mutations) => {
       if (mutations.some((mutation) => mutation.attributeName === 'data-theme')) {

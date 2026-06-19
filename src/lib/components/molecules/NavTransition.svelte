@@ -6,6 +6,15 @@
   let cleanup;
 
   onMount(async () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      function onNavTransition({ detail: { target } }) {
+        document.querySelector(target)?.scrollIntoView({ behavior: "instant" });
+      }
+      window.addEventListener("nav-transition", onNavTransition);
+      cleanup = () => window.removeEventListener("nav-transition", onNavTransition);
+      return;
+    }
+
     const gsap = (await import("gsap")).default;
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
     gsap.registerPlugin(ScrollTrigger);
@@ -21,11 +30,9 @@
         .set(labelEl, { yPercent: 8, scale: 0.85, opacity: 0 })
         .to(overlayEl, { autoAlpha: 1, duration: 0.3, ease: "power2.out" })
         .to(labelEl, { opacity: 1, scale: 1, yPercent: 0, duration: 0.3, ease: "power2.out" }, 0.05)
-        // scroll at peak opacity so the jump is hidden behind the overlay
         .call(() => {
           document.querySelector(target)?.scrollIntoView({ behavior: "instant" });
           requestAnimationFrame(() => {
-            // Reset any partially-played SectionTransition overlays and section blurs
             document.querySelectorAll(".transition-overlay").forEach((el) => {
               gsap.set(el, { autoAlpha: 0 });
             });
@@ -62,6 +69,8 @@
     background: rgba(8, 8, 14, 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    opacity: 0;
+    visibility: hidden;
   }
 
   .nav-label {

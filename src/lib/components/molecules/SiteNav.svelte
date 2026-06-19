@@ -184,6 +184,12 @@
     color: var(--nav-active-text);
   }
 
+  .nav a:focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: -2px;
+    border-radius: 500px;
+  }
+
   /* Shimmer on hover for non-active links */
   .nav a:not(.active)::after {
     content: "";
@@ -312,6 +318,18 @@
       transition: all 0.25s ease;
       pointer-events: none;
       padding: 0.75rem 1.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav a {
+      transition-duration: 0.01s;
+    }
+    .nav a:not(.active):hover::after {
+      animation: none;
+    }
+    .bubble {
+      transition-duration: 0.01s;
     }
   }
 </style>

@@ -4,6 +4,8 @@
   export let images = {};
   export let profileImage = "/images/profielfoto-zw.avif";
 
+  $: profileBase = profileImage.replace(/\.(avif|webp|jpg|png)$/, '');
+
   const cells = [
     { img: images[1], col: 1, row: 1 },
     { img: images[2], col: 2, row: 1 },
@@ -183,8 +185,10 @@
     await new Promise((r) => setTimeout(r, 150));
     ScrollTrigger.refresh();
 
-    swapActive = true;
-    scheduleSwap(gsap);
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      swapActive = true;
+      scheduleSwap(gsap);
+    }
   });
 
   onDestroy(() => {
@@ -203,12 +207,16 @@
         data-col={cell.col}
         data-row={cell.row}
       >
-        <img src={cell.img} alt="" decoding="async" />
+        <img src={cell.img} alt="" decoding="async" width="800" height="600" />
       </div>
     {/each}
 
     <div class="profile-reveal">
-      <img src={profileImage} alt="Tristan" />
+      <picture>
+        <source srcset="{profileBase}.avif" type="image/avif" />
+        <source srcset="{profileBase}.webp" type="image/webp" />
+        <img src="{profileBase}.jpg" alt="Tristan" width="600" height="900" />
+      </picture>
     </div>
   </div>
 </div>

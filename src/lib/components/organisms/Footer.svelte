@@ -50,6 +50,12 @@
     color: var(--brand, #64ffda);
   }
 
+  .socials a:focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
   /* Mobiel: zet items onder elkaar */
   @media (max-width: 600px) {
     .container {

@@ -62,6 +62,11 @@
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
     gsap.registerPlugin(ScrollTrigger);
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      gsap.set(".boot-overlay", { scaleY: 0, opacity: 0 });
+      return;
+    }
+
     const tl = gsap.timeline();
 
     // 1. Boot overlay sweeps off screen
@@ -138,6 +143,10 @@
     transform-origin: top;
     z-index: 100;
     pointer-events: none;
+  }
+
+  :global(html:not(.js)) .boot-overlay {
+    display: none;
   }
 
   .hero {

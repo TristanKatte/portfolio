@@ -24,6 +24,7 @@
     cleanupAnimations();
 
     const accentSoft = getAccentSoft();
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const titleEl = document.querySelector(".hero-title-inner");
     titleEl.innerHTML = titleText
@@ -34,6 +35,35 @@
           : `<span class="char" style="display:inline-block;">${char}</span>`,
       )
       .join("");
+
+    const subEl = document.querySelector(".hero-title-sub-inner");
+    subEl.innerHTML = titleSub
+      .split("")
+      .map((char) =>
+        char === " "
+          ? `<span class="char" style="display:inline-block;">&nbsp;</span>`
+          : `<span class="char" style="display:inline-block;">${char}</span>`,
+      )
+      .join("");
+
+    if (prefersReducedMotion) {
+      titleEl.querySelectorAll(".char").forEach(el => { el.style.visibility = "visible"; });
+      subEl.querySelectorAll(".char").forEach(el => { el.style.visibility = "visible"; });
+      gsap.set(".hero-sub", { opacity: 0.85, filter: "blur(0px)" });
+      const rotEl = document.querySelector(".rotating-text");
+      rotEl.textContent = phrases[0];
+      gsap.set(rotEl, { opacity: 1, y: 0 });
+      let i = 0;
+      const interval = setInterval(() => {
+        i = (i + 1) % phrases.length;
+        rotEl.textContent = phrases[i];
+      }, 3600);
+      cleanupAnimations = () => {
+        clearInterval(interval);
+        cleanupAnimations = () => {};
+      };
+      return;
+    }
 
     const tl = gsap.timeline();
 
@@ -57,16 +87,6 @@
     );
 
     // Subtitle character reveal
-    const subEl = document.querySelector(".hero-title-sub-inner");
-    subEl.innerHTML = titleSub
-      .split("")
-      .map((char) =>
-        char === " "
-          ? `<span class="char" style="display:inline-block;">&nbsp;</span>`
-          : `<span class="char" style="display:inline-block;">${char}</span>`,
-      )
-      .join("");
-
     tl.staggerFromTo(
       ".hero-title-sub .char",
       0.5,
@@ -145,8 +165,8 @@
 </script>
 
 <div class="text">
-  <h1 class="hero-title" aria-label={titleText}><span class="hero-title-inner" aria-hidden="true"></span></h1>
-  <h2 class="hero-title-sub" aria-label={titleSub}><span class="hero-title-sub-inner" aria-hidden="true"></span></h2>
+  <h1 class="hero-title" aria-label={titleText}><span class="hero-title-inner" aria-hidden="true">{titleText}</span></h1>
+  <h2 class="hero-title-sub" aria-label={titleSub}><span class="hero-title-sub-inner" aria-hidden="true">{titleSub}</span></h2>
   <p class="hero-sub">
     I'm a <span class="rotating-text highlight"></span> who combines design thinking
     and development to create accessible, performant and engaging web experiences.
@@ -182,10 +202,13 @@
 
   .hero-sub {
     font-size: clamp(1.2rem, 2vw, 2.2rem);
-    opacity: 0;
     margin-bottom: 2rem;
     color: var(--text);
     line-height: 1.5;
+  }
+
+  :global(html.js) .hero-sub {
+    opacity: 0;
   }
 
   .highlight,

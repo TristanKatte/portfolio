@@ -10,6 +10,7 @@
   import gsap from 'gsap';
 
   onMount(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     gsap.from('#hero', { opacity: 0, y: -50, duration: 1 });
     gsap.from('#about', { opacity: 0, y: 50, duration: 1, delay: 0.5 });
     gsap.from('#skills', { opacity: 0, y: 50, duration: 1, delay: 1 });

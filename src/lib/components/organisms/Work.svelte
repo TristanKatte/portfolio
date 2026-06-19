@@ -5,12 +5,12 @@
   const projects = [
     {
       number: "01",
-      slug: "we-love-web",
-      title: "WE LOVE WEB",
-      description: "A blog made with SvelteKit, Markdown and MDsveX",
-      image: "/images/we-love-web.png",
-      liveUrl: "https://we-love-web-blog-one.vercel.app",
-      tags: ["SVELTEKIT", "MARKDOWN", "MDSVEX"],
+      slug: "De-Koperen-Kat",
+      title: "DE KOPEREN KAT",
+      description: "A website for a local brewery, made as a final project at FDND",
+      image: "/images/de-koperen-kat.png",
+      liveUrl: "https://stadsbrouwerij-dekoperenkat.netlify.app/",
+      tags: ["SVELTEKIT", "GSAP", "Supabase"],
     },
     {
       number: "02",
@@ -23,15 +23,6 @@
     },
     {
       number: "03",
-      slug: "bieb-in-bloei",
-      title: "BIEB IN BLOEI",
-      description: "A concept for a green Library, where people learn about nature",
-      image: "/images/bieb-in-bloei.png",
-      liveUrl: "https://biebinbloei.nl",
-      tags: ["SVELTEKIT", "WPAPI", "CSS"],
-    },
-    {
-      number: "04",
       slug: "Redpers",
       title: "REDPERS",
       description: "A newswebsite built in a group project at FDND",
@@ -40,25 +31,25 @@
       tags: ["SVELTEKIT", "WPAPI"],
     },
     {
+      number: "04",
+      slug: "bieb-in-bloei",
+      title: "BIEB IN BLOEI",
+      description: "A concept for a green Library, where people learn about nature",
+      image: "/images/bieb-in-bloei.png",
+      liveUrl: "https://biebinbloei.nl",
+      tags: ["SVELTEKIT", "WPAPI", "CSS"],
+    },
+    {
       number: "05",
-      slug: "squadpage",
-      title: "SQUADPAGE",
-      description: "A fun squad page built in my 1st sprint at FDND",
-      image: "/images/squadpage.png",
-      liveUrl: "https://ebok1.github.io/your-tribe-squad-page/",
-      tags: ["HTML", "CSS"],
+      slug: "we-love-web",
+      title: "WE LOVE WEB",
+      description: "A blog made with SvelteKit, Markdown and MDsveX",
+      image: "/images/we-love-web.png",
+      liveUrl: "https://we-love-web-blog-one.vercel.app",
+      tags: ["SVELTEKIT", "MARKDOWN", "MDSVEX"],
     },
     {
       number: "06",
-      slug: "visitekaartje",
-      title: "DIGITAL BUSINESS CARD",
-      description: "A digital business card introducing my skills and personality",
-      image: "/images/visitekaartje.png",
-      liveUrl: "https://your-tribe-for-life-profile-card-liart.vercel.app/",
-      tags: ["HTML", "CSS", "JAVASCRIPT"],
-    },
-    {
-      number: "07",
       slug: "I-Love-Web",
       title: "I LOVE WEB",
       description: "A digital garden full of web development notes",
@@ -67,17 +58,27 @@
       tags: ["SVELTEKIT", "MARKDOWN"],
     },
     {
+      number: "07",
+      slug: "squadpage",
+      title: "SQUADPAGE",
+      description: "A fun squad page built in my 1st sprint at FDND",
+      image: "/images/squadpage.png",
+      liveUrl: "https://ebok1.github.io/your-tribe-squad-page/",
+      tags: ["HTML", "CSS"],
+    },
+    {
       number: "08",
-      slug: "De-Koperen-Kat",
-      title: "DE KOPEREN KAT",
-      description: "A website for a local brewery, made as a final project at FDND",
-      image: "/images/de-koperen-kat.png",
-      liveUrl: "https://stadsbrouwerij-dekoperenkat.netlify.app/",
-      tags: ["SVELTEKIT", "GSAP", "Supabase"],
+      slug: "visitekaartje",
+      title: "DIGITAL BUSINESS CARD",
+      description: "A digital business card introducing my skills and personality",
+      image: "/images/visitekaartje.png",
+      liveUrl: "https://your-tribe-for-life-profile-card-liart.vercel.app/",
+      tags: ["HTML", "CSS", "JAVASCRIPT"],
     },
   ];
 
   let previewImage = projects[0].image;
+  $: previewWebp = previewImage.replace(/\.png$/, '.webp');
   let previewEl;
   let headingEl;
   let gsapInstance;
@@ -85,6 +86,8 @@
   const chars = "01アイウエOカキクケCO!@#$%";
 
   onMount(async () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     gsapInstance = (await import("gsap")).default;
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
     const ScrambleTextPlugin = (await import("gsap/ScrambleTextPlugin")).default;
@@ -170,23 +173,38 @@
 
     <ul class="projects-list">
       {#each projects as project}
-        <li class="project-row">
+        <li
+          class="project-row"
+          on:mouseenter={(e) => handleMouseEnter(project, e)}
+          on:mouseleave={handleMouseLeave}
+        >
           <span class="project-number">{project.number}</span>
-          <div
-            class="project-text"
-            role="group"
-            on:mouseenter={(e) => handleMouseEnter(project, e)}
-            on:mouseleave={handleMouseLeave}
-          >
+          <div class="project-text" role="group">
             <h3 class="project-title">{project.title}</h3>
             <p class="project-desc">{project.description}</p>
           </div>
-          <div class="project-tags">
+          <div
+            class="project-tags"
+            on:mouseenter={handleMouseLeave}
+            on:mouseleave={(e) => {
+              if (e.currentTarget.closest('.project-row')?.matches(':hover')) {
+                handleMouseEnter(project, e);
+              }
+            }}
+          >
             {#each project.tags as tag}
               <span class="tag">{tag}</span>
             {/each}
           </div>
-          <div class="project-actions">
+          <div
+            class="project-actions"
+            on:mouseenter={handleMouseLeave}
+            on:mouseleave={(e) => {
+              if (e.currentTarget.closest('.project-row')?.matches(':hover')) {
+                handleMouseEnter(project, e);
+              }
+            }}
+          >
             <a class="project-view" href={`/projects/${project.slug}`}>
               DETAILS <span class="arrow">↗</span>
             </a>
@@ -201,7 +219,10 @@
   </div>
 
   <div class="preview-image" bind:this={previewEl} aria-hidden="true">
-    <img src={previewImage} alt="" loading="lazy" decoding="async" />
+    <picture>
+      <source srcset={previewWebp} type="image/webp" />
+      <img src={previewImage} alt="" loading="lazy" decoding="async" width="1600" height="1000" />
+    </picture>
   </div>
 
   <div class="scroll-indicator-wrap">
@@ -382,6 +403,12 @@
 
   .project-view:hover {
     color: #00fff1;
+  }
+
+  .project-view:focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 
   .arrow {

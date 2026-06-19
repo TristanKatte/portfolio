@@ -74,4 +74,13 @@
   .cta-button:hover {
     animation: glowPulse 2.5s infinite alternate;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cta-button {
+      transition-duration: 0.01s;
+    }
+    .cta-button:hover {
+      animation: none;
+    }
+  }
 </style>

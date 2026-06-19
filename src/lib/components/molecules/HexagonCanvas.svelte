@@ -10,6 +10,7 @@
   let canvas;
   let animationId;
   let hexagons = [];
+  let reducedMotion = false;
   const s3p3 = Math.sqrt(3);
 
   function addHexagon(x, y, opts = {}) {
@@ -81,7 +82,19 @@
     ctx.globalCompositeOperation = "source-over";
 
     buildGrid();
-    loop(ctx);
+
+    if (reducedMotion) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+      for (const hex of hexagons) drawHexagonPath(ctx, hex);
+      ctx.shadowColor = HEXAGON_COLOR;
+      ctx.shadowBlur = 20;
+      ctx.strokeStyle = HEXAGON_COLOR;
+      ctx.lineWidth = HEXAGON_LINE_WIDTH;
+      ctx.stroke();
+    } else {
+      loop(ctx);
+    }
   }
 
   function handleResize() {
@@ -94,6 +107,7 @@
   }
 
   onMount(() => {
+    reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     init();
     window.addEventListener("resize", handleResize);
   });

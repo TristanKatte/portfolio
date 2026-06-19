@@ -12,9 +12,11 @@
 					const theme = storedTheme ?? (prefersLight ? 'light' : 'dark');
 					document.documentElement.dataset.theme = theme;
 					document.documentElement.style.colorScheme = theme;
+					document.documentElement.classList.add('js');
 				} catch {
 					document.documentElement.dataset.theme = 'dark';
 					document.documentElement.style.colorScheme = 'dark';
+					document.documentElement.classList.add('js');
 				}
 			})();
 		</script>

@@ -4,12 +4,15 @@
   export let stats = [];
 
   onMount(async () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const gsap = (await import("gsap")).default;
 
     document.querySelectorAll(".stat-value").forEach((el) => {
       const target = +el.dataset.value;
       const suffix = el.dataset.suffix || "";
       const decimals = (el.dataset.value.split(".")[1] || "").length;
+      el.innerText = "0";
       const counter = { val: 0 };
       gsap.to(counter, {
         val: target,
@@ -30,7 +33,7 @@
 <section class="stats">
   {#each stats as stat}
     <div class="stat">
-      <span class="stat-value" data-value={stat.value} data-suffix={stat.suffix ?? ""}>0</span>
+      <span class="stat-value" data-value={stat.value} data-suffix={stat.suffix ?? ""}>{stat.value}{stat.suffix ?? ""}</span>
       <span class="stat-label">{stat.label}</span>
     </div>
   {/each}

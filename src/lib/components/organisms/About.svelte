@@ -10,6 +10,8 @@
   let expHeadingEl;
 
   onMount(async () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const gsap = (await import("gsap")).default;
     const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
     const ScrambleTextPlugin = (await import("gsap/ScrambleTextPlugin")).default;
@@ -166,7 +168,11 @@
     <div class="about-main">
       <div class="about-left">
         <div class="profile-placeholder">
-          <img class="profile-static" src="/images/profielfoto-zw.avif" alt="Tristan" loading="lazy" decoding="async" />
+          <picture>
+            <source srcset="/images/profielfoto-zw.avif" type="image/avif" />
+            <source srcset="/images/profielfoto-zw.webp" type="image/webp" />
+            <img class="profile-static" src="/images/profielfoto-zw.jpg" alt="Tristan" loading="lazy" decoding="async" width="600" height="900" />
+          </picture>
         </div>
         <FocusCard areas={focusAreas} />
       </div>

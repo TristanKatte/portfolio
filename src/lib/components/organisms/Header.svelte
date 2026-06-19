@@ -48,7 +48,10 @@
 <header class="site-header">
   <div class="container">
     <a href="/" class="logo-link">
-      <img src="/images/logo_groen.png" alt="Logo" class="logo-image" />
+      <picture>
+        <source srcset="/images/logo_groen.webp" type="image/webp" />
+        <img src="/images/logo_groen.png" alt="Logo" class="logo-image" width="359" height="317" />
+      </picture>
     </a>
     <div class="actions">
       <button
@@ -150,6 +153,12 @@
     transform: scale(1.05);
   }
 
+  .logo-link:focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
   .logo-image {
     height: 2rem;
     width: auto;
@@ -183,6 +192,11 @@
     border-color: var(--highlight);
   }
 
+  .nav-toggle:focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: 2px;
+  }
+
   .theme-toggle {
     display: inline-flex;
     align-items: center;
@@ -209,6 +223,11 @@
   .theme-toggle:hover {
     border-color: var(--highlight);
     transform: translateY(-1px);
+  }
+
+  .theme-toggle:focus-visible {
+    outline: 2px solid var(--highlight);
+    outline-offset: 2px;
   }
 
   /* Hide toggle on desktop */
