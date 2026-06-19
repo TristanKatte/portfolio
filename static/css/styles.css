@@ -88,8 +88,7 @@
 
 @font-face {
     font-family: "Neofolia";
-    src: url('../fonts/neofolia.ttf') format('truetype');
-
+    src: url('/fonts/neofolia.ttf') format('truetype');
 }
 
 * {
